@@ -168,6 +168,29 @@
       display:block;
     }
     .slidebox img.show{opacity:1;}
+/* --- Wyśrodkowanie podglądu i CTA w hero --- */
+.hero .slidebox{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Większy, wyśrodkowany przycisk "Zamów teraz" (tylko w hero) */
+.hero a.btn{
+  display:block;               /* pozwala na auto-margins */
+  margin:14px auto 0;          /* centrowanie */
+  padding:18px 28px;           /* większe pole klikalne */
+  font-size:clamp(18px, 2.2vw, 22px);
+  min-width:clamp(220px, 50%, 420px);
+  border-radius:16px;
+}
+
+/* Drobna korekta na małych ekranach: pełna szerokość z marginesami */
+@media (max-width: 480px){
+  .hero a.btn{
+    width:100%;
+    max-width:460px;
+  }
+}
   </style>
 </head>
 <body>
@@ -207,7 +230,7 @@
 
       <aside class="card product" aria-labelledby="podglad">
         <div class="corner-badge" aria-hidden="true">✓</div>
-        <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty spersonalizowane pod kolor aury Twojego znaku zodiaku</span><span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span></div>
+        <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty</span><span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span></div>
         <h3 id="podglad">Co znajdziesz w środku?</h3>
         <div class="feature-list">
           <div class="feature">
