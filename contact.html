@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt – Twój Cyfrowy Kompas</title>
+  <meta name="description" content="Skontaktuj się z nami w sprawie raportu numerologicznego." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f4f5f9; --text:#1f2430; --muted:#5f6b7a; --card:#ffffff;
+      --brand:#F4A77C; --brand-2:#8EC5F5; --accent:#F7CDA5;
+      --shadow:0 10px 30px rgba(14,22,34,.12); --radius:16px;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+
+    /* Tło spójne z główną stroną (opcjonalnie możesz podmienić obraz) */
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-2;
+      background:url('assets/img/Rak.jpg') center / cover no-repeat fixed;
+      filter:saturate(105%) contrast(102%);
+    }
+    body::after{
+      content:""; position:fixed; inset:0; z-index:-1;
+      background:
+        radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),
+        radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+      pointer-events:none;
+    }
+
+    .container{max-width:960px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(20,24,30,.06);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .logo-badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow);color:#fff}
+    .nav a{color:var(--text);text-decoration:none;opacity:.9}
+
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));border:1px solid rgba(20,24,30,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    .hero{padding:56px 0 18px}
+    h1{margin:0 0 8px}
+    .lead{color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;margin-top:22px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+
+    .section{padding:22px}
+    .list{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+    .list a{color:var(--brand)}
+    .meta{font-size:14px;color:var(--muted)}
+
+    footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px);margin-top:32px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true"><span>№</span></div>
+        <span>Twój Cyfrowy Kompas</span>
+      </div>
+      <nav>
+        <a href="index.html">Strona główna</a>
+        <a href="index2.html" style="margin-left:14px">Regulamin i Polityka prywatności</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Kontakt</h1>
+      <p class="lead">Masz pytania dotyczące zamówienia lub raportu? Napisz do nas – odpowiadamy w godzinach roboczych.</p>
+    </section>
+
+    <section class="grid">
+      <!-- Dane kontaktowe -->
+      <div class="card section">
+        <h2 style="margin-top:0">Jak się z nami skontaktować</h2>
+        <ul class="list">
+          <li><strong>E-mail:</strong> <a href="mailto:kontakt@twojcyfrowykompas.pl">kontakt@twojcyfrowykompas.pl</a></li>
+          <li><strong>Godziny odpowiedzi:</strong> pon.–pt., 8:00–18:00</li>
+          <li class="meta">W wiadomości podaj numer zamówienia (jeśli masz), aby szybciej pomóc.</li>
+        </ul>
+      </div>
+
+      <!-- Szybkie FAQ / odnośniki -->
+      <div class="card section">
+        <h3 style="margin-top:0">Przydatne odnośniki</h3>
+        <ul class="list">
+          <li><a href="index2.html">Regulamin i Polityka prywatności</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#zamow">Zamów raport</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+      <small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
+      <div style="display:flex;gap:16px">
+        <a href="index2.html">Regulamin i Polityka prywatności</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="index.html#zamow">Zamów</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
