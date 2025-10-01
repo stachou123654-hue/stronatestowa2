@@ -61,8 +61,6 @@
     /* Hero */
     .hero{padding:72px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
     .hero h1 .h1-sub{font-size:0.68em}
-    /* większy rozmiar tylko dla wyróżnionego fragmentu */
-    .h1-highlight{ font-size: clamp(1.2em, 3vw, 1.6em); line-height: 1.05; }
     .hero p{color:var(--muted);font-size:clamp(16px,2.2vw,18px)}
     .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px}
     .badge{padding:8px 12px;border:1px solid rgba(20,24,30,.08);border-radius:999px;color:#3b4656;background:rgba(255,255,255,.8)}
@@ -71,7 +69,7 @@
 
     /* Product card */
     .product{padding:76px 24px 24px;position:relative;overflow:visible}
-    .feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#3b4656;padding:6px 8px;border-radius:10px;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease}
+    .feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#3b4656;padding:6px 8px;border-radius:10px;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;will-change:transform}
     .feature svg{grid-column:1;width:22px;height:22px;margin-top:2px;color:#2d394a}
     .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:14px 0 8px;align-items:start}
     @media (max-width: 980px){.feature-list{grid-template-columns:1fr;gap:10px 14px}}
@@ -89,11 +87,14 @@
     .ribbon .ribbon--mobile{display:none}
     @media (max-width:480px){
       .product{padding-top:88px}
-      .ribbon{right:10px;top:10px;max-width:240px;font-size:13px;padding:7px 10px;transform:rotate(1.8deg) translateY(1px)}
+      .ribbon{right:10px;top:10px;max-width:240px;font-size:13px;padding:7px 10px;transform:rotate(1.8deg) translateY(1px);transform-origin:5% 0}
       .ribbon::after{right:14px;border-width:5px}
       .ribbon .ribbon--desktop{display:none}
       .ribbon .ribbon--mobile{display:inline}
     }
+
+    .label-icon{display:inline-block;width:18px;height:18px;margin-right:6px}
+    .with-icon{display:flex;align-items:center;gap:6px}
 
     /* Form */
     .form{padding:24px;display:grid;gap:14px}
@@ -101,6 +102,7 @@
     .field label{font-weight:600}
     .note{font-size:13px;color:#566173}
     .consents{display:grid;gap:10px;font-size:13px;color:#3f4a5a}
+    .consents input{transform:translateY(1px)}
     .price{display:flex;align-items:baseline;gap:8px;margin-top:6px}
     .price .was{text-decoration:line-through;color:var(--muted);font-weight:600}
     .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.35)}
@@ -109,32 +111,13 @@
     .status--error{color:var(--danger)}
     .status--ok{color:var(--ok)}
 
-    /* Sekcje */
+    /* Sections */
     section{padding:30px 0}
     .section-title{font-size:22px;margin:0 0 12px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
-
-    /* PDF PREVIEW CAROUSEL */
-    .pdf-preview{
-      display:grid; place-items:center; margin:24px 0 8px;
-    }
-    .pdf-viewport{
-      width:min(280px, 85vw); height:auto;
-      position:relative; overflow:hidden;
-      border-radius:14px; background:rgba(255,255,255,.9);
-      border:1px solid rgba(20,24,30,.08); box-shadow:var(--shadow);
-    }
-    .slide-track{
-      display:flex; width:200%; transform:translateX(0);
-      transition:transform .6s ease; /* miękkie przejście bez wygaszania */
-    }
-    .thumb{
-      width:50%; padding:10px; display:grid; place-items:center;
-    }
-    .thumb canvas{ width:100%; height:auto; display:block; border-radius:8px }
-    .pdf-caption{
-      font-size:12px; color:#5b6678; text-align:center; margin-top:8px
-    }
+    .how .step{padding:18px;display:flex;flex-direction:column;height:100%}
+    .faq details{background:rgba(255,255,255,.75);border:1px solid rgba(20,24,30,.08);border-radius:12px;padding:14px}
+    .faq summary{cursor:pointer;font-weight:600}
 
     /* Footer */
     footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
@@ -158,6 +141,11 @@
     .force-mobile .feature-list{grid-template-columns:1fr}
     .force-mobile .grid-3{grid-template-columns:1fr}
     .force-mobile .product{padding-top:88px}
+    .force-mobile .feature svg{width:18px;height:18px}
+    .force-mobile .ribbon{right:10px;top:10px;max-width:240px;font-size:13px;padding:7px 10px;transform:rotate(1.8deg) translateY(1px);transform-origin:5% 0}
+    .force-mobile .ribbon::after{right:14px;border-width:5px}
+    .force-mobile .ribbon .ribbon--desktop{display:none}
+    .force-mobile .ribbon .ribbon--mobile{display:inline}
   </style>
 </head>
 <body>
@@ -178,14 +166,7 @@
   <main class="container">
     <section class="hero">
       <div>
-        <h1>
-          Spersonalizowany
-          <span class="h1-highlight" style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">
-            Raport Numerologiczny
-          </span>
-          w wersji cyfrowej
-          <span class="h1-sub">z trzema plakatami gotowymi do wydruku</span>
-        </h1>
+        <h1>Spersonalizowany <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Raport Numerologiczny</span> w wersji cyfrowej <span class="h1-sub">z trzema plakatami gotowymi do wydruku</span></h1>
         <p>Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>. Dostawa w godzinach roboczych zwykle <strong>3–4 h</strong>.</p>
         <div class="badges">
           <span class="badge">PDF • 13 stron</span>
@@ -193,18 +174,6 @@
           <span class="badge">Dostawa e-mail</span>
         </div>
         <a class="btn" href="#zamow">Zamów teraz</a>
-
-        <!-- PDF PREVIEW under CTA -->
-        <div class="pdf-preview" aria-live="polite">
-          <div class="pdf-viewport" id="pdfViewport">
-            <div class="slide-track" id="slideTrack">
-              <div class="thumb"><canvas id="canvasA"></canvas></div>
-              <div class="thumb"><canvas id="canvasB"></canvas></div>
-            </div>
-          </div>
-          <div class="pdf-caption" id="pdfCaption">Ładowanie podglądu…</div>
-        </div>
-        <!-- /PDF PREVIEW -->
       </div>
 
       <aside class="card product" aria-labelledby="podglad">
@@ -260,20 +229,29 @@
       </div>
     </section>
 
-    <!-- ZAMÓW -->
+    <!-- ZAMÓW: USUNIĘTO email. ZOSTAWIONO UWAGĘ + obowiązkowy checkbox. -->
     <section id="zamow" class="card" aria-labelledby="zamow-tytul">
       <form class="form" id="orderForm" action="#" novalidate>
         <h2 id="zamow-tytul" class="section-title">Zamów raport</h2>
 
+        <!-- UWAGA + obowiązkowy checkbox potwierdzenia -->
         <p class="note" id="uwaga">
           Uwaga: <strong>imię, nazwisko i data urodzenia bezpośrednio wpływają na treść raportu</strong>.
           Błędne dane nie stanowią wady produktu. Każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.
         </p>
         <div class="consents">
-          <label><input type="checkbox" id="uwagaAck" required /> Rozumiem powyższą uwagę i potwierdzam, że dane do raportu podaję poprawnie.</label>
+          <label>
+            <input type="checkbox" id="uwagaAck" required />
+            Rozumiem powyższą uwagę i potwierdzam, że dane do raportu podaję poprawnie.
+          </label>
         </div>
+
+        <!-- ZGODY: akceptacja regulaminu wymagana -->
         <div class="consents">
-          <label><input type="checkbox" id="terms" required /> Akceptuję <a href="index2.html" target="_blank" rel="noopener">Regulamin i Politykę prywatności</a>.</label>
+          <label>
+            <input type="checkbox" id="terms" required />
+            Akceptuję <a href="index2.html" target="_blank" rel="noopener">Regulamin i Politykę prywatności</a>.
+          </label>
           <label><input type="checkbox" id="marketing" /> [Opcjonalnie] Zgadzam się na informacje handlowe e-mail.</label>
         </div>
 
@@ -283,11 +261,13 @@
           <span class="note">brutto • PDF dostarczany e-mailem</span>
         </div>
 
+        <!-- PRZYCISK PŁATNOŚCI: wymaga 2 zaznaczonych zgód -->
         <button id="payBtn" class="btn" type="button" aria-label="Przejdź do płatności" disabled>
           Przejdź do płatności
         </button>
         <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
 
+        <!-- Komunikaty walidacji -->
         <div id="formStatus" class="status" role="status" aria-live="polite"></div>
       </form>
     </section>
@@ -326,7 +306,6 @@
         <small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
         <div style="display:flex;gap:16px">
           <a href="index2.html">Regulamin i Polityka prywatności</a>
-          <a href="contact.html">Kontakt</a>
           <a href="#zamow">Zamów</a>
         </div>
       </div>
@@ -335,92 +314,69 @@
 
   <button class="preview-toggle" id="previewToggle" aria-pressed="false" aria-label="Przełącz podgląd mobilny">Podgląd: desktop</button>
 
-<!-- PDF.js (CDN, classic build) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-  // 1) Ustaw worker PDF.js (wymagane w produkcji)
-  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.js";
-
-  // 2) Jeśli ZMIENISZ nazwy plików na .pdf, zostaw tę tablicę:
-  const pdfFiles = [
-    'assets/img/nastrone1.pdf',
-    'assets/img/nastrone2.pdf',
-    'assets/img/nastrone3.pdf',
-    'assets/img/nastrone4.pdf'
-  ];
-
-  // 2b) Jeśli NIE zmieniasz nazw (bez .pdf), użyj zamiast tego:
-  // const pdfFiles = [
-  //   'assets/img/nastrone1',
-  //   'assets/img/nastrone2',
-  //   'assets/img/nastrone3',
-  //   'assets/img/nastrone4'
-  // ];
-
-  (async function(){
-    const slideTrack = document.getElementById('slideTrack');
-    const canvasA = document.getElementById('canvasA');
-    const canvasB = document.getElementById('canvasB');
-    const caption = document.getElementById('pdfCaption');
-
-    const docs = [];
-    for (const url of pdfFiles) {
-      try {
-        const doc = await pdfjsLib.getDocument(url).promise;
-        docs.push({url, doc, pages: doc.numPages});
-      } catch (e) {
-        console.warn('Nie udało się załadować:', url, e);
+  <script>
+    (function(){
+      // Podgląd mobilny (demo)
+      const btn = document.getElementById('previewToggle');
+      function setLabel(){
+        const mobile = document.body.classList.contains('force-mobile');
+        btn.textContent = mobile ? 'Podgląd: mobile' : 'Podgląd: desktop';
+        btn.setAttribute('aria-pressed', mobile ? 'true' : 'false');
       }
-    }
-    if (!docs.length) { caption.textContent = 'Brak podglądu (nie znaleziono plików).'; return; }
+      btn.addEventListener('click', ()=>{
+        document.body.classList.toggle('force-mobile');
+        setLabel();
+      });
+      setLabel();
+    })();
 
-    async function renderPageToCanvas(pdf, pageNumber, canvas, targetWidth=280){
-      const page = await pdf.getPage(pageNumber);
-      const viewport = page.getViewport({ scale: 1 });
-      const scale = targetWidth / viewport.width;
-      const v = page.getViewport({ scale });
-      const ctx = canvas.getContext('2d');
-      canvas.width = Math.ceil(v.width);
-      canvas.height = Math.ceil(v.height);
-      await page.render({ canvasContext: ctx, viewport: v, background: 'rgba(255,255,255,1)' }).promise;
-    }
+    // Logika płatności i walidacji
+    (function(){
+      const STRIPE_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01";
 
-    const sequence = [];
-    docs.forEach(({doc, url, pages})=>{
-      for (let p=1; p<=pages; p++) sequence.push({doc, url, page:p, pages});
-    });
+      const uwagaAck = document.getElementById('uwagaAck');
+      const terms = document.getElementById('terms');
+      const payBtn = document.getElementById('payBtn');
+      const statusBox = document.getElementById('formStatus');
 
-    let currentIndex = 0;
-    let frontIsA = true;
-    const DURATION = 2600;
-    const SLIDE_MS = 600;
+      function setStatus(msg, type){
+        statusBox.textContent = msg || '';
+        statusBox.className = 'status ' + (type ? ('status--' + type) : '');
+      }
 
-    async function init(){
-      const cur = sequence[0];
-      await renderPageToCanvas(cur.doc, cur.page, canvasA);
-      caption.textContent = `Podgląd: ${cur.url.split('/').pop()} – strona ${cur.page}/${cur.pages}`;
-      const next = sequence[1 % sequence.length];
-      await renderPageToCanvas(next.doc, next.page, canvasB);
-    }
-    await init();
+      function isReady(){
+        // Wymagamy zaznaczenia obu checkboxów
+        return uwagaAck.checked && terms.checked;
+      }
 
-    async function cycle(){
-      slideTrack.style.transform = frontIsA ? 'translateX(-50%)' : 'translateX(0)';
-      await new Promise(r=>setTimeout(r, SLIDE_MS));
-      frontIsA = !frontIsA;
-      currentIndex = (currentIndex + 1) % sequence.length;
-      const cur = sequence[currentIndex];
-      caption.textContent = `Podgląd: ${cur.url.split('/').pop()} – strona ${cur.page}/${cur.pages}`;
-      const next = sequence[(currentIndex + 1) % sequence.length];
-      const backCanvas = frontIsA ? canvasB : canvasA;
-      await renderPageToCanvas(next.doc, next.page, backCanvas);
-      slideTrack.style.transition = 'none';
-      slideTrack.style.transform = frontIsA ? 'translateX(0)' : 'translateX(-50%)';
-      void slideTrack.offsetWidth;
-      slideTrack.style.transition = 'transform .6s ease';
-    }
-    setInterval(cycle, DURATION);
-  })();
-</script>
+      function updateUI(){
+        payBtn.disabled = !isReady();
+        if(!uwagaAck.checked && !terms.checked){
+          setStatus('Aby kontynuować, potwierdź Uwagę oraz zaakceptuj Regulamin i Politykę prywatności.', 'error');
+        } else if(!uwagaAck.checked){
+          setStatus('Potwierdź, że rozumiesz Uwagę dotyczącą poprawności danych.', 'error');
+        } else if(!terms.checked){
+          setStatus('Aby kontynuować, zaakceptuj Regulamin i Politykę prywatności.', 'error');
+        } else {
+          setStatus('Możesz przejść do płatności.', 'ok');
+        }
+      }
+
+      uwagaAck.addEventListener('change', updateUI);
+      terms.addEventListener('change', updateUI);
+
+      payBtn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        if(!isReady()){
+          updateUI();
+          return;
+        }
+        window.open(STRIPE_URL, '_blank', 'noopener');
+      });
+
+      // Inicjalny stan
+      updateUI();
+    })();
+  </script>
 </body>
 </html>
