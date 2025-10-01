@@ -466,57 +466,73 @@
   </script>
 
   <!-- Logika płatności Stripe -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01"; // Twój Payment Link (TEST)
-      const payBtn = document.getElementById('payBtn');
-      const formStatus = document.getElementById('formStatus');
+ <!-- Logika płatności Stripe (tylko raz, w tej samej karcie) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01"; // Twój Payment Link (TEST)
+    const payBtn = document.getElementById('payBtn');
+    const formStatus = document.getElementById('formStatus');
 
-      // Wymagane zgody, aby odblokować przycisk
-      const requiredBoxes = [
-        document.getElementById('uwagaAck'),
-        document.getElementById('terms')
-      ];
+    // Wymagane zgody, aby odblokować przycisk
+    const requiredBoxes = [
+      document.getElementById('uwagaAck'),
+      document.getElementById('terms')
+    ];
 
-      function updatePayState() {
-        const allChecked = requiredBoxes.every(cb => cb && cb.checked);
-        payBtn.disabled = !allChecked;
+    function updatePayState() {
+      const allChecked = requiredBoxes.every(cb => cb && cb.checked);
+      payBtn.disabled = !allChecked || isNavigating;
+    }
+
+    requiredBoxes.forEach(cb => {
+      if (!cb) return;
+      cb.addEventListener('change', updatePayState);
+      cb.addEventListener('input', updatePayState);
+      cb.addEventListener('click', updatePayState);
+    });
+
+    // --- Ochrona przed wielokrotnym uruchomieniem ---
+    let isNavigating = false;
+
+    // Dodatkowo: zablokuj Enter/Space na przycisku, żeby nie dublować "click"
+    payBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+      }
+    });
+
+    payBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (isNavigating || payBtn.disabled) return;
+
+      // Zamknij kolejne wywołania natychmiast
+      isNavigating = true;
+      payBtn.disabled = true;
+      payBtn.setAttribute('aria-busy', 'true');
+      payBtn.style.pointerEvents = 'none';
+
+      // Info dla użytkownika
+      if (formStatus) {
+        formStatus.textContent = "Przekierowuję do bezpiecznej płatności…";
       }
 
-      requiredBoxes.forEach(cb => {
-        if (!cb) return;
-        cb.addEventListener('change', updatePayState);
-        cb.addEventListener('input', updatePayState);
-        cb.addEventListener('click', updatePayState);
-      });
-      updatePayState();
+      // Unikalny znacznik klienta (np. do śledzenia w Stripe)
+      const clientRef = "numerology_" + Date.now();
 
-      // Klik "Przejdź do płatności" → Stripe (nowa karta)
-      payBtn.addEventListener('click', function () {
-        if (payBtn.disabled) return;
+      // Budujemy docelowy URL (PL + client_reference_id)
+      const url = new URL(STRIPE_PAYMENT_LINK);
+      url.searchParams.set("locale", "pl");
+      url.searchParams.set("client_reference_id", clientRef);
 
-        // opcjonalny komunikat
-        formStatus.textContent = "Przekierowuję do bezpiecznej płatności…";
+      // Nawiguj BEZPOŚREDNIO w tej samej karcie
+      // (unikamy window.open — nie będzie duplikatów/pop-upów)
+      window.location.assign(url.toString());
+    }, { passive: false });
 
-        // Unikalny znacznik klienta (możesz później zobaczyć go w Stripe)
-        const clientRef = "numerology_" + Date.now();
+    updatePayState();
+  });
+</script>
 
-        // Budujemy URL: polska lokalizacja + client_reference_id
-        const url = new URL(STRIPE_PAYMENT_LINK);
-        url.searchParams.set("locale", "pl");
-        url.searchParams.set("client_reference_id", clientRef);
-
-        // Otwórz w nowej karcie z zabezpieczeniem noopener
-        const stripeWindow = window.open(url.toString(), "_blank", "noopener");
-
-        // Dla przeglądarek blokujących pop-upy:
-        if (!stripeWindow) {
-          // fallback: zwykłe przejście w tej samej karcie
-          window.location.href = url.toString();
-        }
-      });
-    });
-  </script>
 
   <!-- Przełącznik podglądu mobilnego -->
   <script>
