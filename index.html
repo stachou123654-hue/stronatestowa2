@@ -168,29 +168,26 @@
       display:block;
     }
     .slidebox img.show{opacity:1;}
-/* --- Wyśrodkowanie podglądu i CTA w hero --- */
-.hero .slidebox{
-  margin-left:auto;
-  margin-right:auto;
-}
+    /* --- Wyśrodkowanie podglądu i CTA w hero --- */
+    .hero .slidebox{ margin-left:auto; margin-right:auto; }
 
-/* Większy, wyśrodkowany przycisk "Zamów teraz" (tylko w hero) */
-.hero a.btn{
-  display:block;               /* pozwala na auto-margins */
-  margin:14px auto 0;          /* centrowanie */
-  padding:18px 28px;           /* większe pole klikalne */
-  font-size:clamp(18px, 2.2vw, 22px);
-  min-width:clamp(220px, 50%, 420px);
-  border-radius:16px;
-}
+    /* Większy, wyśrodkowany przycisk "Zamów teraz" (tylko w hero) */
+    .hero a.btn{
+      display:block;
+      margin:14px auto 0;
+      padding:18px 28px;
+      font-size:clamp(18px, 2.2vw, 22px);
+      min-width:clamp(220px, 50%, 420px);
+      border-radius:16px;
+    }
 
-/* Drobna korekta na małych ekranach: pełna szerokość z marginesami */
-@media (max-width: 480px){
-  .hero a.btn{
-    width:100%;
-    max-width:460px;
-  }
-}
+    /* Drobna korekta na małych ekranach: pełna szerokość z marginesami */
+    @media (max-width: 480px){
+      .hero a.btn{
+        width:100%;
+        max-width:460px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -311,11 +308,19 @@
           <span class="note">brutto • PDF dostarczany e-mailem</span>
         </div>
 
+        <!-- PRZYCISK PŁATNOŚCI — JS przekieruje do Stripe -->
         <button id="payBtn" class="btn" type="button" aria-label="Przejdź do płatności" disabled>
           Przejdź do płatności
         </button>
         <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
         <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+
+        <!-- Fallback dla użytkowników bez JS -->
+        <noscript>
+          <p>
+            JavaScript jest wyłączony. <a class="btn" href="https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01?locale=pl" target="_blank" rel="nofollow noopener">Zapłać przez Stripe</a>
+          </p>
+        </noscript>
       </form>
     </section>
 
@@ -354,7 +359,7 @@
         <div style="display:flex;gap:16px">
           <a href="index2.html">Regulamin i Polityka prywatności</a>
           <a href="#zamow">Zamów</a>
-	  <a href="contact.html">Kontakt</a>
+          <a href="contact.html">Kontakt</a>
         </div>
       </div>
     </div>
@@ -362,14 +367,14 @@
 
   <button class="preview-toggle" id="previewToggle" aria-pressed="false" aria-label="Przełącz podgląd mobilny">Podgląd: desktop</button>
 
+  <!-- Podgląd miniatur -->
   <script>
   // --- Pojedynczy slajd z odpornym ładowaniem (cross-fade) ---
   (function () {
     const files = [
-      // nazwy jak na screenie; bez "Rak"
       "nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22",
       "nastrone23","nastrone24","nastrone31","nastrone32",
-     "nastrone33","nastrone34","nastrone41","nastrone42",
+      "nastrone33","nastrone34","nastrone41","nastrone42",
       "nastrone43","nastrone44"
     ];
     const base = "assets/img/";
@@ -408,12 +413,8 @@
       idx = (idx + 1) % files.length;
 
       resolveSrc(name, (src) => {
-        if (!src) { // nie znaleziono żadnego działającego wariantu — idź dalej
-          setTimeout(showNext, 0);
-          return;
-        }
+        if (!src) { setTimeout(showNext, 0); return; }
 
-        // Zabezpieczenie, żeby nawet przy nieoczekiwanym stanie nie było zastoju
         let watchdog = setTimeout(() => {
           hidden.onload = hidden.onerror = null;
           setTimeout(showNext, 0);
@@ -430,7 +431,7 @@
         hidden.onerror = () => {
           clearTimeout(watchdog);
           hidden.onload = hidden.onerror = null;
-          setTimeout(showNext, 0); // przeskocz problematyczny obraz
+          setTimeout(showNext, 0);
         };
 
         hidden.alt = name;
@@ -441,7 +442,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Ustaw pierwszy kadr z auto-wyborem rozszerzenia
       resolveSrc(files[0], (src) => {
         if (src) {
           visible.src = src;
@@ -452,32 +452,76 @@
       });
     });
   })();
-</script>
-<script>
-  // Odblokuj przycisk, gdy zaznaczone są wszystkie obowiązkowe zgody
-  document.addEventListener('DOMContentLoaded', function () {
-    const payBtn = document.getElementById('payBtn');
-    const requiredBoxes = [
-      document.getElementById('uwagaAck'),
-      document.getElementById('terms')
-    ];
+  </script>
 
-    function updatePayState() {
-      const allChecked = requiredBoxes.every(cb => cb && cb.checked);
-      payBtn.disabled = !allChecked;
-    }
+  <!-- Logika płatności Stripe -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01"; // Twój Payment Link (TEST)
+      const payBtn = document.getElementById('payBtn');
+      const formStatus = document.getElementById('formStatus');
 
-    // Obsługa zmian (również dla autofilla/przewinięcia wstecz)
-    requiredBoxes.forEach(cb => {
-      if (!cb) return;
-      cb.addEventListener('change', updatePayState);
-      cb.addEventListener('input', updatePayState);
-      cb.addEventListener('click', updatePayState);
+      // Wymagane zgody, aby odblokować przycisk
+      const requiredBoxes = [
+        document.getElementById('uwagaAck'),
+        document.getElementById('terms')
+      ];
+
+      function updatePayState() {
+        const allChecked = requiredBoxes.every(cb => cb && cb.checked);
+        payBtn.disabled = !allChecked;
+      }
+
+      requiredBoxes.forEach(cb => {
+        if (!cb) return;
+        cb.addEventListener('change', updatePayState);
+        cb.addEventListener('input', updatePayState);
+        cb.addEventListener('click', updatePayState);
+      });
+      updatePayState();
+
+      // Klik "Przejdź do płatności" → Stripe (nowa karta)
+      payBtn.addEventListener('click', function () {
+        if (payBtn.disabled) return;
+
+        // opcjonalny komunikat
+        formStatus.textContent = "Przekierowuję do bezpiecznej płatności…";
+
+        // Unikalny znacznik klienta (możesz później zobaczyć go w Stripe)
+        const clientRef = "numerology_" + Date.now();
+
+        // Budujemy URL: polska lokalizacja + client_reference_id
+        const url = new URL(STRIPE_PAYMENT_LINK);
+        url.searchParams.set("locale", "pl");
+        url.searchParams.set("client_reference_id", clientRef);
+
+        // Otwórz w nowej karcie z zabezpieczeniem noopener
+        const stripeWindow = window.open(url.toString(), "_blank", "noopener");
+
+        // Dla przeglądarek blokujących pop-upy:
+        if (!stripeWindow) {
+          // fallback: zwykłe przejście w tej samej karcie
+          window.location.href = url.toString();
+        }
+      });
     });
+  </script>
 
-    // Pierwsza aktualizacja (gdy przeglądarka przywraca stan formularza)
-    updatePayState();
-  });
-</script>
+  <!-- Przełącznik podglądu mobilnego -->
+  <script>
+    (function () {
+      const toggle = document.getElementById('previewToggle');
+      function updateLabel() {
+        const isMobile = document.body.classList.contains('force-mobile');
+        toggle.textContent = isMobile ? 'Podgląd: mobile' : 'Podgląd: desktop';
+        toggle.setAttribute('aria-pressed', isMobile ? 'true' : 'false');
+      }
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('force-mobile');
+        updateLabel();
+      });
+      updateLabel();
+    })();
+  </script>
 </body>
 </html>
