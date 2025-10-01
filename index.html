@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twój Raport Numerologiczny – zakup online</title>
+  <meta name="description" content="Spersonalizowany raport numerologiczny w PDF. Dostawa w godzinach roboczych 3–4 h. Brak darmowych korekt – każde sprostowanie danych = nowe zamówienie." />
+
+  <!-- Szybsze wczytanie tła -->
+  <link rel="preload" as="image" href="assets/img/Rak.jpg" imagesrcset="assets/img/Rak.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f4f5f9;                /* jasne tło bazowe */
+      --text:#1f2430;              /* kolor tekstu */
+      --muted:#5f6b7a;             /* opisowy */
+      --card:#ffffff;              /* karty */
+      --brand:#F4A77C;             /* brzoskwinia (z obrazu) */
+      --brand-2:#8EC5F5;           /* jasny błękit (z obrazu) */
+      --accent:#F7CDA5;            /* jaśniejsza brzoskwinia */
+      --shadow:0 10px 30px rgba(14,22,34,.12);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+
+    /* TŁO NA PODSTAWIE OBRAZU */
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-2;
+      /* ← tu podajemy ścieżkę względną do pliku w projekcie */
+      background: url('assets/img/Rak.jpg') center / cover no-repeat fixed;
+      filter:saturate(105%) contrast(102%);
+    }
+    /* miękki woal dla czytelności */
+    body::after{
+      content:""; position:fixed; inset:0; z-index:-1;
+      background:
+        radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),
+        radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+      pointer-events:none;
+    }
+
+    a{color:var(--brand);text-underline-offset:2px}
+
+    /* Layout */
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(20,24,30,.06);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .logo-badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow);color:#fff}
+    .nav a{color:var(--text);text-decoration:none;opacity:.9}
+    .nav .cta{padding:10px 16px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)}
+
+    /* Hero */
+    .hero{padding:72px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+    .hero h1 .h1-sub{font-size:0.68em}
+    .hero p{color:var(--muted);font-size:clamp(16px,2.2vw,18px)}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px}
+    .badge{padding:8px 12px;border:1px solid rgba(20,24,30,.08);border-radius:999px;color:#3b4656;background:rgba(255,255,255,.8)}
+
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));border:1px solid rgba(20,24,30,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    /* Product card */
+    .product{padding:76px 24px 24px;position:relative;overflow:visible}
+    .feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#3b4656;padding:6px 8px;border-radius:10px;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;will-change:transform}
+    .feature svg{grid-column:1;width:22px;height:22px;margin-top:2px;color:#2d394a}
+    .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:14px 0 8px;align-items:start}
+    @media (max-width: 980px){.feature-list{grid-template-columns:1fr;gap:10px 14px}}
+    .feature div strong{display:flex;align-items:center;gap:8px;line-height:1.2}
+    .feature .note{display:block;margin-top:4px}
+    .feature > div{grid-column:2}
+    .feature:hover,.feature:focus-within{background:rgba(255,255,255,.8);box-shadow:0 6px 16px rgba(14,22,34,.08);transform:translateY(-2px)}
+    @media (max-width: 980px){.feature svg{width:18px;height:18px}}
+
+    .corner-badge{position:absolute;top:-10px;left:-10px;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow);display:grid;place-items:center;color:#fff;font-weight:800}
+
+    .ribbon{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;padding:8px 12px;border-radius:12px;box-shadow:0 8px 18px rgba(244,167,124,.28);font-weight:800;max-width:320px;text-align:left;line-height:1.25;white-space:normal;border:1px solid rgba(20,24,30,.08);transform:rotate(2.5deg) translateY(2px);transform-origin:5% 0}
+    .ribbon::after{content:"";position:absolute;right:18px;top:100%;border:6px solid transparent;border-top-color:#ea8d59;filter:saturate(95%)}
+    .ribbon .ribbon--desktop{display:inline}
+    .ribbon .ribbon--mobile{display:none}
+    @media (max-width:480px){
+      .product{padding-top:88px}
+      .ribbon{right:10px;top:10px;max-width:240px;font-size:13px;padding:7px 10px;transform:rotate(1.8deg) translateY(1px);transform-origin:5% 0}
+      .ribbon::after{right:14px;border-width:5px}
+      .ribbon .ribbon--desktop{display:none}
+      .ribbon .ribbon--mobile{display:inline}
+    }
+
+    .label-icon{display:inline-block;width:18px;height:18px;margin-right:6px}
+    .with-icon{display:flex;align-items:center;gap:6px}
+
+    /* Form */
+    .form{padding:24px;display:grid;gap:14px}
+    .field{display:grid;gap:8px}
+    .field label{font-weight:600}
+    .field input, .field select{background:#ffffff;border:1px solid rgba(20,24,30,.12);padding:12px 14px;border-radius:12px;color:var(--text)}
+    .field input:focus{outline:2px solid var(--brand-2);box-shadow:0 0 0 4px rgba(142,197,245,.25)}
+    .inline{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .note{font-size:13px;color:#566173}
+    .consents{display:grid;gap:10px;font-size:13px;color:#3f4a5a}
+    .consents input{transform:translateY(1px)}
+    .price{display:flex;align-items:baseline;gap:8px;margin-top:6px}
+    .price .was{text-decoration:line-through;color:var(--muted);font-weight:600}
+    .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.35)}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
+
+    /* Sections */
+    section{padding:30px 0}
+    .section-title{font-size:22px;margin:0 0 12px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+    .how .step{padding:18px;display:flex;flex-direction:column;height:100%}
+    .faq details{background:rgba(255,255,255,.75);border:1px solid rgba(20,24,30,.08);border-radius:12px;padding:14px}
+    .faq summary{cursor:pointer;font-weight:600}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .feature-list{grid-template-columns:1fr}
+      .inline{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+    /* Pro-mobile improvements */
+    .btn{ min-height:48px; }
+    @media (max-width: 768px){
+      /* W mobile bez efektu parallax (fixed) */
+      body::before{
+        background: url('assets/img/Rak.jpg') center / cover no-repeat;
+      }
+      .hero{ padding:40px 0; }
+      header{ backdrop-filter:none; background:rgba(255,255,255,.9); }
+      .field input{ font-size:16px; }
+    }
+
+    /* --- Podgląd mobilny (wymuszony) --- */
+    .preview-toggle{position:fixed;right:16px;bottom:16px;z-index:50;padding:10px 12px;border:1px solid rgba(20,24,30,.12);background:#fff;border-radius:12px;box-shadow:0 10px 20px rgba(14,22,34,.12);font-weight:700;cursor:pointer}
+    .force-mobile .hero{grid-template-columns:1fr}
+    .force-mobile .feature-list{grid-template-columns:1fr}
+    .force-mobile .inline{grid-template-columns:1fr}
+    .force-mobile .grid-3{grid-template-columns:1fr}
+    .force-mobile .product{padding-top:88px}
+    .force-mobile .feature svg{width:18px;height:18px}
+    .force-mobile .ribbon{right:10px;top:10px;max-width:240px;font-size:13px;padding:7px 10px;transform:rotate(1.8deg) translateY(1px);transform-origin:5% 0}
+    .force-mobile .ribbon::after{right:14px;border-width:5px}
+    .force-mobile .ribbon .ribbon--desktop{display:none}
+    .force-mobile .ribbon .ribbon--mobile{display:inline}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true"><span>№</span></div>
+        <span>Twój Cyfrowy Kompas</span>
+      </div>
+      <nav>
+        <a href="#jak-to-dziala">Jak to działa</a>
+        <a href="#faq" style="margin-left:14px">FAQ</a>
+        <a class="cta" href="#zamow">Zamów raport</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Spersonalizowany <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Raport Numerologiczny</span> w wersji cyfrowej <span class="h1-sub">z trzema spersonalizowanymi plakatami gotowymi do wydruku</span></h1>
+        <p>Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>. Dostawa w godzinach roboczych zwykle <strong>3–4 h</strong>.</p>
+        <div class="badges">
+          <span class="badge">PDF • 13 stron</span>
+          <span class="badge">Raport + 3 spersonalizowane plakaty</span>
+          <span class="badge">Dostawa e-mail</span>
+        </div>
+        <a class="btn" href="#zamow">Zamów teraz</a>
+      </div>
+
+      <aside class="card product" aria-labelledby="podglad">
+        <div class="corner-badge" aria-hidden="true">✓</div>
+        <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty spersonalizowane pod kolor aury Twojego znaku zodiaku</span><span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span></div>
+        <h3 id="podglad">Co znajdziesz w środku?</h3>
+        <div class="feature-list">
+          <!-- 1: Raport -->
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+            <div>
+              <strong>Spersonalizowany raport numerologiczny</strong><br>
+              <span class="note">Obliczenia na podstawie Twojej daty urodzenia, imienia i nazwiska.</span>
+            </div>
+          </div>
+          <!-- 2: Mocne strony i wyzwania -->
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 20l9-16H3z"/></svg>
+            <div>
+              <strong>Mocne strony i wyzwania</strong><br>
+              <span class="note">Opisowe interpretacje i wskazówki.</span>
+            </div>
+          </div>
+          <!-- 3: Trzy plakaty -->
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 7h16v10H4z"/><path d="M7 9h10v6H7z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <div>
+              <strong>Trzy plakaty</strong><br>
+              <span class="note">Spersonalizowane pod Ciebie na podstawie raportu – gotowe do wydruku.</span>
+            </div>
+          </div>
+          <!-- 4: Harmonogram cykli -->
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <strong>Harmonogram cykli</strong><br>
+              <span class="note">Przegląd okresów i tendencji.</span>
+            </div>
+          </div>
+          <!-- 5: Podsumowanie PDF -->
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h8M8 9h3"/></svg>
+            <div>
+              <strong>Podsumowanie PDF</strong><br>
+              <span class="note">Przejrzyste sekcje, gotowe do druku.</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="jak-to-dziala" class="how">
+      <h2 class="section-title">Jak to działa</h2>
+      <div class="grid-3">
+        <div class="card step"><strong>1. Wpisz dane</strong><br>Imię, nazwisko i data urodzenia — upewnij się, że dane które wprowadziłeś są w pełni poprawne.</div>
+        <div class="card step"><strong>2. Opłać zamówienie</strong><br>Płatność z góry przez operatora płatności.</div>
+        <div class="card step"><strong>3. Odbierz PDF i plakaty</strong><br>Staramy się przesłać gotowy produkt najszybciej jak to możliwe — zazwyczaj trwa to około <strong>3–4 godzin</strong> w dni robocze (8:00–18:00). Poza tymi godzinami czas realizacji może się wydłużyć.</div>
+      </div>
+    </section>
+
+    <section id="zamow" class="card" aria-labelledby="zamow-tytul">
+      <form class="form" action="#" method="post">
+        <h2 id="zamow-tytul" class="section-title">Zamów raport</h2>
+        <div class="inline">
+          <div class="field"><label for="first">Imię*</label><input id="first" name="first" type="text" required autocomplete="given-name" placeholder="Jan" /></div>
+          <div class="field"><label for="last">Nazwisko*</label><input id="last" name="last" type="text" required autocomplete="family-name" placeholder="Kowalski" /></div>
+        </div>
+        <div class="inline">
+          <div class="field"><label for="dob">Data urodzenia*</label><input id="dob" name="dob" type="date" required /></div>
+          <div class="field"><label for="email">E-mail do dostawy*</label><input id="email" name="email" type="email" required placeholder="jan.kowalski@example.com" autocomplete="email" /></div>
+        </div>
+        <p class="note">Uwaga: <strong>imię, nazwisko i data urodzenia bezpośrednio wpływają na treść raportu</strong>. Błędne dane nie stanowią wady produktu. Każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.</p>
+
+        <div class="consents">
+          <label><input type="checkbox" required /> Akceptuję Regulamin i Politykę prywatności.</label>
+          <label><input type="checkbox" /> [Opcjonalnie] Zgadzam się na informacje handlowe e-mail.</label>
+        </div>
+
+        <div class="price">
+          <span class="was">129 zł</span>
+          <span class="now">99 zł</span>
+          <span class="note">brutto • PDF dostarczany e-mailem</span>
+        </div>
+        <button class="btn" type="submit" aria-label="Przejdź do płatności">Przejdź do płatności</button>
+        <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
+      </form>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2 class="section-title">FAQ</h2>
+      <div class="grid-3">
+        <details>
+          <summary>Jak szybko otrzymam raport?</summary>
+          <p>Zwykle w <strong>3–4 godziny</strong> w dni robocze (8:00–18:00). Zamówienia poza tymi godzinami, w weekendy lub święta realizujemy później – do najbliższych godzin roboczych.</p>
+        </details>
+        <details>
+          <summary>Pomyliłem imię/nazwisko – czy mogę prosić o korektę?</summary>
+          <p>Imię i nazwisko wpływają na obliczenia (samogłoski/spółgłoski), dlatego każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.</p>
+        </details>
+        <details>
+          <summary>Co jeśli raport „nie pasuje”?</summary>
+          <p>Raport ma charakter informacyjno-rozrywkowy i może zawierać uogólnienia. Reklamacje oparte wyłącznie na subiektywnym odczuciu nie stanowią podstawy zwrotu. Jeśli widzisz <em>błąd techniczny</em> – napisz do nas.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="card" style="padding:20px" aria-labelledby="disclaimer">
+      <h2 id="disclaimer" class="section-title" style="margin-bottom:6px">Ważne informacje</h2>
+      <ul>
+        <li>Treść ma charakter informacyjno-rozrywkowy – nie jest poradą finansową, prawną, medyczną ani psychologiczną.</li>
+        <li>Czas dostawy „3–4 h” dotyczy godzin roboczych i ma charakter orientacyjny.</li>
+        <li>Błędne dane w zamówieniu nie stanowią wady produktu. Zmiana danych = nowe zamówienie.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+        <small>© 2025 Twoj Cyfrowy Kompas sp. z o.o.</small>
+        <div style="display:flex;gap:16px">
+          <a href="#">Regulamin</a>
+          <a href="#">Polityka prywatności</a>
+          <a href="#zamow">Zamów</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="preview-toggle" id="previewToggle" aria-pressed="false" aria-label="Przełącz podgląd mobilny">Podgląd: desktop</button>
+  <script>
+    (function(){
+      const btn = document.getElementById('previewToggle');
+      function setLabel(){
+        const mobile = document.body.classList.contains('force-mobile');
+        btn.textContent = mobile ? 'Podgląd: mobile' : 'Podgląd: desktop';
+        btn.setAttribute('aria-pressed', mobile ? 'true' : 'false');
+      }
+      btn.addEventListener('click', ()=>{
+        document.body.classList.toggle('force-mobile');
+        setLabel();
+      });
+      setLabel();
+    })();
+  </script>
+</body>
+</html>
