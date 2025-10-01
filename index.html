@@ -339,121 +339,95 @@
   <button class="preview-toggle" id="previewToggle" aria-pressed="false" aria-label="Przełącz podgląd mobilny">Podgląd: desktop</button>
 
   <script>
-    (function(){
-      // Podgląd mobilny (demo)
-      const btn = document.getElementById('previewToggle');
-      function setLabel(){
-        const mobile = document.body.classList.contains('force-mobile');
-        btn.textContent = mobile ? 'Podgląd: mobile' : 'Podgląd: desktop';
-        btn.setAttribute('aria-pressed', mobile ? 'true' : 'false');
+  // --- Pojedynczy slajd z odpornym ładowaniem (cross-fade) ---
+  (function () {
+    const files = [
+      // nazwy jak na screenie; bez "Rak"
+      "nastrone11","nastrone12","Leo","nastrone14","nastrone21","nastrone22",
+      "Scorpio","nastrone23","nastrone24","nastrone31","nastrone32",
+      "Cancer","nastrone33","nastrone34","nastrone41","nastrone42",
+      "Libra","nastrone43","nastrone44"
+    ];
+    const base = "assets/img/";
+    const exts = [".jpg",".JPG",".jpeg",".JPEG",".png"]; // próby rozszerzeń
+    const FADE_DELAY_MS = 700;
+    const LOAD_TIMEOUT_MS = 3500;
+
+    const a = document.getElementById("slideA");
+    const b = document.getElementById("slideB");
+    let visible = a, hidden = b, idx = 0;
+
+    function swapImgs(){ const t = visible; visible = hidden; hidden = t; }
+
+    // Spróbuj załadować dany "name" z kolejnymi rozszerzeniami
+    function resolveSrc(name, cb) {
+      let i = 0;
+      function tryNext() {
+        if (i >= exts.length) { cb(null); return; }
+        const test = new Image();
+        const src = base + name + exts[i++];
+        let settled = false;
+        const t = setTimeout(() => { if (!settled) { settled = true; tryNext(); } }, LOAD_TIMEOUT_MS);
+
+        test.onload = () => { if (settled) return; settled = true; clearTimeout(t); cb(src); };
+        test.onerror = () => { if (settled) return; settled = true; clearTimeout(t); tryNext(); };
+
+        test.decoding = "async";
+        test.loading  = "eager";
+        test.src = src;
       }
-      btn.addEventListener('click', ()=>{
-        document.body.classList.toggle('force-mobile');
-        setLabel();
-      });
-      setLabel();
-    })();
+      tryNext();
+    }
 
-    // Pojedynczy slajd: ładuj do ukrytego <img>, a po onload zrób cross-fade i dopiero wtedy planuj kolejny krok.
-    (function(){
-      const files = [
-        // nazwy ze screena; bez "Rak"
-        "nastrone11","nastrone12","Leo","nastrone14","nastrone21","nastrone22",
-        "Scorpio","nastrone23","nastrone24","nastrone31","nastrone32",
-        "Cancer","nastrone33","nastrone34","nastrone41","nastrone42",
-        "Libra","nastrone43","nastrone44"
-      ];
-      const base = "assets/img/";
-      const FADE_DELAY_MS = 700;
+    function showNext() {
+      const name = files[idx];
+      idx = (idx + 1) % files.length;
 
-      const a = document.getElementById('slideA');
-      const b = document.getElementById('slideB');
-      let visible = a;
-      let hidden  = b;
-      let idx = 0;
-
-      function swap(){
-        const tmp = visible; visible = hidden; hidden = tmp;
-      }
-
-      function showNext(){
-        const name = files[idx];
-        idx = (idx + 1) % files.length;
-
-        hidden.onload = () => {
-          // kiedy obraz jest faktycznie gotowy: fade
-          hidden.classList.add('show');
-          visible.classList.remove('show');
-          // zamiana referencji i czyszczenie handlera
-          hidden.onload = null;
-          swap();
-          // zaplanuj kolejny po 0.7 s
-          setTimeout(showNext, FADE_DELAY_MS);
-        };
-
-        // ustaw src dopiero teraz – to wywoła onload, gdy obraz się wczyta / zdekoduje
-        hidden.alt = name;
-        hidden.decoding = "async";
-        hidden.loading = "eager";
-        hidden.src = base + name + ".jpg";
-      }
-
-      document.addEventListener('DOMContentLoaded', ()=>{
-        // start: pokaż pierwszy pewny kadr
-        const first = files[0];
-        visible.src = base + first + ".jpg";
-        visible.alt = first;
-        visible.classList.add('show');
-        // zacznij pętlę po 0.7 s (żeby pierwszy był widoczny moment)
-        setTimeout(showNext, FADE_DELAY_MS);
-      });
-    })();
-
-    // Logika płatności i walidacji
-    (function(){
-      const STRIPE_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01";
-
-      const uwagaAck = document.getElementById('uwagaAck');
-      const terms = document.getElementById('terms');
-      const payBtn = document.getElementById('payBtn');
-      const statusBox = document.getElementById('formStatus');
-
-      function setStatus(msg, type){
-        statusBox.textContent = msg || '';
-        statusBox.className = 'status ' + (type ? ('status--' + type) : '');
-      }
-
-      function isReady(){
-        return uwagaAck.checked && terms.checked;
-      }
-
-      function updateUI(){
-        payBtn.disabled = !isReady();
-        if(!uwagaAck.checked && !terms.checked){
-          setStatus('Aby kontynuować, potwierdź Uwagę oraz zaakceptuj Regulamin i Politykę prywatności.', 'error');
-        } else if(!uwagaAck.checked){
-          setStatus('Potwierdź, że rozumiesz Uwagę dotyczącą poprawności danych.', 'error');
-        } else if(!terms.checked){
-          setStatus('Aby kontynuować, zaakceptuj Regulamin i Politykę prywatności.', 'error');
-        } else {
-          setStatus('Możesz przejść do płatności.', 'ok');
-        }
-      }
-
-      uwagaAck.addEventListener('change', updateUI);
-      terms.addEventListener('change', updateUI);
-
-      payBtn.addEventListener('click', (e)=>{
-        e.preventDefault();
-        if(!isReady()){
-          updateUI();
+      resolveSrc(name, (src) => {
+        if (!src) { // nie znaleziono żadnego działającego wariantu — idź dalej
+          setTimeout(showNext, 0);
           return;
         }
-        window.open(STRIPE_URL, '_blank', 'noopener');
-      });
 
-      updateUI();
-    })();
-  </script>
+        // Zabezpieczenie, żeby nawet przy nieoczekiwanym stanie nie było zastoju
+        let watchdog = setTimeout(() => {
+          hidden.onload = hidden.onerror = null;
+          setTimeout(showNext, 0);
+        }, LOAD_TIMEOUT_MS);
+
+        hidden.onload = () => {
+          clearTimeout(watchdog);
+          hidden.classList.add("show");
+          visible.classList.remove("show");
+          hidden.onload = hidden.onerror = null;
+          swapImgs();
+          setTimeout(showNext, FADE_DELAY_MS);
+        };
+        hidden.onerror = () => {
+          clearTimeout(watchdog);
+          hidden.onload = hidden.onerror = null;
+          setTimeout(showNext, 0); // przeskocz problematyczny obraz
+        };
+
+        hidden.alt = name;
+        hidden.decoding = "async";
+        hidden.loading  = "eager";
+        hidden.src = src;
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Ustaw pierwszy kadr z auto-wyborem rozszerzenia
+      resolveSrc(files[0], (src) => {
+        if (src) {
+          visible.src = src;
+          visible.alt = files[0];
+        }
+        visible.classList.add("show");
+        setTimeout(showNext, FADE_DELAY_MS);
+      });
+    });
+  })();
+</script>
 </body>
 </html>
