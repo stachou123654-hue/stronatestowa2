@@ -6,8 +6,9 @@
   <title>Twój Raport Numerologiczny – zakup online</title>
   <meta name="description" content="Spersonalizowany raport numerologiczny w PDF. Dostawa w godzinach roboczych 3–4 h. Brak darmowych korekt – każde sprostowanie danych = nowe zamówienie." />
 
-  <!-- Szybsze wczytanie tła -->
+  <!-- Szybsze wczytanie tła i logo -->
   <link rel="preload" as="image" href="assets/img/Rak.jpg" imagesrcset="assets/img/Rak.jpg" />
+  <link rel="preload" as="image" href="assets/img/logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,8 +54,18 @@
     .container{max-width:1120px;margin:0 auto;padding:24px}
     header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(20,24,30,.06);z-index:10}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
-    .logo-badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow);color:#fff}
+
+    /* Logo jako obrazek (PNG, przezroczyste tło) */
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo img{
+      height:34px;
+      width:auto;
+      display:block;
+    }
+    @media (max-width:480px){
+      .logo img{ height:28px; }
+    }
+
     .nav a{color:var(--text);text-decoration:none;opacity:.9}
     .nav .cta{padding:10px 16px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)}
 
@@ -194,8 +205,8 @@
   <header>
     <div class="container nav">
       <div class="logo">
-        <div class="logo-badge" aria-hidden="true"><span>№</span></div>
-        <span>Twój Cyfrowy Kompas</span>
+        <!-- Logo PNG z przezroczystym tłem -->
+        <img src="assets/img/logo.png" alt="Twój Cyfrowy Kompas – logo" decoding="async" loading="eager" />
       </div>
       <nav>
         <a href="#jak-to-dziala">Jak to działa</a>
