@@ -380,91 +380,89 @@
 
   <!-- Podgląd miniatur -->
   <script>
-  // --- Pojedynczy slajd z odpornym ładowaniem (cross-fade) ---
-  (function () {
-    const files = [
-      "nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22",
-      "nastrone23","nastrone24","nastrone31","nastrone32",
-      "nastrone33","nastrone34","nastrone41","nastrone42",
-      "nastrone43","nastrone44"
-    ];
-    const base = "assets/img/";
-    const exts = [".jpg",".JPG",".jpeg",".JPEG",".png"]; // próby rozszerzeń
-    const FADE_DELAY_MS = 700;
-    const LOAD_TIMEOUT_MS = 3500;
+    // --- Pojedynczy slajd z odpornym ładowaniem (cross-fade) ---
+    (function () {
+      const files = [
+        "nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22",
+        "nastrone23","nastrone24","nastrone31","nastrone32",
+        "nastrone33","nastrone34","nastrone41","nastrone42",
+        "nastrone43","nastrone44"
+      ];
+      const base = "assets/img/";
+      const exts = [".jpg",".JPG",".jpeg",".JPEG",".png"];
+      const FADE_DELAY_MS = 700;
+      const LOAD_TIMEOUT_MS = 3500;
 
-    const a = document.getElementById("slideA");
-    const b = document.getElementById("slideB");
-    let visible = a, hidden = b, idx = 0;
+      const a = document.getElementById("slideA");
+      const b = document.getElementById("slideB");
+      let visible = a, hidden = b, idx = 0;
 
-    function swapImgs(){ const t = visible; visible = hidden; hidden = t; }
+      function swapImgs(){ const t = visible; visible = hidden; hidden = t; }
 
-    // Spróbuj załadować dany "name" z kolejnymi rozszerzeniami
-    function resolveSrc(name, cb) {
-      let i = 0;
-      function tryNext() {
-        if (i >= exts.length) { cb(null); return; }
-        const test = new Image();
-        const src = base + name + exts[i++];
-        let settled = false;
-        const t = setTimeout(() => { if (!settled) { settled = true; tryNext(); } }, LOAD_TIMEOUT_MS);
+      function resolveSrc(name, cb) {
+        let i = 0;
+        function tryNext() {
+          if (i >= exts.length) { cb(null); return; }
+          const test = new Image();
+          const src = base + name + exts[i++];
+          let settled = false;
+          const t = setTimeout(() => { if (!settled) { settled = true; tryNext(); } }, LOAD_TIMEOUT_MS);
 
-        test.onload = () => { if (settled) return; settled = true; clearTimeout(t); cb(src); };
-        test.onerror = () => { if (settled) return; settled = true; clearTimeout(t); tryNext(); };
+          test.onload = () => { if (settled) return; settled = true; clearTimeout(t); cb(src); };
+          test.onerror = () => { if (settled) return; settled = true; clearTimeout(t); tryNext(); };
 
-        test.decoding = "async";
-        test.loading  = "eager";
-        test.src = src;
-      }
-      tryNext();
-    }
-
-    function showNext() {
-      const name = files[idx];
-      idx = (idx + 1) % files.length;
-
-      resolveSrc(name, (src) => {
-        if (!src) { setTimeout(showNext, 0); return; }
-
-        let watchdog = setTimeout(() => {
-          hidden.onload = hidden.onerror = null;
-          setTimeout(showNext, 0);
-        }, LOAD_TIMEOUT_MS);
-
-        hidden.onload = () => {
-          clearTimeout(watchdog);
-          hidden.classList.add("show");
-          visible.classList.remove("show");
-          hidden.onload = hidden.onerror = null;
-          swapImgs();
-          setTimeout(showNext, FADE_DELAY_MS);
-        };
-        hidden.onerror = () => {
-          clearTimeout(watchdog);
-          hidden.onload = hidden.onerror = null;
-          setTimeout(showNext, 0);
-        };
-
-        hidden.alt = name;
-        hidden.decoding = "async";
-        hidden.loading  = "eager";
-        hidden.src = src;
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      resolveSrc(files[0], (src) => {
-        if (src) {
-          visible.src = src;
-          visible.alt = files[0];
+          test.decoding = "async";
+          test.loading  = "eager";
+          test.src = src;
         }
-        visible.classList.add("show");
-        setTimeout(showNext, FADE_DELAY_MS);
+        tryNext();
+      }
+
+      function showNext() {
+        const name = files[idx];
+        idx = (idx + 1) % files.length;
+
+        resolveSrc(name, (src) => {
+          if (!src) { setTimeout(showNext, 0); return; }
+
+          let watchdog = setTimeout(() => {
+            hidden.onload = hidden.onerror = null;
+            setTimeout(showNext, 0);
+          }, LOAD_TIMEOUT_MS);
+
+          hidden.onload = () => {
+            clearTimeout(watchdog);
+            hidden.classList.add("show");
+            visible.classList.remove("show");
+            hidden.onload = hidden.onerror = null;
+            swapImgs();
+            setTimeout(showNext, FADE_DELAY_MS);
+          };
+          hidden.onerror = () => {
+            clearTimeout(watchdog);
+            hidden.onload = hidden.onerror = null;
+            setTimeout(showNext, 0);
+          };
+
+          hidden.alt = name;
+          hidden.decoding = "async";
+          hidden.loading  = "eager";
+          hidden.src = src;
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        resolveSrc(files[0], (src) => {
+          if (src) {
+            visible.src = src;
+            visible.alt = files[0];
+          }
+          visible.classList.add("show");
+          setTimeout(showNext, FADE_DELAY_MS);
+        });
       });
-    });
-  })();
-
-
+    })();
+  </script>
 
   <!-- Przełącznik podglądu mobilnego -->
   <script>
@@ -480,6 +478,73 @@
         updateLabel();
       });
       updateLabel();
+    })();
+  </script>
+
+  <!-- PŁATNOŚĆ STRIPE – pojedyncze, odporne wywołanie -->
+  <script>
+    (function () {
+      const btn = document.getElementById('payBtn');
+      const form = document.getElementById('orderForm');
+      const statusEl = document.getElementById('formStatus');
+
+      // PODMIENIĆ na docelowy link z Stripe Checkout:
+      const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01?locale=pl";
+
+      // Włącz przycisk dopiero po wymaganych zgodach
+      const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
+      function updateEnabled() {
+        btn.disabled = !requiredChecks.every(i => i && i.checked);
+      }
+      requiredChecks.forEach(i => i && i.addEventListener('change', updateEnabled, { once:false }));
+      updateEnabled();
+
+      // Twarda blokada przed duplikacją
+      let processing = false;
+      function goToStripe() {
+        if (processing) return; // już trwa – ignoruj
+        processing = true;
+
+        btn.disabled = true;
+        btn.setAttribute('aria-busy', 'true');
+        statusEl.textContent = 'Przekierowuję do płatności…';
+
+        // Jeżeli używasz Stripe.js, w tym miejscu wywołaj redirectToCheckout()
+        // Tutaj – proste przekierowanie na link Checkout:
+        window.location.href = STRIPE_CHECKOUT_URL;
+
+        // Gdyby przeglądarka zablokowała nawigację, po 6 s pozwól spróbować ponownie
+        setTimeout(() => {
+          if (document.visibilityState === 'visible') {
+            processing = false;
+            btn.disabled = false;
+            btn.removeAttribute('aria-busy');
+            statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
+          }
+        }, 6000);
+      }
+
+      // Klik przycisku
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToStripe();
+      }, { once:false });
+
+      // Enter na formularzu (zapobiega drugiemu wywołaniu)
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        goToStripe();
+      }, { once:false });
+
+      // Po powrocie z bfcache (Back/Forward) odblokuj przycisk
+      window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+          processing = false;
+          btn.disabled = false;
+          btn.removeAttribute('aria-busy');
+          statusEl.textContent = '';
+        }
+      });
     })();
   </script>
 </body>
