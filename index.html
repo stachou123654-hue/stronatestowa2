@@ -146,6 +146,29 @@
     .force-mobile .ribbon::after{right:14px;border-width:5px}
     .force-mobile .ribbon .ribbon--desktop{display:none}
     .force-mobile .ribbon .ribbon--mobile{display:inline}
+
+    /* --- Miniatury (nowe) --- */
+    .thumb-strip{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin:18px 0 24px; padding:8px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(20,24,30,.08);
+      border-radius:12px;
+      box-shadow:0 6px 16px rgba(14,22,34,.06);
+      overflow:hidden;
+    }
+    .thumb{
+      width:72px; height:96px; object-fit:cover;
+      border-radius:10px;
+      box-shadow:0 6px 14px rgba(14,22,34,.10);
+      opacity:0; transform:translateY(6px) scale(.98);
+      transition:opacity .5s ease, transform .5s ease;
+      background:#fff;
+    }
+    .thumb.show{ opacity:1; transform:translateY(0) scale(1); }
+    @media (max-width:480px){
+      .thumb{ width:60px; height:80px; }
+    }
   </style>
 </head>
 <body>
@@ -173,6 +196,10 @@
           <span class="badge">Raport + 3 spersonalizowane plakaty</span>
           <span class="badge">Dostawa e-mail</span>
         </div>
+
+        <!-- NOWE: pasek miniatur wczytywanych kolejno co 0.7s -->
+        <div id="thumbStrip" class="thumb-strip" aria-label="Podgląd stron i plakatów (miniatury)"></div>
+
         <a class="btn" href="#zamow">Zamów teraz</a>
       </div>
 
@@ -328,6 +355,48 @@
         setLabel();
       });
       setLabel();
+    })();
+
+    // NOWE: sekwencyjne ładowanie miniatur (co 0.7s, łagodny fade)
+    (function(){
+      const files = [
+        // nazwy ze screena; bez "Rak"
+        "nastrone11","nastrone12","Leo","nastrone14","nastrone21","nastrone22",
+        "Scorpio","nastrone23","nastrone24","nastrone31","nastrone32",
+        "Cancer","nastrone33","nastrone34","nastrone41","nastrone42",
+        "Libra","nastrone43","nastrone44"
+      ];
+      const container = document.getElementById('thumbStrip');
+      const base = "assets/img/";
+
+      let idx = 0;
+      function addNext(){
+        // restart po zakończeniu – pętla w kółko
+        if(idx === 0 && container.children.length){
+          container.innerHTML = "";
+        }
+        const name = files[idx];
+        const img = new Image();
+        img.className = "thumb";
+        img.alt = name;
+        img.decoding = "async";
+        img.loading = "lazy";
+        img.src = base + name + ".jpg";
+
+        img.addEventListener('load', ()=>{
+          container.appendChild(img);
+          // wymuszamy kolejkę, by zadziałał transition
+          requestAnimationFrame(()=> img.classList.add('show'));
+        });
+
+        idx = (idx + 1) % files.length;
+      }
+
+      // uruchom po załadowaniu DOM
+      document.addEventListener('DOMContentLoaded', ()=>{
+        addNext();
+        setInterval(addNext, 700); // 0.7 s
+      });
     })();
 
     // Logika płatności i walidacji
