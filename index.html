@@ -100,9 +100,6 @@
     .form{padding:24px;display:grid;gap:14px}
     .field{display:grid;gap:8px}
     .field label{font-weight:600}
-    .field input, .field select{background:#ffffff;border:1px solid rgba(20,24,30,.12);padding:12px 14px;border-radius:12px;color:var(--text)}
-    .field input:focus{outline:2px solid var(--brand-2);box-shadow:0 0 0 4px rgba(142,197,245,.25)}
-    .inline{display:grid;grid-template-columns:1fr;gap:12px}
     .note{font-size:13px;color:#566173}
     .consents{display:grid;gap:10px;font-size:13px;color:#3f4a5a}
     .consents input{transform:translateY(1px)}
@@ -129,7 +126,6 @@
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
       .feature-list{grid-template-columns:1fr}
-      .inline{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
     }
     .btn{ min-height:48px; }
@@ -137,14 +133,12 @@
       body::before{ background: url('assets/img/Rak.jpg') center / cover no-repeat; }
       .hero{ padding:40px 0; }
       header{ backdrop-filter:none; background:rgba(255,255,255,.9); }
-      .field input{ font-size:16px; }
     }
 
     /* --- Podgląd mobilny (wymuszony) --- */
     .preview-toggle{position:fixed;right:16px;bottom:16px;z-index:50;padding:10px 12px;border:1px solid rgba(20,24,30,.12);background:#fff;border-radius:12px;box-shadow:0 10px 20px rgba(14,22,34,.12);font-weight:700;cursor:pointer}
     .force-mobile .hero{grid-template-columns:1fr}
     .force-mobile .feature-list{grid-template-columns:1fr}
-    .force-mobile .inline{grid-template-columns:1fr}
     .force-mobile .grid-3{grid-template-columns:1fr}
     .force-mobile .product{padding-top:88px}
     .force-mobile .feature svg{width:18px;height:18px}
@@ -187,7 +181,6 @@
         <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty spersonalizowane pod kolor aury Twojego znaku zodiaku</span><span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span></div>
         <h3 id="podglad">Co znajdziesz w środku?</h3>
         <div class="feature-list">
-          <!-- 1: Raport -->
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
             <div>
@@ -195,7 +188,6 @@
               <span class="note">Obliczenia na podstawie Twojej daty urodzenia, imienia i nazwiska.</span>
             </div>
           </div>
-          <!-- 2: Mocne strony i wyzwania -->
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 20l9-16H3z"/></svg>
             <div>
@@ -203,7 +195,6 @@
               <span class="note">Opisowe interpretacje i wskazówki.</span>
             </div>
           </div>
-          <!-- 3: Trzy plakaty -->
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 7h16v10H4z"/><path d="M7 9h10v6H7z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
             <div>
@@ -211,7 +202,6 @@
               <span class="note">Spersonalizowane pod Ciebie na podstawie raportu – gotowe do wydruku.</span>
             </div>
           </div>
-          <!-- 4: Harmonogram cykli -->
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             <div>
@@ -219,7 +209,6 @@
               <span class="note">Przegląd okresów i tendencji.</span>
             </div>
           </div>
-          <!-- 5: Podsumowanie PDF -->
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h8M8 9h3"/></svg>
             <div>
@@ -240,24 +229,22 @@
       </div>
     </section>
 
-    <!-- ZAMÓW: USUNIĘTO pola imię, nazwisko, data urodzenia. ZOSTAWIONO UWAGĘ. -->
+    <!-- ZAMÓW: USUNIĘTO email. ZOSTAWIONO UWAGĘ + obowiązkowy checkbox. -->
     <section id="zamow" class="card" aria-labelledby="zamow-tytul">
       <form class="form" id="orderForm" action="#" novalidate>
         <h2 id="zamow-tytul" class="section-title">Zamów raport</h2>
 
-        <!-- POLE DOSTAWY: E-MAIL -->
-        <div class="inline">
-          <div class="field">
-            <label for="email">E-mail do dostawy*</label>
-            <input id="email" name="email" type="email" required placeholder="jan.kowalski@example.com" autocomplete="email" />
-          </div>
-        </div>
-
-        <!-- UWAGA: pozostawiona dokładnie tak jak w oryginale -->
+        <!-- UWAGA + obowiązkowy checkbox potwierdzenia -->
         <p class="note" id="uwaga">
           Uwaga: <strong>imię, nazwisko i data urodzenia bezpośrednio wpływają na treść raportu</strong>.
           Błędne dane nie stanowią wady produktu. Każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.
         </p>
+        <div class="consents">
+          <label>
+            <input type="checkbox" id="uwagaAck" required />
+            Rozumiem powyższą uwagę i potwierdzam, że dane do raportu podaję poprawnie.
+          </label>
+        </div>
 
         <!-- ZGODY: akceptacja regulaminu wymagana -->
         <div class="consents">
@@ -274,7 +261,7 @@
           <span class="note">brutto • PDF dostarczany e-mailem</span>
         </div>
 
-        <!-- PRZYCISK PŁATNOŚCI: zablokowany do czasu spełnienia warunków -->
+        <!-- PRZYCISK PŁATNOŚCI: wymaga 2 zaznaczonych zgód -->
         <button id="payBtn" class="btn" type="button" aria-label="Przejdź do płatności" disabled>
           Przejdź do płatności
         </button>
@@ -347,8 +334,7 @@
     (function(){
       const STRIPE_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01";
 
-      const form = document.getElementById('orderForm');
-      const email = document.getElementById('email');
+      const uwagaAck = document.getElementById('uwagaAck');
       const terms = document.getElementById('terms');
       const payBtn = document.getElementById('payBtn');
       const statusBox = document.getElementById('formStatus');
@@ -359,43 +345,34 @@
       }
 
       function isReady(){
-        // Wymagamy zaakceptowania regulaminu oraz poprawnego e-maila
-        const emailOk = email.checkValidity();
-        const termsOk = terms.checked;
-        return emailOk && termsOk;
+        // Wymagamy zaznaczenia obu checkboxów
+        return uwagaAck.checked && terms.checked;
       }
 
       function updateUI(){
         payBtn.disabled = !isReady();
-        if(!terms.checked){
+        if(!uwagaAck.checked && !terms.checked){
+          setStatus('Aby kontynuować, potwierdź Uwagę oraz zaakceptuj Regulamin i Politykę prywatności.', 'error');
+        } else if(!uwagaAck.checked){
+          setStatus('Potwierdź, że rozumiesz Uwagę dotyczącą poprawności danych.', 'error');
+        } else if(!terms.checked){
           setStatus('Aby kontynuować, zaakceptuj Regulamin i Politykę prywatności.', 'error');
-        } else if(email.value && !email.checkValidity()){
-          setStatus('Podaj poprawny adres e-mail do dostawy.', 'error');
-        } else if(isReady()){
-          setStatus('Możesz przejść do płatności.', 'ok');
         } else {
-          setStatus('');
+          setStatus('Możesz przejść do płatności.', 'ok');
         }
       }
 
-      email.addEventListener('input', updateUI);
+      uwagaAck.addEventListener('change', updateUI);
       terms.addEventListener('change', updateUI);
 
-      // Przyciskiem otwieramy bramkę płatności wyłącznie gdy warunki spełnione
       payBtn.addEventListener('click', (e)=>{
         e.preventDefault();
         if(!isReady()){
           updateUI();
-          // Dodatkowe wyzwolenie natywnej walidacji e-maila
-          email.reportValidity();
           return;
         }
-        // Opcjonalnie: można byłoby przesłać e-mail do backendu tutaj.
         window.open(STRIPE_URL, '_blank', 'noopener');
       });
-
-      // Zabezpieczenie przed tradycyjnym submitem
-      form.addEventListener('submit', (e)=> e.preventDefault());
 
       // Inicjalny stan
       updateUI();
