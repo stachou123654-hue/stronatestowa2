@@ -335,158 +335,92 @@
 
   <button class="preview-toggle" id="previewToggle" aria-pressed="false" aria-label="Przełącz podgląd mobilny">Podgląd: desktop</button>
 
-  <!-- PDF.js (CDN) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.js" integrity="sha512-r3n+oJzH0v3kH1b8uZ2nQh2K7y8sUj3w0u1g3q7k7nZ6kA5uD7w0Gf0QFqfT8c7mVq8yZ2J9yS8wQdB0d+Sx1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    // Podgląd mobilny (demo)
-    (function(){
-      const btn = document.getElementById('previewToggle');
-      function setLabel(){
-        const mobile = document.body.classList.contains('force-mobile');
-        btn.textContent = mobile ? 'Podgląd: mobile' : 'Podgląd: desktop';
-        btn.setAttribute('aria-pressed', mobile ? 'true' : 'false');
+<!-- PDF.js (CDN, classic build) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  // 1) Ustaw worker PDF.js (wymagane w produkcji)
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.js";
+
+  // 2) Jeśli ZMIENISZ nazwy plików na .pdf, zostaw tę tablicę:
+  const pdfFiles = [
+    'assets/img/nastrone1.pdf',
+    'assets/img/nastrone2.pdf',
+    'assets/img/nastrone3.pdf',
+    'assets/img/nastrone4.pdf'
+  ];
+
+  // 2b) Jeśli NIE zmieniasz nazw (bez .pdf), użyj zamiast tego:
+  // const pdfFiles = [
+  //   'assets/img/nastrone1',
+  //   'assets/img/nastrone2',
+  //   'assets/img/nastrone3',
+  //   'assets/img/nastrone4'
+  // ];
+
+  (async function(){
+    const slideTrack = document.getElementById('slideTrack');
+    const canvasA = document.getElementById('canvasA');
+    const canvasB = document.getElementById('canvasB');
+    const caption = document.getElementById('pdfCaption');
+
+    const docs = [];
+    for (const url of pdfFiles) {
+      try {
+        const doc = await pdfjsLib.getDocument(url).promise;
+        docs.push({url, doc, pages: doc.numPages});
+      } catch (e) {
+        console.warn('Nie udało się załadować:', url, e);
       }
-      btn.addEventListener('click', ()=>{ document.body.classList.toggle('force-mobile'); setLabel(); });
-      setLabel();
-    })();
+    }
+    if (!docs.length) { caption.textContent = 'Brak podglądu (nie znaleziono plików).'; return; }
 
-    // Logika płatności i walidacji
-    (function(){
-      const STRIPE_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01";
-      const uwagaAck = document.getElementById('uwagaAck');
-      const terms = document.getElementById('terms');
-      const payBtn = document.getElementById('payBtn');
-      const statusBox = document.getElementById('formStatus');
+    async function renderPageToCanvas(pdf, pageNumber, canvas, targetWidth=280){
+      const page = await pdf.getPage(pageNumber);
+      const viewport = page.getViewport({ scale: 1 });
+      const scale = targetWidth / viewport.width;
+      const v = page.getViewport({ scale });
+      const ctx = canvas.getContext('2d');
+      canvas.width = Math.ceil(v.width);
+      canvas.height = Math.ceil(v.height);
+      await page.render({ canvasContext: ctx, viewport: v, background: 'rgba(255,255,255,1)' }).promise;
+    }
 
-      function setStatus(msg, type){
-        statusBox.textContent = msg || '';
-        statusBox.className = 'status ' + (type ? ('status--' + type) : '');
-      }
-      function isReady(){ return uwagaAck.checked && terms.checked; }
-      function updateUI(){
-        payBtn.disabled = !isReady();
-        if(!uwagaAck.checked && !terms.checked){
-          setStatus('Aby kontynuować, potwierdź Uwagę oraz zaakceptuj Regulamin i Politykę prywatności.', 'error');
-        } else if(!uwagaAck.checked){
-          setStatus('Potwierdź, że rozumiesz Uwagę dotyczącą poprawności danych.', 'error');
-        } else if(!terms.checked){
-          setStatus('Aby kontynuować, zaakceptuj Regulamin i Politykę prywatności.', 'error');
-        } else {
-          setStatus('Możesz przejść do płatności.', 'ok');
-        }
-      }
-      uwagaAck.addEventListener('change', updateUI);
-      terms.addEventListener('change', updateUI);
-      payBtn.addEventListener('click', (e)=>{
-        e.preventDefault();
-        if(!isReady()){ updateUI(); return; }
-        window.open(STRIPE_URL, '_blank', 'noopener');
-      });
-      updateUI();
-    })();
+    const sequence = [];
+    docs.forEach(({doc, url, pages})=>{
+      for (let p=1; p<=pages; p++) sequence.push({doc, url, page:p, pages});
+    });
 
-    /* ===== PDF PREVIEW CAROUSEL (bez wygaszania – slide) ===== */
-    (async function(){
-      // Ścieżki do plików PDF (zmień rozszerzenia, jeśli inne)
-      const pdfFiles = [
-        'assets/img/nastrone1.pdf',
-        'assets/img/nastrone2.pdf',
-        'assets/img/nastrone3.pdf',
-        'assets/img/nastrone4.pdf'
-      ];
+    let currentIndex = 0;
+    let frontIsA = true;
+    const DURATION = 2600;
+    const SLIDE_MS = 600;
 
-      const slideTrack = document.getElementById('slideTrack');
-      const canvasA = document.getElementById('canvasA');
-      const canvasB = document.getElementById('canvasB');
-      const caption = document.getElementById('pdfCaption');
+    async function init(){
+      const cur = sequence[0];
+      await renderPageToCanvas(cur.doc, cur.page, canvasA);
+      caption.textContent = `Podgląd: ${cur.url.split('/').pop()} – strona ${cur.page}/${cur.pages}`;
+      const next = sequence[1 % sequence.length];
+      await renderPageToCanvas(next.doc, next.page, canvasB);
+    }
+    await init();
 
-      // Załaduj wszystkie dokumenty
-      const docs = [];
-      for(const url of pdfFiles){
-        try{
-          const doc = await pdfjsLib.getDocument(url).promise;
-          docs.push({url, doc, pages: doc.numPages});
-        }catch(err){
-          console.warn('Nie udało się załadować PDF:', url, err);
-        }
-      }
-      if(!docs.length){ caption.textContent = 'Brak podglądu (nie znaleziono plików).'; return; }
-
-      // Render pojedynczej strony do canvas
-      async function renderPageToCanvas(pdf, pageNumber, canvas, targetWidth=280){
-        const page = await pdf.getPage(pageNumber);
-        const viewport = page.getViewport({ scale: 1 });
-        const scale = targetWidth / viewport.width;
-        const scaledViewport = page.getViewport({ scale });
-        const context = canvas.getContext('2d', { willReadFrequently: false });
-
-        canvas.width = Math.ceil(scaledViewport.width);
-        canvas.height = Math.ceil(scaledViewport.height);
-        await page.render({ canvasContext: context, viewport: scaledViewport, background: 'rgba(255,255,255,1)' }).promise;
-      }
-
-      // Sekwencja: idziemy plikami po kolei, w każdym strona po stronie
-      const sequence = [];
-      docs.forEach(({doc, url, pages})=>{
-        for(let p=1; p<=pages; p++){
-          sequence.push({doc, url, page: p, pages});
-        }
-      });
-
-      // Dwa „slajdy” do płynnego przesuwu
-      let currentIndex = -1;
-      let frontIsA = true; // który canvas jest aktualnie na froncie
-      const DURATION = 2600;  // ile ms jedna miniatura jest widoczna
-      const SLIDE_MS = 600;   // czas animacji przesunięcia (dopasowany do CSS)
-
-      // Inicjalny render obu, żeby uniknąć pustego ekranu
-      async function init(){
-        currentIndex = 0;
-        const cur = sequence[currentIndex];
-        await renderPageToCanvas(cur.doc, cur.page, canvasA);
-        caption.textContent = makeCaption(cur);
-
-        const next = sequence[(currentIndex+1)%sequence.length];
-        await renderPageToCanvas(next.doc, next.page, canvasB);
-      }
-
-      function makeCaption(item){
-        const fname = item.url.split('/').pop();
-        return `Podgląd: ${fname} – strona ${item.page}/${item.pages}`;
-      }
-
-      await init();
-
-      // Główna pętla: render next -> slide -> swap -> pre-render kolejnej
-      async function cycle(){
-        // Przesuń „taśmę”
-        slideTrack.style.transform = frontIsA ? 'translateX(-50%)' : 'translateX(0)';
-        await new Promise(r=>setTimeout(r, SLIDE_MS));
-
-        // Po przesunięciu: zamiana ról
-        frontIsA = !frontIsA;
-        currentIndex = (currentIndex + 1) % sequence.length;
-        const cur = sequence[currentIndex];
-        caption.textContent = makeCaption(cur);
-
-        // Przygotuj następny slajd w tle
-        const nextIndex = (currentIndex + 1) % sequence.length;
-        const next = sequence[nextIndex];
-        const backCanvas = frontIsA ? canvasB : canvasA; // ten, który jest poza widokiem
-        await renderPageToCanvas(next.doc, next.page, backCanvas);
-
-        // Zresetuj pozycję toru, aby następny slide był w drugą stronę
-        // (robimy to bez animacji, więc chwilowo wyłączamy transition)
-        slideTrack.style.transition = 'none';
-        slideTrack.style.transform = frontIsA ? 'translateX(0)' : 'translateX(-50%)';
-        // wymuś reflow
-        void slideTrack.offsetWidth;
-        slideTrack.style.transition = 'transform .6s ease';
-      }
-
-      // Harmonogram pokazu
-      setInterval(cycle, DURATION);
-    })();
-  </script>
+    async function cycle(){
+      slideTrack.style.transform = frontIsA ? 'translateX(-50%)' : 'translateX(0)';
+      await new Promise(r=>setTimeout(r, SLIDE_MS));
+      frontIsA = !frontIsA;
+      currentIndex = (currentIndex + 1) % sequence.length;
+      const cur = sequence[currentIndex];
+      caption.textContent = `Podgląd: ${cur.url.split('/').pop()} – strona ${cur.page}/${cur.pages}`;
+      const next = sequence[(currentIndex + 1) % sequence.length];
+      const backCanvas = frontIsA ? canvasB : canvasA;
+      await renderPageToCanvas(next.doc, next.page, backCanvas);
+      slideTrack.style.transition = 'none';
+      slideTrack.style.transform = frontIsA ? 'translateX(0)' : 'translateX(-50%)';
+      void slideTrack.offsetWidth;
+      slideTrack.style.transition = 'transform .6s ease';
+    }
+    setInterval(cycle, DURATION);
+  })();
+</script>
 </body>
 </html>
