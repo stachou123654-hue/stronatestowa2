@@ -61,6 +61,11 @@
     /* Hero */
     .hero{padding:72px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
     .hero h1 .h1-sub{font-size:0.68em}
+    /* NOWE: większy rozmiar tylko dla wyróżnionego fragmentu */
+    .h1-highlight{
+      font-size: clamp(1.2em, 3vw, 1.6em);
+      line-height: 1.05;
+    }
     .hero p{color:var(--muted);font-size:clamp(16px,2.2vw,18px)}
     .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px}
     .badge{padding:8px 12px;border:1px solid rgba(20,24,30,.08);border-radius:999px;color:#3b4656;background:rgba(255,255,255,.8)}
@@ -166,7 +171,14 @@
   <main class="container">
     <section class="hero">
       <div>
-        <h1>Spersonalizowany <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Raport Numerologiczny</span> w wersji cyfrowej <span class="h1-sub">z trzema spersonalizowanymi plakatami gotowymi do wydruku</span></h1>
+        <h1>
+          Spersonalizowany
+          <span class="h1-highlight" style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">
+            Raport Numerologiczny
+          </span>
+          w wersji cyfrowej
+          <span class="h1-sub">z trzema plakatami gotowymi do wydruku</span>
+        </h1>
         <p>Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>. Dostawa w godzinach roboczych zwykle <strong>3–4 h</strong>.</p>
         <div class="badges">
           <span class="badge">PDF • 13 stron</span>
