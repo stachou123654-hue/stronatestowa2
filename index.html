@@ -15,29 +15,29 @@
 
   <style>
     :root{
-      --bg:#f4f5f9;                /* jasne tło bazowe */
-      --text:#1f2430;              /* kolor tekstu */
-      --muted:#5f6b7a;             /* opisowy */
-      --card:#ffffff;              /* karty */
-      --brand:#F4A77C;             /* brzoskwinia (z obrazu) */
-      --brand-2:#8EC5F5;           /* jasny błękit (z obrazu) */
-      --accent:#F7CDA5;            /* jaśniejsza brzoskwinia */
+      --bg:#f4f5f9;
+      --text:#1f2430;
+      --muted:#5f6b7a;
+      --card:#ffffff;
+      --brand:#F4A77C;
+      --brand-2:#8EC5F5;
+      --accent:#F7CDA5;
       --shadow:0 10px 30px rgba(14,22,34,.12);
       --radius:16px;
+      --danger:#c0392b;
+      --ok:#2e7d32;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
 
-    /* TŁO NA PODSTAWIE OBRAZU */
+    /* TŁO */
     body::before{
       content:"";
       position:fixed; inset:0; z-index:-2;
-      /* ← tu podajemy ścieżkę względną do pliku w projekcie */
       background: url('assets/img/Rak.jpg') center / cover no-repeat fixed;
       filter:saturate(105%) contrast(102%);
     }
-    /* miękki woal dla czytelności */
     body::after{
       content:""; position:fixed; inset:0; z-index:-1;
       background:
@@ -102,7 +102,7 @@
     .field label{font-weight:600}
     .field input, .field select{background:#ffffff;border:1px solid rgba(20,24,30,.12);padding:12px 14px;border-radius:12px;color:var(--text)}
     .field input:focus{outline:2px solid var(--brand-2);box-shadow:0 0 0 4px rgba(142,197,245,.25)}
-    .inline{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .inline{display:grid;grid-template-columns:1fr;gap:12px}
     .note{font-size:13px;color:#566173}
     .consents{display:grid;gap:10px;font-size:13px;color:#3f4a5a}
     .consents input{transform:translateY(1px)}
@@ -110,6 +110,9 @@
     .price .was{text-decoration:line-through;color:var(--muted);font-weight:600}
     .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.35)}
     .btn:disabled{opacity:.6;cursor:not-allowed}
+    .status{font-size:13px}
+    .status--error{color:var(--danger)}
+    .status--ok{color:var(--ok)}
 
     /* Sections */
     section{padding:30px 0}
@@ -129,13 +132,9 @@
       .inline{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
     }
-    /* Pro-mobile improvements */
     .btn{ min-height:48px; }
     @media (max-width: 768px){
-      /* W mobile bez efektu parallax (fixed) */
-      body::before{
-        background: url('assets/img/Rak.jpg') center / cover no-repeat;
-      }
+      body::before{ background: url('assets/img/Rak.jpg') center / cover no-repeat; }
       .hero{ padding:40px 0; }
       header{ backdrop-filter:none; background:rgba(255,255,255,.9); }
       .field input{ font-size:16px; }
@@ -241,34 +240,48 @@
       </div>
     </section>
 
+    <!-- ZAMÓW: USUNIĘTO pola imię, nazwisko, data urodzenia. ZOSTAWIONO UWAGĘ. -->
     <section id="zamow" class="card" aria-labelledby="zamow-tytul">
-      <form class="form" action="#" method="post">
+      <form class="form" id="orderForm" action="#" novalidate>
         <h2 id="zamow-tytul" class="section-title">Zamów raport</h2>
-        <div class="inline">
-          <div class="field"><label for="first">Imię*</label><input id="first" name="first" type="text" required autocomplete="given-name" placeholder="Jan" /></div>
-          <div class="field"><label for="last">Nazwisko*</label><input id="last" name="last" type="text" required autocomplete="family-name" placeholder="Kowalski" /></div>
-        </div>
-        <div class="inline">
-          <div class="field"><label for="dob">Data urodzenia*</label><input id="dob" name="dob" type="date" required /></div>
-          <div class="field"><label for="email">E-mail do dostawy*</label><input id="email" name="email" type="email" required placeholder="jan.kowalski@example.com" autocomplete="email" /></div>
-        </div>
-        <p class="note">Uwaga: <strong>imię, nazwisko i data urodzenia bezpośrednio wpływają na treść raportu</strong>. Błędne dane nie stanowią wady produktu. Każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.</p>
 
+        <!-- POLE DOSTAWY: E-MAIL -->
+        <div class="inline">
+          <div class="field">
+            <label for="email">E-mail do dostawy*</label>
+            <input id="email" name="email" type="email" required placeholder="jan.kowalski@example.com" autocomplete="email" />
+          </div>
+        </div>
+
+        <!-- UWAGA: pozostawiona dokładnie tak jak w oryginale -->
+        <p class="note" id="uwaga">
+          Uwaga: <strong>imię, nazwisko i data urodzenia bezpośrednio wpływają na treść raportu</strong>.
+          Błędne dane nie stanowią wady produktu. Każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.
+        </p>
+
+        <!-- ZGODY: akceptacja regulaminu wymagana -->
         <div class="consents">
           <label>
-            <input type="checkbox" required />
-            Akceptuję <a href="index2.html">Regulamin i Politykę prywatności</a>.
+            <input type="checkbox" id="terms" required />
+            Akceptuję <a href="index2.html" target="_blank" rel="noopener">Regulamin i Politykę prywatności</a>.
           </label>
-          <label><input type="checkbox" /> [Opcjonalnie] Zgadzam się na informacje handlowe e-mail.</label>
+          <label><input type="checkbox" id="marketing" /> [Opcjonalnie] Zgadzam się na informacje handlowe e-mail.</label>
         </div>
 
-        <div class="price">
+        <div class="price" aria-live="polite">
           <span class="was">129 zł</span>
           <span class="now">99 zł</span>
           <span class="note">brutto • PDF dostarczany e-mailem</span>
         </div>
-        <a href="https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01"> <button="" class="btn" type="submit" aria-label="Przejdź do płatności" target="_blank">Przejdź do płatności</button=""></a>
+
+        <!-- PRZYCISK PŁATNOŚCI: zablokowany do czasu spełnienia warunków -->
+        <button id="payBtn" class="btn" type="button" aria-label="Przejdź do płatności" disabled>
+          Przejdź do płatności
+        </button>
         <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
+
+        <!-- Komunikaty walidacji -->
+        <div id="formStatus" class="status" role="status" aria-live="polite"></div>
       </form>
     </section>
 
@@ -313,8 +326,10 @@
   </footer>
 
   <button class="preview-toggle" id="previewToggle" aria-pressed="false" aria-label="Przełącz podgląd mobilny">Podgląd: desktop</button>
+
   <script>
     (function(){
+      // Podgląd mobilny (demo)
       const btn = document.getElementById('previewToggle');
       function setLabel(){
         const mobile = document.body.classList.contains('force-mobile');
@@ -326,6 +341,64 @@
         setLabel();
       });
       setLabel();
+    })();
+
+    // Logika płatności i walidacji
+    (function(){
+      const STRIPE_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01";
+
+      const form = document.getElementById('orderForm');
+      const email = document.getElementById('email');
+      const terms = document.getElementById('terms');
+      const payBtn = document.getElementById('payBtn');
+      const statusBox = document.getElementById('formStatus');
+
+      function setStatus(msg, type){
+        statusBox.textContent = msg || '';
+        statusBox.className = 'status ' + (type ? ('status--' + type) : '');
+      }
+
+      function isReady(){
+        // Wymagamy zaakceptowania regulaminu oraz poprawnego e-maila
+        const emailOk = email.checkValidity();
+        const termsOk = terms.checked;
+        return emailOk && termsOk;
+      }
+
+      function updateUI(){
+        payBtn.disabled = !isReady();
+        if(!terms.checked){
+          setStatus('Aby kontynuować, zaakceptuj Regulamin i Politykę prywatności.', 'error');
+        } else if(email.value && !email.checkValidity()){
+          setStatus('Podaj poprawny adres e-mail do dostawy.', 'error');
+        } else if(isReady()){
+          setStatus('Możesz przejść do płatności.', 'ok');
+        } else {
+          setStatus('');
+        }
+      }
+
+      email.addEventListener('input', updateUI);
+      terms.addEventListener('change', updateUI);
+
+      // Przyciskiem otwieramy bramkę płatności wyłącznie gdy warunki spełnione
+      payBtn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        if(!isReady()){
+          updateUI();
+          // Dodatkowe wyzwolenie natywnej walidacji e-maila
+          email.reportValidity();
+          return;
+        }
+        // Opcjonalnie: można byłoby przesłać e-mail do backendu tutaj.
+        window.open(STRIPE_URL, '_blank', 'noopener');
+      });
+
+      // Zabezpieczenie przed tradycyjnym submitem
+      form.addEventListener('submit', (e)=> e.preventDefault());
+
+      // Inicjalny stan
+      updateUI();
     })();
   </script>
 </body>
