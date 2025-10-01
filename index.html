@@ -453,5 +453,31 @@
     });
   })();
 </script>
+<script>
+  // Odblokuj przycisk, gdy zaznaczone są wszystkie obowiązkowe zgody
+  document.addEventListener('DOMContentLoaded', function () {
+    const payBtn = document.getElementById('payBtn');
+    const requiredBoxes = [
+      document.getElementById('uwagaAck'),
+      document.getElementById('terms')
+    ];
+
+    function updatePayState() {
+      const allChecked = requiredBoxes.every(cb => cb && cb.checked);
+      payBtn.disabled = !allChecked;
+    }
+
+    // Obsługa zmian (również dla autofilla/przewinięcia wstecz)
+    requiredBoxes.forEach(cb => {
+      if (!cb) return;
+      cb.addEventListener('change', updatePayState);
+      cb.addEventListener('input', updatePayState);
+      cb.addEventListener('click', updatePayState);
+    });
+
+    // Pierwsza aktualizacja (gdy przeglądarka przywraca stan formularza)
+    updatePayState();
+  });
+</script>
 </body>
 </html>
