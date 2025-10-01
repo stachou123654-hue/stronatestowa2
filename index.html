@@ -463,75 +463,7 @@
       });
     });
   })();
-  </script>
 
-  <!-- Logika płatności Stripe -->
- <!-- Logika płatności Stripe (tylko raz, w tej samej karcie) -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01"; // Twój Payment Link (TEST)
-    const payBtn = document.getElementById('payBtn');
-    const formStatus = document.getElementById('formStatus');
-
-    // Wymagane zgody, aby odblokować przycisk
-    const requiredBoxes = [
-      document.getElementById('uwagaAck'),
-      document.getElementById('terms')
-    ];
-
-    function updatePayState() {
-      const allChecked = requiredBoxes.every(cb => cb && cb.checked);
-      payBtn.disabled = !allChecked || isNavigating;
-    }
-
-    requiredBoxes.forEach(cb => {
-      if (!cb) return;
-      cb.addEventListener('change', updatePayState);
-      cb.addEventListener('input', updatePayState);
-      cb.addEventListener('click', updatePayState);
-    });
-
-    // --- Ochrona przed wielokrotnym uruchomieniem ---
-    let isNavigating = false;
-
-    // Dodatkowo: zablokuj Enter/Space na przycisku, żeby nie dublować "click"
-    payBtn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-      }
-    });
-
-    payBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (isNavigating || payBtn.disabled) return;
-
-      // Zamknij kolejne wywołania natychmiast
-      isNavigating = true;
-      payBtn.disabled = true;
-      payBtn.setAttribute('aria-busy', 'true');
-      payBtn.style.pointerEvents = 'none';
-
-      // Info dla użytkownika
-      if (formStatus) {
-        formStatus.textContent = "Przekierowuję do bezpiecznej płatności…";
-      }
-
-      // Unikalny znacznik klienta (np. do śledzenia w Stripe)
-      const clientRef = "numerology_" + Date.now();
-
-      // Budujemy docelowy URL (PL + client_reference_id)
-      const url = new URL(STRIPE_PAYMENT_LINK);
-      url.searchParams.set("locale", "pl");
-      url.searchParams.set("client_reference_id", clientRef);
-
-      // Nawiguj BEZPOŚREDNIO w tej samej karcie
-      // (unikamy window.open — nie będzie duplikatów/pop-upów)
-      window.location.assign(url.toString());
-    }, { passive: false });
-
-    updatePayState();
-  });
-</script>
 
 
   <!-- Przełącznik podglądu mobilnego -->
