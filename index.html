@@ -36,12 +36,16 @@
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
 
     /* TŁO */
-    body::before{
-      content:"";
-      position:fixed; inset:0; z-index:-2;
-      background: url('assets/img/Rak.jpg') center / cover no-repeat fixed;
-      filter:saturate(105%) contrast(102%);
-    }
+  body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-2;
+  background-image: url('assets/img/Rak.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;   /* środek-środek */
+  background-attachment: fixed;         /* efekt „parallax” na desktopie */
+  filter:saturate(105%) contrast(102%);
+}
     body::after{
       content:""; position:fixed; inset:0; z-index:-1;
       background:
@@ -255,10 +259,15 @@
       .grid-3{grid-template-columns:1fr}
     }
     .btn{ min-height:48px; }
-    @media (max-width: 768px){
-      body::before{ background: url('assets/img/Rak.jpg') center / cover no-repeat; }
-      .hero{ padding:40px 0; }
-    }
+   @media (max-width: 768px){
+  body::before{
+    /* ten sam obraz; ważne jest pozycjonowanie i wyłączenie fixed */
+    background-attachment: scroll;
+    background-position: 50% 50%;   /* środek-środek (możesz np. dać 50% 40%) */
+    /* background-size: cover;  // już ustawione wyżej, nie trzeba powtarzać */
+  }
+  .hero{ padding:40px 0; }
+}
 
     /* --- Podgląd mobilny (wymuszony) --- */
     .preview-toggle{position:fixed;right:16px;bottom:16px;z-index:50;padding:10px 12px;border:1px solid rgba(20,24,30,.12);background:#fff;border-radius:12px;box-shadow:0 10px 20px rgba(14,22,34,.12);font-weight:700;cursor:pointer}
