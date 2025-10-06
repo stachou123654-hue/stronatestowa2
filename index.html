@@ -80,7 +80,7 @@
     @media (max-width: 768px){
       .brand{
         /* maks. 12% wysokości okna (svh uwzględnia paski mobilne), z fallbackiem do vh */
-        font-size: min(9.2vw, 12svh, 40px);
+        font-size: min(7vw, 12svh, 24px);
         line-height: 1.02;
         text-wrap: balance;
         letter-spacing:.3px;
@@ -636,5 +636,14 @@
       });
     })();
   </script>
+<script>
+  document.querySelector('a.brand')?.addEventListener('click', function (e) {
+    // jeśli jesteś na tej samej stronie głównej – przewiń do góry bez przeładowania
+    if (location.pathname.endsWith('index.html') || location.pathname === '/' ) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+</script>
 </body>
 </html>
