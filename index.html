@@ -28,6 +28,8 @@
       --radius:16px;
       --danger:#c0392b;
       --ok:#2e7d32;
+      /* odsunięcie treści pod przypięte logo (mobile) */
+      --mobile-logo-offset: 74px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -76,31 +78,48 @@
       color:transparent;
     }
 
-    /* MOBILE: logo wyśrodkowane i skalowane, by mieściło się pionowo */
+    /* MOBILE: logo przypięte do ekranu + dopasowanie układu */
     @media (max-width: 768px){
+      /* przypinamy samo logo, reszta headera przewija się normalnie */
+      .logo{
+        position:fixed;
+        top:8px;
+        left:0; right:0;
+        text-align:center;
+        z-index:1000;
+        padding:10px 16px;
+        background:rgba(255,255,255,.92);
+        border-bottom:1px solid rgba(20,24,30,.06);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
+      /* odsuwamy treść, aby nie wchodziła pod przypięte logo */
+      body{ padding-top: var(--mobile-logo-offset); }
+
       .brand{
-        /* maks. 12% wysokości okna (svh uwzględnia paski mobilne), z fallbackiem do vh */
-        font-size: min(7vw, 12svh, 24px);
+        font-size: min(9.8vw, 11svh, 36px);
         line-height: 1.02;
         text-wrap: balance;
         letter-spacing:.3px;
       }
       @supports not (height: 1svh){
-        .brand{ font-size: min(9.2vw, 12vh, 40px); }
+        .brand{ font-size: min(9.8vw, 11vh, 36px); }
       }
 
-      header{ backdrop-filter:none; background:rgba(255,255,255,.9); }
+      /* header bez efektów (logo ma własne tło) */
+      header{ backdrop-filter:none; background:transparent; border-bottom:0; }
 
-      /* header: układ kolumnowy, logo wyśrodkowane u góry */
+      /* header: układ kolumnowy, menu pod logo (logo jest fixed – nie „pcha” układu) */
       .nav{
         flex-direction:column;
         align-items:center;
         justify-content:center;
         gap:10px;
+        padding-top: calc(var(--mobile-logo-offset) - 24px); /* niech menu zacznie się tuż pod logo */
       }
-      .logo{ width:100%; text-align:center; }
+      .logo{ width:100%; }
 
-      /* menu pod logiem, wyśrodkowane */
+      /* menu wyśrodkowane */
       nav.nav-menu{
         order:2;
         width:100%;
@@ -300,8 +319,8 @@
   <header>
     <div class="container nav">
       <div class="logo">
-        <!-- Logo jako tekst Cinzel -->
-        <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
+        <!-- Logo jako tekst Cinzel (klik: zawsze do index.html) -->
+        <a class="brand" href="index.html" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
       </div>
       <nav class="nav-menu" aria-label="Główna nawigacja">
         <a href="#jak-to-dziala">Jak to działa</a>
@@ -636,14 +655,25 @@
       });
     })();
   </script>
-<script>
-  document.querySelector('a.brand')?.addEventListener('click', function (e) {
-    // jeśli jesteś na tej samej stronie głównej – przewiń do góry bez przeładowania
-    if (location.pathname.endsWith('index.html') || location.pathname === '/' ) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-</script>
+
+  <!-- LOGO: klik = powrót do index.html; jeśli już na głównej -> tylko scroll do góry -->
+  <script>
+    (function () {
+      const logo = document.querySelector('a.brand');
+      if (!logo) return;
+
+      logo.addEventListener('click', function (e) {
+        const path = location.pathname.replace(/\/+$/, '');
+        const isHome = path.endsWith('index.html') || path === '' || path === '/';
+        if (isHome) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // upewnij się, że przechodzimy na index.html
+          this.setAttribute('href', 'index.html');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
