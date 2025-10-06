@@ -75,14 +75,58 @@
       background-clip:text;
       color:transparent;
     }
-	@media (max-width: 768px){
-  .brand{
-    font-size: clamp(28px, 8vw, 40px);
-    line-height: 1.05;
-  }
-}
 
-    /* Menu nawigacji z równymi odstępami */
+    /* Zmiany MOBILE (≤768px): logo wyśrodkowane + większy rozmiar + menu pod spodem i z nową kolejnością) */
+    @media (max-width: 768px){
+      .brand{
+        /* powiększone logo na mobile */
+        font-size: clamp(32px, 10vw, 46px);
+        line-height: 1.05;
+      }
+      header{ backdrop-filter:none; background:rgba(255,255,255,.9); }
+
+      /* header: układ kolumnowy, logo wyśrodkowane u góry */
+      .nav{
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+      }
+      .logo{ width:100%; text-align:center; }
+
+      /* menu pod logiem, wyśrodkowane */
+      nav.nav-menu{
+        order:2;
+        width:100%;
+        justify-content:center;
+        gap:14px;
+      }
+
+      /* Nowa kolejność pozycji w menu na mobile */
+      nav.nav-menu a[href="#faq"]{ order:1; }
+      nav.nav-menu a[href="#zamow"]{ order:2; }
+      nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
+    }
+
+    /* Dla wymuszonego podglądu mobilnego (przycisk "Podgląd") zastosuj te same reguły co wyżej */
+    .force-mobile .nav{
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .force-mobile .logo{ width:100%; text-align:center; }
+    .force-mobile nav.nav-menu{
+      order:2;
+      width:100%;
+      justify-content:center;
+      gap:14px;
+    }
+    .force-mobile nav.nav-menu a[href="#faq"]{ order:1; }
+    .force-mobile nav.nav-menu a[href="#zamow"]{ order:2; }
+    .force-mobile nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
+
+    /* Menu nawigacji z równymi odstępami (desktop domyślnie) */
     nav.nav-menu{
       display:flex;
       align-items:center;
@@ -180,7 +224,6 @@
     @media (max-width: 768px){
       body::before{ background: url('assets/img/Rak.jpg') center / cover no-repeat; }
       .hero{ padding:40px 0; }
-      header{ backdrop-filter:none; background:rgba(255,255,255,.9); }
     }
 
     /* --- Podgląd mobilny (wymuszony) --- */
