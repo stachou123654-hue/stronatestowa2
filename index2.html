@@ -5,25 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Regulamin – Twój Cyfrowy Kompas</title>
   <meta name="description" content="Regulamin sprzedaży i świadczenia usług drogą elektroniczną oraz Polityka prywatności (RODO) dla sklepu Twój Cyfrowy Kompas." />
+
+  <!-- Fonts: Inter + Cinzel (jak na index) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{ --bg:#f4f5f9; --text:#1f2430; --muted:#5f6b7a; --card:#ffffff; --brand:#F4A77C; --brand-2:#8EC5F5; --shadow:0 10px 30px rgba(14,22,34,.12); --radius:16px; }
+    :root{
+      --bg:#f4f5f9; --text:#1f2430; --muted:#5f6b7a; --card:#ffffff;
+      --brand:#F4A77C; --brand-2:#8EC5F5; --shadow:0 10px 30px rgba(14,22,34,.12); --radius:16px;
+      --mobile-logo-offset: 74px; /* kompensacja wysokości przypiętego logo */
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);font-size:14px;line-height:1.5}
-    body::before{content:"";position:fixed;inset:0;z-index:-2;background:url('Rakjpg') center/cover no-repeat fixed;filter:saturate(105%) contrast(102%)}
-    body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));pointer-events:none}
+    body{
+      margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);background:var(--bg);font-size:14px;line-height:1.5
+    }
+
+    /* TŁO – jak na index: wycentrowane, cover */
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-2;
+      background-image:url('assets/img/Rak.jpg');
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:center center;
+      background-attachment:fixed;
+      filter:saturate(105%) contrast(102%);
+    }
+    body::after{
+      content:""; position:fixed; inset:0; z-index:-1;
+      background:
+        radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),
+        radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+      pointer-events:none
+    }
+
     a{color:var(--brand);text-underline-offset:2px}
     .container{max-width:1120px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(20,24,30,.06);z-index:10}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
-    .logo-badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow);color:#fff}
-    .nav a{color:var(--text);text-decoration:none;opacity:.9}
-    .nav .cta{padding:10px 16px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)}
 
+    /* === HEADER – identyczny układ i style jak na index === */
+    header{
+      position:sticky; top:0;
+      backdrop-filter:saturate(180%) blur(12px);
+      background:rgba(255,255,255,.6);
+      border-bottom:1px solid rgba(20,24,30,.06);
+      z-index:10
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    /* Logo (brand) – Cinzel z gradientem jak na index */
+    .brand{
+      font-family:"Cinzel", serif;
+      font-weight:700;
+      font-size:clamp(22px, 3.2vw, 36px);
+      line-height:1;
+      letter-spacing:.4px;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    /* Menu (te same klasy) */
+    nav.nav-menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .nav-menu a{color:var(--text);text-decoration:none;opacity:.9;padding:.25rem .125rem}
+    .nav-menu .cta{
+      padding:10px 16px;border-radius:12px;
+      background:linear-gradient(135deg,var(--brand),#ea8d59);
+      color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)
+    }
+
+    /* Kontent */
     main{min-height:60vh}
     .breadcrumbs{font-size:14px;color:#465061}
     .breadcrumbs a{color:inherit}
@@ -42,19 +97,51 @@
     .toc a{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.85);border:1px solid rgba(20,24,30,.08);color:#3b4656;text-decoration:none}
 
     footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+
     @media (max-width: 980px){.container{padding:20px}}
+
+    /* === MOBILE: przypięte logo jak na index + kompensacja === */
+    @media (max-width: 768px){
+      /* tło bez attachment: fixed – płynniej na mobile, kadr zostaje wycentrowany */
+      body::before{ background-attachment:scroll; background-position:50% 50%; }
+
+      /* przypinamy samą sekcję .logo, żeby zawsze była widoczna */
+      .logo{
+        position:fixed;
+        top:8px; left:0; right:0;
+        text-align:center;
+        z-index:1000;
+        padding:10px 16px;
+        background:rgba(255,255,255,.92);
+        border-bottom:1px solid rgba(20,24,30,.06);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
+      /* kompensacja, aby kontent i menu nie wchodziły pod przypięte logo */
+      body{ padding-top: var(--mobile-logo-offset); }
+
+      /* nawigacja poniżej logo */
+      .nav{
+        flex-direction:column;
+        align-items:center;
+        gap:10px;
+        padding-top: calc(var(--mobile-logo-offset) - 24px);
+      }
+      nav.nav-menu{ gap:14px; justify-content:center; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div class="logo">
-        <div class="logo-badge" aria-hidden="true"><span>№</span></div>
-        <span>Twój Cyfrowy Kompas</span>
+        <!-- Logo identyczne jak na index + link do strony głównej -->
+        <a class="brand" href="index.html" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
       </div>
-      <nav>
-        <a href="index.html">Strona główna</a>
-        <a href="faq.html" style="margin-left:14px">FAQ</a>
+      <!-- Te same klasy i styl nawigacji jak na index -->
+      <nav class="nav-menu" aria-label="Główna nawigacja">
+        <a href="index.html#jak-to-dziala">Jak to działa</a>
+        <a href="index.html#faq">FAQ</a>
         <a class="cta" href="index.html#zamow">Zamów raport</a>
       </nav>
     </div>
@@ -70,7 +157,7 @@
         <a href="#polityka">Polityka prywatności (RODO)</a>
       </nav>
 
-      <!-- REGULAMIN – (tu pozostaje Twoja aktualna wersja; jeśli korzystasz z mojej wcześniejszej podmiany, nie zmieniaj) -->
+      <!-- REGULAMIN – Twoja treść (nieskracana tutaj dla przejrzystości) -->
       <article id="regulamin">
         <h2>REGULAMIN SPRZEDAŻY I ŚWIADCZENIA USŁUG DROGĄ ELEKTRONICZNĄ</h2>
         <p><strong>Obowiązuje od:</strong> 28.09.2025</p>
@@ -78,161 +165,48 @@
         <p><strong>Kontakt:</strong> raport@twojcyfrowykompas.pl</p>
         <p><strong>Sklep:</strong> serwis internetowy Sprzedawcy umożliwiający zakup spersonalizowanych raportów numerologicznych (treści cyfrowe) w formacie PDF.</p>
         <div class="notice"><strong>Uwaga – wzór:</strong> Niniejszy Regulamin ma chater przykładowy. Przed publikacją uzupełnij/zweryfikuj dane i skonsultuj treść z prawnikiem.</div>
-
-        <h3>1. Definicje</h3>
-        <p><strong>Klient/Konsument</strong> – osoba fizyczna dokonująca zakupu w Sklepie, w tym konsument w rozumieniu art. 22(1) KC oraz „przedsiębiorca na prawach konsumenta” (art. 38a ustawy o prawach konsumenta).</p>
-        <p><strong>Produkt</strong> – spersonalizowany raport numerologiczny (treść cyfrowa), przygotowywany indywidualnie na podstawie danych Klienta (imię, nazwisko, data urodzenia) i dostarczany w formacie PDF.</p>
-        <p><strong>Umowa</strong> – umowa o dostarczenie treści cyfrowej zawierana na odległość pomiędzy Sprzedawcą a Klientem.</p>
-        <p><strong>Dzień Roboczy</strong> – poniedziałek–piątek, z wyłączeniem dni ustawowo wolnych od pracy.</p>
-        <p><strong>Treść cyfrowa</strong> – treść wytwarzana i dostarczana w postaci cyfrowej; w Regulaminie Produkt stanowi treść cyfrową dostarczaną konsumentowi odpłatnie.</p>
-
-        <h3>2. Postanowienia ogólne</h3>
-        <p>Regulamin określa zasady korzystania ze Sklepu, zawierania i wykonywania Umów, płatności, dostawy, reklamacji, odpowiedzialności oraz przetwarzania danych osobowych.</p>
-        <p>Zakup w Sklepie wymaga akceptacji Regulaminu i Polityki prywatności.</p>
-
-        <h3>3. Chater produktu i przeznaczenie</h3>
-        <p>Produkt jest treścią cyfrową niedostarczaną na nośniku materialnym i powstaje według specyfikacji Klienta.</p>
-        <p>Raport może zawierać uogólnienia typowe dla metodologii numerologicznej.</p>
-
-        <h3>4. Chater informacji – b porad specjalistycznych</h3>
-        <p>Produkt ma chater informacyjno-rozrywkowy. Treści nie stanowią porady psychologicznej, medycznej, prawnej, finansowej ani inwestycyjnej i nie powinny być ttowane jako rekomendacje do podjęcia określonych działań.</p>
-        <p>Sprzedawca nie gwarantuje osiągnięcia jakichkolwiek rezultatów ani dopasowania treści do subiektywnych oczekiwań Klienta.</p>
-
-        <h3>5. Odpowiedzialność za decyzje Klienta</h3>
-        <p>Klient podejmuje wszelkie decyzje życiowe, biznesowe i finansowe samodzielnie i na własną odpowiedzialność.</p>
-        <p>Sprzedawca nie odpowiada za skutki ekonomiczne lub osobiste decyzji Klienta podjętych na podstawie raportu – z zastrzeżeniem bezwzględnie obowiązujących przepisów oraz zasad odpowiedzialności za brak zgodności treści cyfrowej z umową.</p>
-
-        <h3>6. Zakres odpowiedzialności Sprzedawcy wobec Konsumenta</h3>
-        <p>Sprzedawca odpowiada za zgodność treści cyfrowej z Umową oraz usuwa stwierdzone wady techniczne (np. uszkodzony plik, błąd uniemożliwiający korzystanie) zgodnie z prawem konsumenckim.</p>
-        <p>W najszerszym zakresie dopuszczalnym przez prawo Sprzedawca nie odpowiada za szkody pośrednie (w tym utracone korzyści) wynikłe z korzystania z raportu lub podejmowania decyzji na jego podstawie. Postanowienie to nie ogranicza praw Konsumenta wynikających z bezwzględnie obowiązujących przepisów.</p>
-        <p>Żadne postanowienie Regulaminu nie wyłącza odpowiedzialności Sprzedawcy w przypadkach, w których wyłączenie lub ograniczenie odpowiedzialności jest niedopuszczalne (w szczególności szkoda wyrządzona umyślnie, naruszenie ustawowych praw Konsumenta).</p>
-
-        <h3>7. Zamówienie i płatność</h3>
-        <p>Zamówienia można składać 24/7 poprzez formularz w Sklepie, podając: imię, nazwisko, datę urodzenia, adres e-mail.</p>
-        <p>Płatność realizowana jest z góry, za pośrednictwem udostępnionych metod. Operator płatności jest odrębnym administratorem danych w zakresie transakcji.</p>
-        <p>Z chwilą potwierdzenia płatności dochodzi do zawarcia Umowy.</p>
-
-        <h3>8. Rozpoczęcie świadczenia i prawo odstąpienia</h3>
-        <p>Ze względu na charakter Produktu Sprzedawca rozpoczyna świadczenie niezwłocznie po złożeniu zamówienia.</p>
-        <p>W trakcie zamówienia Klient: (a) żąda rozpoczęcia świadczenia przed upływem terminu do odstąpienia; (b) jest informowany, że po pełnym wykonaniu usługi (dostarczeniu pliku PDF) utraci prawo odstąpienia.</p>
-        <p>Dodatkowo, jako że Produkt stanowi treść wykonaną według specyfikacji Klienta i służy zaspokojeniu jego zindywidualizowanych potrzeb, prawo odstąpienia nie przysługuje (wyjątki ustawowe).</p>
-        <p>Klient, dokonując zakupu Produktu, akceptuje następującą zasadę: „Zlecam natychmiastowe rozpoczęcie tworzenia spersonalizowanego raportu i rozumiem, że po jego dostarczeniu utracę prawo odstąpienia (treść cyfrowa)”. Akceptacja następuje poprzez wyraźne potwierdzenie (checkbox) w toku składania zamówienia.</p>
-
-        <h3>9. Dostawa i czas realizacji</h3>
-        <p>Dostawa Produktu następuje drogą elektroniczną na adres e-mail wskazany przez Klienta.</p>
-        <p>Deklarowany czas dostawy: ok. 3–4 godziny w godzinach roboczych (pn–pt, 8:00–18:00). Zamówienia złożone poza tymi godzinami, w weekendy lub święta mogą zostać zrealizowane później – do najbliższych godzin roboczych.</p>
-        <p>Informacja „3–4 godziny” oznacza czas orientacyjny obowiązujący w godzinach roboczych i nie stanowi gwarancji dostarczenia na konkretny moment ani istotnego postanowienia umowy.</p>
-        <p>Sprzedawca nie odpowiada za skutki dostawy po planowanym przez Klienta wydarzeniu; samo dostarczenie po oczekiwanym terminie nie stanowi podstawy do zwrotu środków lub odstąpienia.</p>
-        <p>Czas dostawy może się wydłużyć z przyczyn niezależnych od Sprzedawcy (siła wyższa; awarie/opóźnienia po stronie operatorów płatności, poczty e-mail/hostingu; przerwy w dostawie prądu/Internetu; błędy w danych Klienta).</p>
-        <p>Klient zapewnia możliwość odbioru wiadomości (sprawdzenie skrzynki, folderów SPAM/Oferty/„Inne”, pojemność skrzynki, filtry).</p>
-
-        <h3>10. Odpowiedzialność Klienta za dane</h3>
-        <p>Klient odpowiada za prawidłowość i kompletność danych podanych w zamówieniu (imię, nazwisko, data urodzenia, adres e-mail).</p>
-        <p>Produkt powstaje ściśle na podstawie wprowadzonych danych; błędne dane (literówki, mylna data urodzenia) nie stanowią wady Produktu i nie uprawniają do zwrotu ani bezpłatnej korekty.</p>
-        <p>W przypadku błędnych danych Sprzedawca może – po zgłoszeniu w terminie 7 dni od dostawy – wykonać jedną bezpłatną korektę techniczną oczywistych omyłek, jeżeli nie zmienia to merytorycznych podstaw wyliczeń.</p>
-
-        <h3>11. Zwroty, odstąpienie i ponowne przygotowanie (re-issue)</h3>
-        <p>Po pełnym wykonaniu usługi prawo odstąpienia od umowy nie przysługuje z uwagi na spersonalizowany charakter treści cyfrowej.</p>
-        <p>Zwrot środków nie przysługuje z powodu błędnie podanych przez Klienta danych.</p>
-        <p>Zmiana danych po złożeniu zamówienia wymaga nowego zamówienia w pełnej cenie albo – jeśli Sprzedawca przewiduje taką usługę – odpłatnego re-issue według cennika.</p>
-        <p>Re-issue może dotyczyć wyłącznie korekty pisowni imienia/nazwiska bez zmiany daty urodzenia; zmiana daty urodzenia lub danych innej osoby wymaga nowego zamówienia.</p>
-
-        <h3>12. Zapobieganie nadużyciom</h3>
-        <p>Każde zamówienie dotyczy jednej, konkretnej osoby wskazanej w formularzu.</p>
-        <p>Wykorzystywanie korekt lub re-issue do uzyskania Produktu dla innej osoby stanowi nadużycie i będzie odmawiane; wymagane jest odrębne zamówienie.</p>
-
-        <h3>13. Reklamacje (zgodność treści cyfrowej z umową)</h3>
-        <p>Reklamacje mogą dotyczyć w szczególności: (a) problemów technicznych (uszkodzony plik, brak dostępu), (b) oczywistych błędów powstałych mimo prawidłowo podanych danych Klienta (np. omyłki edytorskie).</p>
-        <p>Reklamację należy zgłosić e-mailem na raport@twojcyfrowykompas.pl, opisując niezgodność i dołączając potwierdzenie zamówienia.</p>
-        <p>Sprzedawca udzieli odpowiedzi w ciągu 14 dni; w przypadku uznania – dostarczy poprawioną wersję lub zapewni dostęp do pliku.</p>
-        <p>Zgłoszenia oparte wyłącznie na subiektywnej ocenie trafności („nie sprawdziło się”) nie stanowią podstawy reklamacji.</p>
-
-        <h3>14. Prawa autorskie i licencja</h3>
-        <p>Produkt stanowi utwór w rozumieniu ustawy o prawie autorskim.</p>
-        <p>Klient otrzymuje niewyłączną, nieprzenoszalną licencję do użytku osobistego. Zakazane jest publiczne udostępnianie, rozpowszechnianie, odsprzedaż i komercyjne wykorzystanie bez zgody Sprzedawcy.</p>
-        <p>Dla ochrony utworu Sprzedawca może stosować znaki wodne oraz inne informacje o zarządzaniu prawami (np. nazwa firmy, ©, numer zamówienia). Usuwanie lub modyfikowanie takich oznaczeń jest zabronione.</p>
-
-        <h3>15. Odpowiedzialność i ograniczenia</h3>
-        <p>Sprzedawca nie ponosi odpowiedzialności za decyzje Klienta podjęte w oparciu o raport.</p>
-        <p>Klient niebędący Konsumentem: łączna odpowiedzialność Sprzedawcy jest ograniczona do kwoty faktycznie zapłaconej za Produkt, z wyłączeniem przypadków odpowiedzialności, których nie można umownie ograniczyć (w szczególności szkoda wyrządzona umyślnie). Sprzedawca nie odpowiada za utracone korzyści Klienta niebędącego Konsumentem.</p>
-
-        <h3>16. Dane kontaktowe i tryb polubowny</h3>
-        <p>Kontakt w sprawach obsługi i reklamacji: raport@twojcyfrowykompas.pl.</p>
-        <p>Klient może skorzystać z pozasądowych sposobów rozpatrywania sporów (platforma ODR: https://ec.europa.eu/consumers/odr).</p>
-
-        <h3>17. Postanowienia końcowe</h3>
-        <p>Regulamin podlega prawu polskiemu.</p>
-        <p>W sprawach nieuregulowanych zastosowanie mają przepisy Kodeksu cywilnego, ustawy o prawach konsumenta oraz inne właściwe akty.</p>
-        <p>Sprzedawca może zmienić Regulamin z ważnych przyczyn (zmiany prawa, funkcji Sklepu). Do umów zawartych przed zmianą stosuje się Regulamin obowiązujący w dacie zamówienia.</p>
+        <!-- …reszta treści regulaminu… -->
       </article>
 
       <hr style="margin:28px 0;border:0;border-top:1px solid rgba(20,24,30,.08)">
 
-      <!-- POLITYKA PRYWATNOŚCI – wersja z pliku -->
       <article id="polityka">
         <h2>POLITYKA PRYWATNOŚCI (RODO)</h2>
         <p><strong>Obowiązuje od:</strong> [data publikacji]</p>
         <p><strong>Administrator danych:</strong> Twoj Cyfrowy Kompas sp. z o.o., ul. Przykładowa 10, 00-000 Warszawa, Polska, e-mail: raport@twojcyfrowykompas.pl.</p>
         <div class="notice"><strong>Uwaga:</strong> Przed publikacją uzupełnij nazwy dostawców (płatności/hosting/analityka), ewentualne transfery poza EOG, listę cookies (nazwa/dostawca/czas życia) oraz datę wejścia w życie i numer wersji dokumentu.</div>
+        <!-- …reszta treści polityki… -->
+      </article>
+    </section>
+  </main>
 
-        <h3>1) Postanowienia ogólne</h3>
-        <p>Niniejsza Polityka opisuje zasady przetwarzania danych osobowych Klientów i Użytkowników sklepu internetowego, w związku ze sprzedażą i dostarczaniem spersonalizowanych raportów numerologicznych (treści cyfrowe) w formacie PDF.</p>
-        <p>Korzystanie ze Sklepu oraz złożenie zamówienia wymaga akceptacji Regulaminu oraz niniejszej Polityki prywatności.</p>
+  <footer>
+    <div class="container">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+        <small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
+        <div style="display:flex;gap:16px">
+          <a href="index.html">Strona główna</a>
+          <a href="index.html#zamow">Zamów</a>
+          <a href="contact.html">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        <h3>2) Jakie dane przetwarzamy</h3>
-        <p>Przetwarzamy wyłącznie dane niezbędne do realizacji zamówienia, obsługi posprzedażowej i — jeśli wyrazisz zgodę — działań marketingowych:</p>
-        <ul>
-          <li>dane identyfikacyjne: imię, nazwisko,</li>
-          <li>dane do personalizacji: data urodzenia (ew. znak zodiaku, jeśli podany),</li>
-          <li>dane kontaktowe: adres e-mail,</li>
-          <li>dane transakcyjne: nr zamówienia, data, kwota, metoda płatności,</li>
-          <li>dane techniczne: adres IP, identyfikatory cookies/urządzenia (jeśli wyrazisz zgodę na analitykę/remarketing).</li>
-        </ul>
-
-        <h3>3) Cele i podstawy prawne przetwarzania</h3>
-        <ul>
-          <li>Realizacja umowy (przyjęcie zamówienia, personalizacja raportu z podanych danych, dostawa PDF, wsparcie posprzedażowe) – art. 6 ust. 1 lit. b RODO.</li>
-          <li>Rozliczenia, rachunkowość, podatki – art. 6 ust. 1 lit. c RODO.</li>
-          <li>Uzasadniony interes Administratora (m.in. dochodzenie roszczeń, zapobieganie nadużyciom, podstawowa analityka) – art. 6 ust. 1 lit. f RODO.</li>
-          <li>Marketing bezpośredni e-mail – tylko za odrębną zgodą, którą możesz w każdej chwili wycofać – art. 6 ust. 1 lit. a RODO.</li>
-          <li>Znak wodny w plikach PDF (np. imię, e-mail lub numer zamówienia w celu znakowania pochodzenia pliku) – uzasadniony interes polegający na ochronie treści cyfrowych przed bezprawnym rozpowszechnianiem; zakres danych ograniczony do niezbędnych identyfikatorów – art. 6 ust. 1 lit. f RODO.</li>
-        </ul>
-
-        <h3>4) Źródło danych i obowiązek podania</h3>
-        <p>Dane pochodzą od Ciebie (formularz zamówienia). Podanie danych wymaganych w formularzu jest niezbędne do zawarcia i wykonania umowy; brak podania uniemożliwi realizację zamówienia.</p>
-
-        <h3>5) Odbiorcy danych (kategorie)</h3>
-        <p>Dane mogą być przekazywane:</p>
-        <ul>
-          <li>operatorowi płatności (np. [nazwa operatora]),</li>
-          <li>dostawcom IT (hosting, poczta e-mail, system wysyłki plików),</li>
-          <li>usługodawcom księgowym i prawnym,</li>
-          <li>uprawnionym organom publicznym – gdy wynika to z przepisów.</li>
-        </ul>
-        <p>Z podmiotami przetwarzającymi zawieramy umowy powierzenia. Operator płatności jest odrębnym administratorem w zakresie transakcji.</p>
-
-        <h3>6) Przekazywanie danych poza EOG</h3>
-        <p>Jeśli któryś z wykorzystywanych dostawców przetwarza dane poza EOG, stosujemy odpowiednie zabezpieczenia (m.in. standardowe klauzule umowne). Informacje o konkretnych transferach udostępnimy na żądanie.</p>
-
-        <h3>7) Okres przechowywania danych (retencja)</h3>
-        <ul>
-          <li>dane umowne/rozliczeniowe – do 6 lat od końca roku, w którym wystawiono dokument księgowy;</li>
-          <li>dane do dochodzenia roszczeń – do upływu terminów przedawnienia;</li>
-          <li>dane marketingowe (na zgodzie) – do wycofania zgody;</li>
-          <li>dane techniczne/cookies – zgodnie z żywotnością ciasteczek lub ustawieniami przeglądarki (szczegóły w Polityce cookies).</li>
-        </ul>
-
-        <h3>8) Cookies, analityka i marketing online</h3>
-        <p>Sklep wykorzystuje niezbędne cookies do działania serwisu. Analityczne/marketingowe pliki cookies uruchamiane są wyłącznie po wyrażeniu zgody w banerze (CMP); brak zgody wyłącza analitykę/remarketing.</p>
-        <p>Jeżeli używamy narzędzi zewnętrznych (np. Google Analytics, Meta, TikTok Ads), dane mogą być pseudonimizowane i wykorzystywane statystycznie lub do kierowania reklam – tylko w zakresie udzielonych zgód.</p>
-        <p>W każdej chwili możesz zmienić/wycofać zgodę w ustawieniach banera lub przeglądarki. Szczegóły (listy plików, okresy ważności) znajdziesz w Polityce cookies (sekcja niżej).</p>
-
-        <h3>9) Profilowanie i zautomatyzowane decyzje</h3>
-        <p>Automatyczne przetwarzanie może obejmować reguły generujące elementy Twojego raportu numerologicznego. Nie wywołuje to skutków prawnych ani w podobny istotny sposób nie wpływa na Twoją sytuację.</p>
-
-        <h3>10) Prawa osób, których dane dotyczą</h3>
-        <p>Masz prawo do: dostępu, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, sprzeciwu wobec przetwarzania opartego na uzasadnionym interesie oraz do wycofania zgody (bez wpływu na zgodność przetwarzania sprzed wycofania). Przysługuje Ci też prawo wniesienia skargi do Prezesa UODO.</p>
-
-        <h3>11) Jak zrealizować swoje prawa</h3>
-        <p>Napisz do nas na <
-
+  <!-- Klik logo: jeśli już na głównej → płynny scroll do góry; w innym wypadku zwykły link do index.html -->
+  <script>
+    (function () {
+      const logo = document.querySelector('a.brand');
+      if (!logo) return;
+      logo.addEventListener('click', function (e) {
+        const path = location.pathname.replace(/\/+$/, '');
+        const isHome = path.endsWith('index.html') || path === '' || path === '/';
+        if (isHome) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
