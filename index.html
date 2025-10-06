@@ -76,13 +76,19 @@
       color:transparent;
     }
 
-    /* Zmiany MOBILE (≤768px): logo wyśrodkowane + większy rozmiar + menu pod spodem i z nową kolejnością) */
+    /* MOBILE: logo wyśrodkowane i skalowane, by mieściło się pionowo */
     @media (max-width: 768px){
       .brand{
-        /* powiększone logo na mobile */
-        font-size: clamp(32px, 10vw, 46px);
-        line-height: 1.05;
+        /* maks. 12% wysokości okna (svh uwzględnia paski mobilne), z fallbackiem do vh */
+        font-size: min(9.2vw, 12svh, 40px);
+        line-height: 1.02;
+        text-wrap: balance;
+        letter-spacing:.3px;
       }
+      @supports not (height: 1svh){
+        .brand{ font-size: min(9.2vw, 12vh, 40px); }
+      }
+
       header{ backdrop-filter:none; background:rgba(255,255,255,.9); }
 
       /* header: układ kolumnowy, logo wyśrodkowane u góry */
@@ -108,7 +114,17 @@
       nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
     }
 
-    /* Dla wymuszonego podglądu mobilnego (przycisk "Podgląd") zastosuj te same reguły co wyżej */
+    /* Dodatkowe dopasowanie na bardzo małych ekranach */
+    @media (max-width: 480px){
+      .brand{
+        font-size: min(9.8vw, 11svh, 36px);
+      }
+      @supports not (height: 1svh){
+        .brand{ font-size: min(9.8vw, 11vh, 36px); }
+      }
+    }
+
+    /* Wymuszony podgląd mobilny – te same reguły co mobile */
     .force-mobile .nav{
       flex-direction:column;
       align-items:center;
@@ -126,18 +142,18 @@
     .force-mobile nav.nav-menu a[href="#zamow"]{ order:2; }
     .force-mobile nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
 
-    /* Menu nawigacji z równymi odstępami (desktop domyślnie) */
+    /* Menu nawigacji (desktop domyślnie) */
     nav.nav-menu{
       display:flex;
       align-items:center;
-      gap:18px;           /* równe odstępy desktop */
+      gap:18px;
       flex-wrap:wrap;
     }
     .nav-menu a{
       color:var(--text);
       text-decoration:none;
       opacity:.9;
-      padding:.25rem .125rem; /* mikro padding dla lepszego kliku, bez psucia równych odstępów */
+      padding:.25rem .125rem;
     }
     .nav-menu .cta{
       padding:10px 16px;border-radius:12px;
@@ -145,7 +161,6 @@
       color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35);
     }
 
-    /* Mobile – utrzymaj spójne przerwy */
     @media (max-width:768px){
       nav.nav-menu{gap:14px}
     }
@@ -582,18 +597,15 @@
       // Twarda blokada przed duplikacją
       let processing = false;
       function goToStripe() {
-        if (processing) return; // już trwa – ignoruj
+        if (processing) return;
         processing = true;
 
         btn.disabled = true;
         btn.setAttribute('aria-busy', 'true');
         statusEl.textContent = 'Przekierowuję do płatności…';
 
-        // Jeżeli używasz Stripe.js, w tym miejscu wywołaj redirectToCheckout()
-        // Tutaj – proste przekierowanie na link Checkout:
         window.location.href = STRIPE_CHECKOUT_URL;
 
-        // Gdyby przeglądarka zablokowała nawigację, po 6 s pozwól spróbować ponownie
         setTimeout(() => {
           if (document.visibilityState === 'visible') {
             processing = false;
@@ -604,19 +616,16 @@
         }, 6000);
       }
 
-      // Klik przycisku
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         goToStripe();
       }, { once:false });
 
-      // Enter na formularzu (zapobiega drugiemu wywołaniu)
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         goToStripe();
       }, { once:false });
 
-      // Po powrocie z bfcache (Back/Forward) odblokuj przycisk
       window.addEventListener('pageshow', (e) => {
         if (e.persisted) {
           processing = false;
