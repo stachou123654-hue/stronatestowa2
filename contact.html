@@ -121,12 +121,26 @@
       nav.nav-menu{ gap:14px; justify-content:center; }
     }
   </style>
+
+  <!-- Usuwanie 'index.html' z adresu (bez przeładowania) gdy ktoś wejdzie bezpośrednio na .../index.html -->
+  <script>
+    (function () {
+      const p = location.pathname;
+      const cleaned = p.replace(/index\.html$/i, '');
+      if (cleaned !== p) {
+        const newUrl = (cleaned || '/')
+          + location.search
+          + location.hash;
+        history.replaceState(null, '', newUrl);
+      }
+    })();
+  </script>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div class="logo">
-        <!-- Logo identyczne jak na index + link do strony głównej -->
+        <!-- Logo identyczne jak na index; href ustawimy i tak w JS pod bazowy katalog -->
         <a class="brand" href="./" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
       </div>
       <!-- Te same linki nawigacji co na index -->
@@ -178,17 +192,28 @@
     </div>
   </footer>
 
-  <!-- Klik logo: jeśli już na głównej → płynny scroll do góry; w innym wypadku zwykły link do index.html -->
+  <!-- LOGO: klik = przejście na stronę główną (bez index.html);
+       jeśli już na głównej -> tylko scroll do góry -->
   <script>
     (function () {
       const logo = document.querySelector('a.brand');
       if (!logo) return;
+
+      // katalog bazowy (ścieżka z końcowym "/"), działa także z podkatalogami
+      const basePath = location.pathname.replace(/[^/]*$/, ''); // np. "/subdir/" albo "/"
+      const homeUrl  = (basePath || '/');
+
+      // ustaw poprawny href dla dostępności / długiego przytrzymania
+      logo.setAttribute('href', homeUrl);
+
       logo.addEventListener('click', function (e) {
-        const path = location.pathname.replace(/\/+$/, '');
-        const isHome = /\/$/.test(path);
-        if (isHome) {
-          e.preventDefault();
+        e.preventDefault();
+        if (location.pathname.replace(/\/+$/, '') === homeUrl.replace(/\/+$/, '')) {
+          // już na głównej – nie przeładowuj, tylko przewiń do góry
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // przejdź do katalogu głównego (bez "index.html" w URL)
+          window.location.href = homeUrl;
         }
       });
     })();
