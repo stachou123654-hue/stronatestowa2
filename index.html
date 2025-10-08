@@ -601,23 +601,7 @@
     })();
   </script>
 
-  <!-- Przełącznik podglądu mobilnego -->
-  <script>
-    (function () {
-      const toggle = document.getElementById('previewToggle');
-      function updateLabel() {
-        const isMobile = document.body.classList.contains('force-mobile');
-        toggle.textContent = isMobile ? 'Podgląd: mobile' : 'Podgląd: desktop';
-        toggle.setAttribute('aria-pressed', isMobile ? 'true' : 'false');
-      }
-      toggle.addEventListener('click', () => {
-        document.body.classList.toggle('force-mobile');
-        updateLabel();
-      });
-      updateLabel();
-    })();
-  </script>
-
+  
   <!-- PŁATNOŚĆ STRIPE – pojedyncze, odporne wywołanie -->
   <script>
     (function () {
