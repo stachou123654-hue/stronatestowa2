@@ -127,13 +127,13 @@
     <div class="container nav">
       <div class="logo">
         <!-- Logo identyczne jak na index + link do strony głównej -->
-        <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
+        <a class="brand" href="./" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
       </div>
       <!-- Te same linki nawigacji co na index -->
       <nav class="nav-menu" aria-label="Główna nawigacja">
-        <a href="/#jak-to-dziala">Jak to działa</a>
-        <a href="/#faq">FAQ</a>
-        <a class="cta" href="/#zamow">Zamów raport</a>
+        <a href="./#jak-to-dziala">Jak to działa</a>
+        <a href="./#faq">FAQ</a>
+        <a class="cta" href="./#zamow">Zamów raport</a>
       </nav>
     </div>
   </header>
@@ -160,8 +160,8 @@
         <h3 style="margin-top:0">Przydatne odnośniki</h3>
         <ul class="list">
           <li><a href="regulamin-i-polityka-prywatnosci.html">Regulamin i Polityka prywatności</a></li>
-          <li><a href="/#faq">FAQ</a></li>
-          <li><a href="/#zamow">Zamów raport</a></li>
+          <li><a href="./#faq">FAQ</a></li>
+          <li><a href="./#zamow">Zamów raport</a></li>
         </ul>
       </div>
     </section>
@@ -173,7 +173,7 @@
       <div style="display:flex;gap:16px">
         <a href="regulamin-i-polityka-prywatnosci.html">Regulamin i Polityka prywatności</a>
         <a href="contact.html">Kontakt</a>
-        <a href="/#zamow">Zamów</a>
+        <a href="./#zamow">Zamów</a>
       </div>
     </div>
   </footer>
@@ -185,7 +185,7 @@
       if (!logo) return;
       logo.addEventListener('click', function (e) {
         const path = location.pathname.replace(/\/+$/, '');
-        const isHome = path === '' || path === '/';
+        const isHome = /\/$/.test(path);
         if (isHome) {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });

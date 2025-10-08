@@ -329,7 +329,7 @@
     <div class="container nav">
       <div class="logo">
         <!-- Logo jako tekst Cinzel (klik: zawsze do index.html) -->
-        <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
+        <a class="brand" href="./" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
       </div>
       <nav class="nav-menu" aria-label="Główna nawigacja">
         <a href="#jak-to-dziala">Jak to działa</a>
@@ -673,7 +673,7 @@
 
       logo.addEventListener('click', function (e) {
         const path = location.pathname.replace(/\/+$/, '');
-        const isHome = path === '' || path === '/';
+        const isHome = /\/$/.test(path);
         if (isHome) {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
