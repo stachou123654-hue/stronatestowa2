@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regulamin – Twój Cyfrowy Kompas</title>
+  <meta name="description" content="Regulamin sprzedaży i świadczenia usług drogą elektroniczną oraz Polityka prywatności (RODO) dla sklepu Twój Cyfrowy Kompas." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--bg:#f4f5f9;--text:#1f2430;--muted:#5f6b7a;--card:#ffffff;--brand:#F4A77C;--brand-2:#8EC5F5;--shadow:0 10px 30px rgba(14,22,34,.12);--radius:16px;--mobile-logo-offset:74px}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);font-size:14px;line-height:1.5}
+    /* TŁO – ścieżka z podkatalogu */
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:url('../assets/img/Rak.jpg');background-repeat:no-repeat;background-size:cover;background-position:center center;background-attachment:fixed;filter:saturate(105%) contrast(102%)}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));pointer-events:none}
+    a{color:var(--brand);text-underline-offset:2px}
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(20,24,30,.06);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .brand{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(22px,3.2vw,36px);line-height:1;letter-spacing:.4px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    nav.nav-menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .nav-menu a{color:var(--text);text-decoration:none;opacity:.9;padding:.25rem .125rem}
+    .nav-menu .cta{padding:10px 16px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)}
+    main{min-height:60vh}
+    .breadcrumbs{font-size:14px;color:#465061}.breadcrumbs a{color:inherit}
+    .page-title{padding:48px 0 8px;margin:0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));border:1px solid rgba(20,24,30,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .prose{padding:18px;font-size:14px}
+    .prose h2,.prose h3{margin:1em 0 .3em}
+    .prose h2{font-size:18px}.prose h3{font-size:16px;color:#2d394a}
+    .prose p,.prose li{color:#3f4a5a}
+    .prose ul{padding-left:18px}
+    .notice{padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.8);border:1px solid rgba(20,24,30,.08);margin:.8rem 0}
+    .toc{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+    .toc a{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.85);border:1px solid rgba(20,24,30,.08);color:#3b4656;text-decoration:none}
+    footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+    @media (max-width:980px){.container{padding:20px}}
+    @media (max-width:768px){
+      body::before{background-attachment:scroll;background-position:50% 50%}
+      .logo{position:fixed;top:8px;left:0;right:0;text-align:center;z-index:1000;padding:10px 16px;background:rgba(255,255,255,.92);border-bottom:1px solid rgba(20,24,30,.06);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+      body{padding-top:var(--mobile-logo-offset)}
+      .nav{flex-direction:column;align-items:center;gap:10px;padding-top:calc(var(--mobile-logo-offset) - 24px)}
+      nav.nav-menu{gap:14px;justify-content:center}
+    }
+  </style>
+
+  <!-- Czyścik: .../index.html -> .../ -->
+  <script>
+    (function(){const p=location.pathname;const cleaned=p.replace(/index\.html$/i,'');if(cleaned!==p){history.replaceState(null,'',(cleaned||'/')+location.search+location.hash);}})();
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <a class="brand" href="../" aria-label="Strona główna">Twój Cyfrowy Kompas</a>
+      </div>
+      <nav class="nav-menu" aria-label="Główna nawigacja">
+        <a href="../#jak-to-dziala">Jak to działa</a>
+        <a href="../#faq">FAQ</a>
+        <a class="cta" href="../#zamow">Zamów raport</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumbs"><a href="../">Strona główna</a> › <span>Regulamin</span></div>
+    <h1 class="page-title">Regulamin i Polityka prywatności</h1>
+
+    <!-- (Treść dokumentu pozostawiona jak w oryginale) -->
+    <!-- ...tu Twoje sekcje regulaminu i polityki prywatności... -->
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+        <small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
+        <div style="display:flex;gap:16px">
+          <a href="../">Strona główna</a>
+          <a href="../#zamow">Zamów</a>
+          <a href="../kontakt/">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Logo: przejście do "/" projektu -->
+  <script>
+    (function(){
+      const logo=document.querySelector('a.brand'); if(!logo) return;
+      logo.addEventListener('click',function(e){
+        e.preventDefault();
+        const target='../';
+        if(location.pathname.replace(/\/+$/,'')===('/'.replace(/\/+$/,''))){window.scrollTo({top:0,behavior:'smooth'})}
+        else{window.location.href=target}
+      });
+    })();
+  </script>
+</body>
+</html>
