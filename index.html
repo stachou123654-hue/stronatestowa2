@@ -5,77 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Twój Cyfrowy Kompas – raport numerologiczny</title>
   <meta name="description" content="Spersonalizowany raport numerologiczny w PDF. Dostawa w godzinach roboczych 3–4 h. Brak darmowych korekt – każde sprostowanie danych = nowe zamówienie." />
-
-  <!-- Szybsze wczytanie tła -->
   <link rel="preload" as="image" href="assets/img/Rak.jpg" imagesrcset="assets/img/Rak.jpg" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Inter + Cinzel -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* Desktop: 4. kafelek wyśrodkowany pod trzema */
   @media (min-width: 1024px) {
     .faq .grid-3{
-      display:grid;                /* jeśli już jest grid – ok, nie szkodzi */
+      display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:16px;                    /* dopasuj do swojego odstępu */
+      gap:16px;
     }
     .faq .grid-3 > details:nth-of-type(4){
-      grid-column:2 / 3;           /* środkowa kolumna */
+      grid-column:2 / 3;
     }
   }
 </style>
-
   <style>
     :root{
-      --bg:#f4f5f9;
-      --text:#1f2430;
-      --muted:#5f6b7a;
+      --bg:#eff1f6;
+      --text:#141824;
+      --muted:#4a5361;
       --card:#ffffff;
-      --brand:#F4A77C;
-      --brand-2:#8EC5F5;
-      --accent:#F7CDA5;
-      --shadow:0 10px 30px rgba(14,22,34,.12);
+      --brand:#F29158;
+      --brand-2:#6DB2F0;
+      --accent:#F6C28B;
+      --shadow:0 12px 34px rgba(14,22,34,.16);
       --radius:16px;
-      --danger:#c0392b;
-      --ok:#2e7d32;
-      /* odsunięcie treści pod przypięte logo (mobile) */
+      --danger:#b02a1f;
+      --ok:#1e7a31;
       --mobile-logo-offset: 74px;
+      --border:rgba(20,24,30,.18);
+      --border-soft:rgba(20,24,30,.12);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
 
-    /* TŁO */
-  body::before{
-  content:"";
-  position:fixed; inset:0; z-index:-2;
-  background-image: url('assets/img/Rak.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;   /* środek-środek */
-  background-attachment: fixed;         /* efekt „parallax” na desktopie */
-  filter:saturate(105%) contrast(102%);
-}
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-2;
+      background-image: url('assets/img/Rak.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      filter:saturate(105%) contrast(104%);
+    }
     body::after{
       content:""; position:fixed; inset:0; z-index:-1;
       background:
-        radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),
-        radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+        radial-gradient(1200px 700px at 80% -10%, rgba(109,178,240,.32), transparent 55%),
+        radial-gradient(900px 600px at -10% 20%, rgba(242,145,88,.30), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
       pointer-events:none;
     }
 
     a{color:var(--brand);text-underline-offset:2px}
 
-    /* Layout */
     .container{max-width:1120px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(20,24,30,.06);z-index:10}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.78);border-bottom:1px solid var(--border);z-index:10}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-    /* Logo jako tekst (Cinzel) */
     .brand{
       font-family:"Cinzel", serif;
       font-weight:700;
@@ -88,16 +79,13 @@
       align-items:center;
       gap:10px;
       white-space:nowrap;
-      /* delikatny akcent */
       background:linear-gradient(135deg,var(--brand),var(--brand-2));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
 
-    /* MOBILE: logo przypięte do ekranu + dopasowanie układu */
     @media (max-width: 768px){
-      /* przypinamy samo logo, reszta headera przewija się normalnie */
       .logo{
         position:fixed;
         top:8px;
@@ -105,14 +93,12 @@
         text-align:center;
         z-index:1000;
         padding:10px 16px;
-        background:rgba(255,255,255,.92);
-        border-bottom:1px solid rgba(20,24,30,.06);
+        background:rgba(255,255,255,.98);
+        border-bottom:1px solid var(--border);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
       }
-      /* odsuwamy treść, aby nie wchodziła pod przypięte logo */
       body{ padding-top: var(--mobile-logo-offset); }
-
       .brand{
         font-size: min(9.8vw, 11svh, 36px);
         line-height: 1.02;
@@ -122,35 +108,25 @@
       @supports not (height: 1svh){
         .brand{ font-size: min(9.8vw, 11vh, 36px); }
       }
-
-      /* header bez efektów (logo ma własne tło) */
       header{ backdrop-filter:none; background:transparent; border-bottom:0; }
-
-      /* header: układ kolumnowy, menu pod logo (logo jest fixed – nie „pcha” układu) */
       .nav{
         flex-direction:column;
         align-items:center;
         justify-content:center;
         gap:10px;
-        padding-top: calc(var(--mobile-logo-offset) - 24px); /* niech menu zacznie się tuż pod logo */
+        padding-top: calc(var(--mobile-logo-offset) - 24px);
       }
       .logo{ width:100%; }
-
-      /* menu wyśrodkowane */
       nav.nav-menu{
         order:2;
         width:100%;
         justify-content:center;
         gap:14px;
       }
-
-      /* Nowa kolejność pozycji w menu na mobile */
       nav.nav-menu a[href="#faq"]{ order:1; }
       nav.nav-menu a[href="#zamow"]{ order:2; }
       nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
     }
-
-    /* Dodatkowe dopasowanie na bardzo małych ekranach */
     @media (max-width: 480px){
       .brand{
         font-size: min(9.8vw, 11svh, 36px);
@@ -160,7 +136,6 @@
       }
     }
 
-    /* Wymuszony podgląd mobilny – te same reguły co mobile */
     .force-mobile .nav{
       flex-direction:column;
       align-items:center;
@@ -178,7 +153,6 @@
     .force-mobile nav.nav-menu a[href="#zamow"]{ order:2; }
     .force-mobile nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
 
-    /* Menu nawigacji (desktop domyślnie) */
     nav.nav-menu{
       display:flex;
       align-items:center;
@@ -188,43 +162,41 @@
     .nav-menu a{
       color:var(--text);
       text-decoration:none;
-      opacity:.9;
+      opacity:.95;
       padding:.25rem .125rem;
+      font-weight:600;
     }
     .nav-menu .cta{
       padding:10px 16px;border-radius:12px;
       background:linear-gradient(135deg,var(--brand),#ea8d59);
       color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35);
     }
-
     @media (max-width:768px){
       nav.nav-menu{gap:14px}
     }
 
-    /* Hero */
     .hero{padding:72px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
     .hero h1 .h1-sub{font-size:0.68em}
-    .hero p{color:var(--muted);font-size:clamp(16px,2.2vw,18px)}
+    .hero p{color:#2c3441;font-size:clamp(16px,2.2vw,18px)}
     .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px}
-    .badge{padding:8px 12px;border:1px solid rgba(20,24,30,.08);border-radius:999px;color:#3b4656;background:rgba(255,255,255,.8)}
+    .badge{padding:8px 12px;border:1px solid var(--border);border-radius:999px;color:#202836;background:#fff}
 
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));border:1px solid rgba(20,24,30,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
 
-    /* Product card */
     .product{padding:76px 24px 24px;position:relative;overflow:visible}
-    .feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#3b4656;padding:6px 8px;border-radius:10px;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;will-change:transform}
-    .feature svg{grid-column:1;width:22px;height:22px;margin-top:2px;color:#2d394a}
+    .feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#2b3442;padding:8px 10px;border-radius:10px;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;will-change:transform;border:1px solid var(--border-soft);background:#fff}
+    .feature svg{grid-column:1;width:22px;height:22px;margin-top:2px;color:#1f2a39}
     .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:14px 0 8px;align-items:start}
     @media (max-width: 980px){.feature-list{grid-template-columns:1fr;gap:10px 14px}}
     .feature div strong{display:flex;align-items:center;gap:8px;line-height:1.2}
     .feature .note{display:block;margin-top:4px}
     .feature > div{grid-column:2}
-    .feature:hover,.feature:focus-within{background:rgba(255,255,255,.8);box-shadow:0 6px 16px rgba(14,22,34,.08);transform:translateY(-2px)}
+    .feature:hover,.feature:focus-within{background:#fff;box-shadow:0 8px 18px rgba(14,22,34,.12);transform:translateY(-2px)}
     @media (max-width: 980px){.feature svg{width:18px;height:18px}}
 
     .corner-badge{position:absolute;top:-10px;left:-10px;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow);display:grid;place-items:center;color:#fff;font-weight:800}
 
-    .ribbon{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;padding:8px 12px;border-radius:12px;box-shadow:0 8px 18px rgba(244,167,124,.28);font-weight:800;max-width:320px;text-align:left;line-height:1.25;white-space:normal;border:1px solid rgba(20,24,30,.08);transform:rotate(2.5deg) translateY(2px);transform-origin:5% 0}
+    .ribbon{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;padding:8px 12px;border-radius:12px;box-shadow:0 8px 18px rgba(244,167,124,.32);font-weight:800;max-width:320px;text-align:left;line-height:1.25;white-space:normal;border:1px solid var(--border);transform:rotate(2.5deg) translateY(2px);transform-origin:5% 0}
     .ribbon::after{content:"";position:absolute;right:18px;top:100%;border:6px solid transparent;border-top-color:#ea8d59;filter:saturate(95%)}
     .ribbon .ribbon--desktop{display:inline}
     .ribbon .ribbon--mobile{display:none}
@@ -239,52 +211,43 @@
     .label-icon{display:inline-block;width:18px;height:18px;margin-right:6px}
     .with-icon{display:flex;align-items:center;gap:6px}
 
-    /* Form */
     .form{padding:24px;display:grid;gap:14px}
     .field{display:grid;gap:8px}
     .field label{font-weight:600}
-    .note{font-size:13px;color:#566173}
-    .consents{display:grid;gap:10px;font-size:13px;color:#3f4a5a}
+    .note{font-size:13px;color:#3a4453}
+    .consents{display:grid;gap:10px;font-size:13px;color:#2d3644}
     .consents input{transform:translateY(1px)}
     .price{display:flex;align-items:baseline;gap:8px;margin-top:6px}
     .price .was{text-decoration:line-through;color:var(--muted);font-weight:600}
-    .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.35)}
+    .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
     .btn:disabled{opacity:.6;cursor:not-allowed}
     .status{font-size:13px}
     .status--error{color:var(--danger)}
     .status--ok{color:var(--ok)}
 
-    /* Sections */
-    section{padding:30px 0}
-    .section-title{font-size:22px;margin:0 0 12px}
+    section{padding:36px 0}
+    .section-title{font-size:24px;margin:0 0 14px;color:#0f1420}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
-    .how .step{padding:18px;display:flex;flex-direction:column;height:100%}
-    .faq details{background:rgba(255,255,255,.75);border:1px solid rgba(20,24,30,.08);border-radius:12px;padding:14px}
-    .faq summary{cursor:pointer;font-weight:600}
+    .how .step{padding:18px;display:flex;flex-direction:column;height:100%;background:#fff}
+    .faq details{background:#ffffff;border:1px solid var(--border);border-radius:12px;padding:14px}
+    .faq summary{cursor:pointer;font-weight:700;color:#101624}
 
-    /* Footer */
-    footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+    footer{border-top:1px solid var(--border);padding:28px 0;color:#2b3442;background:rgba(255,255,255,.92);backdrop-filter:blur(6px)}
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
       .feature-list{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
     }
     .btn{ min-height:48px; }
-   @media (max-width: 768px){
-  body::before{
-    /* ten sam obraz; ważne jest pozycjonowanie i wyłączenie fixed */
-    background-attachment: scroll;
-    background-position: 50% 50%;   /* środek-środek (możesz np. dać 50% 40%) */
-    /* background-size: cover;  // już ustawione wyżej, nie trzeba powtarzać */
-  }
-  .hero{ padding:40px 0; }
-}
+    @media (max-width: 768px){
+      body::before{
+        background-attachment: scroll;
+        background-position: 50% 50%;
+      }
+      .hero{ padding:40px 0; }
+    }
 
-
-
-    /* --- Pojedyncza miniatura z cross-fade (NOWE) --- */
     .slidebox{
       position:relative;
       width:min(260px, 60vw);
@@ -292,9 +255,9 @@
       margin:12px auto 22px;
       border-radius:12px;
       overflow:hidden;
-      background:rgba(255,255,255,.65);
-      border:1px solid rgba(20,24,30,.08);
-      box-shadow:0 8px 18px rgba(14,22,34,.10);
+      background:#fff;
+      border:1px solid var(--border);
+      box-shadow:0 8px 18px rgba(14,22,34,.12);
     }
     .slidebox img{
       position:absolute; inset:0;
@@ -305,10 +268,8 @@
       display:block;
     }
     .slidebox img.show{opacity:1;}
-    /* --- Wyśrodkowanie podglądu i CTA w hero --- */
     .hero .slidebox{ margin-left:auto; margin-right:auto; }
 
-    /* Większy, wyśrodkowany przycisk "Zamów teraz" (tylko w hero) */
     .hero a.btn{
       display:block;
       margin:14px auto 0;
@@ -317,17 +278,13 @@
       min-width:clamp(220px, 50%, 420px);
       border-radius:16px;
     }
-
-    /* Drobna korekta na małych ekranach: pełna szerokość z marginesami */
     @media (max-width: 480px){
-      .hero a.btn{
-        width:100%;
-        max-width:460px;
-      }
+      .hero a.btn{width:100%;max-width:460px;}
     }
+
+    :focus-visible{outline:3px solid #1a73e8; outline-offset:2px; border-radius:8px}
   </style>
 
-  <!-- Usuwanie 'index.html' z adresu po wejściu (bez przeładowania) -->
   <script>
     (function () {
       const p = location.pathname;
@@ -345,7 +302,6 @@
   <header>
     <div class="container nav">
       <div class="logo">
-        <!-- Logo jako tekst Cinzel (klik: zawsze do strony głównej bez index.html) -->
         <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
       </div>
       <nav class="nav-menu" aria-label="Główna nawigacja">
@@ -370,28 +326,27 @@
             w świetle liczb
           </span>
         </span>
-        <span style="display:block; font-size:0.8em; font-weight:600; margin-top:0.2em;">
+        <span style="display:block; font-size:0.8em; font-weight:600; margin-top:0.2em; color:#1e2633;">
           Głębia interpretacji, klarowne wskazówki, wysoka estetyka. Elegancja formy, precyzja wniosków.
         </span>
       </h1>
 
-     <p style="display:block; font-size:0.98rem; font-weight:500; margin-top:0.6em; color:rgba(0,0,0,.62)">
+     <p style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
   Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język,
   łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie
   <strong>imienia, nazwiska i daty urodzenia</strong>.
 </p>
 
-<h3 style="font-size:1.6rem; line-height:1.2; font-weight:800; margin:0.9em 0 0.5em;">
+<h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
   Co otrzymujesz:
 </h3>
 
-<div class="badges" style="font-weight:700;">
+<div class="badges" style="font-weight:800;">
   <span class="badge">PDF • 13 stron</span>
   <span class="badge">Raport + 3 spersonalizowane plakaty</span>
   <span class="badge">Dostawa e-mail</span>
 </div>
 
-        <!-- Pojedynczy podgląd, podmiana co 0.7s -->
         <div class="slidebox" aria-label="Podgląd stron i plakatów">
           <img id="slideA" alt="" />
           <img id="slideB" alt="" />
@@ -403,8 +358,7 @@
       <aside class="card product" aria-labelledby="podglad">
         <div class="corner-badge" aria-hidden="true">✓</div>
         <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty</span><span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span></div>
-        <h3 id="podglad">Co znajdziesz w środku?</h3>
-       <!-- 1) Spersonalizowana mapa w głąb siebie -->
+        <h3 id="podglad" style="color:#0e1420">Co znajdziesz w środku?</h3>
 <div class="feature">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
     <defs>
@@ -422,7 +376,6 @@
   </div>
 </div>
 
-<!-- 2) Mapa Cykli Życia -->
 <div class="feature">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
     <defs>
@@ -440,7 +393,6 @@
   </div>
 </div>
 
-<!-- 3) Szczyty: momenty najwyższego potencjału -->
 <div class="feature">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
     <defs>
@@ -458,7 +410,6 @@
   </div>
 </div>
 
-<!-- 4) Wyzwania: lekcje, które Cię wzmacniają -->
 <div class="feature">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
     <defs>
@@ -475,7 +426,6 @@
   </div>
 </div>
 
-<!-- 5) Podsumowanie PDF -->
 <div class="feature">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
     <defs>
@@ -494,7 +444,6 @@
   </div>
 </div>
 
-<!-- 6) 3 plakaty -->
 <div class="feature">
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
     <defs>
@@ -513,11 +462,8 @@
     <span class="note">spersonalizowane pod kolor aury Twojego znaku zodiaku.</span>
   </div>
 </div>
-
-
 </aside>
 </section>
-
 
     <section id="jak-to-dziala" class="how">
       <h2 class="section-title">Jak to działa</h2>
@@ -528,7 +474,6 @@
       </div>
     </section>
 
-    <!-- ZAMÓW -->
     <section id="zamow" class="card" aria-labelledby="zamow-tytul">
       <form class="form" id="orderForm" action="#" novalidate>
         <h2 id="zamow-tytul" class="section-title">Zamów raport</h2>
@@ -558,14 +503,12 @@
   <span class="note">brutto • PDF dostarczany e-mailem</span>
 </div>
 
-        <!-- PRZYCISK PŁATNOŚCI — JS przekieruje do Stripe -->
         <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza" disabled>
           Przejdź do formularza
         </button>
         <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
         <div id="formStatus" class="status" role="status" aria-live="polite"></div>
 
-        <!-- Fallback dla użytkowników bez JS -->
         <noscript>
           <p>
             JavaScript jest wyłączony. <a class="btn" href="https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01?locale=pl" target="_blank" rel="nofollow noopener">Zapłać przez Stripe</a>
@@ -592,14 +535,12 @@
       <p>Raport ma charakter informacyjno-rozrywkowy i może zawierać uogólnienia. Reklamacje oparte wyłącznie na subiektywnym odczuciu nie stanowią podstawy zwrotu. Jeśli widzisz <em>błąd techniczny</em> – napisz do nas.</p>
     </details>
 
-    <!-- NOWE PYTANIE -->
     <details>
       <summary>Czy użyć swojego nazwiska panieńskiego, czy aktualnego?</summary>
       <p>W numerologii pitagorejskiej zalecane jest użycie <strong>nazwiska nadanego przy urodzeniu</strong>, czyli nazwiska panieńskiego.</p>
     </details>
   </div>
 </section>
-
 
     <section class="card" style="padding:20px" aria-labelledby="disclaimer">
       <h2 id="disclaimer" class="section-title" style="margin-bottom:6px">Ważne informacje</h2>
@@ -626,9 +567,7 @@
 
   <button class="preview-toggle" id="previewToggle" aria-pressed="false" aria-label="Przełącz podgląd mobilny">Podgląd: desktop</button>
 
-  <!-- Podgląd miniatur -->
   <script>
-    // --- Pojedynczy slajd z odpornym ładowaniem (cross-fade) ---
     (function () {
       const files = [
         "nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22",
@@ -712,18 +651,14 @@
     })();
   </script>
 
-  
-  <!-- PŁATNOŚĆ STRIPE – pojedyncze, odporne wywołanie -->
   <script>
     (function () {
       const btn = document.getElementById('payBtn');
       const form = document.getElementById('orderForm');
       const statusEl = document.getElementById('formStatus');
 
-      // PODMIENIĆ na docelowy link z Stripe Checkout:
       const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01?locale=pl";
 
-      // Włącz przycisk dopiero po wymaganych zgodach
       const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
       function updateEnabled() {
         btn.disabled = !requiredChecks.every(i => i && i.checked);
@@ -731,7 +666,6 @@
       requiredChecks.forEach(i => i && i.addEventListener('change', updateEnabled, { once:false }));
       updateEnabled();
 
-      // Twarda blokada przed duplikacją
       let processing = false;
       function goToStripe() {
         if (processing) return;
@@ -774,27 +708,21 @@
     })();
   </script>
 
-  <!-- LOGO: klik = przejście na stronę główną (bez index.html);
-       jeśli już na głównej -> tylko scroll do góry -->
   <script>
     (function () {
       const logo = document.querySelector('a.brand');
       if (!logo) return;
 
-      // katalog bazowy (ścieżka z końcowym "/")
-      const basePath = location.pathname.replace(/[^/]*$/, ''); // np. "/subdir/" albo "/"
+      const basePath = location.pathname.replace(/[^/]*$/, '');
       const homeUrl  = (basePath || '/');
 
-      // ustaw poprawny href dla dostępności / długiego przytrzymania
       logo.setAttribute('href', homeUrl);
 
       logo.addEventListener('click', function (e) {
         e.preventDefault();
         if (location.pathname === homeUrl) {
-          // już na głównej – nie przeładowuj, tylko przewiń do góry
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-          // przejdź do katalogu głównego (bez "index.html")
           window.location.href = homeUrl;
         }
       });
