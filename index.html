@@ -14,6 +14,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Inter + Cinzel -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Desktop: 4. kafelek wyśrodkowany pod trzema */
+  @media (min-width: 1024px) {
+    .faq .grid-3{
+      display:grid;                /* jeśli już jest grid – ok, nie szkodzi */
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;                    /* dopasuj do swojego odstępu */
+    }
+    .faq .grid-3 > details:nth-of-type(4){
+      grid-column:2 / 3;           /* środkowa kolumna */
+    }
+  }
+</style>
 
   <style>
     :root{
