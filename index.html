@@ -234,6 +234,14 @@
       font-variant-numeric:tabular-nums;
       -webkit-font-smoothing:antialiased;
     }
+    /* przywrócenie przekreślenia starej ceny */
+    .price .was{
+      text-decoration: line-through;
+      text-decoration-thickness: 1.5px;   /* opcjonalnie */
+      text-decoration-color: var(--muted);
+      color: var(--muted);
+      font-weight: 600;
+    }
 
     .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
     .btn:disabled{opacity:.6;cursor:not-allowed}
