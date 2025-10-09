@@ -532,12 +532,16 @@
             <input type="checkbox" id="terms" required />
             Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.
           </label>
+        </div>
+
         <div class="consents">
           <label>
-            <input type="checkbox" id="uwagaAck" required />
+            <input type="checkbox" id="withdrawalAck" required />
             Żądam rozpoczęcia świadczenia przed upływem 14 dni i przyjmuję do wiadomości, że po pełnym dostarczeniu treści cyfrowej utracę prawo odstąpienia.
           </label>
         </div>
+
+        <div class="consents">
           <label><input type="checkbox" id="marketing" /> [Opcjonalnie] Wyrażam zgodę na przesyłanie mi informacji handlowych drogą elektroniczną (e-mail).</label>
         </div>
 
@@ -701,7 +705,8 @@
 
       const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01?locale=pl";
 
-      const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
+      // UWAGA: trzy obowiązkowe zgody (unikalne ID)
+      const requiredChecks = ['uwagaAck','terms','withdrawalAck'].map(id => document.getElementById(id));
       function updateEnabled() {
         btn.disabled = !requiredChecks.every(i => i && i.checked);
       }
