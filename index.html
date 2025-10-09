@@ -218,30 +218,35 @@
     .consents{display:grid;gap:10px;font-size:13px;color:#2d3644}
     .consents input{transform:translateY(1px)}
 
-    /* FIX: stabilne wyświetlanie kwot na mobile i desktop */
-    .price{
-      display:flex;
-      align-items:flex-end;  /* zamiast baseline */
-      gap:8px;
-      margin-top:6px;
-      flex-wrap:wrap;
-    }
-    .price .was,
-    .price .now{
-      white-space:nowrap;     /* nie zawijaj 129 zł / 99 zł */
-      line-height:1;
-      display:inline-block;
-      font-variant-numeric:tabular-nums;
-      -webkit-font-smoothing:antialiased;
-    }
-    /* przywrócenie przekreślenia starej ceny */
-    .price .was{
-      text-decoration: line-through;
-      text-decoration-thickness: 1.5px;   /* opcjonalnie */
-      text-decoration-color: var(--muted);
-      color: var(--muted);
-      font-weight: 600;
-    }
+/* FIX: stabilne wyświetlanie i przekreślenie na mobile i desktop */
+.price{
+  display:flex;
+  align-items:flex-end;   /* równe doły tekstu */
+  gap:8px;
+  margin-top:6px;
+  flex-wrap:wrap;
+}
+
+.price .was,
+.price .now{
+  white-space:nowrap;     /* nie zawijaj 129 zł / 99 zł */
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+  /* UWAGA: bez display:inline-block (to powodowało problem w iOS) */
+}
+
+.price .was{
+  color: var(--muted);
+  font-weight: 600;
+
+  /* solidne przekreślenie, działa na iOS Safari */
+  text-decoration-line: line-through;
+  text-decoration-thickness: .08em;     /* ~1.3–1.5px zależnie od rozmiaru */
+  text-decoration-color: currentColor;  /* albo var(--muted) */
+  text-decoration-skip-ink: none;
+}
+
 
     .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
     .btn:disabled{opacity:.6;cursor:not-allowed}
