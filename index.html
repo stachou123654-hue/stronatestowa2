@@ -217,8 +217,24 @@
     .note{font-size:13px;color:#3a4453}
     .consents{display:grid;gap:10px;font-size:13px;color:#2d3644}
     .consents input{transform:translateY(1px)}
-    .price{display:flex;align-items:baseline;gap:8px;margin-top:6px}
-    .price .was{text-decoration:line-through;color:var(--muted);font-weight:600}
+
+    /* FIX: stabilne wyświetlanie kwot na mobile i desktop */
+    .price{
+      display:flex;
+      align-items:flex-end;  /* zamiast baseline */
+      gap:8px;
+      margin-top:6px;
+      flex-wrap:wrap;
+    }
+    .price .was,
+    .price .now{
+      white-space:nowrap;     /* nie zawijaj 129 zł / 99 zł */
+      line-height:1;
+      display:inline-block;
+      font-variant-numeric:tabular-nums;
+      -webkit-font-smoothing:antialiased;
+    }
+
     .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
     .btn:disabled{opacity:.6;cursor:not-allowed}
     .status{font-size:13px}
@@ -285,20 +301,6 @@
     :focus-visible{outline:3px solid #1a73e8; outline-offset:2px; border-radius:8px}
   </style>
 
-#uwaga { 
-  font-size: 1.2em;          
-}
-
-
-.consents {
-  font-size: 1.2em;           
-  line-height: 1.5;          
-}
-
-
-.consents input[type="checkbox"] {
-  transform: translateY(1px);
-}
   <script>
     (function () {
       const p = location.pathname;
