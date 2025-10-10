@@ -34,7 +34,8 @@
       --radius:16px;
       --danger:#b02a1f;
       --ok:#1e7a31;
-      --mobile-logo-offset: 74px;
+      /* ZMNIEJSZONE o ~3x, było 74px */
+      --mobile-logo-offset: 25px;
       --border:rgba(20,24,30,.18);
       --border-soft:rgba(20,24,30,.12);
     }
@@ -93,6 +94,7 @@
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
       }
+      /* mniejsze odsunięcie treści od paska z logo */
       body{ padding-top: var(--mobile-logo-offset); }
       .brand{
         font-size: min(9.8vw, 11svh, 36px);
@@ -109,7 +111,9 @@
         align-items:center;
         justify-content:center;
         gap:10px;
-        padding-top: calc((var(--mobile-logo-offset) - 24px) / 3);
+        /* było: calc(var(--mobile-logo-offset) - 24px);
+           przy mniejszym offsecie i tak wychodzi ~1px, więc zabezpieczamy min() */
+        padding-top: min(8px, calc(var(--mobile-logo-offset) - 24px));
       }
       .logo{ width:100%; }
       nav.nav-menu{
