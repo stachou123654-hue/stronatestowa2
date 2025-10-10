@@ -39,8 +39,8 @@
       --border:rgba(20,24,30,.18);
       --border-soft:rgba(20,24,30,.12);
 
-      /* WYŻSZY pasek logo (2 linie) */
-      --mobile-logo-height: 68px;
+      /* +~3 mm wysokości paska z logo */
+      --mobile-logo-height: 79px;
     }
 
     *{box-sizing:border-box}
@@ -103,10 +103,10 @@
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
       }
-      /* odsunięcie strony = wysokość paska + mała przerwa */
+      /* odsunięcie całej strony = wysokość paska + mała przerwa */
       body{ padding-top: calc(var(--mobile-logo-height) + 8px); }
 
-      /* mniejsze odstępy przy przewinięciu do sekcji (kotwice) */
+      /* scroll do #kotwic nie chowa nagłówków */
       [id]{ scroll-margin-top: calc(var(--mobile-logo-height) + 10px); }
 
       /* dwie linie w logo */
@@ -114,7 +114,6 @@
       .brand .brand-lines span{display:block; line-height:1.04}
       .brand .brand-lines span:first-child{ margin-bottom:2px; }
 
-      /* menu tuż pod logo */
       header{ backdrop-filter:none; background:transparent; border-bottom:0; }
       .nav{
         flex-direction:column;
@@ -123,20 +122,6 @@
         gap:10px;
         padding-top:8px;
       }
-
-      /* REDUKCJA odstępu NAD hero — najważniejsza zmiana */
-      main.container{ padding-top:6px; }          /* było 24px z .container */
-      section.hero{ padding:12px 0 32px; }        /* było 40px 0 */
-      /* koniec redukcji */
-
-      .brand{
-        font-size: min(9.2vw, 10svh, 32px);
-        letter-spacing:.3px;
-      }
-      @supports not (height: 1svh){
-        .brand{ font-size: min(9.2vw, 10vh, 32px); }
-      }
-
       .logo{ width:100%; }
       nav.nav-menu{
         order:2;
@@ -147,6 +132,18 @@
       nav.nav-menu a[href="#faq"]{ order:1; }
       nav.nav-menu a[href="#zamow"]{ order:2; }
       nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
+
+      /* 🔻 15% mniejsza przerwa nad hero */
+      main.container{ padding-top:5px; }      /* było 6px */
+      section.hero{ padding:10px 0 32px; }    /* było 12px 0 32px */
+
+      .brand{
+        font-size: min(9.2vw, 10svh, 32px);
+        letter-spacing:.3px;
+      }
+      @supports not (height: 1svh){
+        .brand{ font-size: min(9.2vw, 10vh, 32px); }
+      }
     }
 
     @media (max-width: 480px){
@@ -372,7 +369,7 @@
         <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty</span><span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span></div>
         <h3 id="podglad" style="color:#0e1420">Co znajdziesz w środku?</h3>
 
-        <!-- features ... (bez zmian) -->
+        <!-- feature'y bez zmian -->
       </aside>
     </section>
 
@@ -396,10 +393,18 @@
   </main>
 
   <footer>
-    <!-- ... -->
+    <div class="container">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+        <small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
+        <div style="display:flex;gap:16px">
+          <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Polityka prywatności</a>
+          <a href="#zamow">Zamów</a>
+          <a href="kontakt/">Kontakt</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
-  <!-- skrypty bez zmian -->
   <script>
     (function () {
       const files = [
@@ -412,10 +417,13 @@
       const exts = [".jpg",".JPG",".jpeg",".JPEG",".png"];
       const FADE_DELAY_MS = 700;
       const LOAD_TIMEOUT_MS = 3500;
+
       const a = document.getElementById("slideA");
       const b = document.getElementById("slideB");
       let visible = a, hidden = b, idx = 0;
+
       function swapImgs(){ const t = visible; visible = hidden; hidden = t; }
+
       function resolveSrc(name, cb) {
         let i = 0;
         function tryNext() {
@@ -424,23 +432,29 @@
           const src = base + name + exts[i++];
           let settled = false;
           const t = setTimeout(() => { if (!settled) { settled = true; tryNext(); } }, LOAD_TIMEOUT_MS);
+
           test.onload = () => { if (settled) return; settled = true; clearTimeout(t); cb(src); };
           test.onerror = () => { if (settled) return; settled = true; clearTimeout(t); tryNext(); };
+
           test.decoding = "async";
           test.loading  = "eager";
           test.src = src;
         }
         tryNext();
       }
+
       function showNext() {
         const name = files[idx];
         idx = (idx + 1) % files.length;
+
         resolveSrc(name, (src) => {
           if (!src) { setTimeout(showNext, 0); return; }
+
           let watchdog = setTimeout(() => {
             hidden.onload = hidden.onerror = null;
             setTimeout(showNext, 0);
           }, LOAD_TIMEOUT_MS);
+
           hidden.onload = () => {
             clearTimeout(watchdog);
             hidden.classList.add("show");
@@ -454,15 +468,20 @@
             hidden.onload = hidden.onerror = null;
             setTimeout(showNext, 0);
           };
+
           hidden.alt = name;
           hidden.decoding = "async";
           hidden.loading  = "eager";
           hidden.src = src;
         });
       }
+
       document.addEventListener("DOMContentLoaded", () => {
         resolveSrc(files[0], (src) => {
-          if (src) { visible.src = src; visible.alt = files[0]; }
+          if (src) {
+            visible.src = src;
+            visible.alt = files[0];
+          }
           visible.classList.add("show");
           setTimeout(showNext, FADE_DELAY_MS);
         });
@@ -475,19 +494,27 @@
       const btn = document.getElementById('payBtn');
       const form = document.getElementById('orderForm');
       const statusEl = document.getElementById('formStatus');
+
       const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/test_aFa7sLcoya9b7O7cwsefC01?locale=pl";
+
       const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
-      function updateEnabled() { btn.disabled = !requiredChecks.every(i => i && i.checked); }
+      function updateEnabled() {
+        btn.disabled = !requiredChecks.every(i => i && i.checked);
+      }
       requiredChecks.forEach(i => i && i.addEventListener('change', updateEnabled, { once:false }));
       updateEnabled();
+
       let processing = false;
       function goToStripe() {
         if (processing) return;
         processing = true;
+
         btn.disabled = true;
         btn.setAttribute('aria-busy', 'true');
         statusEl.textContent = 'Przekierowuję do płatności…';
+
         window.location.href = STRIPE_CHECKOUT_URL;
+
         setTimeout(() => {
           if (document.visibilityState === 'visible') {
             processing = false;
@@ -497,8 +524,17 @@
           }
         }, 6000);
       }
-      btn.addEventListener('click', (e) => { e.preventDefault(); goToStripe(); }, { once:false });
-      form.addEventListener('submit', (e) => { e.preventDefault(); goToStripe(); }, { once:false });
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToStripe();
+      }, { once:false });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        goToStripe();
+      }, { once:false });
+
       window.addEventListener('pageshow', (e) => {
         if (e.persisted) {
           processing = false;
@@ -514,9 +550,12 @@
     (function () {
       const logo = document.querySelector('a.brand');
       if (!logo) return;
+
       const basePath = location.pathname.replace(/[^/]*$/, '');
       const homeUrl  = (basePath || '/');
+
       logo.setAttribute('href', homeUrl);
+
       logo.addEventListener('click', function (e) {
         e.preventDefault();
         if (location.pathname === homeUrl) {
