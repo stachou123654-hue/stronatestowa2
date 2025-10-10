@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     @media (min-width: 1024px) {
       .faq .grid-3{
@@ -21,6 +22,7 @@
       }
     }
   </style>
+
   <style>
     :root{
       --bg:#eff1f6;
@@ -37,12 +39,15 @@
       --border:rgba(20,24,30,.18);
       --border-soft:rgba(20,24,30,.12);
 
-      /* stała, mniejsza wysokość paska z logo na mobile */
-      --mobile-logo-height: 52px; /* ~3x mniej niż poprzednio, a nadal czytelnie */
+      /* DYNAMICZNIE uzupełniane w JS na mobile */
+      --mobile-logo-height: 60px;   /* wartość startowa / fallback */
+      --mobile-logo-gap-top: 8px;   /* odstęp od samej góry ekranu */
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+
     body::before{
       content:"";
       position:fixed; inset:0; z-index:-2;
@@ -61,10 +66,13 @@
         linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
       pointer-events:none;
     }
+
     a{color:var(--brand);text-underline-offset:2px}
     .container{max-width:1120px;margin:0 auto;padding:24px}
+
     header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.78);border-bottom:1px solid var(--border);z-index:10}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
     .brand{
       font-family:"Cinzel", serif;
       font-weight:700;
@@ -75,43 +83,54 @@
       color:var(--text);
       display:inline-flex;
       align-items:center;
-      gap:10px;
+      gap:.35ch;
       white-space:nowrap;
       background:linear-gradient(135deg,var(--brand),var(--brand-2));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
+    .brand .l1, .brand .l2{display:inline;}
 
-    /* MOBILE */
+    /* ===== MOBILE ===== */
     @media (max-width: 768px){
-      /* Pasek z logo ma stałą, niską wysokość i jest fixed */
       .logo{
         position:fixed;
-        top:8px; left:0; right:0;
-        height:var(--mobile-logo-height);
+        top:var(--mobile-logo-gap-top);
+        left:0; right:0;
         display:flex; align-items:center; justify-content:center;
-        padding:0 12px; /* brak pionowego paddingu, wysokość kontrolowana zmienną */
+        padding:10px 12px;     /* większy pasek */
         z-index:1000;
         background:rgba(255,255,255,.98);
         border-bottom:1px solid var(--border);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
       }
-      /* odsuwamy całą stronę o dokładnie wysokość paska -> zero zachodzenia */
-      body{ padding-top: calc(var(--mobile-logo-height) + 8px); }
 
-      /* kiedy przewijamy do #kotwic — nie chowaj pod paskiem */
-      [id]{ scroll-margin-top: calc(var(--mobile-logo-height) + 10px); }
-
-      .brand{
-        font-size: min(9.2vw, 10svh, 32px);
-        line-height: 1.02;
-        text-wrap: balance;
-        letter-spacing:.3px;
+      /* odsuwamy stronę o REALNĄ wysokość paska (uzupełnianą z JS) */
+      body{
+        padding-top: calc(var(--mobile-logo-gap-top) + var(--mobile-logo-height) + 10px);
       }
+
+      /* offset dla kotwic (#faq, #zamow, ...) */
+      [id]{
+        scroll-margin-top: calc(var(--mobile-logo-gap-top) + var(--mobile-logo-height) + 12px);
+      }
+
+      /* dwie linie w logo */
+      .brand{
+        font-size: min(10vw, 12svh, 34px);
+        line-height:1.04;
+        letter-spacing:.3px;
+        text-align:center;
+        flex-direction:column;     /* <— układ pionowy */
+        gap:.15em;
+        white-space:normal;        /* pozwól łamaniu */
+      }
+      .brand .l1, .brand .l2{display:block;}
+
       @supports not (height: 1svh){
-        .brand{ font-size: min(9.2vw, 10vh, 32px); }
+        .brand{ font-size: min(10vw, 12vh, 34px); }
       }
 
       header{ backdrop-filter:none; background:transparent; border-bottom:0; }
@@ -120,8 +139,9 @@
         align-items:center;
         justify-content:center;
         gap:10px;
-        padding-top:8px; /* stałe, małe — nie zależy już od wysokości paska */
+        padding-top:8px;
       }
+
       .logo{ width:100%; }
       nav.nav-menu{
         order:2;
@@ -136,51 +156,25 @@
 
     @media (max-width: 480px){
       .brand{
-        font-size: min(9.2vw, 10svh, 32px);
+        font-size: min(10.5vw, 12svh, 34px);
       }
       @supports not (height: 1svh){
-        .brand{ font-size: min(9.2vw, 10vh, 32px); }
+        .brand{ font-size: min(10.5vw, 12vh, 34px); }
       }
     }
 
-    .force-mobile .nav{
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-    }
+    /* force-mobile helpers (opcjonalnie) */
+    .force-mobile .nav{ flex-direction:column; align-items:center; justify-content:center; gap:10px; }
     .force-mobile .logo{ width:100%; text-align:center; }
-    .force-mobile nav.nav-menu{
-      order:2;
-      width:100%;
-      justify-content:center;
-      gap:14px;
-    }
+    .force-mobile nav.nav-menu{ order:2; width:100%; justify-content:center; gap:14px; }
     .force-mobile nav.nav-menu a[href="#faq"]{ order:1; }
     .force-mobile nav.nav-menu a[href="#zamow"]{ order:2; }
     .force-mobile nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
 
-    nav.nav-menu{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-    .nav-menu a{
-      color:var(--text);
-      text-decoration:none;
-      opacity:.95;
-      padding:.25rem .125rem;
-      font-weight:600;
-    }
-    .nav-menu .cta{
-      padding:10px 16px;border-radius:12px;
-      background:linear-gradient(135deg,var(--brand),#ea8d59);
-      color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35);
-    }
-    @media (max-width:768px){
-      nav.nav-menu{gap:14px}
-    }
+    nav.nav-menu{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+    .nav-menu a{ color:var(--text); text-decoration:none; opacity:.95; padding:.25rem .125rem; font-weight:600; }
+    .nav-menu .cta{ padding:10px 16px;border-radius:12px; background:linear-gradient(135deg,var(--brand),#ea8d59); color:#fff; box-shadow:0 10px 20px rgba(244,167,124,.35); }
+    @media (max-width:768px){ nav.nav-menu{gap:14px} }
 
     .hero{padding:72px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
     .hero h1 .h1-sub{font-size:0.68em}
@@ -218,23 +212,9 @@
     .note{font-size:13px;color:#3a4453}
     .consents{display:grid;gap:10px;font-size:13px;color:#2d3644}
     .consents input{transform:translateY(1px)}
-    .price{
-      display:flex;
-      align-items:flex-end;
-      gap:8px;
-      margin-top:6px;
-      flex-wrap:wrap;
-    }
-    .price .was,
-    .price .now{
-      white-space:nowrap;
-      line-height:1;
-      font-variant-numeric:tabular-nums;
-      -webkit-font-smoothing:antialiased;
-    }
-    .price .was{ color: var(--muted); font-weight: 600; text-decoration: line-through; text-decoration-thickness: .08em; text-decoration-color: currentColor; text-decoration-skip-ink: none; }
-    .price .now{ font-size: 2.34em !important; font-weight: 900; }
-
+    .price{display:flex;align-items:flex-end;gap:8px;margin-top:6px;flex-wrap:wrap}
+    .price .was{color: var(--muted);font-weight: 600;text-decoration-line: line-through;text-decoration-thickness: .08em;text-decoration-color: currentColor;text-decoration-skip-ink: none;}
+    .price .now{font-size: 2.34em !important;font-weight: 900;}
     .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
     .btn:disabled{opacity:.6;cursor:not-allowed}
     .status{font-size:13px}
@@ -254,7 +234,6 @@
       .grid-3{grid-template-columns:1fr}
     }
     .btn{ min-height:48px; }
-
     @media (max-width: 768px){
       body::before{
         background-attachment: scroll;
@@ -325,7 +304,10 @@
   <header>
     <div class="container nav">
       <div class="logo">
-        <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
+        <!-- DWIE LINIE: Twój Cyfrowy / Kompas (na mobile) -->
+        <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna">
+          <span class="l1">Twój Cyfrowy</span><span class="l2">Kompas</span>
+        </a>
       </div>
       <nav class="nav-menu" aria-label="Główna nawigacja">
         <a href="#jak-to-dziala">Jak to działa</a>
@@ -385,7 +367,12 @@
 
         <div class="feature">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
             <rect x="4" y="3" width="16" height="18" rx="2" stroke="url(#g1)" stroke-width="2"/>
             <path d="M8 8h8M8 12h8M8 16h6" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
           </svg>
@@ -397,7 +384,12 @@
 
         <div class="feature">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
             <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
             <path d="M12 6v6l4 2" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -409,7 +401,12 @@
 
         <div class="feature">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+            <defs>
+              <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
             <path d="M4 17h16V7H4z" stroke="url(#g3)" stroke-width="2"/>
             <path d="M7 14l3-3 4 4" stroke="url(#g3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -421,7 +418,12 @@
 
         <div class="feature">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+            <defs>
+              <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
             <path d="M12 20l9-16H3z" stroke="url(#g4)" stroke-width="2" stroke-linejoin="round"/>
           </svg>
           <div>
@@ -432,7 +434,12 @@
 
         <div class="feature">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+            <defs>
+              <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
             <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="url(#g5)" stroke-width="2"/>
             <path d="M14 3v6h6" stroke="url(#g5)" stroke-width="2"/>
             <path d="M8 13h8M8 17h8M8 9h3" stroke="url(#g5)" stroke-width="2" stroke-linecap="round"/>
@@ -445,7 +452,12 @@
 
         <div class="feature">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-            <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+            <defs>
+              <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
             <rect x="6" y="5" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
             <rect x="3" y="8" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
             <path d="M9 13l2-2 3 3" stroke="url(#g6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -563,6 +575,7 @@
   </footer>
 
   <script>
+    // Slider jak był
     (function () {
       const files = [
         "nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22",
@@ -635,10 +648,7 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         resolveSrc(files[0], (src) => {
-          if (src) {
-            visible.src = src;
-            visible.alt = files[0];
-          }
+          if (src) { visible.src = src; visible.alt = files[0]; }
           visible.classList.add("show");
           setTimeout(showNext, FADE_DELAY_MS);
         });
@@ -647,6 +657,7 @@
   </script>
 
   <script>
+    // Stripe jak był
     (function () {
       const btn = document.getElementById('payBtn');
       const form = document.getElementById('orderForm');
@@ -682,15 +693,8 @@
         }, 6000);
       }
 
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        goToStripe();
-      }, { once:false });
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        goToStripe();
-      }, { once:false });
+      btn.addEventListener('click', (e) => { e.preventDefault(); goToStripe(); }, { once:false });
+      form.addEventListener('submit', (e) => { e.preventDefault(); goToStripe(); }, { once:false });
 
       window.addEventListener('pageshow', (e) => {
         if (e.persisted) {
@@ -704,6 +708,29 @@
   </script>
 
   <script>
+    // USTAWIAMY DYNAMICZNY WYSOKOŚCI PASKA LOGO NA MOBILE
+    (function () {
+      const logoWrap = document.querySelector('.logo');
+      function setMobileLogoHeight(){
+        if (!logoWrap) return;
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (!isMobile) return;
+        const h = Math.ceil(logoWrap.offsetHeight);
+        document.documentElement.style.setProperty('--mobile-logo-height', h + 'px');
+      }
+      // po załadowaniu DOM, fontów, okna i przy resize/orientacji
+      document.addEventListener('DOMContentLoaded', setMobileLogoHeight);
+      window.addEventListener('load', setMobileLogoHeight);
+      window.addEventListener('resize', setMobileLogoHeight);
+      window.addEventListener('orientationchange', setMobileLogoHeight);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(setMobileLogoHeight);
+      }
+    })();
+  </script>
+
+  <script>
+    // Link logo: przewiń do góry, jak był
     (function () {
       const logo = document.querySelector('a.brand');
       if (!logo) return;
