@@ -9,18 +9,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  @media (min-width: 1024px) {
-    .faq .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
+  <style>
+    @media (min-width: 1024px) {
+      .faq .grid-3{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:16px;
+      }
+      .faq .grid-3 > details:nth-of-type(4){
+        grid-column:2 / 3;
+      }
     }
-    .faq .grid-3 > details:nth-of-type(4){
-      grid-column:2 / 3;
-    }
-  }
-</style>
+  </style>
   <style>
     :root{
       --bg:#eff1f6;
@@ -114,7 +114,8 @@
         align-items:center;
         justify-content:center;
         gap:6px;
-        padding-top: calc(var(--mobile-logo-offset) - 34px);
+        padding-top: calc(var(--mobile-logo-offset) - 26px); /* menu delikatnie niżej */
+        margin-bottom: 6px; /* ciaśniej pod menu */
       }
       .logo{ width:100%; }
       nav.nav-menu{
@@ -128,7 +129,7 @@
       nav.nav-menu a[href="#jak-to-dziala"]{ order:3; }
       .nav-menu a{ padding:.15rem .1rem; }
       section{ padding:22px 0; }
-      .hero{ padding:28px 0; }
+      .hero{ padding:14px 0 26px; } /* mniejszy odstęp nad nagłówkiem */
       .section-title{ margin:0 0 8px; }
     }
     @media (max-width: 480px){
@@ -222,34 +223,32 @@
     .consents{display:grid;gap:10px;font-size:13px;color:#2d3644}
     .consents input{transform:translateY(1px)}
 
-.price{
-  display:flex;
-  align-items:flex-end;
-  gap:8px;
-  margin-top:6px;
-  flex-wrap:wrap;
-}
-
-.price .was,
-.price .now{
-  white-space:nowrap;
-  line-height:1;
-  font-variant-numeric:tabular-nums;
-  -webkit-font-smoothing:antialiased;
-}
-
-.price .was{
-  color: var(--muted);
-  font-weight: 600;
-  text-decoration-line: line-through;
-  text-decoration-thickness: .08em;
-  text-decoration-color: currentColor;
-  text-decoration-skip-ink: none;
-}
-.price .now{
-  font-size: 2.34em !important;
-  font-weight: 900;
-}
+    .price{
+      display:flex;
+      align-items:flex-end;
+      gap:8px;
+      margin-top:6px;
+      flex-wrap:wrap;
+    }
+    .price .was,
+    .price .now{
+      white-space:nowrap;
+      line-height:1;
+      font-variant-numeric:tabular-nums;
+      -webkit-font-smoothing:antialiased;
+    }
+    .price .was{
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration-line: line-through;
+      text-decoration-thickness: .08em;
+      text-decoration-color: currentColor;
+      text-decoration-skip-ink: none;
+    }
+    .price .now{
+      font-size: 2.34em !important;
+      font-weight: 900;
+    }
 
     .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
     .btn:disabled{opacity:.6;cursor:not-allowed}
@@ -277,7 +276,7 @@
         background-attachment: scroll;
         background-position: 50% 50%;
       }
-      .hero{ padding:28px 0; }
+      .hero{ padding:14px 0 26px; }
     }
 
     .slidebox{
@@ -360,40 +359,40 @@
     </div>
   </header>
 
- <main class="container">
-  <section class="hero">
-    <div>
-      <h1 style="line-height:1.2; font-weight:800; margin:0;">
-        <span style="display:block; font-size:1.5em;">
-          Portret
-          <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">
-            Numerologiczny
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1 style="line-height:1.2; font-weight:800; margin:0;">
+          <span style="display:block; font-size:1.5em;">
+            Portret
+            <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">
+              Numerologiczny
+            </span>
+            Odkryj siebie
+            <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">
+              w liczbach
+            </span>
           </span>
-          Odkryj siebie
-          <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">
-            w liczbach
+          <span style="display:block; font-size:0.8em; font-weight:600; margin-top:0.2em; color:#1e2633;">
+            Głębia interpretacji, klarowne wskazówki, wysoka estetyka. Elegancja formy, precyzja wniosków.
           </span>
-        </span>
-        <span style="display:block; font-size:0.8em; font-weight:600; margin-top:0.2em; color:#1e2633;">
-          Głębia interpretacji, klarowne wskazówki, wysoka estetyka. Elegancja formy, precyzja wniosków.
-        </span>
-      </h1>
+        </h1>
 
-     <p style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
-  Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język,
-  łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie
-  <strong>imienia, nazwiska i daty urodzenia</strong>.
-</p>
+        <p style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
+          Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język,
+          łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie
+          <strong>imienia, nazwiska i daty urodzenia</strong>.
+        </p>
 
-<h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
-  Co otrzymujesz:
-</h3>
+        <h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
+          Co otrzymujesz:
+        </h3>
 
-<div class="badges" style="font-weight:800;">
-  <span class="badge">PDF • 13 stron</span>
-  <span class="badge">Raport + 3 spersonalizowane plakaty</span>
-  <span class="badge">Dostawa e-mail</span>
-</div>
+        <div class="badges" style="font-weight:800;">
+          <span class="badge">PDF • 13 stron</span>
+          <span class="badge">Raport + 3 spersonalizowane plakaty</span>
+          <span class="badge">Dostawa e-mail</span>
+        </div>
 
         <div class="slidebox" aria-label="Podgląd stron i plakatów">
           <img id="slideA" alt="" />
@@ -407,111 +406,112 @@
         <div class="corner-badge" aria-hidden="true">✓</div>
         <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty</span><span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span></div>
         <h3 id="podglad" style="color:#0e1420">Co znajdziesz w środku?</h3>
-<div class="feature">
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--brand)"/>
-        <stop offset="1" stop-color="var(--brand-2)"/>
-      </linearGradient>
-    </defs>
-    <rect x="4" y="3" width="16" height="18" rx="2" stroke="url(#g1)" stroke-width="2"/>
-    <path d="M8 8h8M8 12h8M8 16h6" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-  <div>
-    <strong>Spersonalizowana mapa w głąb siebie</strong><br>
-    <span class="note">Przeszłość, teraźniejszość i możliwe ścieżki przyszłości.</span>
-  </div>
-</div>
 
-<div class="feature">
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--brand)"/>
-        <stop offset="1" stop-color="var(--brand-2)"/>
-      </linearGradient>
-    </defs>
-    <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
-    <path d="M12 6v6l4 2" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <div>
-    <strong>Mapa Cykli Życia</strong><br>
-    <span class="note">Zobacz, kiedy przyspieszać, kiedy zbierać plony, a kiedy zmieniać kurs.</span>
-  </div>
-</div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke="url(#g1)" stroke-width="2"/>
+            <path d="M8 8h8M8 12h8M8 16h6" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <strong>Spersonalizowana mapa w głąb siebie</strong><br>
+            <span class="note">Przeszłość, teraźniejszość i możliwe ścieżki przyszłości.</span>
+          </div>
+        </div>
 
-<div class="feature">
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--brand)"/>
-        <stop offset="1" stop-color="var(--brand-2)"/>
-      </linearGradient>
-    </defs>
-    <path d="M4 17h16V7H4z" stroke="url(#g3)" stroke-width="2"/>
-    <path d="M7 14l3-3 4 4" stroke="url(#g3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <div>
-    <strong>Szczyty: momenty najwyższego potencjału</strong><br>
-    <span class="note">Gdzie liczby otwierają panoramę możliwości — i zapraszają, by wejść wyżej.</span>
-  </div>
-</div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
+            <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
+            <path d="M12 6v6l4 2" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Mapa Cykli Życia</strong><br>
+            <span class="note">Zobacz, kiedy przyspieszać, kiedy zbierać plony, a kiedy zmieniać kurs.</span>
+          </div>
+        </div>
 
-<div class="feature">
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--brand)"/>
-        <stop offset="1" stop-color="var(--brand-2)"/>
-      </linearGradient>
-    </defs>
-    <path d="M12 20l9-16H3z" stroke="url(#g4)" stroke-width="2" stroke-linejoin="round"/>
-  </svg>
-  <div>
-    <strong>Wyzwania: lekcje, które Cię wzmacniają</strong><br>
-    <span class="note">Delikatne punkty nacisku, z których rodzi się klarowność i siła.</span>
-  </div>
-</div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
+            <path d="M4 17h16V7H4z" stroke="url(#g3)" stroke-width="2"/>
+            <path d="M7 14l3-3 4 4" stroke="url(#g3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Szczyty: momenty najwyższego potencjału</strong><br>
+            <span class="note">Gdzie liczby otwierają panoramę możliwości — i zapraszają, by wejść wyżej.</span>
+          </div>
+        </div>
 
-<div class="feature">
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--brand)"/>
-        <stop offset="1" stop-color="var(--brand-2)"/>
-      </linearGradient>
-    </defs>
-    <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="url(#g5)" stroke-width="2"/>
-    <path d="M14 3v6h6" stroke="url(#g5)" stroke-width="2"/>
-    <path d="M8 13h8M8 17h8M8 9h3" stroke="url(#g5)" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-  <div>
-    <strong>Podsumowanie PDF</strong><br>
-    <span class="note">Przejrzyste sekcje, gotowe do druku.</span>
-  </div>
-</div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
+            <path d="M12 20l9-16H3z" stroke="url(#g4)" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Wyzwania: lekcje, które Cię wzmacniają</strong><br>
+            <span class="note">Delikatne punkty nacisku, z których rodzi się klarowność i siła.</span>
+          </div>
+        </div>
 
-<div class="feature">
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--brand)"/>
-        <stop offset="1" stop-color="var(--brand-2)"/>
-      </linearGradient>
-    </defs>
-    <rect x="6" y="5" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
-    <rect x="3" y="8" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
-    <path d="M9 13l2-2 3 3" stroke="url(#g6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="14" cy="9" r="1" fill="url(#g6)"/>
-  </svg>
-  <div>
-    <strong>3 plakaty</strong><br>
-    <span class="note">Spersonalizowane pod kolor aury Twojego znaku zodiaku.</span>
-  </div>
-</div>
-</aside>
-</section>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
+            <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="url(#g5)" stroke-width="2"/>
+            <path d="M14 3v6h6" stroke="url(#g5)" stroke-width="2"/>
+            <path d="M8 13h8M8 17h8M8 9h3" stroke="url(#g5)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <strong>Podsumowanie PDF</strong><br>
+            <span class="note">Przejrzyste sekcje, gotowe do druku.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--brand)"/>
+                <stop offset="1" stop-color="var(--brand-2)"/>
+              </linearGradient>
+            </defs>
+            <rect x="6" y="5" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
+            <rect x="3" y="8" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
+            <path d="M9 13l2-2 3 3" stroke="url(#g6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="14" cy="9" r="1" fill="url(#g6)"/>
+          </svg>
+          <div>
+            <strong>3 plakaty</strong><br>
+            <span class="note">Spersonalizowane pod kolor aury Twojego znaku zodiaku.</span>
+          </div>
+        </div>
+      </aside>
+    </section>
 
     <section id="jak-to-dziala" class="how">
       <h2 class="section-title">Jak to działa</h2>
@@ -548,11 +548,11 @@
           <label><input type="checkbox" id="marketing" /> [Opcjonalnie] Wyrażam zgodę na przesyłanie mi informacji handlowych drogą elektroniczną (e-mail).</label>
         </div>
 
-<div class="price" aria-live="polite">
-  <span class="was" style="font-size:1.56em;">129&nbsp;zł</span>
-  <span class="now" style="font-size:1.8em;">99&nbsp;zł</span>
-  <span class="note">brutto • PDF dostarczany e-mailem</span>
-</div>
+        <div class="price" aria-live="polite">
+          <span class="was" style="font-size:1.56em;">129&nbsp;zł</span>
+          <span class="now" style="font-size:1.8em;">99&nbsp;zł</span>
+          <span class="note">brutto • PDF dostarczany e-mailem</span>
+        </div>
 
         <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza" disabled>
           Przejdź do formularza
@@ -568,30 +568,30 @@
       </form>
     </section>
 
-   <section class="faq" id="faq">
-  <h2 class="section-title">FAQ</h2>
-  <div class="grid-3">
-    <details>
-      <summary>Jak szybko otrzymam raport?</summary>
-      <p>Zwykle w <strong>3–4 godziny</strong> w dni robocze (8:00–18:00). Zamówienia poza tymi godzinami, w weekendy lub święta realizujemy później – do najbliższych godzin roboczych.</p>
-    </details>
+    <section class="faq" id="faq">
+      <h2 class="section-title">FAQ</h2>
+      <div class="grid-3">
+        <details>
+          <summary>Jak szybko otrzymam raport?</summary>
+          <p>Zwykle w <strong>3–4 godziny</strong> w dni robocze (8:00–18:00). Zamówienia poza tymi godzinami, w weekendy lub święta realizujemy później – do najbliższych godzin roboczych.</p>
+        </details>
 
-    <details>
-      <summary>Pomyliłem imię/nazwisko – czy mogę prosić o korektę?</summary>
-      <p>Imię i nazwisko wpływają na obliczenia (samogłoski/spółgłoski), dlatego każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.</p>
-    </details>
+        <details>
+          <summary>Pomyliłem imię/nazwisko – czy mogę prosić o korektę?</summary>
+          <p>Imię i nazwisko wpływają na obliczenia (samogłoski/spółgłoski), dlatego każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.</p>
+        </details>
 
-    <details>
-      <summary>Co jeśli raport „nie pasuje”?</summary>
-      <p>Raport ma charakter informacyjno-rozrywkowy i może zawierać uogólnienia. Reklamacje oparte wyłącznie na subiektywnym odczuciu nie stanowią podstawy zwrotu. Jeśli widzisz <em>błąd techniczny</em> – napisz do nas.</p>
-    </details>
+        <details>
+          <summary>Co jeśli raport „nie pasuje”?</summary>
+          <p>Raport ma charakter informacyjno-rozrywkowy i może zawierać uogólnienia. Reklamacje oparte wyłącznie na subiektywnym odczuciu nie stanowią podstawy zwrotu. Jeśli widzisz <em>błąd techniczny</em> – napisz do nas.</p>
+        </details>
 
-    <details>
-      <summary>Czy użyć swojego nazwiska panieńskiego, czy aktualnego?</summary>
-      <p>W numerologii pitagorejskiej zalecane jest użycie <strong>nazwiska nadanego przy urodzeniu</strong>, czyli nazwiska panieńskiego.</p>
-    </details>
-  </div>
-</section>
+        <details>
+          <summary>Czy użyć swojego nazwiska panieńskiego, czy aktualnego?</summary>
+          <p>W numerologii pitagorejskiej zalecane jest użycie <strong>nazwiska nadanego przy urodzeniu</strong>, czyli nazwiska panieńskiego.</p>
+        </details>
+      </div>
+    </section>
 
     <section class="card" style="padding:20px" aria-labelledby="disclaimer">
       <h2 id="disclaimer" class="section-title" style="margin-bottom:6px">Ważne informacje</h2>
