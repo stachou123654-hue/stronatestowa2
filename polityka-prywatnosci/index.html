@@ -1,234 +1,327 @@
 <!DOCTYPE html>
-
 <html lang="pl">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Polityka prywatności – Twój Cyfrowy Kompas</title>
 <meta content="Polityka prywatności (RODO) dla sklepu Twój Cyfrowy Kompas." name="description"/>
-<!-- Fonts: Inter + Cinzel (jak na index) -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
-    :root{
-      --bg:#f4f5f9; --text:#1f2430; --muted:#5f6b7a; --card:#ffffff;
-      --brand:#F4A77C; --brand-2:#8EC5F5; --shadow:0 10px 30px rgba(14,22,34,.12); --radius:16px;
-      --mobile-logo-offset: 74px; /* kompensacja wysokości przypiętego logo */
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      color:var(--text);background:var(--bg);font-size:14px;line-height:1.5
-    }
-
-    /* TŁO – jak na index: wycentrowane, cover (ścieżka z podkatalogu) */
-    body::before{
-      content:""; position:fixed; inset:0; z-index:-2;
-      background-image:url('../assets/img/Rak.jpg');
-      background-repeat:no-repeat;
-      background-size:cover;
-      background-position:center center;
-      background-attachment:fixed;
-      filter:saturate(105%) contrast(102%);
-    }
-    body::after{
-      content:""; position:fixed; inset:0; z-index:-1;
-      background:
-        radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),
-        radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
-      pointer-events:none
-    }
-
-    a{color:var(--brand);text-underline-offset:2px}
-    .container{max-width:1120px;margin:0 auto;padding:24px}
-
-    /* === HEADER – identyczny układ i style jak na index === */
-    header{
-      position:sticky; top:0;
-      backdrop-filter:saturate(180%) blur(12px);
-      background:rgba(255,255,255,.6);
+  :root{
+    --bg:#f4f5f9; --text:#1f2430; --muted:#5f6b7a; --card:#ffffff;
+    --brand:#F4A77C; --brand-2:#8EC5F5; --shadow:0 10px 30px rgba(14,22,34,.12); --radius:16px;
+    --mobile-logo-offset: 74px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);background:var(--bg);font-size:14px;line-height:1.5
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2;
+    background-image:url('../assets/img/Rak.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    filter:saturate(105%) contrast(102%);
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),
+      radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+    pointer-events:none
+  }
+  a{color:var(--brand);text-underline-offset:2px}
+  .container{max-width:1120px;margin:0 auto;padding:24px}
+  header{
+    position:sticky; top:0;
+    backdrop-filter:saturate(180%) blur(12px);
+    background:rgba(255,255,255,.6);
+    border-bottom:1px solid rgba(20,24,30,.06);
+    z-index:10
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .brand{
+    font-family:"Cinzel", serif;
+    font-weight:700;
+    font-size:clamp(22px, 3.2vw, 36px);
+    line-height:1;
+    letter-spacing:.4px;
+    text-decoration:none;
+    display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
+    background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  nav.nav-menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .nav-menu a{color:var(--text);text-decoration:none;opacity:.9;padding:.25rem .125rem}
+  .nav-menu .cta{
+    padding:10px 16px;border-radius:12px;
+    background:linear-gradient(135deg,var(--brand),#ea8d59);
+    color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)
+  }
+  main{min-height:60vh}
+  .breadcrumbs{font-size:14px;color:#465061}
+  .breadcrumbs a{color:inherit}
+  .page-title{padding:48px 0 8px;margin:0}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));border:1px solid rgba(20,24,30,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .prose{padding:18px;font-size:14px}
+  .prose h2,.prose h3{margin:1em 0 .3em}
+  .prose h2{font-size:18px}
+  .prose h3{font-size:16px;color:#2d394a}
+  .prose p, .prose li{color:#3f4a5a}
+  .prose ul{padding-left:18px}
+  .notice{padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.8);border:1px solid rgba(20,24,30,.08);margin:.8rem 0}
+  .toc{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+  .toc a{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.85);border:1px solid rgba(20,24,30,.08);color:#3b4656;text-decoration:none}
+  footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+  @media (max-width: 980px){.container{padding:20px}}
+  @media (max-width: 768px){
+    body::before{ background-attachment:scroll; background-position:50% 50%; }
+    .logo{
+      position:fixed;
+      top:8px; left:0; right:0;
+      text-align:center;
+      z-index:1000;
+      padding:10px 16px;
+      background:rgba(255,255,255,.92);
       border-bottom:1px solid rgba(20,24,30,.06);
-      z-index:10
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-
-    /* Logo (brand) – Cinzel z gradientem jak na index */
-    .brand{
-      font-family:"Cinzel", serif;
-      font-weight:700;
-      font-size:clamp(22px, 3.2vw, 36px);
-      line-height:1;
-      letter-spacing:.4px;
-      text-decoration:none;
-      display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
-      background:linear-gradient(135deg,var(--brand),var(--brand-2));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+    body{ padding-top: var(--mobile-logo-offset); }
+    .nav{
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      padding-top: calc(var(--mobile-logo-offset) - 24px);
     }
-
-    /* Menu (te same klasy) */
-    nav.nav-menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-    .nav-menu a{color:var(--text);text-decoration:none;opacity:.9;padding:.25rem .125rem}
-    .nav-menu .cta{
-      padding:10px 16px;border-radius:12px;
-      background:linear-gradient(135deg,var(--brand),#ea8d59);
-      color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)
-    }
-
-    /* Kontent */
-    main{min-height:60vh}
-    .breadcrumbs{font-size:14px;color:#465061}
-    .breadcrumbs a{color:inherit}
-    .page-title{padding:48px 0 8px;margin:0}
-
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));border:1px solid rgba(20,24,30,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .prose{padding:18px;font-size:14px}
-    .prose h2,.prose h3{margin:1em 0 .3em}
-    .prose h2{font-size:18px}
-    .prose h3{font-size:16px;color:#2d394a}
-    .prose p, .prose li{color:#3f4a5a}
-    .prose ul{padding-left:18px}
-    .notice{padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.8);border:1px solid rgba(20,24,30,.08);margin:.8rem 0}
-
-    .toc{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
-    .toc a{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.85);border:1px solid rgba(20,24,30,.08);color:#3b4656;text-decoration:none}
-
-    footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
-
-    @media (max-width: 980px){.container{padding:20px}}
-
-    /* === MOBILE: przypięte logo jak na index + kompensacja === */
-    @media (max-width: 768px){
-      body::before{ background-attachment:scroll; background-position:50% 50%; }
-
-      .logo{
-        position:fixed;
-        top:8px; left:0; right:0;
-        text-align:center;
-        z-index:1000;
-        padding:10px 16px;
-        background:rgba(255,255,255,.92);
-        border-bottom:1px solid rgba(20,24,30,.06);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-      }
-      body{ padding-top: var(--mobile-logo-offset); }
-
-      .nav{
-        flex-direction:column;
-        align-items:center;
-        gap:10px;
-        padding-top: calc(var(--mobile-logo-offset) - 24px);
-      }
-      nav.nav-menu{ gap:14px; justify-content:center; }
-    }
-  </style>
-<!-- Usuwanie 'index.html' z adresu (bez przeładowania) gdy ktoś wejdzie bezpośrednio na .../index.html -->
+    nav.nav-menu{ gap:14px; justify-content:center; }
+  }
+</style>
 <script>
-    (function () {
-      const p = location.pathname;
-      const cleaned = p.replace(/index\.html$/i, '');
-      if (cleaned !== p) {
-        const newUrl = (cleaned || '/')
-          + location.search
-          + location.hash;
-        history.replaceState(null, '', newUrl);
-      }
-    })();
-  </script>
+  (function () {
+    const p = location.pathname;
+    const cleaned = p.replace(/index\.html$/i, '');
+    if (cleaned !== p) {
+      const newUrl = (cleaned || '/')
+        + location.search
+        + location.hash;
+      history.replaceState(null, '', newUrl);
+    }
+  })();
+</script>
 </head>
 <body>
 <header>
-<div class="container nav">
-<div class="logo">
-<!-- Logo identyczne jak na index; href poprawimy także w JS -->
-<a aria-label="Twój Cyfrowy Kompas – strona główna" class="brand" href="../">Twój Cyfrowy Kompas</a>
-</div>
-<!-- Te same klasy i styl nawigacji jak na index -->
-<nav aria-label="Główna nawigacja" class="nav-menu">
-<a href="../#jak-to-dziala">Jak to działa</a>
-<a href="../#faq">FAQ</a>
-<a class="cta" href="../#zamow">Zamów raport</a>
-</nav>
-</div>
+  <div class="container nav">
+    <div class="logo">
+      <a aria-label="Twój Cyfrowy Kompas – strona główna" class="brand" href="../">Twój Cyfrowy Kompas</a>
+    </div>
+    <nav aria-label="Główna nawigacja" class="nav-menu">
+      <a href="../#jak-to-dziala">Jak to działa</a>
+      <a href="../#faq">FAQ</a>
+      <a class="cta" href="../#zamow">Zamów raport</a>
+    </nav>
+  </div>
 </header>
-<main class="container">
-<div class="breadcrumbs"><a href="../">Strona główna</a> › <span>Polityka prywatności</span></div>
-<h1 class="page-title">Polityka prywatności</h1>
-<section class="card prose">
-<nav aria-label="Spis treści" class="toc">
-<a href="#polityka">Polityka prywatności (RODO)</a>
-</nav>
-<h2>POLITYKA PRYWATNOŚCI (RODO)</h2>
-<p><strong>Obowiązuje od:</strong> [data publikacji]</p>
-<p><strong>Administrator danych:</strong> Twoj Cyfrowy Kompas sp. z o.o., ul. Przykładowa 10, 00-000 Warszawa, Polska, e-mail: raport@twojcyfrowykompas.pl.</p>
-<div class="notice"><strong>Uwaga:</strong> Przed publikacją uzupełnij nazwy dostawców (płatności/hosting/analityka), ewentualne transfery poza EOG, listę cookies oraz datę wejścia w życie i numer wersji dokumentu.</div>
-<h3>1) Postanowienia ogólne</h3>
-<p>Niniejsza Polityka opisuje zasady przetwarzania danych osobowych Klientów i Użytkowników sklepu internetowego.</p>
-<h3>2) Jakie dane przetwarzamy</h3>
-<ul>
-<li>dane identyfikacyjne: imię, nazwisko,</li>
-<li>dane do personalizacji: data urodzenia,</li>
-<li>dane kontaktowe: adres e-mail,</li>
-<li>dane transakcyjne,</li>
-<li>dane techniczne/cookies (za zgodą).</li>
-</ul>
-<h3>3) Cele i podstawy prawne</h3>
-<ul>
-<li>Realizacja umowy – art. 6 ust. 1 lit. b RODO,</li>
-<li>Obowiązki prawne – art. 6 ust. 1 lit. c RODO,</li>
-<li>Uzasadniony interes – art. 6 ust. 1 lit. f RODO,</li>
-<li>Marketing na zgodzie – art. 6 ust. 1 lit. a RODO.</li>
-</ul>
-<h3>4) Odbiorcy danych</h3>
-<p>Operator płatności, dostawcy IT/hostingu, księgowość, prawnicy, organy publiczne.</p>
-<h3>5) Przekazywanie poza EOG</h3>
-<p>W razie transferów stosujemy odpowiednie zabezpieczenia, m.in. standardowe klauzule umowne.</p>
-<h3>6) Okres przechowywania</h3>
-<ul>
-<li>dane umowne – do 6 lat,</li>
-<li>marketing (na zgodzie) – do wycofania,</li>
-<li>cookies – zgodnie z żywotnością plików.</li>
-</ul>
-<h3>7) Prawa osób</h3>
-<p>Dostęp, sprostowanie, usunięcie, ograniczenie, przenoszenie, sprzeciw, skarga do PUODO.</p>
-<h3>8) Kontakt</h3>
-<p>Napisz do nas na &lt;raport@twojcyfrowykompas.pl&gt;.</p>
-</article>
-</section>
-</main>
-<footer>
-<div class="container">
-<div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
-<small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
-<div style="display:flex;gap:16px">
-<a href="../">Strona główna</a>
-<a href="../#zamow">Zamów</a>
-<a href="../kontakt/">Kontakt</a>
-</div>
-</div>
-</div>
-</footer>
-<!-- LOGO: klik = przejście na stronę główną (bez "index.html");
-       jeśli już na głównej → tylko scroll do góry -->
-<script>
-    (function () {
-      const logo = document.querySelector('a.brand');
-      if (!logo) return;
 
-      logo.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = '../';
-        // jeśli już na głównej, nie przeładowuj
-        if (location.pathname.replace(/\/+$/, '') === ''.replace(/\/+$/, '')) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          window.location.href = target;
-        }
-      });
-    })();
-  </script>
+<main class="container">
+  <div class="breadcrumbs"><a href="../">Strona główna</a> › <span>Polityka prywatności</span></div>
+  <h1 class="page-title">Polityka prywatności</h1>
+
+  <section class="card prose" id="polityka">
+    <nav aria-label="Spis treści" class="toc">
+      <a href="#polityka">Polityka (RODO)</a>
+      <a href="#administrator">Administrator danych</a>
+      <a href="#zakres">Zakres i definicje</a>
+      <a href="#postanowienia">Postanowienia ogólne</a>
+      <a href="#cele-podstawy">Cele i podstawy</a>
+      <a href="#kategorie-zrodla">Kategorie danych</a>
+      <a href="#weryfikacja">Brak weryfikacji</a>
+      <a href="#osoby-obdarowane">Osoby obdarowane</a>
+      <a href="#konsekwencje">Konsekwencje niepodania</a>
+      <a href="#profilowanie">Profilowanie</a>
+      <a href="#odbiorcy">Odbiorcy</a>
+      <a href="#stripe">Operator płatności</a>
+      <a href="#transfery">Przekazywanie poza EOG</a>
+      <a href="#okresy">Okres przechowywania</a>
+      <a href="#prawa">Prawa osób</a>
+      <a href="#realizacja-praw">Realizacja praw</a>
+      <a href="#dzieci">Dane dzieci</a>
+      <a href="#cookies">Pliki cookie</a>
+      <a href="#iod">Inspektor Ochrony Danych</a>
+      <a href="#bezpieczenstwo">Bezpieczeństwo</a>
+      <a href="#zmiany">Zmiany Polityki</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#info-osoby-obdarowane">Informacja dla osób obdarowanych</a>
+    </nav>
+
+    <h2>POLITYKA PRYWATNOŚCI (RODO)</h2>
+    <p><strong>Obowiązuje od:</strong> 09.10.2025</p>
+
+    <h3 id="administrator">1) Administrator danych</h3>
+    <p><strong>Administrator danych:</strong> Twój Cyfrowy Kompas Stanisław Kuchno (jednoosobowa działalność gospodarcza)<br/>
+    <strong>NIP:</strong> 9452318946<br/>
+    <strong>REGON:</strong> 542962587<br/>
+    <strong>Adres:</strong> ul. Krzywy Zaułek 3/20, 30-123 Kraków<br/>
+    <strong>E-mail (kontakt ogólny):</strong> <a href="mailto:kontakt@twojcyfrowykompas.pl">kontakt@twojcyfrowykompas.pl</a>, <a href="mailto:raport@twojcyfrowykompas.pl">raport@twojcyfrowykompas.pl</a><br/>
+    <strong>E-mail (reklamacje):</strong> <a href="mailto:reklamacje@twojcyfrowykompas.pl">reklamacje@twojcyfrowykompas.pl</a></p>
+
+    <h3 id="zakres">2) Zakres i definicje</h3>
+    <p>Niniejsza Polityka dotyczy przetwarzania danych osobowych Użytkowników i Klientów korzystających ze sklepu internetowego i usług cyfrowych Administratora.</p>
+    <ul>
+      <li><strong>Klient/Konsument</strong> – osoba fizyczna dokonująca zakupu w Sklepie (w tym przedsiębiorca na prawach konsumenta).</li>
+      <li><strong>Produkt</strong> – spersonalizowany raport numerologiczny (treść cyfrowa) dostarczany w formacie PDF.</li>
+      <li><strong>Umowa</strong> – umowa o dostarczenie treści cyfrowej zawierana na odległość.</li>
+      <li><strong>Dzień Roboczy</strong> – pon.–pt., z wyłączeniem dni ustawowo wolnych od pracy.</li>
+      <li><strong>Treść cyfrowa</strong> – treść wytwarzana i dostarczana w postaci cyfrowej.</li>
+    </ul>
+
+    <h3 id="postanowienia">3) Postanowienia ogólne</h3>
+    <p>Polityka jest spójna z zasadami sprzedaży treści cyfrowych w Sklepie (zakup, płatność, dostawa raportu PDF, reklamacje). Administrator świadczy usługi drogą elektroniczną zgodnie z prawem polskim oraz Regulaminem Sklepu.</p>
+
+    <h3 id="cele-podstawy">4) Cele i podstawy prawne przetwarzania</h3>
+    <p>Przetwarzamy dane wyłącznie w zakresie niezbędnym do poniższych celów:</p>
+    <ul>
+      <li><strong>Realizacja umowy</strong> (art. 6 ust. 1 lit. b RODO): przyjęcie i obsługa zamówienia, przygotowanie i dostarczenie raportu PDF, komunikacja w sprawie zamówienia.</li>
+      <li><strong>Obowiązek prawny</strong> (art. 6 ust. 1 lit. c RODO): rozliczenia księgowe i podatkowe, obsługa reklamacji i rękojmi.</li>
+      <li><strong>Uzasadniony interes</strong> (art. 6 ust. 1 lit. f RODO): zapewnienie bezpieczeństwa usługi (w tym prowadzenie logów), bieżąca korespondencja operacyjna, dochodzenie lub obrona roszczeń, podstawowe działania anty-fraudowe oraz personalizacja treści raportu zgodnie ze specyfikacją zamówienia.</li>
+      <li><strong>Zgoda</strong> (art. 6 ust. 1 lit. a RODO): dobrowolne komunikaty marketingowe – jeśli wdrożone; zgodę można wycofać w każdej chwili bez wpływu na zgodność przetwarzania sprzed wycofania.</li>
+    </ul>
+
+    <h3 id="kategorie-zrodla">5) Kategorie danych oraz źródła ich pozyskania</h3>
+    <p>Kategorie danych: dane identyfikacyjne (imię, nazwisko – opcjonalnie, jeśli wymagane przez Klienta do personalizacji), dane do personalizacji (data urodzenia), dane kontaktowe (adres e-mail), dane transakcyjne (identyfikator/status płatności), dane techniczne (adres IP, logi – w zakresie niezbędnym).</p>
+    <p>Źródła danych: dane otrzymujemy bezpośrednio od Użytkownika/Klienta poprzez formularz zamówienia; dane transakcyjne otrzymujemy od operatora płatności w zakresie rozliczenia (np. identyfikator/status płatności).</p>
+    <p>Dane przekazywane w formularzu mogą dotyczyć osób trzecich (np. osoby obdarowanej). Dane te pozyskujemy od Klienta i wykorzystujemy wyłącznie do przygotowania raportu.</p>
+
+    <h3 id="weryfikacja">6) Brak weryfikacji tożsamości i odpowiedzialność Klienta</h3>
+    <p>Nie weryfikujemy tożsamości ani prawdziwości danych przekazywanych w formularzu. Dane (w tym imię, nazwisko i data urodzenia) służą wyłącznie do stworzenia treści raportu oraz realizacji umowy.</p>
+    <p>Klient oświadcza, że posiada podstawę prawną do przekazania danych (w tym danych osoby trzeciej) i ponosi odpowiedzialność za legalność, zakres i rzetelność przekazanych danych.</p>
+    <p>Prosimy, aby nie przekazywać tzw. szczególnych kategorii danych (np. o zdrowiu, poglądach, wyznaniu) ani danych, które nie są niezbędne do realizacji zamówienia.</p>
+
+    <h3 id="osoby-obdarowane">7) Dane osób obdarowanych (art. 14 RODO)</h3>
+    <p>Jeśli zamówienie dotyczy raportu dla innej osoby, przetwarzamy jej imię i datę urodzenia wyłącznie w celu przygotowania treści raportu (art. 6 ust. 1 lit. f RODO – nasz prawnie uzasadniony interes w realizacji specyfikacji zamówienia i obsłudze roszczeń). Otrzymujemy te dane od Klienta i nie weryfikujemy ich prawdziwości.</p>
+    <p>Obowiązek informacyjny względem tej osoby realizujemy najpóźniej przy pierwszej komunikacji z nią lub w terminie do 1 miesiąca od pozyskania danych, przekazując informacje wymagane art. 14 RODO.</p>
+    <p><strong>Źródło danych:</strong> od Klienta składającego zamówienie. <strong>Odbiorcy/kategorie odbiorców:</strong> jak w sekcji 10. <strong>Okres przechowywania:</strong> jak w sekcji 13.</p>
+    <p>Osobie obdarowanej przysługują te same prawa, co Klientowi, w tym prawo sprzeciwu wobec przetwarzania na podstawie naszego uzasadnionego interesu.</p>
+    <p>Jeżeli nie dysponujemy danymi kontaktowymi osoby obdarowanej pozwalającymi na doręczenie informacji z art. 14 RODO w sposób proporcjonalny, stosujemy art. 14 ust. 5 lit. b RODO i publikujemy te informacje w łatwo dostępnym miejscu w serwisie (link „Informacja dla osób obdarowanych”).</p>
+
+    <h3 id="konsekwencje">8) Konsekwencje niepodania danych</h3>
+    <p>Podanie danych oznaczonych jako wymagane jest warunkiem zawarcia umowy i realizacji zamówienia (bez nich nie przygotujemy i nie dostarczymy raportu).</p>
+    <p>Podanie danych do komunikatów marketingowych jest dobrowolne i brak zgody nie wpływa na realizację umowy.</p>
+
+    <h3 id="profilowanie">9) Profilowanie i automatyzacja</h3>
+    <p>W celu personalizacji raportu stosujemy proste reguły oparte głównie na dacie urodzenia oraz podanych parametrach. Proces ma charakter półautomatyczny.</p>
+    <p>Profilowanie nie wywołuje skutków prawnych ani w porównywalny sposób istotnych; jego konsekwencją jest jedynie dopasowanie treści raportu do parametrów podanych w zamówieniu.</p>
+    <p>Masz prawo uzyskać interwencję człowieka, wyrazić swoje stanowisko i zakwestionować wynik.</p>
+
+    <h3 id="odbiorcy">10) Odbiorcy danych</h3>
+    <p>Dane mogą być ujawniane w niezbędnym zakresie: operatorowi płatności (niezależny administrator w zakresie autoryzacji/rozliczeń), naszym dostawcom IT/hostingu, księgowości, doradcom prawnym oraz uprawnionym organom publicznym – wyłącznie w zakresie koniecznym do realizacji celów wskazanych w sekcji 4.</p>
+
+    <h3 id="stripe">11) Operator płatności (Stripe) – niezależny administrator</h3>
+    <p>Stripe Payments Europe, Limited (Irlandia) działa jako niezależny administrator w zakresie autoryzacji i rozliczeń płatności; przetwarza m.in. dane transakcyjne, identyfikatory płatności oraz – w przypadkach wymaganych przepisami lub na potrzeby KYC/AML i antyfraud – dane identyfikacyjne płatnika.</p>
+    <p>Dla danych, których administratorem jest Stripe, prawa (dostęp, sprostowanie itp.) realizuje się bezpośrednio względem Stripe za pośrednictwem ich formularzy kontaktowych/Privacy Center.</p>
+
+    <h3 id="transfery">12) Przekazywanie danych poza EOG</h3>
+    <p>Korzystamy z dostawców technologicznych (np. narzędzia chmurowe) oraz Stripe jako niezależnego administratora płatności. Może to wiązać się z przekazaniem danych do państw trzecich (m.in. USA).</p>
+    <p>W przypadku przekazywania danych poza EOG korzystamy z: (i) decyzji adekwatności (np. EU-US Data Privacy Framework – dla certyfikowanych odbiorców w USA) oraz/lub (ii) standardowych klauzul umownych Komisji Europejskiej (SCC) z dodatkowymi środkami, jeśli to konieczne.</p>
+    <p>Informację o zastosowanych zabezpieczeniach oraz sposób uzyskania ich kopii przekażemy na żądanie (skontaktuj się z nami).</p>
+
+    <h3 id="okresy">13) Okres przechowywania danych</h3>
+    <ul>
+      <li>Dokumentacja księgowo-podatkowa: 5 lat od końca roku podatkowego.</li>
+      <li>Dane zamówienia i korespondencja: do upływu terminów przedawnienia roszczeń (co do zasady do 6 lat).</li>
+      <li>Logi techniczne/bezpieczeństwo: do 12 miesięcy (dłużej, jeśli wynika to z incydentu lub z obrony roszczeń).</li>
+      <li>Marketing (za zgodą): do wycofania zgody lub wniesienia sprzeciwu oraz przez okres niezbędny do wykazania rozliczalności.</li>
+    </ul>
+
+    <h3 id="prawa">14) Prawa osób, których dane dotyczą</h3>
+    <p>Masz prawo: dostępu do danych, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, wniesienia sprzeciwu wobec przetwarzania oraz wycofania zgody (jeśli przetwarzanie odbywa się na podstawie zgody).</p>
+    <p>Masz też prawo wnieść skargę do Prezesa UODO (ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl).</p>
+
+    <h3 id="realizacja-praw">15) Realizacja praw i weryfikacja tożsamości</h3>
+    <p>Na żądania dotyczące praw odpowiadamy co do zasady w ciągu 1 miesiąca (możliwe przedłużenie o kolejne 2 miesiące – poinformujemy).</p>
+    <p>Żądania możesz kierować na: <a href="mailto:kontakt@twojcyfrowykompas.pl">kontakt@twojcyfrowykompas.pl</a> lub <a href="mailto:reklamacje@twojcyfrowykompas.pl">reklamacje@twojcyfrowykompas.pl</a>.</p>
+    <p>Dla bezpieczeństwa możemy poprosić o informacje pozwalające potwierdzić Twoją tożsamość w zakresie adekwatnym do żądania; nie wymagamy dokumentów tożsamości, jeśli nie jest to konieczne.</p>
+
+    <h3 id="dzieci">16) Dane dzieci i ograniczenie wiekowe</h3>
+    <p>Usługi są przeznaczone wyłącznie dla osób pełnoletnich (18+). Składając zamówienie, oświadczasz, że masz ukończone 18 lat.</p>
+    <p>Nie prowadzimy aktywnej weryfikacji wieku, jednak możemy zablokować realizację zamówienia, jeśli poweźmiemy wiarygodną informację, że zamówienie złożyła osoba małoletnia.</p>
+
+    <h3 id="cookies">17) Pliki cookie i komunikacja marketingowa (jeśli stosowane)</h3>
+    <p>Strona może wykorzystywać pliki cookie i podobne technologie.</p>
+    <p>Niezbędne cookie przetwarzamy w uzasadnionym interesie; analityczne/reklamowe uruchamiamy dopiero po Twojej wyraźnej zgodzie w banerze cookie (zgodę możesz w każdej chwili zmienić).</p>
+    <p>Komunikację marketingową (np. newsletter) prowadzimy wyłącznie po uzyskaniu uprzedniej, dobrowolnej zgody; zgoda nie jest domyślnie zaznaczona i może być wycofana w każdym czasie bez wpływu na legalność wcześniejszego przetwarzania.</p>
+
+    <h3 id="iod">18) Inspektor Ochrony Danych</h3>
+    <p>Administrator nie wyznaczył Inspektora Ochrony Danych. Kontakt w sprawach danych: <a href="mailto:kontakt@twojcyfrowykompas.pl">kontakt@twojcyfrowykompas.pl</a>.</p>
+
+    <h3 id="bezpieczenstwo">19) Bezpieczeństwo przetwarzania (art. 32 RODO)</h3>
+    <p>Stosujemy odpowiednie środki techniczne i organizacyjne, w tym szyfrowanie transmisji (TLS), kontrolę dostępu i uprawnień, minimalizację zakresu danych, rejestrowanie zdarzeń bezpieczeństwa, regularne kopie zapasowe oraz przeglądy incydentów. Na bieżąco dostosowujemy środki bezpieczeństwa do poziomu ryzyka.</p>
+
+    <h3 id="zmiany">20) Zmiany Polityki</h3>
+    <p>Polityka może być aktualizowana w celu odzwierciedlenia zmian w procesach lub przepisach prawa. O istotnych zmianach poinformujemy w sposób widoczny na stronie (z podaniem nowej daty obowiązywania).</p>
+
+    <h3 id="kontakt">21) Kontakt</h3>
+    <p>W sprawach związanych z ochroną danych osobowych skontaktuj się z nami: <a href="mailto:kontakt@twojcyfrowykompas.pl">kontakt@twojcyfrowykompas.pl</a>, <a href="mailto:raport@twojcyfrowykompas.pl">raport@twojcyfrowykompas.pl</a>, <a href="mailto:reklamacje@twojcyfrowykompas.pl">reklamacje@twojcyfrowykompas.pl</a>.</p>
+  </section>
+
+  <section class="card prose" id="info-osoby-obdarowane" style="margin-top:16px;">
+    <h2>Informacja dla osób obdarowanych (art. 14 RODO)</h2>
+    <p>Niniejsza informacja jest skierowana do osób, dla których Klient zamówił spersonalizowany raport (np. w formie prezentu), a których dane (imię oraz data urodzenia) otrzymaliśmy pośrednio od Klienta.</p>
+    <h3>Zakres przetwarzanych danych</h3>
+    <p>Przetwarzamy: imię oraz datę urodzenia – wyłącznie w celu przygotowania i personalizacji raportu.</p>
+    <h3>Cel i podstawa prawna</h3>
+    <p>Przygotowanie spersonalizowanej treści raportu na podstawie zamówienia Klienta – nasz prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO).</p>
+    <h3>Źródło danych</h3>
+    <p>Dane otrzymaliśmy od osoby składającej zamówienie (Klienta).</p>
+    <h3>Odbiorcy danych</h3>
+    <p>W niezbędnym zakresie: operator płatności (jako niezależny administrator w zakresie autoryzacji/rozliczeń), nasi dostawcy IT/hostingu, księgowość, doradcy prawni oraz uprawnione organy – wyłącznie jeśli to konieczne.</p>
+    <h3>Przekazywanie do państw trzecich</h3>
+    <p>Może dochodzić do transferów poza EOG (np. w związku z korzystaniem z narzędzi chmurowych); stosujemy odpowiednie zabezpieczenia (decyzje adekwatności lub standardowe klauzule umowne).</p>
+    <h3>Okres przechowywania</h3>
+    <p>Jak w części „Okres przechowywania danych” Polityki (sekcja 13).</p>
+    <h3>Prawa osoby, której dane dotyczą</h3>
+    <p>Masz prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz sprzeciwu wobec przetwarzania. Przysługuje Ci także prawo wniesienia skargi do Prezesa UODO.</p>
+    <h3>Kontakt</h3>
+    <p>W sprawach dotyczących danych skontaktuj się: <a href="mailto:kontakt@twojcyfrowykompas.pl">kontakt@twojcyfrowykompas.pl</a>, <a href="mailto:raport@twojcyfrowykompas.pl">raport@twojcyfrowykompas.pl</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+      <small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
+      <div style="display:flex;gap:16px">
+        <a href="../">Strona główna</a>
+        <a href="../#zamow">Zamów</a>
+        <a href="../kontakt/">Kontakt</a>
+        <a href="#info-osoby-obdarowane" aria-label="Informacja dla osób obdarowanych">Informacja dla osób obdarowanych</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const logo = document.querySelector('a.brand');
+    if (!logo) return;
+    logo.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = '../';
+      if (location.pathname.replace(/\/+$/, '') === ''.replace(/\/+$/, '')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.location.href = target;
+      }
+    });
+  })();
+</script>
 </body>
 </html>
