@@ -758,6 +758,15 @@
       });
     })();
   </script>
+<script>
+  (function () {
+    const basePath = location.pathname.replace(/[^/]*$/, ''); // np. "/stronatestowa2/"
+    // stopka
+    document.querySelector('a[href="./regulamin/"]')?.setAttribute('href', basePath + 'regulamin/');
+    document.querySelector('a[href="./polityka-prywatnosci/"]')?.setAttribute('href', basePath + 'polityka-prywatnosci/');
+    document.querySelector('a[href="kontakt/"]')?.setAttribute('href', basePath + 'kontakt/');
+  })();
+</script>
 
   <script>
     (function () {
