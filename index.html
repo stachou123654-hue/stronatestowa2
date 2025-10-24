@@ -51,7 +51,7 @@
         ttq.instance=function(a){for(var b=ttq._i[a]||[],c=0;c<ttq.methods.length;c++)ttq.setAndDefer(b,ttq.methods[c]);return b};
         ttq.load=function(a,b){
           var c="https://analytics.tiktok.com/i18n/pixel/events.js",e=b&&b.partner;
-          ttq._i=ttq._i||{},ttq._i[a]=[],ttq._i[a]._U=c,ttq._t=ttq._t||{},ttq._t[a]=+new Date,ttq._o=ttq._o||{};
+          ttq._i=ttq._i||{},ttq._i[a]=[],ttq._i[a]._U=c,ttq._t[a]=+new Date,ttq._o||={};
           b=d.createElement("script");b.type="text/javascript";b.async=!0;b.src=c+"?sdkid="+a+"&lib="+t;
           a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)
         };
@@ -254,6 +254,38 @@
 
       .mini-trust{display:flex;gap:12px;flex-wrap:wrap;margin:.5rem 0 0;padding:0;list-style:none;font-weight:700;color:#0e1420}
       .mini-trust li{background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 10px}
+    </style>
+
+    <style id="ctr-polish">
+      :root{--radius:16px;--shadow:0 10px 24px rgba(14,22,34,.10)}
+      body::after{background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88))}
+      section{padding:28px 0}
+      .hero{gap:20px}
+      @media (max-width:768px){ .hero{padding:12px 0 18px} }
+      .hero h1 span[style*="1.5em"]{letter-spacing:.2px}
+      .hero h1 span[style*="0.8em"]{color:#1a2230}
+      .badges{gap:8px;margin:14px 0 18px}
+      .badge{border-color:var(--border-soft);padding:7px 10px}
+      .btn{box-shadow:0 10px 18px rgba(244,167,124,.28)}
+      .hero a.btn{margin-top:12px}
+      .ribbon{transform:none;right:16px;top:16px;border-radius:12px;box-shadow:0 8px 18px rgba(244,167,124,.22)}
+      .ribbon::after{display:none}
+      .product{padding-top:64px}
+      .product .feature{border-color:var(--border);box-shadow:none}
+      .product .feature div strong{font-weight:800}
+      .product .feature .note{opacity:.9}
+      @media (max-width:768px){.opinie-slider{display:none}.opinie{padding:6px 0 6px}}
+      .promo{padding:14px}
+      .promo .price-big{font-size:2.2em}
+      .deal-badge{box-shadow:none}
+      #zamow .price .now{font-size:2.1em !important}
+      #zamow .price .was{opacity:.7}
+      #zamow .mini-trust{margin-top:10px}
+      .sticky-cta{padding:8px;border-top:1px solid var(--border-soft);background:rgba(255,255,255,.98)}
+      .sticky-cta__btn{box-shadow:0 8px 16px rgba(244,167,124,.25);font-size:16px;padding:13px 16px;border-radius:14px}
+      .faq details{box-shadow:none;border-color:var(--border-soft)}
+      .faq summary{font-weight:800}
+      footer{background:rgba(255,255,255,.96)}
     </style>
 
     <script defer>
