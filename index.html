@@ -51,7 +51,7 @@
         ttq.instance=function(a){for(var b=ttq._i[a]||[],c=0;c<ttq.methods.length;c++)ttq.setAndDefer(b,ttq.methods[c]);return b};
         ttq.load=function(a,b){
           var c="https://analytics.tiktok.com/i18n/pixel/events.js",e=b&&b.partner;
-          ttq._i=ttq._i||{},ttq._i[a]=[],ttq._i[a]._U=c,ttq._t[a]=+new Date,ttq._o||={};
+          ttq._i=ttq._i||{},ttq._i[a]=[],ttq._i[a]._U=c,ttq._t=ttq._t||{},ttq._o=ttq._o||{};
           b=d.createElement("script");b.type="text/javascript";b.async=!0;b.src=c+"?sdkid="+a+"&lib="+t;
           a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)
         };
@@ -238,54 +238,16 @@
         .only-desktop{display:none}
         .stats--mobile .stat-number{font-size:clamp(72px,14vw,128px)}
       }
-
-      .opinie{padding:10px 0 26px}
-      .opinie-title{font-weight:900;margin:0 0 8px;color:#0e1420;text-align:center}
-      .opinie-slider{position:relative;width:min(860px,92vw);aspect-ratio:16/9;margin:10px auto;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--border);box-shadow:0 8px 18px rgba(14,22,34,.12);contain:layout paint}
-      .opinie-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;transform:translateX(100%);transition:transform .8s cubic-bezier(.22,.61,.36,1);will-change:transform;display:block;backface-visibility:hidden}
-      .opinie-slider img.show{transform:translateX(0)}
-      .opinie-slider img.leave{transform:translateX(-100%)}
-      .opinie-slider img.no-anim{transition:none !important}
-      @media (prefers-reduced-motion:reduce){ .opinie-slider img{transition:none} }
-
-      .sticky-cta{position:sticky;bottom:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--border);padding:10px}
-      .sticky-cta__btn{width:100%;font-weight:900;border:0;border-radius:14px;padding:14px 18px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;box-shadow:0 12px 26px rgba(244,167,124,.38)}
-      @media(min-width:769px){.sticky-cta{display:none}}
-
-      .mini-trust{display:flex;gap:12px;flex-wrap:wrap;margin:.5rem 0 0;padding:0;list-style:none;font-weight:700;color:#0e1420}
-      .mini-trust li{background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 10px}
     </style>
 
-    <style id="ctr-polish">
-      :root{--radius:16px;--shadow:0 10px 24px rgba(14,22,34,.10)}
-      body::after{background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88))}
-      section{padding:28px 0}
-      .hero{gap:20px}
-      @media (max-width:768px){ .hero{padding:12px 0 18px} }
-      .hero h1 span[style*="1.5em"]{letter-spacing:.2px}
-      .hero h1 span[style*="0.8em"]{color:#1a2230}
-      .badges{gap:8px;margin:14px 0 18px}
-      .badge{border-color:var(--border-soft);padding:7px 10px}
-      .btn{box-shadow:0 10px 18px rgba(244,167,124,.28)}
-      .hero a.btn{margin-top:12px}
-      .ribbon{transform:none;right:16px;top:16px;border-radius:12px;box-shadow:0 8px 18px rgba(244,167,124,.22)}
-      .ribbon::after{display:none}
-      .product{padding-top:64px}
-      .product .feature{border-color:var(--border);box-shadow:none}
-      .product .feature div strong{font-weight:800}
-      .product .feature .note{opacity:.9}
-      @media (max-width:768px){.opinie-slider{display:none}.opinie{padding:6px 0 6px}}
-      .promo{padding:14px}
-      .promo .price-big{font-size:2.2em}
-      .deal-badge{box-shadow:none}
-      #zamow .price .now{font-size:2.1em !important}
-      #zamow .price .was{opacity:.7}
-      #zamow .mini-trust{margin-top:10px}
-      .sticky-cta{padding:8px;border-top:1px solid var(--border-soft);background:rgba(255,255,255,.98)}
-      .sticky-cta__btn{box-shadow:0 8px 16px rgba(244,167,124,.25);font-size:16px;padding:13px 16px;border-radius:14px}
-      .faq details{box-shadow:none;border-color:var(--border-soft)}
-      .faq summary{font-weight:800}
-      footer{background:rgba(255,255,255,.96)}
+    <style>
+      .price { align-items: baseline; gap: 10px; }
+      .price .was{ font-size: clamp(12px, 1.6vw, 15px) !important; opacity: .65; text-decoration-thickness: .06em; }
+      .price .now{ display:inline-flex; align-items:baseline; gap:.08em; font-size: clamp(44px, 8.2vw, 78px) !important; line-height:.9; letter-spacing:-0.5px; font-weight:900; animation: price-pop .38s ease-out 1 both; }
+      .price .now .currency{ font-size:.42em; font-weight:800; opacity:.9; transform: translateY(-.08em); }
+      .price .save-badge{ display:inline-block; padding:.35em .6em; border-radius:999px; background:#fff; border:1px solid var(--border); box-shadow:0 6px 14px rgba(14,22,34,.10); font-size: clamp(11px, 1.6vw, 12px); font-weight:900; color:#0e1420; white-space:nowrap; transform: translateY(.15em); }
+      @keyframes price-pop{ 0%{transform:scale(.92); filter:brightness(1.02)} 100%{transform:scale(1); filter:brightness(1)} }
+      @media (max-width: 560px){ .price{flex-wrap:wrap} .price .note{flex-basis:100%} }
     </style>
 
     <script defer>
@@ -363,7 +325,7 @@
             <img id="slideB" alt="" />
           </div>
 
-          <a class="btn" href="#zamow" aria-label="Odbierz swój raport – przejdź do sekcji zamówienia">Odbierz swój raport</a>
+          <a class="btn" href="#zamow">Zamów teraz</a>
 
           <section class="stats stats--mobile only-mobile" aria-label="zaufanie i liczby">
             <div class="stats-wrap">
@@ -467,13 +429,6 @@
         </div>
       </section>
 
-      <section class="card promo" aria-label="promocja">
-        <p>
-          Raport <span class="price-big">49&nbsp;zł</span>
-          <span class="deal-badge">PDF 13 stron + 3 plakaty</span>
-        </p>
-      </section>
-
       <section id="zamow" class="card" aria-labelledby="zamow-tytul">
         <form class="form" id="orderForm" action="#" novalidate>
           <h2 id="zamow-tytul" class="section-title">Zamów Portret Numerologiczny</h2>
@@ -502,20 +457,15 @@
           </div>
 
           <div class="price" aria-live="polite">
-            <span class="was" style="font-size:1.56em;">79&nbsp;zł</span>
-            <span class="now" style="font-size:1.8em;">49&nbsp;zł</span>
+            <span class="was">79&nbsp;zł</span>
+            <span class="now"><span class="value">49</span><span class="currency">&nbsp;zł</span></span>
+            <span class="save-badge">oszczędzasz 30&nbsp;zł</span>
             <span class="note">brutto • PDF dostarczany e-mailem</span>
           </div>
 
-          <button id="payBtn" class="btn" type="button" aria-label="Zapłać i odbierz PDF — 13 stron + 3 plakaty">
-            Zapłać i odbierz PDF
+          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza" disabled>
+            Przejdź do formularza
           </button>
-
-          <ul class="mini-trust">
-            <li>🔒 Stripe • Szyfrowane</li>
-            <li>⚡ PDF w 3–4 h (8–18)</li>
-            <li>🖼️ 13 stron + 3 plakaty</li>
-          </ul>
 
           <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
 
@@ -579,25 +529,6 @@
         </div>
       </div>
     </footer>
-
-    <dialog id="consentModal" aria-label="Potwierdzenia przed płatnością">
-      <form method="dialog" class="form" style="max-width:560px">
-        <h3 style="margin:0 0 6px">Potwierdź i przejdź do płatności</h3>
-        <label><input type="checkbox" id="m_uwagaAck" required> Rozumiem, że dane wpływają na treść raportu.</label>
-        <label><input type="checkbox" id="m_terms" required> Akceptuję Regulamin i Politykę prywatności.</label>
-        <div style="display:flex;gap:10px;margin-top:10px">
-          <button value="cancel" class="btn" style="background:#e7eaef;color:#0e1420;box-shadow:none">Anuluj</button>
-          <button value="ok" class="btn">Przejdź do płatności</button>
-        </div>
-        <p class="note">Płatność obsługuje Stripe • Szyfrowane</p>
-      </form>
-    </dialog>
-
-    <div class="sticky-cta" role="region" aria-label="Szybka akcja">
-      <button class="sticky-cta__btn" data-scroll="#zamow" aria-label="Zamów raport — 49 zł">
-        Zamów za <strong>49&nbsp;zł</strong> ➜
-      </button>
-    </div>
 
     <script>
       (function () {
@@ -768,47 +699,71 @@
 
     <script>
       (function () {
-        const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
         const btn = document.getElementById('payBtn');
+        const form = document.getElementById('orderForm');
         const statusEl = document.getElementById('formStatus');
-        const modal = document.getElementById('consentModal');
+        const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
+        const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
 
-        function goStripe(){
-          statusEl.textContent='Przekierowuję do płatności…';
-          window.dataLayer?.push({event:'cta_redirect_stripe'});
-          window.ttq?.track('StartCheckout',{value:49,currency:'PLN'});
+        function updateEnabled() {
+          btn.disabled = !requiredChecks.every(i => i && i.checked);
+        }
+        requiredChecks.forEach(i => i && i.addEventListener('change', updateEnabled, { once:false }));
+        updateEnabled();
+
+        let processing = false;
+
+        function goToStripe() {
+          if (processing) return;
+          processing = true;
+          btn.disabled = true;
+          btn.setAttribute('aria-busy', 'true');
+          statusEl.textContent = 'Przekierowuję do płatności…';
           window.location.href = STRIPE_CHECKOUT_URL;
+
+        setTimeout(() => {
+            if (document.visibilityState === 'visible') {
+              processing = false;
+              btn.disabled = false;
+              btn.removeAttribute('aria-busy');
+              statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
+            }
+          }, 6000);
         }
 
-        btn?.addEventListener('click',()=>{
-          window.dataLayer?.push({event:'cta_pay_click'});
-          if(typeof modal?.showModal==='function'){ modal.showModal(); }
-          else { goStripe(); }
-        });
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          goToStripe();
+        }, { once:false });
 
-        modal?.addEventListener('close',()=>{
-          if(modal.returnValue==='ok'){
-            const ok = document.getElementById('m_uwagaAck')?.checked && document.getElementById('m_terms')?.checked;
-            if(ok){ goStripe(); } else { statusEl.textContent='Zaznacz wymagane zgody.'; }
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          goToStripe();
+        }, { once:false });
+
+        window.addEventListener('pageshow', (e) => {
+          if (e.persisted) {
+            processing = false;
+            btn.disabled = false;
+            btn.removeAttribute('aria-busy');
+            statusEl.textContent = '';
           }
         });
+      })();
+    </script>
 
-        document.querySelector('.hero a.btn')?.addEventListener('click',()=>{
-          window.dataLayer?.push({event:'cta_hero_click'});
-          window.ttq?.track('ClickButton',{content_name:'hero_cta'});
-        });
-
-        document.querySelector('a[href="#zamow"]')?.addEventListener('click',()=>{
-          window.dataLayer?.push({event:'cta_nav_click', location:'top_nav'});
-          window.ttq?.track('ClickButton',{content_name:'nav_cta'});
-        });
-
-        document.querySelector('.sticky-cta__btn')?.addEventListener('click',function(){
-          const id=this.getAttribute('data-scroll'); const el=id && document.querySelector(id);
-          if(el){ el.scrollIntoView({behavior:'smooth'}); }
-          window.dataLayer?.push({event:'cta_sticky_click', location:'sticky_mobile'});
-          window.ttq?.track('ClickButton',{content_name:'sticky_cta_mobile'});
-        });
+    <script>
+      (function(){
+        const btn = document.getElementById('payBtn');
+        const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
+        function label(){
+          const base = 'Przejdź do formularza';
+          btn.innerHTML = requiredChecks.every(i=>i && i.checked)
+            ? base + ' – 49&nbsp;zł'
+            : base;
+        }
+        requiredChecks.forEach(i=> i && i.addEventListener('change', label));
+        label();
       })();
     </script>
 
