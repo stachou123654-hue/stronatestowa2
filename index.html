@@ -165,7 +165,11 @@
       .price .was,.price .now{white-space:nowrap;line-height:1;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
       .price .was{color:var(--muted);font-weight:600;text-decoration-line:line-through;text-decoration-thickness:.08em;text-decoration-color:currentColor;text-decoration-skip-ink:none}
       .price .now{font-size:2.34em !important;font-weight:900}
-
+.price .now .value{ color:#0a8f44; }
+.price .now .currency{ color:#0a8f44; opacity:.95; }
+.price .now .value{
+  text-shadow: 0 1px 0 rgba(0,0,0,.05);
+}
       .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
       .btn:disabled{opacity:.6;cursor:not-allowed}
       .status{font-size:13px}
@@ -250,6 +254,8 @@
       @media (max-width: 560px){ .price{flex-wrap:wrap} .price .note{flex-basis:100%} }
     </style>
 
+
+
     <script defer>
       (function () {
         const p = location.pathname;
@@ -270,6 +276,60 @@
         }
       })();
     </script>
+
+<style>
+  @media (max-width: 560px){
+    #zamow .price{ gap:12px; flex-wrap:wrap; }
+    #zamow .price .now{
+      font-size: clamp(64px, 16vw, 108px) !important;
+      line-height:.86;
+      letter-spacing:-0.6px;
+    }
+    #zamow .price .now .currency{
+      font-size:.46em;
+      transform: translateY(-.12em);
+      opacity:.95;
+    }
+    #zamow .price .was{ font-size:12px !important; }
+    #zamow .price .save-badge{ font-size:11px; transform: translateY(.1em); }
+    #zamow .price .note{ flex-basis:100%; }
+  }
+
+  /* Bardzo małe ekrany */
+  @media (max-width: 360px){
+    #zamow .price .now{
+      font-size: clamp(56px, 18vw, 102px) !important;
+    }
+  }
+</style>
+<style>
+  #zamow.card{
+    background:#fff;
+    border-color:rgba(20,24,30,.26);
+    box-shadow:0 14px 38px rgba(14,22,34,.18), 0 2px 6px rgba(14,22,34,.10);
+  }
+  #zamow .section-title{
+    color:#0b1220;
+    letter-spacing:.1px;
+    text-shadow:0 1px 0 rgba(255,255,255,.8);
+  }
+  #zamow .note{ color:#1c2432; opacity:.95; }
+  #zamow .consents label{ color:#0f1622; }
+  #zamow .price .was{ color:#515b6b; opacity:.85; }
+  #zamow .price .now{ color:#0a8f44; }
+  #zamow .price .currency{ color:#0a8f44; opacity:.98; }
+  #zamow .btn{
+    background:linear-gradient(180deg,#e9773f,#cf612b);
+    box-shadow:0 14px 28px rgba(207,97,43,.45), 0 2px 6px rgba(0,0,0,.12);
+  }
+  #zamow .btn:hover{ filter:saturate(1.05) brightness(1.02); transform:translateY(-1px); }
+  #zamow .btn:active{ transform:translateY(0); filter:none; }
+  #zamow .btn:focus-visible{ outline:3px solid #2468A8; outline-offset:2px; }
+  @media (max-width:768px){
+    #zamow.card{ box-shadow:0 18px 46px rgba(14,22,34,.22), 0 2px 6px rgba(14,22,34,.12); }
+  }
+</style>
+
   </head>
 
   <body>
@@ -421,13 +481,9 @@
         </div>
       </section>
 
-      <section class="opinie" aria-label="opinie klientów">
-        <h3 class="opinie-title">Co mówią klienci</h3>
-        <div class="opinie-slider" aria-live="polite">
-          <img id="opA" alt="" />
-          <img id="opB" alt="" />
-        </div>
-      </section>
+<!-- Elfsight Etsy Reviews | Untitled Etsy Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
 
       <section id="zamow" class="card" aria-labelledby="zamow-tytul">
         <form class="form" id="orderForm" action="#" novalidate>
@@ -721,7 +777,7 @@
           statusEl.textContent = 'Przekierowuję do płatności…';
           window.location.href = STRIPE_CHECKOUT_URL;
 
-        setTimeout(() => {
+          setTimeout(() => {
             if (document.visibilityState === 'visible') {
               processing = false;
               btn.disabled = false;
@@ -759,7 +815,7 @@
         function label(){
           const base = 'Przejdź do formularza';
           btn.innerHTML = requiredChecks.every(i=>i && i.checked)
-            ? base + ' – 49&nbsp;zł'
+            ? base + ' z ceną jedynie – 49&nbsp;zł'
             : base;
         }
         requiredChecks.forEach(i=> i && i.addEventListener('change', label));
