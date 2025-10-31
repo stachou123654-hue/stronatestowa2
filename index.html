@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
   <head>
-
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5CVK56C2M"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,7 +8,6 @@
       gtag('js', new Date());
       gtag('config', 'G-G5CVK56C2M');
     </script>
-
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,8 +35,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17646095414"></script>
     <script defer>
       window.dataLayer = window.dataLayer || [];
@@ -47,7 +42,6 @@
       gtag('js', new Date());
       gtag('config', 'AW-17646095414');
     </script>
-    <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -68,13 +62,13 @@
         src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
       />
     </noscript>
-    <!-- End Meta Pixel Code -->
 
     <script defer>
       !function (w, d, t) {
         w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
         ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
-        ttq.setAndDefer=function(a,b){a[b]=function(){a.push([b].concat([].slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+        ttq.setAndDefer=function(a,b){a[b]=function(){a.push([b].concat([].slice.call(arguments,0)))}};
+        for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
         ttq.instance=function(a){for(var b=ttq._i[a]||[],c=0;c<ttq.methods.length;c++)ttq.setAndDefer(b,ttq.methods[c]);return b};
         ttq.load=function(a,b){
           var c="https://analytics.tiktok.com/i18n/pixel/events.js",e=b&&b.partner;
@@ -192,11 +186,9 @@
       .price .was,.price .now{white-space:nowrap;line-height:1;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
       .price .was{color:var(--muted);font-weight:600;text-decoration-line:line-through;text-decoration-thickness:.08em;text-decoration-color:currentColor;text-decoration-skip-ink:none}
       .price .now{font-size:2.34em !important;font-weight:900}
-.price .now .value{ color:#0a8f44; }
-.price .now .currency{ color:#0a8f44; opacity:.95; }
-.price .now .value{
-  text-shadow: 0 1px 0 rgba(0,0,0,.05);
-}
+      .price .now .value{ color:#0a8f44; }
+      .price .now .currency{ color:#0a8f44; opacity:.95; }
+      .price .now .value{ text-shadow: 0 1px 0 rgba(0,0,0,.05); }
       .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
       .btn:disabled{opacity:.6;cursor:not-allowed}
       .status{font-size:13px}
@@ -281,97 +273,65 @@
       @media (max-width: 560px){ .price{flex-wrap:wrap} .price .note{flex-basis:100%} }
     </style>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '25081262318167853');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
-    <script defer>
-      (function () {
-        const p = location.pathname;
-        const cleaned = p.replace(/index\.html$/i, '');
-        if (cleaned !== p) {
-          const newUrl = (cleaned || '/') + location.search + location.hash;
-          history.replaceState(null, '', newUrl);
+    <style>
+      @media (max-width: 560px){
+        #zamow .price{ gap:12px; flex-wrap:wrap; }
+        #zamow .price .now{
+          font-size: clamp(64px, 16vw, 108px) !important;
+          line-height:.86;
+          letter-spacing:-0.6px;
         }
-      })();
-
-      (function(){
-        if (window.matchMedia && matchMedia('(max-width:768px)').matches){
-          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-          if (location.hash) history.replaceState(null,'', location.pathname + location.search);
-          window.addEventListener('load', function(){
-            window.scrollTo(0,0);
-          }, {once:true});
+        #zamow .price .now .currency{
+          font-size:.46em;
+          transform: translateY(-.12em);
+          opacity:.95;
         }
-      })();
-    </script>
+        #zamow .price .was{ font-size:12px !important; }
+        #zamow .price .save-badge{ font-size:11px; transform: translateY(.1em); }
+        #zamow .price .note{ flex-basis:100%; }
+      }
+      @media (max-width: 360px){
+        #zamow .price .now{
+          font-size: clamp(56px, 18vw, 102px) !important;
+        }
+      }
+    </style>
+    <style>
+      #zamow.card{
+        background:#fff;
+        border-color:rgba(20,24,30,.26);
+        box-shadow:0 14px 38px rgba(14,22,34,.18), 0 2px 6px rgba(14,22,34,.10);
+      }
+      #zamow .section-title{
+        color:#0b1220;
+        letter-spacing:.1px;
+        text-shadow:0 1px 0 rgba(255,255,255,.8);
+      }
+      #zamow .note{ color:#1c2432; opacity:.95; }
+      #zamow .consents label{ color:#0f1622; }
+      #zamow .price .was{ color:#515b6b; opacity:.85; }
+      #zamow .price .now{ color:#0a8f44; }
+      #zamow .price .currency{ color:#0a8f44; opacity:.98; }
+      #zamow .btn{
+        background:linear-gradient(180deg,#e9773f,#cf612b);
+        box-shadow:0 14px 28px rgba(207,97,43,.45), 0 2px 6px rgba(0,0,0,.12);
+      }
+      #zamow .btn:hover{ filter:saturate(1.05) brightness(1.02); transform:translateY(-1px); }
+      #zamow .btn:active{ transform:translateY(0); filter:none; }
+      #zamow .btn:focus-visible{ outline:3px solid #2468A8; outline-offset:2px; }
+      @media (max-width:768px){
+        #zamow.card{ box-shadow:0 18px 46px rgba(14,22,34,.22), 0 2px 6px rgba(14,22,34,.12); }
+      }
+      #zamow{ scroll-margin-top: 80px; }
+    </style>
 
-<style>
-  @media (max-width: 560px){
-    #zamow .price{ gap:12px; flex-wrap:wrap; }
-    #zamow .price .now{
-      font-size: clamp(64px, 16vw, 108px) !important;
-      line-height:.86;
-      letter-spacing:-0.6px;
-    }
-    #zamow .price .now .currency{
-      font-size:.46em;
-      transform: translateY(-.12em);
-      opacity:.95;
-    }
-    #zamow .price .was{ font-size:12px !important; }
-    #zamow .price .save-badge{ font-size:11px; transform: translateY(.1em); }
-    #zamow .price .note{ flex-basis:100%; }
-  }
-
-  /* Bardzo małe ekrany */
-  @media (max-width: 360px){
-    #zamow .price .now{
-      font-size: clamp(56px, 18vw, 102px) !important;
-    }
-  }
-</style>
-<style>
-  #zamow.card{
-    background:#fff;
-    border-color:rgba(20,24,30,.26);
-    box-shadow:0 14px 38px rgba(14,22,34,.18), 0 2px 6px rgba(14,22,34,.10);
-  }
-  #zamow .section-title{
-    color:#0b1220;
-    letter-spacing:.1px;
-    text-shadow:0 1px 0 rgba(255,255,255,.8);
-  }
-  #zamow .note{ color:#1c2432; opacity:.95; }
-  #zamow .consents label{ color:#0f1622; }
-  #zamow .price .was{ color:#515b6b; opacity:.85; }
-  #zamow .price .now{ color:#0a8f44; }
-  #zamow .price .currency{ color:#0a8f44; opacity:.98; }
-  #zamow .btn{
-    background:linear-gradient(180deg,#e9773f,#cf612b);
-    box-shadow:0 14px 28px rgba(207,97,43,.45), 0 2px 6px rgba(0,0,0,.12);
-  }
-  #zamow .btn:hover{ filter:saturate(1.05) brightness(1.02); transform:translateY(-1px); }
-  #zamow .btn:active{ transform:translateY(0); filter:none; }
-  #zamow .btn:focus-visible{ outline:3px solid #2468A8; outline-offset:2px; }
-  @media (max-width:768px){
-    #zamow.card{ box-shadow:0 18px 46px rgba(14,22,34,.22), 0 2px 6px rgba(14,22,34,.12); }
-  }
-</style>
+    <style>
+      .consent-error label{color:var(--danger)}
+      .consent-error input{outline:2px solid var(--danger);outline-offset:2px;border-radius:6px}
+      .consent-msg{margin-top:6px;font-size:12px;color:var(--danger);font-weight:700}
+      .shake{animation:shake .28s ease-in-out 1 both}
+      @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}100%{transform:translateX(0)}}
+    </style>
 
   </head>
 
@@ -524,9 +484,8 @@ src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
         </div>
       </section>
 
-<!-- Elfsight Etsy Reviews | Untitled Etsy Reviews -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
 
       <section id="zamow" class="card" aria-labelledby="zamow-tytul">
         <form class="form" id="orderForm" action="#" novalidate>
@@ -542,6 +501,7 @@ src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
               <input type="checkbox" id="uwagaAck" required />
               Rozumiem powyższą uwagę i potwierdzam, że dane do raportu podaję poprawnie.
             </label>
+            <div id="msg-uwagaAck" class="consent-msg" aria-live="polite"></div>
           </div>
 
           <div class="consents">
@@ -549,6 +509,7 @@ src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
               <input type="checkbox" id="terms" required />
               Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.
             </label>
+            <div id="msg-terms" class="consent-msg" aria-live="polite"></div>
           </div>
 
           <div class="consents">
@@ -562,8 +523,8 @@ src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
             <span class="note">brutto • PDF dostarczany e-mailem</span>
           </div>
 
-          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza" disabled>
-            Przejdź do formularza
+          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza — 49 zł">
+            Przejdź do formularza — 49&nbsp;zł
           </button>
 
           <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
@@ -797,35 +758,85 @@ src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
     </script>
 
     <script>
-      (function () {
+      (function(){
         const btn = document.getElementById('payBtn');
         const form = document.getElementById('orderForm');
         const statusEl = document.getElementById('formStatus');
         const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
-        const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
+        const uwaga = document.getElementById('uwagaAck');
+        const terms = document.getElementById('terms');
 
-        function updateEnabled() {
-          btn.disabled = !requiredChecks.every(i => i && i.checked);
+        function setError(input, message) {
+          const wrap = input.closest('.consents') || input.parentElement;
+          if (!wrap) return;
+          input.setAttribute('aria-invalid', message ? 'true' : 'false');
+          wrap.classList.toggle('consent-error', !!message);
+          const msgEl = wrap.querySelector('.consent-msg') || document.createElement('div');
+          if (!msgEl.classList.contains('consent-msg')) {
+            msgEl.className = 'consent-msg';
+            wrap.appendChild(msgEl);
+          }
+          msgEl.textContent = message || '';
         }
-        requiredChecks.forEach(i => i && i.addEventListener('change', updateEnabled, { once:false }));
-        updateEnabled();
 
-        let processing = false;
+        function validateConsents(opts) {
+          const o = Object.assign({focusFirstError:false, scrollIntoView:false}, opts||{});
+          let ok = true;
+
+          if (!uwaga.checked) {
+            setError(uwaga, 'Zaznacz, że rozumiesz powyższą uwagę.');
+            ok = false;
+          } else setError(uwaga, '');
+
+          if (!terms.checked) {
+            setError(terms, 'Zaznacz akceptację Regulaminu i Polityki prywatności.');
+            ok = false;
+          } else setError(terms, '');
+
+          if (!ok) {
+            const consentsBlock = uwaga.closest('#zamow') || form;
+            consentsBlock.classList.remove('shake');
+            void consentsBlock.offsetWidth;
+            consentsBlock.classList.add('shake');
+
+            const firstInvalid = !uwaga.checked ? uwaga : (!terms.checked ? terms : null);
+            if (o.scrollIntoView && firstInvalid) {
+              (firstInvalid.closest('.consents') || firstInvalid).scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            if (o.focusFirstError && firstInvalid) {
+              setTimeout(() => firstInvalid.focus({preventScroll:true}), 180);
+            }
+
+            statusEl.className = 'status status--error';
+            statusEl.textContent = 'Uzupełnij wymagane zgody.';
+          } else {
+            statusEl.className = 'status status--ok';
+            statusEl.textContent = '';
+          }
+
+          return ok;
+        }
 
         function goToStripe() {
-          if (processing) return;
-          processing = true;
-          btn.disabled = true;
-          btn.setAttribute('aria-busy', 'true');
+          if (!validateConsents({focusFirstError:true, scrollIntoView:true})) {
+            window.gtag && gtag('event','consents_missing',{location:'order_section'});
+            window.fbq && fbq('trackCustom','ConsentsMissing');
+            return;
+          }
+
+          window.gtag && gtag('event','begin_checkout',{ value:49, currency:'PLN', items:[{item_name:'Portret numerologiczny'}] });
+          window.fbq && fbq('track','InitiateCheckout',{ value:49, currency:'PLN' });
+
+          statusEl.className = 'status';
           statusEl.textContent = 'Przekierowuję do płatności…';
           window.location.href = STRIPE_CHECKOUT_URL;
 
           setTimeout(() => {
             if (document.visibilityState === 'visible') {
-              processing = false;
-              btn.disabled = false;
-              btn.removeAttribute('aria-busy');
+              statusEl.className = 'status status--error';
               statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
+              window.gtag && gtag('event','redirect_fail');
+              window.fbq && fbq('trackCustom','RedirectFail');
             }
           }, 6000);
         }
@@ -833,36 +844,25 @@ src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           goToStripe();
-        }, { once:false });
+        });
 
         form.addEventListener('submit', (e) => {
           e.preventDefault();
           goToStripe();
-        }, { once:false });
+        });
+
+        [uwaga, terms].forEach(i => i && i.addEventListener('change', () => {
+          validateConsents();
+        }));
 
         window.addEventListener('pageshow', (e) => {
           if (e.persisted) {
-            processing = false;
-            btn.disabled = false;
-            btn.removeAttribute('aria-busy');
             statusEl.textContent = '';
+            [uwaga,terms].forEach(i=>i && i.removeAttribute('aria-invalid'));
+            document.querySelectorAll('.consent-error').forEach(el=>el.classList.remove('consent-error'));
+            document.querySelectorAll('.consent-msg').forEach(el=>el.textContent='');
           }
         });
-      })();
-    </script>
-
-    <script>
-      (function(){
-        const btn = document.getElementById('payBtn');
-        const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
-        function label(){
-          const base = 'Przejdź do formularza';
-          btn.innerHTML = requiredChecks.every(i=>i && i.checked)
-            ? base + ' z ceną jedynie – 49&nbsp;zł'
-            : base;
-        }
-        requiredChecks.forEach(i=> i && i.addEventListener('change', label));
-        label();
       })();
     </script>
 
@@ -881,7 +881,6 @@ src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
         if (!logo) return;
         const basePath = location.pathname.replace(/[^/]*$/, '');
         const homeUrl = (basePath || '/');
-
         logo.setAttribute('href', homeUrl);
         logo.addEventListener('click', function (e) {
           e.preventDefault();
