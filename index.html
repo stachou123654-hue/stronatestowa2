@@ -287,7 +287,7 @@
           opacity:.95;
         }
         #zamow .price .was{ font-size:12px !important; }
-        #zamow .price .save-badge{ font-size:11px; transform: translateY(.1em); }
+        #zamow .save-badge{ font-size:11px; transform: translateY(.1em); }
         #zamow .price .note{ flex-basis:100%; }
       }
       @media (max-width: 360px){
@@ -780,7 +780,7 @@
         }
 
         function validateConsents(opts) {
-          const o = Object.assign({focusFirstError:false, scrollIntoView:false}, opts||{});
+          const o = Object.assign({focusFirstError:false, scrollIntoView:false, allowShake:false, setStatus:false}, opts||{});
           let ok = true;
 
           if (!uwaga.checked) {
@@ -794,31 +794,25 @@
           } else setError(terms, '');
 
           if (!ok) {
-            const consentsBlock = uwaga.closest('#zamow') || form;
-            consentsBlock.classList.remove('shake');
-            void consentsBlock.offsetWidth;
-            consentsBlock.classList.add('shake');
-
-            const firstInvalid = !uwaga.checked ? uwaga : (!terms.checked ? terms : null);
-            if (o.scrollIntoView && firstInvalid) {
-              (firstInvalid.closest('.consents') || firstInvalid).scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (o.allowShake) {
+              const consentsBlock = document.getElementById('zamow') || form;
+              consentsBlock.classList.remove('shake');
+              void consentsBlock.offsetWidth;
+              consentsBlock.classList.add('shake');
             }
-            if (o.focusFirstError && firstInvalid) {
-              setTimeout(() => firstInvalid.focus({preventScroll:true}), 180);
+            if (o.setStatus) {
+              statusEl.className = 'status status--error';
+              statusEl.textContent = 'Uzupełnij wymagane zgody.';
             }
-
-            statusEl.className = 'status status--error';
-            statusEl.textContent = 'Uzupełnij wymagane zgody.';
           } else {
             statusEl.className = 'status status--ok';
             statusEl.textContent = '';
           }
-
           return ok;
         }
 
         function goToStripe() {
-          if (!validateConsents({focusFirstError:true, scrollIntoView:true})) {
+          if (!validateConsents({focusFirstError:true, scrollIntoView:true, allowShake:true, setStatus:true})) {
             window.gtag && gtag('event','consents_missing',{location:'order_section'});
             window.fbq && fbq('trackCustom','ConsentsMissing');
             return;
