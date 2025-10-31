@@ -58,30 +58,8 @@
     fbq('track', 'PageView');
     </script>
     <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display:none"
-        src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
-      />
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"/>
     </noscript>
-
-    <script defer>
-      !function (w, d, t) {
-        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
-        ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
-        ttq.setAndDefer=function(a,b){a[b]=function(){a.push([b].concat([].slice.call(arguments,0)))}};
-        for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
-        ttq.instance=function(a){for(var b=ttq._i[a]||[],c=0;c<ttq.methods.length;c++)ttq.setAndDefer(b,ttq.methods[c]);return b};
-        ttq.load=function(a,b){
-          var c="https://analytics.tiktok.com/i18n/pixel/events.js",e=b&&b.partner;
-          ttq._i=ttq._i||{},ttq._i[a]=[],ttq._i[a]._U=c,ttq._t=ttq._t||{},ttq._o=ttq._o||{};
-          b=d.createElement("script");b.type="text/javascript";b.async=!0;b.src=c+"?sdkid="+a+"&lib="+t;
-          a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)
-        };
-        ttq.load('D3MCUE3C77U1STIOGJDG');ttq.page();
-      }(window, document, 'ttq');
-    </script>
 
     <script defer>
       (function(w,d,s,l,i){
@@ -225,7 +203,17 @@
         .hero{padding:8px 0 26px}
       }
 
-      .slidebox{position:relative;width:min(260px, 60vw);aspect-ratio:3/4;margin:12px auto 22px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--border);box-shadow:0 8px 18px rgba(14,22,34,.12)}
+      .slidebox{
+        position:relative;
+        width:min(300px, 62vw);
+        aspect-ratio:1/1;
+        margin:12px auto 22px;
+        border-radius:12px;
+        overflow:hidden;
+        background:#fff;
+        border:1px solid var(--border);
+        box-shadow:0 8px 18px rgba(14,22,34,.12)
+      }
       .slidebox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;opacity:0;transition:opacity .6s ease;will-change:opacity;display:block}
       .slidebox img.show{opacity:1}
       .hero .slidebox{margin-left:auto;margin-right:auto}
@@ -294,7 +282,7 @@
           opacity:.95;
         }
         #zamow .price .was{ font-size:12px !important; }
-        #zamow .save-badge{ font size:11px; transform: translateY(.1em); }
+        #zamow .save-badge{ font-size:11px; transform: translateY(.1em); }
         #zamow .price .note{ flex-basis:100%; }
       }
       @media (max-width: 360px){
@@ -358,19 +346,8 @@
         box-shadow:0 8px 18px rgba(14,22,34,.12);
         overflow:hidden;
       }
-      .mini-slider img{
-        position:absolute; inset:0;
-        width:100%; height:100%;
-        object-fit:contain;
-        display:block;
-      }
-      .mini-slider button{
-        position:absolute; top:50%; transform:translateY(-50%);
-        border:0; background:rgba(255,255,255,.9);
-        width:36px; height:42px; border-radius:10px;
-        display:grid; place-items:center; cursor:pointer;
-        box-shadow:0 6px 12px rgba(14,22,34,.18);
-      }
+      .mini-slider img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block;}
+      .mini-slider button{position:absolute; top:50%; transform:translateY(-50%); border:0; background:rgba(255,255,255,.9); width:36px; height:42px; border-radius:10px; display:grid; place-items:center; cursor:pointer; box-shadow:0 6px 12px rgba(14,22,34,.18);}
       .mini-slider button[disabled]{opacity:.5; cursor:not-allowed}
       .mini-slider .prev{ left:8px; }
       .mini-slider .next{ right:8px; }
@@ -402,17 +379,17 @@
         <div>
           <h1>
             <span class="h1-line1">
-              Zajrzyj pod powierzchnię <span class="gradient-text">Horoskopu</span>
+              Zajrzyj pod powierzchnię <span class="gradient-text">horoskopu</span>
             </span>
             <span class="h1-line2">
-              Poznaj precyzyjny portret <span class="gradient-text">Numerologiczny</span> oparty na Twoich danych
+              Poznaj precyzyjny portret <span class="gradient-text">numerologiczny</span> oparty na Twoich danych
             </span>
             <span class="h1-desc">
               Wejdź głębiej niż horoskop. Zobacz, co masz zapisane w liczbach, zanim spojrzysz w gwiazdy.
             </span>
           </h1>
 
-          <div class="slidebox" aria-label="Podgląd stron i plakatów">
+          <div class="slidebox" aria-label="Podgląd kwadratowych stron/plakatów">
             <img id="slideA" alt="" />
             <img id="slideB" alt="" />
           </div>
@@ -639,13 +616,11 @@
       (function () {
         const ASSET_VERSION = "2025-10-22";
         const files = [
-          "nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22",
-          "nastrone23","nastrone24","nastrone31","nastrone32",
-          "nastrone33","nastrone34","nastrone41","nastrone42",
-          "nastrone43","nastrone44"
+          "naslasha1","naslasha2","naslasha3","naslasha4","naslasha5","naslasha6",
+          "naslasha7","naslasha8","naslasha9","naslasha10","naslasha11","naslasha12"
         ];
         const base = "assets/img/";
-        const exts = [".jpg",".JPG",".jpeg",".JPEG",".png"];
+        const exts = [".jpg",".JPG",".jpeg",".JPEG",".png",".PNG"];
         const FADE_DELAY_MS = 700;
         const LOAD_TIMEOUT_MS = 3500;
 
@@ -653,27 +628,22 @@
         const b = document.getElementById("slideB");
         let visible = a, hidden = b, idx = 0;
 
-        function swapImgs(){
-          const t = visible; visible = hidden; hidden = t;
-        }
+        function swapImgs(){ const t = visible; visible = hidden; hidden = t; }
 
         function resolveSrc(name, cb) {
           let i = 0;
-          function tryNext() {
+          (function tryNext(){
             if (i >= exts.length) { cb(null); return; }
             const test = new Image();
             const src = base + name + exts[i++] + "?v=" + ASSET_VERSION;
             let settled = false;
-            const t = setTimeout(() => {
-              if (!settled) { settled = true; tryNext(); }
-            }, LOAD_TIMEOUT_MS);
+            const t = setTimeout(() => { if (!settled) { settled = true; tryNext(); } }, LOAD_TIMEOUT_MS);
             test.onload = () => { if (settled) return; settled = true; clearTimeout(t); cb(src); };
             test.onerror = () => { if (settled) return; settled = true; clearTimeout(t); tryNext(); };
             test.decoding = "async";
             test.loading = "eager";
             test.src = src;
-          }
-          tryNext();
+          })();
         }
 
         function showNext() {
