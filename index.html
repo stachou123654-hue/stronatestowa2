@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
   <head>
+
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5CVK56C2M"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -9,16 +11,17 @@
       gtag('config', 'G-G5CVK56C2M');
     </script>
 
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Twój Cyfrowy Kompas — Spersonalizowany Portret Numerologiczny</title>
-    <meta name="description" content="PDF 13 stron + 3 plakaty. Poznaj swoje cykle i szczyty oraz konkretne kroki. Płatność Stripe, dostawa na e-mail w godz. 8–18." />
+    <title>Twój Cyfrowy Kompas — Spersonalizowany raport numerologiczny</title>
+    <meta name="description" content="Weź ster w swoje ręce. Spersonalizowany raport numerologiczny w PDF: przejrzyste wnioski, konkretne kroki, szybka dostawa na e-mail." />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pl_PL" />
     <meta property="og:site_name" content="Twój Cyfrowy Kompas" />
-    <meta property="og:title" content="Spersonalizowany Portret Numerologiczny" />
+    <meta property="og:title" content="Spersonalizowany raport numerologiczny" />
     <meta property="og:description" content="PDF 13 stron + 3 plakaty. Klarowne wnioski i konkretne kroki. Dostawa e-mail w godz. 8–18." />
     <meta property="og:url" content="https://twojcyfrowykompas.pl/" />
     <meta property="og:image" content="https://twojcyfrowykompas.pl/assets/img/OG.jpg?v=2025-10-22" />
@@ -26,7 +29,7 @@
     <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Spersonalizowany Portret Numerologiczny" />
+    <meta name="twitter:title" content="Spersonalizowany raport numerologiczny" />
     <meta name="twitter:description" content="PDF 13 stron + 3 plakaty. Klarowne wnioski i konkretne kroki." />
     <meta name="twitter:image" content="https://twojcyfrowykompas.pl/assets/img/OG.jpg?v=2025-10-22" />
 
@@ -35,6 +38,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17646095414"></script>
     <script defer>
       window.dataLayer = window.dataLayer || [];
@@ -42,6 +47,28 @@
       gtag('js', new Date());
       gtag('config', 'AW-17646095414');
     </script>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '25081262318167853');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
 
     <script defer>
       !function (w, d, t) {
@@ -68,10 +95,16 @@
     </script>
 
     <style>
+      @media (min-width: 1024px) {
+        .faq .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .faq .grid-3 > details:nth-of-type(4){grid-column:2 / 3}
+      }
+    </style>
+
+    <style>
       :root{--bg:#eff1f6;--text:#141824;--muted:#4a5361;--card:#ffffff;--brand:#F29158;--brand-2:#6DB2F0;--accent:#F6C28B;--shadow:0 12px 34px rgba(14,22,34,.16);--radius:16px;--danger:#b02a1f;--ok:#1e7a31;--mobile-logo-offset: 56px;--border:rgba(20,24,30,.18);--border-soft:rgba(20,24,30,.12)}
       *{box-sizing:border-box}
       html,body{height:100%}
-      html{scroll-behavior:smooth}
       body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
       body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:url('assets/img/Rak.jpg?v=2025-10-22');background-repeat:no-repeat;background-size:cover;background-position:center center;background-attachment:fixed;filter:saturate(105%) contrast(104%)}
       body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(1200px 700px at 80% -10%, rgba(109,178,240,.32), transparent 55%),radial-gradient(900px 600px at -10% 20%, rgba(242,145,88,.30), transparent 60%),linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));pointer-events:none}
@@ -113,6 +146,7 @@
       @media (max-width:768px){nav.nav-menu{gap:10px}}
 
       .hero{padding:72px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+      .hero h1 .h1-sub{font-size:0.68em}
       .hero p{color:#2c3441;font-size:clamp(16px,2.2vw,18px)}
       .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px}
       .badge{padding:8px 12px;border:1px solid var(--border);border-radius:999px;color:#202836;background:#fff}
@@ -154,14 +188,15 @@
       .consents{display:grid;gap:10px;font-size:13px;color:#2d3644}
       .consents input{transform:translateY(1px)}
 
-      .price{display:flex;align-items:baseline;gap:10px;margin-top:6px;flex-wrap:wrap}
+      .price{display:flex;align-items:flex-end;gap:8px;margin-top:6px;flex-wrap:wrap}
       .price .was,.price .now{white-space:nowrap;line-height:1;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
       .price .was{color:var(--muted);font-weight:600;text-decoration-line:line-through;text-decoration-thickness:.08em;text-decoration-color:currentColor;text-decoration-skip-ink:none}
-      .price .now{display:inline-flex;align-items:baseline;gap:.08em;font-size: clamp(44px, 8.2vw, 78px) !important; line-height:.9; letter-spacing:-0.5px; font-weight:900; animation: price-pop .38s ease-out 1 both;}
-      .price .now .value{ color:#0a8f44; text-shadow: 0 1px 0 rgba(0,0,0,.05);}
-      .price .now .currency{ color:#0a8f44; opacity:.95; font-size:.42em; font-weight:800; transform: translateY(-.08em);}
-      .price .save-badge{ display:inline-block; padding:.35em .6em; border-radius:999px; background:#fff; border:1px solid var(--border); box-shadow:0 6px 14px rgba(14,22,34,.10); font-size: clamp(11px, 1.6vw, 12px); font-weight:900; color:#0e1420; white-space:nowrap; transform: translateY(.15em);}
-      @keyframes price-pop{ 0%{transform:scale(.92); filter:brightness(1.02)} 100%{transform:scale(1); filter:brightness(1)} }
+      .price .now{font-size:2.34em !important;font-weight:900}
+.price .now .value{ color:#0a8f44; }
+.price .now .currency{ color:#0a8f44; opacity:.95; }
+.price .now .value{
+  text-shadow: 0 1px 0 rgba(0,0,0,.05);
+}
       .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
       .btn:disabled{opacity:.6;cursor:not-allowed}
       .status{font-size:13px}
@@ -234,69 +269,110 @@
         .only-desktop{display:none}
         .stats--mobile .stat-number{font-size:clamp(72px,14vw,128px)}
       }
-
-      @media (max-width: 560px){
-        #zamow .price{ gap:12px; flex-wrap:wrap; }
-        #zamow .price .now{
-          font-size: clamp(64px, 16vw, 108px) !important;
-          line-height:.86;
-          letter-spacing:-0.6px;
-        }
-        #zamow .price .now .currency{
-          font-size:.46em;
-          transform: translateY(-.12em);
-          opacity:.95;
-        }
-        #zamow .price .was{ font-size:12px !important; }
-        #zamow .price .save-badge{ font-size:11px; transform: translateY(.1em); }
-        #zamow .price .note{ flex-basis:100%; }
-      }
-      @media (max-width: 360px){
-        #zamow .price .now{ font-size: clamp(56px, 18vw, 102px) !important; }
-      }
-
-      #zamow.card{
-        background:#fff;
-        border-color:rgba(20,24,30,.26);
-        box-shadow:0 14px 38px rgba(14,22,34,.18), 0 2px 6px rgba(14,22,34,.10);
-      }
-      #zamow .section-title{
-        color:#0b1220;
-        letter-spacing:.1px;
-        text-shadow:0 1px 0 rgba(255,255,255,.8);
-      }
-      #zamow .note{ color:#1c2432; opacity:.95; }
-      #zamow .consents label{ color:#0f1622; }
-      #zamow .price .was{ color:#515b6b; opacity:.85; }
-      #zamow .price .now{ color:#0a8f44; }
-      #zamow .price .currency{ color:#0a8f44; opacity:.98; }
-      #zamow .btn{
-        background:linear-gradient(180deg,#e9773f,#cf612b);
-        box-shadow:0 14px 28px rgba(207,97,43,.45), 0 2px 6px rgba(0,0,0,.12);
-      }
-      #zamow .btn:hover{ filter:saturate(1.05) brightness(1.02); transform:translateY(-1px); }
-      #zamow .btn:active{ transform:translateY(0); filter:none; }
-      #zamow .btn:focus-visible{ outline:3px solid #2468A8; outline-offset:2px; }
-      @media (max-width:768px){
-        #zamow.card{ box-shadow:0 18px 46px rgba(14,22,34,.22), 0 2px 6px rgba(14,22,34,.12); }
-      }
-
-      .trust-strip{display:flex;gap:8px;align-items:center;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#fff;margin-top:-4px}
-      .trust-strip span[aria-hidden]{letter-spacing:2px}
-
-      .mini-steps{display:flex;gap:12px;flex-wrap:wrap;margin:4px 0 0;padding:0;list-style:none}
-      .mini-steps li{padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:#fff;font-weight:700;font-size:13px}
-
-      .cta-bar{position:fixed;left:0;right:0;bottom:-120px;z-index:9999;background:rgba(255,255,255,.96);border-top:1px solid var(--border);box-shadow:0 -10px 24px rgba(14,22,34,.12);transition:bottom .28s ease}
-      .cta-bar.show{bottom:0}
-      .cta-bar__inner{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-      .cta-bar__price{font-size:14px;line-height:1.15}
-      .cta-bar__price .was{color:#6b7280;text-decoration:line-through;margin-right:6px}
-      .cta-bar__price .now{font-weight:900;color:#0a8f44}
-      .cta-bar__btn{padding:12px 18px;border-radius:12px}
-
-      #zamow .consents label.pulse{box-shadow:0 0 0 3px rgba(36,104,168,.18) inset;border-radius:8px;transition:box-shadow .25s}
     </style>
+
+    <style>
+      .price { align-items: baseline; gap: 10px; }
+      .price .was{ font-size: clamp(12px, 1.6vw, 15px) !important; opacity: .65; text-decoration-thickness: .06em; }
+      .price .now{ display:inline-flex; align-items:baseline; gap:.08em; font-size: clamp(44px, 8.2vw, 78px) !important; line-height:.9; letter-spacing:-0.5px; font-weight:900; animation: price-pop .38s ease-out 1 both; }
+      .price .now .currency{ font-size:.42em; font-weight:800; opacity:.9; transform: translateY(-.08em); }
+      .price .save-badge{ display:inline-block; padding:.35em .6em; border-radius:999px; background:#fff; border:1px solid var(--border); box-shadow:0 6px 14px rgba(14,22,34,.10); font-size: clamp(11px, 1.6vw, 12px); font-weight:900; color:#0e1420; white-space:nowrap; transform: translateY(.15em); }
+      @keyframes price-pop{ 0%{transform:scale(.92); filter:brightness(1.02)} 100%{transform:scale(1); filter:brightness(1)} }
+      @media (max-width: 560px){ .price{flex-wrap:wrap} .price .note{flex-basis:100%} }
+    </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '25081262318167853');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+    <script defer>
+      (function () {
+        const p = location.pathname;
+        const cleaned = p.replace(/index\.html$/i, '');
+        if (cleaned !== p) {
+          const newUrl = (cleaned || '/') + location.search + location.hash;
+          history.replaceState(null, '', newUrl);
+        }
+      })();
+
+      (function(){
+        if (window.matchMedia && matchMedia('(max-width:768px)').matches){
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+          if (location.hash) history.replaceState(null,'', location.pathname + location.search);
+          window.addEventListener('load', function(){
+            window.scrollTo(0,0);
+          }, {once:true});
+        }
+      })();
+    </script>
+
+<style>
+  @media (max-width: 560px){
+    #zamow .price{ gap:12px; flex-wrap:wrap; }
+    #zamow .price .now{
+      font-size: clamp(64px, 16vw, 108px) !important;
+      line-height:.86;
+      letter-spacing:-0.6px;
+    }
+    #zamow .price .now .currency{
+      font-size:.46em;
+      transform: translateY(-.12em);
+      opacity:.95;
+    }
+    #zamow .price .was{ font-size:12px !important; }
+    #zamow .price .save-badge{ font-size:11px; transform: translateY(.1em); }
+    #zamow .price .note{ flex-basis:100%; }
+  }
+
+  /* Bardzo małe ekrany */
+  @media (max-width: 360px){
+    #zamow .price .now{
+      font-size: clamp(56px, 18vw, 102px) !important;
+    }
+  }
+</style>
+<style>
+  #zamow.card{
+    background:#fff;
+    border-color:rgba(20,24,30,.26);
+    box-shadow:0 14px 38px rgba(14,22,34,.18), 0 2px 6px rgba(14,22,34,.10);
+  }
+  #zamow .section-title{
+    color:#0b1220;
+    letter-spacing:.1px;
+    text-shadow:0 1px 0 rgba(255,255,255,.8);
+  }
+  #zamow .note{ color:#1c2432; opacity:.95; }
+  #zamow .consents label{ color:#0f1622; }
+  #zamow .price .was{ color:#515b6b; opacity:.85; }
+  #zamow .price .now{ color:#0a8f44; }
+  #zamow .price .currency{ color:#0a8f44; opacity:.98; }
+  #zamow .btn{
+    background:linear-gradient(180deg,#e9773f,#cf612b);
+    box-shadow:0 14px 28px rgba(207,97,43,.45), 0 2px 6px rgba(0,0,0,.12);
+  }
+  #zamow .btn:hover{ filter:saturate(1.05) brightness(1.02); transform:translateY(-1px); }
+  #zamow .btn:active{ transform:translateY(0); filter:none; }
+  #zamow .btn:focus-visible{ outline:3px solid #2468A8; outline-offset:2px; }
+  @media (max-width:768px){
+    #zamow.card{ box-shadow:0 18px 46px rgba(14,22,34,.22), 0 2px 6px rgba(14,22,34,.12); }
+  }
+</style>
+
   </head>
 
   <body>
@@ -321,18 +397,30 @@
     <main class="container">
       <section class="hero">
         <div>
-          <h1 style="line-height:1.15; font-weight:900; margin:0; font-size:clamp(28px,4.6vw,44px); color:#0e1420;">
-            Spersonalizowany Portret Numerologiczny – <span class="gradient-text">49&nbsp;zł</span>
+          <h1 style="line-height:1.2; font-weight:800; margin:0;">
+            <span style="display:block; font-size:1.5em;">
+              Portret
+              <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Numerologiczny</span>
+              Prawda o Tobie
+              <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">w liczbach</span>
+            </span>
+            <span style="display:block; font-size:0.8em; font-weight:600; margin-top:0.2em; color:#1e2633;">
+              Wejdź głębiej niż horoskop. Zobacz, co masz zapisane w liczbach, zanim spojrzysz w gwiazdy.
+            </span>
           </h1>
-          <p style="display:block; font-size:1.02rem; font-weight:700; margin-top:.45em; color:#1e2633">
-            PDF 13 stron + 3 plakaty. Poznaj swoje cykle i szczyty, wzorce oraz konkretne kroki. Dostawa e-mail w godz. 8–18.
+
+          <p style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
+            Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język, łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>.
           </p>
+
+          <h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
+            Co otrzymujesz:
+          </h3>
 
           <div class="badges" style="font-weight:800;">
             <span class="badge">PDF • 13 stron</span>
             <span class="badge">Raport + 3 spersonalizowane plakaty</span>
             <span class="badge">Dostawa e-mail</span>
-            <span class="badge">Potwierdzenie i status zamówienia – od razu po płatności</span>
           </div>
 
           <div class="slidebox" aria-label="Podgląd stron i plakatów">
@@ -340,10 +428,7 @@
             <img id="slideB" alt="" />
           </div>
 
-          <a class="btn" href="#zamow" aria-label="Przejdź do zamówienia">Zamów teraz</a>
-          <p class="note" style="margin-top:8px;color:#243042">
-            Formularz zajmie ~60 sekund. Płatność Stripe • PDF na e-mail.
-          </p>
+          <a class="btn" href="#zamow">Zamów teraz</a>
 
           <section class="stats stats--mobile only-mobile" aria-label="zaufanie i liczby">
             <div class="stats-wrap">
@@ -380,7 +465,7 @@
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
               <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
-            <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
+              <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
               <path d="M12 6v6l4 2" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <div><strong>Mapa Cykli Życia</strong><br><span class="note">Zobacz, kiedy przyspieszać, kiedy zbierać plony, a kiedy zmieniać kurs.</span></div>
@@ -439,8 +524,9 @@
         </div>
       </section>
 
-      <script src="https://elfsightcdn.com/platform.js" async></script>
-      <div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
+<!-- Elfsight Etsy Reviews | Untitled Etsy Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
 
       <section id="zamow" class="card" aria-labelledby="zamow-tytul">
         <form class="form" id="orderForm" action="#" novalidate>
@@ -469,11 +555,6 @@
             <label><input type="checkbox" id="marketing" /> [Opcjonalnie] Wyrażam zgodę na przesyłanie mi informacji handlowych drogą elektroniczną (e-mail).</label>
           </div>
 
-          <div class="trust-strip" aria-label="Zaufanie">
-            <span aria-hidden="true">★ ★ ★ ★ ★</span>
-            <strong>Średnia 4,9/5</strong> na podstawie opinii klientów • <span>+900 raportów</span> • Bezpieczna płatność Stripe
-          </div>
-
           <div class="price" aria-live="polite">
             <span class="was">79&nbsp;zł</span>
             <span class="now"><span class="value">49</span><span class="currency">&nbsp;zł</span></span>
@@ -481,21 +562,9 @@
             <span class="note">brutto • PDF dostarczany e-mailem</span>
           </div>
 
-          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza">
-            Wypełnij formularz
+          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza" disabled>
+            Przejdź do formularza
           </button>
-
-          <p class="note" style="margin-top:6px">
-            Szyfrowana płatność Stripe • Faktura na życzenie
-          </p>
-
-          <ol class="mini-steps">
-            <li>Zaznacz 2 zgody.</li>
-            <li>Zapłać bezpiecznie przez Stripe.</li>
-            <li>Odbierz potwierdzenie i PDF na e-mail.</li>
-          </ol>
-
-          <p class="note">Gwarancja techniczna: jeśli w pliku wykryjemy błąd formatowania lub literówkę – poprawka gratis.</p>
 
           <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
 
@@ -545,16 +614,6 @@
         </ul>
       </section>
     </main>
-
-    <div class="cta-bar" role="region" aria-label="Szybkie zamówienie">
-      <div class="cta-bar__inner">
-        <div class="cta-bar__price">
-          <strong>Portret Numerologiczny</strong>
-          <div><span class="was">79&nbsp;zł</span> <span class="now">49&nbsp;zł</span></div>
-        </div>
-        <a class="btn cta-bar__btn" href="#zamow" aria-label="Przejdź do formularza – 49 zł">Zamów</a>
-      </div>
-    </div>
 
     <footer>
       <div class="container">
@@ -676,7 +735,7 @@
         let cur = A, next = B, idx = 0, started = false;
 
         function swap(){ const t = cur; cur = next; next = t; }
-        function applyDur(){ if(!next||!cur) return; next.style.transitionDuration = cur.style.transitionDuration = (TRANSITION/1000)+'s'; }
+        function applyDur(){ next.style.transitionDuration = cur.style.transitionDuration = (TRANSITION/1000)+'s'; }
 
         function resolve(name, cb){
           let i=0;
@@ -695,7 +754,6 @@
         }
 
         function slide(){
-          if(!cur || !next){ return; }
           const name = names[idx];
           idx = (idx+1) % names.length;
 
@@ -726,7 +784,7 @@
 
         document.addEventListener('DOMContentLoaded', ()=>{
           resolve(names[0], (src)=>{
-            if(cur && src){
+            if(src){
               cur.src = src; cur.alt = names[0]; cur.classList.add('show');
             }
             if(!started){
@@ -746,27 +804,27 @@
         const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
         const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
 
-        function allChecked(){ return requiredChecks.every(i => i && i.checked); }
-        function missing(){ return requiredChecks.filter(i=>i && !i.checked); }
-
-        function nudge(el){
-            el.closest('label')?.classList.add('pulse');
-            setTimeout(()=>el.closest('label')?.classList.remove('pulse'), 1000);
+        function updateEnabled() {
+          btn.disabled = !requiredChecks.every(i => i && i.checked);
         }
+        requiredChecks.forEach(i => i && i.addEventListener('change', updateEnabled, { once:false }));
+        updateEnabled();
+
+        let processing = false;
 
         function goToStripe() {
-          if (!allChecked()){
-            const first = missing()[0];
-            document.querySelector('#zamow .consents')?.scrollIntoView({behavior:'smooth', block:'center'});
-            missing().forEach(nudge);
-            gtag('event','checkout_attempt',{all_consents_checked:false});
-            return;
-          }
+          if (processing) return;
+          processing = true;
+          btn.disabled = true;
+          btn.setAttribute('aria-busy', 'true');
           statusEl.textContent = 'Przekierowuję do płatności…';
-          gtag('event','checkout_attempt',{all_consents_checked:true});
           window.location.href = STRIPE_CHECKOUT_URL;
+
           setTimeout(() => {
             if (document.visibilityState === 'visible') {
+              processing = false;
+              btn.disabled = false;
+              btn.removeAttribute('aria-busy');
               statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
             }
           }, 6000);
@@ -775,36 +833,36 @@
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           goToStripe();
-        });
+        }, { once:false });
 
         form.addEventListener('submit', (e) => {
           e.preventDefault();
           goToStripe();
-        });
+        }, { once:false });
 
-        function updateLabel(){
-          const base = 'Wypełnij formularz';
-          btn.innerHTML = allChecked() ? base + ' – 49&nbsp;zł' : base;
-        }
-        requiredChecks.forEach(i=> i && i.addEventListener('change', updateLabel));
-        updateLabel();
-
-        document.querySelectorAll('a.btn[href="#zamow"]').forEach(a=>{
-          a.addEventListener('click',()=>gtag('event','cta_click',{location:'hero'}));
+        window.addEventListener('pageshow', (e) => {
+          if (e.persisted) {
+            processing = false;
+            btn.disabled = false;
+            btn.removeAttribute('aria-busy');
+            statusEl.textContent = '';
+          }
         });
-        document.querySelector('.cta-bar__btn')?.addEventListener('click',()=>gtag('event','cta_click',{location:'sticky_bar'}));
       })();
     </script>
 
     <script>
       (function(){
-        const bar = document.querySelector('.cta-bar');
-        const hero = document.querySelector('.hero');
-        if(!bar || !hero) return;
-        const io = new IntersectionObserver(([e])=>{
-          bar.classList.toggle('show', !e.isIntersecting);
-        }, {threshold: 0});
-        io.observe(hero);
+        const btn = document.getElementById('payBtn');
+        const requiredChecks = ['uwagaAck','terms'].map(id => document.getElementById(id));
+        function label(){
+          const base = 'Przejdź do formularza';
+          btn.innerHTML = requiredChecks.every(i=>i && i.checked)
+            ? base + ' z ceną jedynie – 49&nbsp;zł'
+            : base;
+        }
+        requiredChecks.forEach(i=> i && i.addEventListener('change', label));
+        label();
       })();
     </script>
 
@@ -833,27 +891,6 @@
             window.location.href = homeUrl;
           }
         });
-      })();
-    </script>
-
-    <script>
-      (function () {
-        const p = location.pathname;
-        const cleaned = p.replace(/index\.html$/i, '');
-        if (cleaned !== p) {
-          const newUrl = (cleaned || '/') + location.search + location.hash;
-          history.replaceState(null, '', newUrl);
-        }
-      })();
-
-      (function(){
-        if (window.matchMedia && matchMedia('(max-width:768px)').matches){
-          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-          if (location.hash) history.replaceState(null,'', location.pathname + location.search);
-          window.addEventListener('load', function(){
-            window.scrollTo(0,0);
-          }, {once:true});
-        }
       })();
     </script>
   </body>
