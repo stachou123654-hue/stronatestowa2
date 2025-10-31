@@ -205,7 +205,7 @@
 
       .slidebox{
         position:relative;
-        width:min(300px, 62vw);
+        width:min(390px, 80vw);
         aspect-ratio:1/1;
         margin:12px auto 22px;
         border-radius:12px;
@@ -621,7 +621,7 @@
         ];
         const base = "assets/img/";
         const exts = [".jpg",".JPG",".jpeg",".JPEG",".png",".PNG"];
-        const FADE_DELAY_MS = 700;
+        const DISPLAY_MS = 1500;
         const LOAD_TIMEOUT_MS = 3500;
 
         const a = document.getElementById("slideA");
@@ -664,7 +664,7 @@
               visible.classList.remove("show");
               hidden.onload = hidden.onerror = null;
               swapImgs();
-              setTimeout(showNext, FADE_DELAY_MS);
+              setTimeout(showNext, DISPLAY_MS);
             };
 
             hidden.onerror = () => {
@@ -687,7 +687,8 @@
               visible.alt = files[0];
             }
             visible.classList.add("show");
-            setTimeout(showNext, FADE_DELAY_MS);
+            idx = 1;
+            setTimeout(showNext, DISPLAY_MS);
           });
         });
       })();
@@ -733,7 +734,7 @@
           const name = names[idx];
           idx = (idx+1) % names.length;
 
-        resolve(name,(src)=>{
+          resolve(name,(src)=>{
             if(!src){ setTimeout(slide, PERIOD); return; }
             applyDur();
 
