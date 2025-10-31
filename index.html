@@ -498,18 +498,10 @@
 
           <div class="consents">
             <label>
-              <input type="checkbox" id="uwagaAck" required />
-              Rozumiem powyższą uwagę i potwierdzam, że dane do raportu podaję poprawnie.
+              <input type="checkbox" id="consentAll" required />
+              Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a> oraz Rozumiem powyższą uwagę i potwierdzam, że dane do raportu podaję poprawnie.
             </label>
-            <div id="msg-uwagaAck" class="consent-msg" aria-live="polite"></div>
-          </div>
-
-          <div class="consents">
-            <label>
-              <input type="checkbox" id="terms" required />
-              Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.
-            </label>
-            <div id="msg-terms" class="consent-msg" aria-live="polite"></div>
+            <div id="msg-consentAll" class="consent-msg" aria-live="polite"></div>
           </div>
 
           <div class="consents">
@@ -523,8 +515,8 @@
             <span class="note">brutto • PDF dostarczany e-mailem</span>
           </div>
 
-          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza">
-            Przejdź do formularza&nbsp;zł
+          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza — 49 zł">
+            Przejdź do formularza — 49&nbsp;zł
           </button>
 
           <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
@@ -718,7 +710,7 @@
           const name = names[idx];
           idx = (idx+1) % names.length;
 
-          resolve(name,(src)=>{
+        resolve(name,(src)=>{
             if(!src){ setTimeout(slide, PERIOD); return; }
             applyDur();
 
@@ -763,8 +755,7 @@
         const form = document.getElementById('orderForm');
         const statusEl = document.getElementById('formStatus');
         const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
-        const uwaga = document.getElementById('uwagaAck');
-        const terms = document.getElementById('terms');
+        const consentAll = document.getElementById('consentAll');
 
         function setError(input, message) {
           const wrap = input.closest('.consents') || input.parentElement;
@@ -779,19 +770,16 @@
           msgEl.textContent = message || '';
         }
 
-        function validateConsents(opts) {
+        function validateConsent(opts) {
           const o = Object.assign({focusFirstError:false, scrollIntoView:false, allowShake:false, setStatus:false}, opts||{});
           let ok = true;
 
-          if (!uwaga.checked) {
-            setError(uwaga, 'Zaznacz, że rozumiesz powyższą uwagę.');
+          if (!consentAll.checked) {
+            setError(consentAll, 'Zaznacz wymagane oświadczenie.');
             ok = false;
-          } else setError(uwaga, '');
-
-          if (!terms.checked) {
-            setError(terms, 'Zaznacz akceptację Regulaminu i Polityki prywatności.');
-            ok = false;
-          } else setError(terms, '');
+          } else {
+            setError(consentAll, '');
+          }
 
           if (!ok) {
             if (o.allowShake) {
@@ -800,9 +788,15 @@
               void consentsBlock.offsetWidth;
               consentsBlock.classList.add('shake');
             }
+            if (o.scrollIntoView) {
+              (consentAll.closest('.consents') || consentAll).scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            if (o.focusFirstError) {
+              setTimeout(()=>consentAll.focus({preventScroll:true}),180);
+            }
             if (o.setStatus) {
               statusEl.className = 'status status--error';
-              statusEl.textContent = 'Uzupełnij wymagane zgody.';
+              statusEl.textContent = 'Uzupełnij wymagane oświadczenie.';
             }
           } else {
             statusEl.className = 'status status--ok';
@@ -812,7 +806,7 @@
         }
 
         function goToStripe() {
-          if (!validateConsents({focusFirstError:true, scrollIntoView:true, allowShake:true, setStatus:true})) {
+          if (!validateConsent({focusFirstError:true, scrollIntoView:true, allowShake:true, setStatus:true})) {
             window.gtag && gtag('event','consents_missing',{location:'order_section'});
             window.fbq && fbq('trackCustom','ConsentsMissing');
             return;
@@ -845,14 +839,14 @@
           goToStripe();
         });
 
-        [uwaga, terms].forEach(i => i && i.addEventListener('change', () => {
-          validateConsents();
-        }));
+        consentAll?.addEventListener('change', () => {
+          validateConsent();
+        });
 
         window.addEventListener('pageshow', (e) => {
           if (e.persisted) {
             statusEl.textContent = '';
-            [uwaga,terms].forEach(i=>i && i.removeAttribute('aria-invalid'));
+            consentAll && consentAll.removeAttribute('aria-invalid');
             document.querySelectorAll('.consent-error').forEach(el=>el.classList.remove('consent-error'));
             document.querySelectorAll('.consent-msg').forEach(el=>el.textContent='');
           }
