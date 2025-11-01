@@ -451,114 +451,100 @@
       <script src="https://elfsightcdn.com/platform.js" async></script>
       <div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
 
-      <!-- =====================
-           NOWA SEKCJA: ZAMÓW PORTRET NUMEROLOGICZNY (CR-optimized v3 – black price + mobile)
-      ====================== -->
-      <section id="zamow" class="card order-section" aria-labelledby="zamow-tytul">
+      <section id="zamow" class="card order-section order-section--v4" aria-labelledby="zamow-tytul">
         <form class="form" id="orderForm" action="#" novalidate>
           <h2 id="zamow-tytul" class="section-title">Odbierz swój Portret Numerologiczny</h2>
 
-          <!-- Pasek mikro-proof + dynamiczna ETA -->
-          <div class="order-microbar" role="status" aria-live="polite">
-            <span class="proof"><strong>900+ zamówień</strong> w Polsce</span>
-            <span class="dot" aria-hidden="true">•</span>
-            <span id="eta">Dostawa w godzinach roboczych 8:00–18:00</span>
-          </div>
-
-          <!-- Karta wartości: cena + korzyści -->
-          <div class="pricecard" role="group" aria-label="Cena i zamówienie">
-            <div class="pricecard-head">
-              <div class="price" aria-live="polite">
-                <span class="was" aria-label="Cena regularna">79&nbsp;zł</span>
-                <span class="now" aria-label="Aktualna cena">
+          <div class="price-strip" role="group" aria-label="Aktualna oferta">
+            <div class="price-strip__left">
+              <div class="price-pill" aria-live="polite">
+                <span class="price-pill__was" aria-label="Cena regularna">79&nbsp;zł</span>
+                <span class="price-pill__now" aria-label="Aktualna cena">
                   <span class="value">49</span><span class="currency" aria-hidden="true">&nbsp;zł</span>
                 </span>
-                <span class="save-badge" aria-label="Oszczędzasz">oszczędzasz 30&nbsp;zł</span>
+                <span class="price-pill__save">−30&nbsp;zł dziś</span>
               </div>
-              <p class="micro-quote" aria-label="opinia klienta">„Szybko, pięknie wydane, trafne wskazówki. Wrócę po portret dla partnera.” — Ania K.</p>
+              <div class="micro-proof" role="status" aria-live="polite">
+                <span class="micro-proof__dot" aria-hidden="true">•</span>
+                <span class="micro-proof__text"><strong>900+ zamówień</strong> w Polsce</span>
+              </div>
             </div>
-
-            <hr class="divider" aria-hidden="true" />
-
-            <ul class="value-bullets" aria-label="Co jest w zestawie">
-              <li><span class="tick" aria-hidden="true">✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
-              <li><span class="tick" aria-hidden="true">✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku zodiaku</li>
-              <li><span class="tick" aria-hidden="true">✓</span> Dostawa <strong><span class="nowrap">e-mail</span></strong> (zwykle w 3–4 h w dni robocze)</li>
-            </ul>
-
-            <div class="guarantee" role="note" aria-label="Gwarancja jakości">Błąd techniczny? <strong>Poprawimy bezpłatnie.</strong></div>
-
-            <!-- Trust row / bezpieczeństwo -->
-            <div class="trust-row" aria-label="Zaufanie i bezpieczeństwo">
-              <span class="trust-item"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> Szyfrowana płatność Stripe</span>
-              <span class="dot" aria-hidden="true">•</span>
-              <span class="trust-item">Faktura na życzenie</span>
+            <div class="price-strip__right">
+              <button id="payBtn" class="btn btn-primary btn-cta" type="button" aria-describedby="eta" data-loading-text="Przekierowuję do płatności…">
+                Zamów za 49&nbsp;zł
+              </button>
+              <p class="eta" id="eta">Dostawa w godzinach roboczych 8:00–18:00</p>
             </div>
-
-            <!-- Zgody minimalne -->
-            <div class="consents consents-inline">
-              <label class="consent-label">
-                <input type="checkbox" id="consentAll" required />
-                <span>*Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.</span>
-              </label>
-              <div id="msg-consentAll" class="consent-msg" aria-live="polite"></div>
-
-              <details class="consent-more">
-                <summary>Ważna uwaga dot. poprawności danych</summary>
-                <p class="note">
-                  <strong>Imię, nazwisko i data urodzenia</strong> bezpośrednio wpływają na treść raportu.
-                  Błędne dane nie stanowią wady produktu. Zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.
-                </p>
-              </details>
-
-              <label class="consent-label optional">
-                <input type="checkbox" id="marketing" />
-                <span>[Opcjonalnie] Wyrażam zgodę na przesyłanie mi informacji handlowych drogą elektroniczną (e-mail).</span>
-              </label>
-            </div>
-
-            <!-- CTA główne (skrócone) -->
-            <button id="payBtn" class="btn btn-primary btn-large" type="button" aria-describedby="eta" data-loading-text="Przekierowuję do płatności…">
-              Zamawiam za 49&nbsp;zł
-            </button>
-
-            <p class="subnote" id="subnote-cta">1 klik → płatność Stripe. Średni czas dostawy <strong>3–4 h</strong> (dni robocze).</p>
-
-            <div class="micro-faq" aria-label="Najczęstsze pytania (skrócone)">
-              <details>
-                <summary>Jak szybko otrzymam?</summary>
-                <p>Zwykle <strong>3–4 h</strong> w dni robocze 8:00–18:00.</p>
-              </details>
-              <details>
-                <summary>Pomyliłem dane – co teraz?</summary>
-                <p>Dane wpływają na obliczenia. Zmiana po zakupie = <strong>nowe zamówienie</strong>. Jeśli wykryjesz <em>błąd techniczny</em> – poprawimy nieodpłatnie.</p>
-              </details>
-              <details>
-                <summary>Co zawiera PDF?</summary>
-                <p>Spersonalizowany Raport Numerologiczny na podstawie podanego imienia, nazwiska i daty urodzenia. Liczby numerologiczne, Mapa Cykli, Szczyty, Wyzwania, podsumowanie + <strong>3 plakaty</strong> (dopasowane do aury znaku zodiaku).</p>
-              </details>
-            </div>
-
-            <div id="formStatus" class="status" role="status" aria-live="polite"></div>
-
-            <noscript>
-              <p>
-                JavaScript jest wyłączony.
-                <a class="btn" href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" rel="nofollow noopener">Zapłać przez Stripe</a>
-              </p>
-            </noscript>
           </div>
+
+          <div class="trust-row trust-row--logos" aria-label="Płatności i bezpieczeństwo">
+            <span class="trust"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Płatność Stripe</span>
+            <span class="dot" aria-hidden="true">•</span>
+            <span class="wallets" aria-label="Obsługiwane portfele">
+              <span class="wallets__logo wallets__apple" aria-hidden> Pay</span>
+              <span class="wallets__logo wallets__gpay" aria-hidden>G Pay</span>
+              <span class="wallets__logo wallets__cards" aria-hidden>Visa · MC</span>
+            </span>
+          </div>
+
+          <details class="value-acc" data-collapsed>
+            <summary>
+              <span class="value-acc__title">Co jest w zestawie</span>
+              <span class="value-acc__hint">PDF 13 stron + 3 plakaty</span>
+            </summary>
+            <ul class="value-list" aria-label="Co jest w zestawie">
+              <li><span class="tick" aria-hidden>✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
+              <li><span class="tick" aria-hidden>✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</li>
+              <li><span class="tick" aria-hidden>✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h w dni robocze)</li>
+            </ul>
+          </details>
+
+          <div class="guarantee guarantee--short" role="note" aria-label="Gwarancja jakości">
+            Błąd techniczny? <strong>Poprawimy bezpłatnie.</strong>
+          </div>
+
+          <div class="consents consents-inline consents--compact">
+            <label class="consent-label">
+              <input type="checkbox" id="consentAll" required />
+              <span>*Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.</span>
+            </label>
+            <div id="msg-consentAll" class="consent-msg" aria-live="polite"></div>
+            <details class="consent-more">
+              <summary>Ważna uwaga dot. poprawności danych</summary>
+              <p class="note">Imię, nazwisko i data urodzenia wpływają na treść raportu. Błędne dane ≠ wada produktu. Zmiana po zakupie = <strong>nowe zamówienie</strong>.</p>
+            </details>
+            <label class="consent-label optional">
+              <input type="checkbox" id="marketing" />
+              <span>[Opcjonalnie] Zgadzam się na e-maile z nowościami.</span>
+            </label>
+          </div>
+
+          <details class="micro-faq micro-faq--single">
+            <summary>Najczęstsze pytania</summary>
+            <div class="micro-faq__grid">
+              <p><strong>Jak szybko?</strong> Zwykle <strong>3–4 h</strong> (dni robocze 8:00–18:00).</p>
+              <p><strong>Pomyłka w danych?</strong> Zmiana po zakupie = <strong>nowe zamówienie</strong>. Błąd techniczny poprawimy.</p>
+              <p><strong>Co otrzymam?</strong> Raport PDF + <strong>3 plakaty</strong> dopasowane do aury znaku.</p>
+            </div>
+          </details>
+
+          <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+
+          <noscript>
+            <p>
+              JavaScript jest wyłączony.
+              <a class="btn" href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" rel="nofollow noopener">Zapłać przez Stripe</a>
+            </p>
+          </noscript>
         </form>
       </section>
 
-      <!-- Sticky pasek zamówienia (mobile) -->
       <div id="orderSticky" class="order-sticky" aria-hidden="true">
         <div class="order-sticky-inner">
           <div class="order-sticky-price"><span class="lbl">Portret</span> <span class="cur">49&nbsp;zł</span></div>
           <button id="stickyCta" type="button" class="btn btn-sticky">Zamawiam za 49&nbsp;zł</button>
         </div>
       </div>
-      <!-- ====== KONIEC SEKCJI ====== -->
 
       <section class="faq" id="faq">
         <h2 class="section-title">FAQ</h2>
@@ -818,162 +804,85 @@
       })();
     </script>
 
-    <!-- LOGIKA sekcji zamówienia (aktywny CTA, walidacja, sticky bar) + STYLES -->
     <style>
-      .order-section{padding:22px 18px}
-      .order-microbar{display:flex;gap:8px;align-items:center;margin-bottom:12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 14px rgba(14,22,34,.06)}
-      .order-microbar .proof{font-weight:800;color:#0f1420}
-      .order-microbar .dot{opacity:.6}
-
-      .pricecard{padding:18px;border:1px solid var(--border);border-radius:16px;background:#fff;box-shadow:0 10px 22px rgba(14,22,34,.10)}
-      .pricecard .price{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:6px}
-      .pricecard .was{color:var(--muted);font-weight:600;text-decoration:line-through;text-decoration-thickness:.08em;font-size:clamp(13px,2.5vw,16px)}
-      .pricecard .now{font-size:clamp(38px, 7vw, 64px);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#0e1420}
-      .pricecard .now .currency{font-size:.62em;vertical-align:.12em;opacity:.95;color:#0e1420}
-      .save-badge{display:inline-block;padding:.28em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900}
-      .micro-quote{margin:6px 0 0;font-size:13.5px;color:#111827}
-
-      .divider{border:0;border-top:1px solid var(--border);margin:10px 0}
-
-      .value-bullets{margin:8px 0 10px;padding:0;list-style:none}
-      .value-bullets li{display:flex;gap:8px;align-items:flex-start;margin:.36em 0}
-      .value-bullets .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
-
-      .guarantee{margin:6px 0 8px;padding:10px 12px;border:1px dashed var(--border);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));font-size:13.5px;color:#0e1420}
-
-      .trust-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:#2b3442;margin:6px 0 8px}
-      .trust-row .i{width:18px;height:18px;margin-right:6px}
-      .trust-row .trust-item{display:inline-flex;align-items:center}
-      .trust-row .dot{opacity:.5}
-
-      .consents-inline{display:grid;gap:8px;margin:10px 0 8px}
-      .consent-label{display:flex;gap:8px;align-items:flex-start}
-      .consent-label input{transform:translateY(3px)}
-      .consent-label.optional{font-size:13px;color:#2d3644}
-      .consent-more summary{cursor:pointer;font-weight:700;color:#101624}
-
-      .btn-primary{min-height:52px;border-radius:16px;font-size:1.08rem}
-      .btn-large{padding:16px 18px;font-size:clamp(16px,2.4vw,18px);font-weight:900}
-      .btn[aria-busy="true"]{opacity:.85;cursor:wait}
-      .btn .spinner{display:inline-block;width:1em;height:1em;border:.18em solid rgba(255,255,255,.6);border-top-color:#fff;border-radius:50%;animation:spin .9s linear infinite;margin-right:.45em;transform:translateY(.12em)}
-      @keyframes spin{to{transform:rotate(360deg)}}
-
-      .subnote{margin:8px 0 0;color:#3a4453;font-size:13.5px}
-      .status{font-size:13.5px;margin-top:8px}
-      .status--error{color:var(--danger)}
-      .status--ok{color:var(--ok)}
-
-      .micro-faq{display:grid;gap:8px;margin-top:10px}
-      .micro-faq details{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px}
-      .micro-faq summary{font-weight:700;cursor:pointer}
-
-      /* Sticky bar (mobile) */
+      .order-section--v4{padding:16px 14px;border-radius:16px}
+      @media (max-width:768px){
+        .order-section--v4.card{border:0; box-shadow:0 6px 20px rgba(14,22,34,.10); background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94))}
+      }
+      .price-strip{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+      .price-strip__left{display:grid;gap:6px}
+      .price-pill{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+      .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600;font-size:13px}
+      .price-pill__now{font-weight:900;letter-spacing:-.02em;font-size:clamp(34px,8.2vw,48px);line-height:1}
+      .price-pill__now .currency{font-size:.6em;opacity:.9}
+      .price-pill__save{display:inline-block;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900;font-size:12px;line-height:1}
+      .micro-proof{display:flex;align-items:center;gap:8px;color:#111827;font-size:13px}
+      .micro-proof__dot{opacity:.5}
+      .price-strip__right{text-align:right}
+      .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
+      .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
+      .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
+      .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
+      .trust{display:inline-flex;align-items:center;gap:6px}
+      .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
+      .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
+      .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+      .wallets__gpay{font-family:Inter,system-ui}
+      .wallets__cards{opacity:.9}
+      .value-acc{border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(14,22,34,.08);margin:10px 0 8px}
+      .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+      .value-acc__title{font-weight:900;color:#0f1420}
+      .value-acc__hint{font-size:12.8px;color:#2d3644}
+      .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
+      .value-list li{display:flex;gap:8px;align-items:flex-start}
+      .value-list .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
+      .consents--compact{gap:8px;margin-top:8px}
+      .consents--compact .consent-label{gap:10px;font-size:13.5px}
+      .consents--compact .consent-msg{min-height:18px;font-size:13px}
+      .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
+      .micro-faq--single > summary{cursor:pointer;font-weight:800}
+      .micro-faq__grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
       .order-sticky{position:fixed;left:0;right:0;bottom:-120px;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--border);transition:transform .25s ease, bottom .25s ease;box-shadow:0 -10px 22px rgba(14,22,34,.12)}
       .order-sticky.show{bottom:0}
       .order-sticky-inner{max-width:1120px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
       .order-sticky-price .lbl{opacity:.9;margin-right:.4ch}
       .order-sticky-price .cur{font-weight:900}
       .btn-sticky{min-height:44px;border-radius:12px}
-
-      /* Shake dla bloku zgód */
-      .shake{animation:shake .36s cubic-bezier(.36,.07,.19,.97) both}
-      @keyframes shake{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
-
-      @media (min-width: 769px){
-        .order-sticky{display:none}
-      }
-
-      /* ===== MOBILE FIXES ≤480px + CZARNA CENA W SEKCJI ===== */
-      /* Czarna cena tylko w #zamow (nadpisuje zieloną globalną) */
-      #zamow .price .now .value,
-      #zamow .price .now .currency{ color:#0e1420 !important; }
-
-      @media (max-width: 480px){
-        .order-section{padding:18px 14px}
-        .pricecard{padding:16px;border-radius:14px}
-        .order-microbar{padding:8px 10px;border-radius:10px}
-        .pricecard .now{font-size:clamp(34px,10vw,44px);letter-spacing:-0.01em}
-        .save-badge{font-size:13px;padding:.25em .55em}
-        .micro-quote{font-size:13px;line-height:1.35;margin-top:6px}
-        .value-bullets{margin:8px 0 6px}
-        .value-bullets li{line-height:1.35}
-        .value-bullets li,
-        .value-bullets li *{
-          word-break:normal;
-          overflow-wrap:anywhere;
-          hyphens:auto;
-          text-wrap:pretty;
-        }
-        .guarantee{font-size:13px;padding:8px 10px}
-        .trust-row{gap:6px;font-size:13px}
-        .consents-inline{gap:6px}
-        .consent-label{gap:10px}
-        .consent-label.optional{font-size:12.5px}
-        .btn-primary.btn-large{min-height:54px;font-size:clamp(16px,4.4vw,18px);border-radius:14px}
-        .order-sticky-inner{padding:8px 12px}
-        .btn-sticky{min-height:44px;border-radius:10px;font-weight:900}
-      }
+      @media (min-width: 769px){.order-sticky{display:none}}
+      #payBtn[aria-busy="true"]{opacity:.85;cursor:wait}
+      .btn .spinner{display:inline-block;width:1em;height:1em;border:.18em solid rgba(255,255,255,.6);border-top-color:#fff;border-radius:50%;animation:spin .9s linear infinite;margin-right:.45em;transform:translateY(.12em)}
+      @keyframes spin{to{transform:rotate(360deg)}}
     </style>
 
     <script>
     (function(){
       const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
-
-      const form = document.getElementById('orderForm');
       const btn = document.getElementById('payBtn');
       const statusEl = document.getElementById('formStatus');
       const consentAll = document.getElementById('consentAll');
-      const etaEl = document.getElementById('eta');
       const sticky = document.getElementById('orderSticky');
       const stickyCta = document.getElementById('stickyCta');
+      const etaEl = document.getElementById('eta');
 
-      // 1) Dynamiczna ETA
       (function updateETA(){
         try{
           const now = new Date();
-          const day = now.getDay(); // 0=Nd, 6=Sb
+          const day = now.getDay();
           const hour = now.getHours();
-          const withinBiz = (day>=1 && day<=5 && hour>=8 && hour<18);
-          if (withinBiz) {
+          const workday = (day>=1 && day<=5);
+          const within = workday && hour>=8 && hour<18;
+          if (within) {
             const est = new Date(now.getTime()+ 3*60*60*1000);
             const hh = est.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
             etaEl.textContent = `Zamów teraz — wyślemy dziś ok. ${hh}`;
+          } else if (!workday) {
+            etaEl.textContent = "Zamów teraz — wyślemy w najbliższy dzień roboczy (zwykle 3–4 h).";
           } else {
-            etaEl.textContent = "Zamów teraz — wyślemy w kilka godzin.";
+            etaEl.textContent = "Zamów teraz — wyślemy w godzinach 8:00–18:00 (zwykle 3–4 h).";
           }
-        }catch(e){ /* cicho */ }
+        }catch(e){}
       })();
 
-      // 2) Walidacja po kliknięciu (CTA zawsze aktywne)
-      function setError(input, message){
-        const wrap = input.closest('.consents-inline') || input.parentElement;
-        if (!wrap) return;
-        input.setAttribute('aria-invalid', message ? 'true' : 'false');
-        wrap.classList.toggle('consent-error', !!message);
-        const msgEl = document.getElementById('msg-consentAll');
-        if (msgEl) msgEl.textContent = message || '';
-      }
-
-      function validateConsent(opts){
-        const o = Object.assign({focusFirstError:false, scrollIntoView:false, allowShake:false, setStatus:false}, opts||{});
-        let ok = true;
-        if (!consentAll.checked) { setError(consentAll, 'Zaznacz wymagane oświadczenie.'); ok = false; }
-        else { setError(consentAll, ''); }
-
-        if (!ok){
-          const consentsBlock = document.querySelector('.consents-inline');
-          if (o.allowShake && consentsBlock){ consentsBlock.classList.remove('shake'); void consentsBlock.offsetWidth; consentsBlock.classList.add('shake'); }
-          if (o.scrollIntoView && consentsBlock){ consentsBlock.scrollIntoView({behavior:'smooth', block:'center'}); }
-          if (o.focusFirstError){ setTimeout(()=>consentAll.focus({preventScroll:true}), 160); }
-          if (o.setStatus){ statusEl.className = 'status status--error'; statusEl.textContent = 'Uzupełnij wymagane oświadczenie.'; }
-        } else {
-          statusEl.className = 'status';
-          statusEl.textContent = '';
-        }
-        return ok;
-      }
-
-      // 3) Busy state (blokada duplikatów tylko po akceptacji)
       function withBusy(el, isBusy){
         if (!el) return;
         el.setAttribute('aria-busy', isBusy ? 'true' : 'false');
@@ -988,14 +897,38 @@
         }
       }
 
+      function setError(msg){
+        statusEl.className = msg ? 'status status--error' : 'status';
+        statusEl.textContent = msg || '';
+      }
+
+      function validateConsent(){
+        if (!consentAll) return true;
+        const ok = !!consentAll.checked;
+        const consentsBlock = document.querySelector('.consents-inline');
+        if (!ok){
+          consentsBlock?.classList.remove('shake');
+          void consentsBlock?.offsetWidth;
+          consentsBlock?.classList.add('shake');
+          const msg = document.getElementById('msg-consentAll');
+          if (msg) msg.textContent = 'Zaznacz wymagane oświadczenie.';
+          setError('Uzupełnij wymagane oświadczenie.');
+          consentsBlock?.scrollIntoView({behavior:'smooth', block:'center'});
+          setTimeout(()=>consentAll.focus({preventScroll:true}), 160);
+        } else {
+          const msg = document.getElementById('msg-consentAll');
+          if (msg) msg.textContent = '';
+          setError('');
+        }
+        return ok;
+      }
+
       function goToStripe(){
         window.gtag && gtag('event','begin_checkout',{ value:49, currency:'PLN', items:[{item_name:'Portret numerologiczny'}] });
         window.fbq && fbq('track','InitiateCheckout',{ value:49, currency:'PLN' });
-
         statusEl.className = 'status';
         statusEl.textContent = 'Przekierowuję do płatności…';
         window.location.href = STRIPE_CHECKOUT_URL;
-
         setTimeout(() => {
           if (document.visibilityState === 'visible') {
             statusEl.className = 'status status--error';
@@ -1007,33 +940,18 @@
         }, 6000);
       }
 
-      const formEl = document.querySelector('#zamow form');
-      formEl?.addEventListener('submit', (e)=>{ e.preventDefault(); btn?.click(); });
-
-      const btnHandler = (e)=>{
+      btn?.addEventListener('click', (e)=>{
         e.preventDefault();
-        if (!validateConsent({focusFirstError:true, scrollIntoView:true, allowShake:true, setStatus:true})){
-          window.gtag && gtag('event','consents_missing',{location:'order_section'});
-          window.fbq && fbq('trackCustom','ConsentsMissing');
-          return; // CTA pozostaje aktywne
-        }
+        if (!validateConsent()) return;
         withBusy(btn, true);
         goToStripe();
-      };
+      });
 
-      const btn = document.getElementById('payBtn');
-      btn?.addEventListener('click', btnHandler);
-
-      consentAll?.addEventListener('change', ()=> validateConsent());
-
-      // 4) Sticky bar – widoczny po lekkim scrollu i gdy sekcja nie jest w viewport
-      function inViewport(el){
-        if (!el) return false; const r = el.getBoundingClientRect();
-        return r.top < window.innerHeight && r.bottom > 0;
-      }
+      const target = document.getElementById('zamow');
+      function inViewport(el){ if (!el) return false; const r = el.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }
       function toggleSticky(){
-        const orderVisible = inViewport(document.getElementById('zamow'));
-        if (!orderVisible && window.scrollY > 300) { sticky.classList.add('show'); sticky.setAttribute('aria-hidden','false'); }
+        const orderVisible = inViewport(target);
+        if (!orderVisible && window.scrollY > 160) { sticky.classList.add('show'); sticky.setAttribute('aria-hidden','false'); }
         else { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); }
       }
       window.addEventListener('scroll', toggleSticky, {passive:true});
@@ -1042,10 +960,9 @@
 
       stickyCta?.addEventListener('click', ()=>{
         if (consentAll && consentAll.checked){ btn?.click(); }
-        else { document.getElementById('zamow')?.scrollIntoView({behavior:'smooth', block:'start'}); }
+        else { target?.scrollIntoView({behavior:'smooth', block:'start'}); }
       });
 
-      // 5) Reset komunikatów po back/forward cache
       window.addEventListener('pageshow', (e) => {
         if (e.persisted) {
           statusEl.textContent = '';
