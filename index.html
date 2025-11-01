@@ -376,7 +376,7 @@
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
               <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
-              <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
+            <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
               <path d="M12 6v6l4 2" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <div><strong>Mapa Cykli Życia</strong><br><span class="note">Zobacz, kiedy przyspieszać, kiedy zbierać plony, a kiedy zmieniać kurs.</span></div>
@@ -451,49 +451,114 @@
       <script src="https://elfsightcdn.com/platform.js" async></script>
       <div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
 
-      <section id="zamow" class="card" aria-labelledby="zamow-tytul">
+      <!-- =====================
+           NOWA SEKCJA: ZAMÓW PORTRET NUMEROLOGICZNY (CR-optimized v3 – black price)
+      ====================== -->
+      <section id="zamow" class="card order-section" aria-labelledby="zamow-tytul">
         <form class="form" id="orderForm" action="#" novalidate>
-          <h2 id="zamow-tytul" class="section-title">Zamów Portret Numerologiczny</h2>
+          <h2 id="zamow-tytul" class="section-title">Odbierz swój Portret Numerologiczny</h2>
 
-          <p class="note" id="uwaga">
-            Uwaga: <strong>imię, nazwisko i data urodzenia bezpośrednio wpływają na treść raportu</strong>.
-            Błędne dane nie stanowią wady produktu. Każda zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.
-          </p>
-
-          <div class="consents">
-            <label>
-              <input type="checkbox" id="consentAll" required />
-              *Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a> oraz Rozumiem powyższą uwagę i potwierdzam, że dane do raportu podaję poprawnie.
-            </label>
-            <div id="msg-consentAll" class="consent-msg" aria-live="polite"></div>
+          <!-- Pasek mikro-proof + dynamiczna ETA -->
+          <div class="order-microbar" role="status" aria-live="polite">
+            <span class="proof"><strong>900+ zamówień</strong> w Polsce</span>
+            <span class="dot" aria-hidden="true">•</span>
+            <span id="eta">Dostawa w godzinach roboczych 8:00–18:00</span>
           </div>
 
-          <div class="consents">
-            <label><input type="checkbox" id="marketing" /> [Opcjonalnie] Wyrażam zgodę na przesyłanie mi informacji handlowych drogą elektroniczną (e-mail).</label>
+          <!-- Karta wartości: cena + korzyści -->
+          <div class="pricecard" role="group" aria-label="Cena i zamówienie">
+            <div class="pricecard-head">
+              <div class="price" aria-live="polite">
+                <span class="was" aria-label="Cena regularna">79&nbsp;zł</span>
+                <span class="now" aria-label="Aktualna cena">
+                  <span class="value">49</span><span class="currency" aria-hidden="true">&nbsp;zł</span>
+                </span>
+                <span class="save-badge" aria-label="Oszczędzasz">oszczędzasz 30&nbsp;zł</span>
+              </div>
+              <p class="micro-quote" aria-label="opinia klienta">„Szybko, pięknie wydane, trafne wskazówki. Wrócę po portret dla partnera.” — Ania K.</p>
+            </div>
+
+            <hr class="divider" aria-hidden="true" />
+
+            <ul class="value-bullets" aria-label="Co jest w zestawie">
+              <li><span class="tick" aria-hidden="true">✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
+              <li><span class="tick" aria-hidden="true">✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku zodiaku</li>
+              <li><span class="tick" aria-hidden="true">✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h w dni robocze)</li>
+            </ul>
+
+            <div class="guarantee" role="note" aria-label="Gwarancja jakości">Błąd techniczny? <strong>Poprawimy bezpłatnie.</strong></div>
+
+            <!-- Trust row / bezpieczeństwo -->
+            <div class="trust-row" aria-label="Zaufanie i bezpieczeństwo">
+              <span class="trust-item"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> Szyfrowana płatność Stripe</span>
+              <span class="dot" aria-hidden="true">•</span>
+              <span class="trust-item">Faktura na życzenie</span>
+            </div>
+
+            <!-- Zgody minimalne -->
+            <div class="consents consents-inline">
+              <label class="consent-label">
+                <input type="checkbox" id="consentAll" required />
+                <span>*Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.</span>
+              </label>
+              <div id="msg-consentAll" class="consent-msg" aria-live="polite"></div>
+
+              <details class="consent-more">
+                <summary>Ważna uwaga dot. poprawności danych</summary>
+                <p class="note">
+                  <strong>Imię, nazwisko i data urodzenia</strong> bezpośrednio wpływają na treść raportu.
+                  Błędne dane nie stanowią wady produktu. Zmiana danych po zakupie wymaga <strong>nowego zamówienia</strong>.
+                </p>
+              </details>
+
+              <label class="consent-label optional">
+                <input type="checkbox" id="marketing" />
+                <span>[Opcjonalnie] Wyrażam zgodę na przesyłanie mi informacji handlowych drogą elektroniczną (e-mail).</span>
+              </label>
+            </div>
+
+            <!-- CTA główne -->
+            <button id="payBtn" class="btn btn-primary btn-large" type="button" aria-describedby="eta" data-loading-text="Przekierowuję do płatności…">
+              Zamawiam portret za 49&nbsp;zł
+            </button>
+
+            <p class="subnote" id="subnote-cta">1 klik → płatność Stripe. Średni czas dostawy <strong>3–4 h</strong> (dni robocze).</p>
+
+            <div class="micro-faq" aria-label="Najczęstsze pytania (skrócone)">
+              <details>
+                <summary>Jak szybko otrzymam?</summary>
+                <p>Zwykle <strong>3–4 h</strong> w dni robocze 8:00–18:00.</p>
+              </details>
+              <details>
+                <summary>Pomyliłem dane – co teraz?</summary>
+                <p>Dane wpływają na obliczenia. Zmiana po zakupie = <strong>nowe zamówienie</strong>. Jeśli wykryjesz <em>błąd techniczny</em> – poprawimy nieodpłatnie.</p>
+              </details>
+              <details>
+                <summary>Co zawiera PDF?</summary>
+                <p>Spersonalizowany Raport Numerologiczny na podstawie podanego imienia, nazwiska i daty urodzenia. Liczby numerologiczne obliczane na podstawie podanych danych, Mapa Cykli, Szczyty, Wyzwania, podsumowanie + <strong>3 plakaty</strong> (dopasowane do aury znaku zodiaku).</p>
+              </details>
+            </div>
+
+            <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+
+            <noscript>
+              <p>
+                JavaScript jest wyłączony.
+                <a class="btn" href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" rel="nofollow noopener">Zapłać przez Stripe</a>
+              </p>
+            </noscript>
           </div>
-
-          <div class="price" aria-live="polite">
-            <span class="was">79&nbsp;zł</span>
-            <span class="now"><span class="value">49</span><span class="currency">&nbsp;zł</span></span>
-            <span class="save-badge">oszczędzasz 30&nbsp;zł</span>
-            <span class="note">brutto • PDF dostarczany e-mailem</span>
-          </div>
-
-          <button id="payBtn" class="btn" type="button" aria-label="Przejdź do formularza">
-            Przejdź do formularza          </button>
-
-          <p class="note">Płatność obsługuje zewnętrzny operator płatności.</p>
-
-          <div id="formStatus" class="status" role="status" aria-live="polite"></div>
-
-          <noscript>
-            <p>
-              JavaScript jest wyłączony.
-              <a class="btn" href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" rel="nofollow noopener">Zapłać przez Stripe</a>
-            </p>
-          </noscript>
         </form>
       </section>
+
+      <!-- Sticky pasek zamówienia (mobile) -->
+      <div id="orderSticky" class="order-sticky" aria-hidden="true">
+        <div class="order-sticky-inner">
+          <div class="order-sticky-price"><span class="lbl">Portret</span> <span class="cur">49&nbsp;zł</span></div>
+          <button id="stickyCta" type="button" class="btn btn-sticky">Zamawiam za 49&nbsp;zł</button>
+        </div>
+      </div>
+      <!-- ====== KONIEC NOWEJ SEKCJI ====== -->
 
       <section class="faq" id="faq">
         <h2 class="section-title">FAQ</h2>
@@ -753,109 +818,208 @@
       })();
     </script>
 
+    <!-- NOWA LOGIKA sekcji zamówienia (aktywny CTA, walidacja po kliknięciu, sticky bar) -->
+    <style>
+      .order-section{padding:22px 18px}
+      .order-microbar{display:flex;gap:8px;align-items:center;margin-bottom:12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 14px rgba(14,22,34,.06)}
+      .order-microbar .proof{font-weight:800;color:#0f1420}
+      .order-microbar .dot{opacity:.6}
+
+      .pricecard{padding:18px;border:1px solid var(--border);border-radius:16px;background:#fff;box-shadow:0 10px 22px rgba(14,22,34,.10)}
+      .pricecard .price{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+      .pricecard .was{color:var(--muted);font-weight:600;text-decoration:line-through;text-decoration-thickness:.08em;font-size:clamp(13px,2.5vw,16px)}
+      .pricecard .now{font-size:clamp(38px, 7vw, 64px);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#0e1420}
+      .pricecard .now .currency{font-size:.62em;vertical-align:.12em;opacity:.95;color:#0e1420}
+      .save-badge{display:inline-block;padding:.28em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900}
+      .micro-quote{margin:6px 0 0;font-size:13.5px;color:#111827}
+
+      .divider{border:0;border-top:1px solid var(--border);margin:10px 0}
+
+      .value-bullets{margin:8px 0 10px;padding:0;list-style:none}
+      .value-bullets li{display:flex;gap:8px;align-items:flex-start;margin:.36em 0}
+      .value-bullets .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
+
+      .guarantee{margin:6px 0 8px;padding:10px 12px;border:1px dashed var(--border);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));font-size:13.5px;color:#0e1420}
+
+      .trust-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:#2b3442;margin:6px 0 8px}
+      .trust-row .i{width:18px;height:18px;margin-right:6px}
+      .trust-row .trust-item{display:inline-flex;align-items:center}
+      .trust-row .dot{opacity:.5}
+
+      .consents-inline{display:grid;gap:8px;margin:10px 0 8px}
+      .consent-label{display:flex;gap:8px;align-items:flex-start}
+      .consent-label input{transform:translateY(3px)}
+      .consent-label.optional{font-size:13px;color:#2d3644}
+      .consent-more summary{cursor:pointer;font-weight:700;color:#101624}
+
+      .btn-primary{min-height:52px;border-radius:16px;font-size:1.08rem}
+      .btn-large{padding:16px 18px;font-size:clamp(16px,2.4vw,18px);font-weight:900}
+      .btn[aria-busy="true"]{opacity:.85;cursor:wait}
+      .btn .spinner{display:inline-block;width:1em;height:1em;border:.18em solid rgba(255,255,255,.6);border-top-color:#fff;border-radius:50%;animation:spin .9s linear infinite;margin-right:.45em;transform:translateY(.12em)}
+      @keyframes spin{to{transform:rotate(360deg)}}
+
+      .subnote{margin:8px 0 0;color:#3a4453;font-size:13.5px}
+      .status{font-size:13.5px;margin-top:8px}
+      .status--error{color:var(--danger)}
+      .status--ok{color:var(--ok)}
+
+      .micro-faq{display:grid;gap:8px;margin-top:10px}
+      .micro-faq details{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px}
+      .micro-faq summary{font-weight:700;cursor:pointer}
+
+      /* Sticky bar (mobile) */
+      .order-sticky{position:fixed;left:0;right:0;bottom:-120px;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--border);transition:transform .25s ease, bottom .25s ease;box-shadow:0 -10px 22px rgba(14,22,34,.12)}
+      .order-sticky.show{bottom:0}
+      .order-sticky-inner{max-width:1120px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+      .order-sticky-price .lbl{opacity:.9;margin-right:.4ch}
+      .order-sticky-price .cur{font-weight:900}
+      .btn-sticky{min-height:44px;border-radius:12px}
+
+      /* Shake dla bloku zgód */
+      .shake{animation:shake .36s cubic-bezier(.36,.07,.19,.97) both}
+      @keyframes shake{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
+
+      @media (min-width: 769px){
+        .order-sticky{display:none}
+      }
+    </style>
+
     <script>
-      (function(){
-        const btn = document.getElementById('payBtn');
-        const form = document.getElementById('orderForm');
-        const statusEl = document.getElementById('formStatus');
-        const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
-        const consentAll = document.getElementById('consentAll');
+    (function(){
+      const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
 
-        function setError(input, message) {
-          const wrap = input.closest('.consents') || input.parentElement;
-          if (!wrap) return;
-          input.setAttribute('aria-invalid', message ? 'true' : 'false');
-          wrap.classList.toggle('consent-error', !!message);
-          const msgEl = wrap.querySelector('.consent-msg') || document.createElement('div');
-          if (!msgEl.classList.contains('consent-msg')) {
-            msgEl.className = 'consent-msg';
-            wrap.appendChild(msgEl);
-          }
-          msgEl.textContent = message || '';
-        }
+      const form = document.getElementById('orderForm');
+      const btn = document.getElementById('payBtn');
+      const statusEl = document.getElementById('formStatus');
+      const consentAll = document.getElementById('consentAll');
+      const etaEl = document.getElementById('eta');
+      const sticky = document.getElementById('orderSticky');
+      const stickyCta = document.getElementById('stickyCta');
 
-        function validateConsent(opts) {
-          const o = Object.assign({focusFirstError:false, scrollIntoView:false, allowShake:false, setStatus:false}, opts||{});
-          let ok = true;
-
-          if (!consentAll.checked) {
-            setError(consentAll, 'Zaznacz wymagane oświadczenie.');
-            ok = false;
+      // 1) Dynamiczna ETA
+      (function updateETA(){
+        try{
+          const now = new Date();
+          const day = now.getDay(); // 0=Nd, 6=Sb
+          const hour = now.getHours();
+          const withinBiz = (day>=1 && day<=5 && hour>=8 && hour<18);
+          if (withinBiz) {
+            const est = new Date(now.getTime()+ 3*60*60*1000);
+            const hh = est.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+            etaEl.textContent = `Zamów teraz — wyślemy dziś ok. ${hh}`;
           } else {
-            setError(consentAll, '');
+            etaEl.textContent = "Zamów teraz — wyślemy w kilka godzin.";
           }
-
-          if (!ok) {
-            if (o.allowShake) {
-              const consentsBlock = document.getElementById('zamow') || form;
-              consentsBlock.classList.remove('shake');
-              void consentsBlock.offsetWidth;
-              consentsBlock.classList.add('shake');
-            }
-            if (o.scrollIntoView) {
-              (consentAll.closest('.consents') || consentAll).scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            if (o.focusFirstError) {
-              setTimeout(()=>consentAll.focus({preventScroll:true}),180);
-            }
-            if (o.setStatus) {
-              statusEl.className = 'status status--error';
-              statusEl.textContent = 'Uzupełnij wymagane oświadczenie.';
-            }
-          } else {
-            statusEl.className = 'status status--ok';
-            statusEl.textContent = '';
-          }
-          return ok;
-        }
-
-        function goToStripe() {
-          if (!validateConsent({focusFirstError:true, scrollIntoView:true, allowShake:true, setStatus:true})) {
-            window.gtag && gtag('event','consents_missing',{location:'order_section'});
-            window.fbq && fbq('trackCustom','ConsentsMissing');
-            return;
-          }
-
-          window.gtag && gtag('event','begin_checkout',{ value:49, currency:'PLN', items:[{item_name:'Portret numerologiczny'}] });
-          window.fbq && fbq('track','InitiateCheckout',{ value:49, currency:'PLN' });
-
-          statusEl.className = 'status';
-          statusEl.textContent = 'Przekierowuję do płatności…';
-          window.location.href = STRIPE_CHECKOUT_URL;
-
-          setTimeout(() => {
-            if (document.visibilityState === 'visible') {
-              statusEl.className = 'status status--error';
-              statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
-              window.gtag && gtag('event','redirect_fail');
-              window.fbq && fbq('trackCustom','RedirectFail');
-            }
-          }, 6000);
-        }
-
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          goToStripe();
-        });
-
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          goToStripe();
-        });
-
-        consentAll?.addEventListener('change', () => {
-          validateConsent();
-        });
-
-        window.addEventListener('pageshow', (e) => {
-          if (e.persisted) {
-            statusEl.textContent = '';
-            consentAll && consentAll.removeAttribute('aria-invalid');
-            document.querySelectorAll('.consent-error').forEach(el=>el.classList.remove('consent-error'));
-            document.querySelectorAll('.consent-msg').forEach(el=>el.textContent='');
-          }
-        });
+        }catch(e){ /* cicho */ }
       })();
+
+      // 2) Walidacja po kliknięciu (CTA zawsze aktywne)
+      function setError(input, message){
+        const wrap = input.closest('.consents-inline') || input.parentElement;
+        if (!wrap) return;
+        input.setAttribute('aria-invalid', message ? 'true' : 'false');
+        wrap.classList.toggle('consent-error', !!message);
+        const msgEl = document.getElementById('msg-consentAll');
+        if (msgEl) msgEl.textContent = message || '';
+      }
+
+      function validateConsent(opts){
+        const o = Object.assign({focusFirstError:false, scrollIntoView:false, allowShake:false, setStatus:false}, opts||{});
+        let ok = true;
+        if (!consentAll.checked) { setError(consentAll, 'Zaznacz wymagane oświadczenie.'); ok = false; }
+        else { setError(consentAll, ''); }
+
+        if (!ok){
+          const consentsBlock = document.querySelector('.consents-inline');
+          if (o.allowShake && consentsBlock){ consentsBlock.classList.remove('shake'); void consentsBlock.offsetWidth; consentsBlock.classList.add('shake'); }
+          if (o.scrollIntoView && consentsBlock){ consentsBlock.scrollIntoView({behavior:'smooth', block:'center'}); }
+          if (o.focusFirstError){ setTimeout(()=>consentAll.focus({preventScroll:true}), 160); }
+          if (o.setStatus){ statusEl.className = 'status status--error'; statusEl.textContent = 'Uzupełnij wymagane oświadczenie.'; }
+        } else {
+          statusEl.className = 'status';
+          statusEl.textContent = '';
+        }
+        return ok;
+      }
+
+      // 3) Busy state (blokada duplikatów tylko po akceptacji)
+      function withBusy(el, isBusy){
+        if (!el) return;
+        el.setAttribute('aria-busy', isBusy ? 'true' : 'false');
+        if (isBusy){
+          const label = el.getAttribute('data-loading-text') || 'Przetwarzam…';
+          el.dataset._orig = el.innerHTML;
+          el.innerHTML = '<span class="spinner" aria-hidden="true"></span>' + label;
+          el.disabled = true;
+        } else {
+          if (el.dataset._orig){ el.innerHTML = el.dataset._orig; delete el.dataset._orig; }
+          el.disabled = false;
+        }
+      }
+
+      function goToStripe(){
+        window.gtag && gtag('event','begin_checkout',{ value:49, currency:'PLN', items:[{item_name:'Portret numerologiczny'}] });
+        window.fbq && fbq('track','InitiateCheckout',{ value:49, currency:'PLN' });
+
+        statusEl.className = 'status';
+        statusEl.textContent = 'Przekierowuję do płatności…';
+        window.location.href = STRIPE_CHECKOUT_URL;
+
+        setTimeout(() => {
+          if (document.visibilityState === 'visible') {
+            statusEl.className = 'status status--error';
+            statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
+            window.gtag && gtag('event','redirect_fail');
+            window.fbq && fbq('trackCustom','RedirectFail');
+            withBusy(btn, false);
+          }
+        }, 6000);
+      }
+
+      btn?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        if (!validateConsent({focusFirstError:true, scrollIntoView:true, allowShake:true, setStatus:true})){
+          window.gtag && gtag('event','consents_missing',{location:'order_section'});
+          window.fbq && fbq('trackCustom','ConsentsMissing');
+          return; // CTA pozostaje aktywne
+        }
+        withBusy(btn, true);
+        goToStripe();
+      });
+
+      form?.addEventListener('submit', (e)=>{ e.preventDefault(); btn?.click(); });
+      consentAll?.addEventListener('change', ()=> validateConsent());
+
+      // 4) Sticky bar – widoczny po lekkim scrollu i gdy sekcja zamówienia nie jest w viewport
+      function inViewport(el){
+        if (!el) return false; const r = el.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+      }
+      function toggleSticky(){
+        const orderVisible = inViewport(document.getElementById('zamow'));
+        if (!orderVisible && window.scrollY > 300) { sticky.classList.add('show'); sticky.setAttribute('aria-hidden','false'); }
+        else { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); }
+      }
+      window.addEventListener('scroll', toggleSticky, {passive:true});
+      window.addEventListener('resize', toggleSticky);
+      document.addEventListener('DOMContentLoaded', toggleSticky);
+
+      stickyCta?.addEventListener('click', ()=>{
+        if (consentAll && consentAll.checked){ btn?.click(); }
+        else { document.getElementById('zamow')?.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+
+      // 5) Reset komunikatów po back/forward cache
+      window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+          statusEl.textContent = '';
+          consentAll && consentAll.removeAttribute('aria-invalid');
+          document.querySelectorAll('.consent-error').forEach(el=>el.classList.remove('consent-error'));
+          const msg = document.getElementById('msg-consentAll'); if (msg) msg.textContent='';
+          withBusy(btn, false);
+        }
+      });
+    })();
     </script>
 
     <script>
