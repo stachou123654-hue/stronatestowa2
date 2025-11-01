@@ -805,43 +805,53 @@
     </script>
 
     <style>
-      .order-section--v4{padding:16px 14px;border-radius:16px}
       @media (max-width:768px){
+        .order-section--v4{padding:16px 14px;border-radius:16px}
         .order-section--v4.card{border:0; box-shadow:0 6px 20px rgba(14,22,34,.10); background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94))}
+        .order-section--v4 .price-strip{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+        .order-section--v4 .price-strip__left{display:grid;gap:6px}
+        .order-section--v4 .price-pill{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+        .order-section--v4 .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600;font-size:13px}
+        .order-section--v4 .price-pill__now{font-weight:900;letter-spacing:-.02em;font-size:clamp(34px,8.2vw,48px);line-height:1}
+        .order-section--v4 .price-pill__now .currency{font-size:.6em;opacity:.9}
+        .order-section--v4 .price-pill__save{display:inline-block;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900;font-size:12px;line-height:1}
+        .order-section--v4 .micro-proof{display:flex;align-items:center;gap:8px;color:#111827;font-size:13px}
+        .order-section--v4 .micro-proof__dot{opacity:.5}
+        .order-section--v4 .price-strip__right{text-align:right}
+        .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
+        .order-section--v4 .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
+        .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
+        .order-section--v4 .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
+        .order-section--v4 .trust{display:inline-flex;align-items:center;gap:6px}
+        .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
+        .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
+        .order-section--v4 .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+        .order-section--v4 .wallets__gpay{font-family:Inter,system-ui}
+        .order-section--v4 .wallets__cards{opacity:.9}
+        .order-section--v4 .value-acc{border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(14,22,34,.08);margin:10px 0 8px}
+        .order-section--v4 .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+        .order-section--v4 .value-acc__title{font-weight:900;color:#0f1420}
+        .order-section--v4 .value-acc__hint{font-size:12.8px;color:#2d3644}
+        .order-section--v4 .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
+        .order-section--v4 .value-list li{display:flex;gap:8px;align-items:flex-start}
+        .order-section--v4 .value-list .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
+        .order-section--v4 .consents--compact{gap:8px;margin-top:8px}
+        .order-section--v4 .consents--compact .consent-label{gap:10px;font-size:13.5px}
+        .order-section--v4 .consents--compact .consent-msg{min-height:18px;font-size:13px}
+        .order-section--v4 .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
+        .order-section--v4 .micro-faq--single > summary{cursor:pointer;font-weight:800}
+        .order-section--v4 .micro-faq__grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
       }
-      .price-strip{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-      .price-strip__left{display:grid;gap:6px}
-      .price-pill{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
-      .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600;font-size:13px}
-      .price-pill__now{font-weight:900;letter-spacing:-.02em;font-size:clamp(34px,8.2vw,48px);line-height:1}
-      .price-pill__now .currency{font-size:.6em;opacity:.9}
-      .price-pill__save{display:inline-block;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900;font-size:12px;line-height:1}
-      .micro-proof{display:flex;align-items:center;gap:8px;color:#111827;font-size:13px}
-      .micro-proof__dot{opacity:.5}
-      .price-strip__right{text-align:right}
-      .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
-      .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
-      .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
-      .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
-      .trust{display:inline-flex;align-items:center;gap:6px}
-      .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
-      .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
-      .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-      .wallets__gpay{font-family:Inter,system-ui}
-      .wallets__cards{opacity:.9}
-      .value-acc{border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(14,22,34,.08);margin:10px 0 8px}
-      .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-      .value-acc__title{font-weight:900;color:#0f1420}
-      .value-acc__hint{font-size:12.8px;color:#2d3644}
-      .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
-      .value-list li{display:flex;gap:8px;align-items:flex-start}
-      .value-list .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
-      .consents--compact{gap:8px;margin-top:8px}
-      .consents--compact .consent-label{gap:10px;font-size:13.5px}
-      .consents--compact .consent-msg{min-height:18px;font-size:13px}
-      .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
-      .micro-faq--single > summary{cursor:pointer;font-weight:800}
-      .micro-faq__grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
+      @media (min-width:769px){
+        .order-section--v4{padding:22px 18px}
+        .order-section--v4 .price-strip{display:flex;align-items:flex-end;gap:16px}
+        .order-section--v4 .price-pill__save{display:none}
+        .order-section--v4 .btn-cta{width:auto}
+        .order-section--v4 .trust-row--logos{margin-top:6px}
+        .order-section--v4 .value-acc{border:0;box-shadow:none}
+        .order-section--v4 .value-acc > summary{display:none}
+        .order-section--v4 .value-acc .value-list{display:grid}
+      }
       .order-sticky{position:fixed;left:0;right:0;bottom:-120px;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--border);transition:transform .25s ease, bottom .25s ease;box-shadow:0 -10px 22px rgba(14,22,34,.12)}
       .order-sticky.show{bottom:0}
       .order-sticky-inner{max-width:1120px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -973,6 +983,14 @@
         }
       });
     })();
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        if (window.matchMedia('(min-width: 769px)').matches) {
+          document.querySelectorAll('.order-section--v4 .value-acc').forEach(d=>d.setAttribute('open',''));
+        }
+      });
     </script>
 
     <script>
