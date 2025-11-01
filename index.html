@@ -171,7 +171,7 @@
       .price .was,.price .now{white-space:nowrap;line-height:1;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
       .price .was{color:var(--muted);font-weight:600;text-decoration-line:line-through;text-decoration-thickness:.08em;text-decoration-color:currentColor;text-decoration-skip-ink:none}
       .price .now{font-size:2.34em !important;font-weight:900}
-      .price .now .value{ color:#0a8f44; } /* globalny – nadpisany w sekcji zamówienia */
+      .price .now .value{ color:#0a8f44; }
       .price .now .currency{ color:#0a8f44; opacity:.95; }
       .price .now .value{ text-shadow: 0 1px 0 rgba(0,0,0,.05); }
       .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
@@ -452,7 +452,7 @@
       <div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
 
       <!-- =====================
-           NOWA SEKCJA: ZAMÓW PORTRET NUMEROLOGICZNY (CR-optimized v3 – black price)
+           NOWA SEKCJA: ZAMÓW PORTRET NUMEROLOGICZNY (CR-optimized v3 – black price + mobile)
       ====================== -->
       <section id="zamow" class="card order-section" aria-labelledby="zamow-tytul">
         <form class="form" id="orderForm" action="#" novalidate>
@@ -483,7 +483,7 @@
             <ul class="value-bullets" aria-label="Co jest w zestawie">
               <li><span class="tick" aria-hidden="true">✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
               <li><span class="tick" aria-hidden="true">✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku zodiaku</li>
-              <li><span class="tick" aria-hidden="true">✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h w dni robocze)</li>
+              <li><span class="tick" aria-hidden="true">✓</span> Dostawa <strong><span class="nowrap">e-mail</span></strong> (zwykle w 3–4 h w dni robocze)</li>
             </ul>
 
             <div class="guarantee" role="note" aria-label="Gwarancja jakości">Błąd techniczny? <strong>Poprawimy bezpłatnie.</strong></div>
@@ -517,9 +517,9 @@
               </label>
             </div>
 
-            <!-- CTA główne -->
+            <!-- CTA główne (skrócone) -->
             <button id="payBtn" class="btn btn-primary btn-large" type="button" aria-describedby="eta" data-loading-text="Przekierowuję do płatności…">
-              Zamawiam portret za 49&nbsp;zł
+              Zamawiam za 49&nbsp;zł
             </button>
 
             <p class="subnote" id="subnote-cta">1 klik → płatność Stripe. Średni czas dostawy <strong>3–4 h</strong> (dni robocze).</p>
@@ -535,7 +535,7 @@
               </details>
               <details>
                 <summary>Co zawiera PDF?</summary>
-                <p>Spersonalizowany Raport Numerologiczny na podstawie podanego imienia, nazwiska i daty urodzenia. Liczby numerologiczne obliczane na podstawie podanych danych, Mapa Cykli, Szczyty, Wyzwania, podsumowanie + <strong>3 plakaty</strong> (dopasowane do aury znaku zodiaku).</p>
+                <p>Spersonalizowany Raport Numerologiczny na podstawie podanego imienia, nazwiska i daty urodzenia. Liczby numerologiczne, Mapa Cykli, Szczyty, Wyzwania, podsumowanie + <strong>3 plakaty</strong> (dopasowane do aury znaku zodiaku).</p>
               </details>
             </div>
 
@@ -558,7 +558,7 @@
           <button id="stickyCta" type="button" class="btn btn-sticky">Zamawiam za 49&nbsp;zł</button>
         </div>
       </div>
-      <!-- ====== KONIEC NOWEJ SEKCJI ====== -->
+      <!-- ====== KONIEC SEKCJI ====== -->
 
       <section class="faq" id="faq">
         <h2 class="section-title">FAQ</h2>
@@ -618,7 +618,7 @@
           "naslasha7","naslasha8","naslasha9","naslasha10","naslasha11","naslasha12"
         ];
         const base = "assets/img/";
-        theExts = [".jpg",".JPG",".jpeg",".JPEG",".png",".PNG"];
+        const exts = [".jpg",".JPG",".jpeg",".JPEG",".png",".PNG"];
         const DISPLAY_MS = 1500;
         const LOAD_TIMEOUT_MS = 3500;
 
@@ -631,9 +631,9 @@
         function resolveSrc(name, cb) {
           let i = 0;
           (function tryNext(){
-            if (i >= theExts.length) { cb(null); return; }
+            if (i >= exts.length) { cb(null); return; }
             const test = new Image();
-            const src = base + name + theExts[i++] + "?v=" + ASSET_VERSION;
+            const src = base + name + exts[i++] + "?v=" + ASSET_VERSION;
             let settled = false;
             const t = setTimeout(() => { if (!settled) { settled = true; tryNext(); } }, LOAD_TIMEOUT_MS);
             test.onload = () => { if (settled) return; settled = true; clearTimeout(t); cb(src); };
@@ -818,7 +818,7 @@
       })();
     </script>
 
-    <!-- NOWA LOGIKA sekcji zamówienia (aktywny CTA, walidacja po kliknięciu, sticky bar) -->
+    <!-- LOGIKA sekcji zamówienia (aktywny CTA, walidacja, sticky bar) + STYLES -->
     <style>
       .order-section{padding:22px 18px}
       .order-microbar{display:flex;gap:8px;align-items:center;margin-bottom:12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 14px rgba(14,22,34,.06)}
@@ -830,7 +830,6 @@
       .pricecard .was{color:var(--muted);font-weight:600;text-decoration:line-through;text-decoration-thickness:.08em;font-size:clamp(13px,2.5vw,16px)}
       .pricecard .now{font-size:clamp(38px, 7vw, 64px);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#0e1420}
       .pricecard .now .currency{font-size:.62em;vertical-align:.12em;opacity:.95;color:#0e1420}
-      .pricecard .now .value{color:#0e1420 !important; text-shadow:none} /* NADPISANIE: czarne cyfry */
       .save-badge{display:inline-block;padding:.28em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900}
       .micro-quote{margin:6px 0 0;font-size:13.5px;color:#111827}
 
@@ -883,102 +882,36 @@
       @media (min-width: 769px){
         .order-sticky{display:none}
       }
-    </style>
 
-    <!-- === MOBILE TUNING: sekcja zamówienia === -->
-    <style>
-      /* Ogólne doszlifowanie dotyku i typografii */
-      @media (max-width: 768px){
-        .order-section{ padding:16px 14px }
-        .pricecard{ padding:14px; border-radius:14px; box-shadow:0 8px 18px rgba(14,22,34,.10) }
-        .pricecard .price{ gap:10px; margin-bottom:4px }
-        .pricecard .was{ font-size:clamp(12.5px,3.4vw,14.5px) }
-        .pricecard .now{ font-size:clamp(34px,10.5vw,44px) }
-        .pricecard .now .currency{ font-size:.58em; vertical-align:.18em }
+      /* ===== MOBILE FIXES ≤480px + CZARNA CENA W SEKCJI ===== */
+      /* Czarna cena tylko w #zamow (nadpisuje zieloną globalną) */
+      #zamow .price .now .value,
+      #zamow .price .now .currency{ color:#0e1420 !important; }
 
-        .order-microbar{
-          flex-wrap:wrap; gap:6px; padding:8px 10px; border-radius:12px; margin-bottom:10px
+      @media (max-width: 480px){
+        .order-section{padding:18px 14px}
+        .pricecard{padding:16px;border-radius:14px}
+        .order-microbar{padding:8px 10px;border-radius:10px}
+        .pricecard .now{font-size:clamp(34px,10vw,44px);letter-spacing:-0.01em}
+        .save-badge{font-size:13px;padding:.25em .55em}
+        .micro-quote{font-size:13px;line-height:1.35;margin-top:6px}
+        .value-bullets{margin:8px 0 6px}
+        .value-bullets li{line-height:1.35}
+        .value-bullets li,
+        .value-bullets li *{
+          word-break:normal;
+          overflow-wrap:anywhere;
+          hyphens:auto;
+          text-wrap:pretty;
         }
-        .order-microbar .dot{ display:none } /* mniej „szumu” na małych ekranach */
-
-        .micro-quote{ font-size:12.8px; line-height:1.35; margin-top:4px }
-
-        .divider{ margin:8px 0 } /* kompaktowy odstęp */
-
-        .value-bullets{ margin:6px 0 8px }
-        .value-bullets li{
-          font-size:clamp(14px,3.8vw,15.5px);
-          line-height:1.35;
-          gap:8px
-        }
-        .value-bullets .tick{ min-width:1.1em }
-
-        .guarantee{ font-size:12.8px; padding:9px 10px }
-
-        .trust-row{ gap:10px; row-gap:6px; margin:6px 0 8px }
-        .trust-row .i{ width:17px; height:17px; margin-right:6px }
-
-        .consents-inline{ gap:10px; margin:10px 0 8px }
-        .consent-label{ font-size:14px; gap:10px }
-        .consent-label input{ transform:translateY(2px) }
-        .consent-label.optional{ font-size:13px }
-        .consent-more summary{ font-size:14px }
-
-        .btn-primary{
-          width:100%;
-          min-height:54px;
-          font-weight:900;
-          border-radius:16px;
-          font-size:clamp(15.5px,4vw,17px)
-        }
-        .btn-large{ padding:16px 18px }
-
-        .subnote{
-          font-size:12.6px;
-          margin-top:8px;
-          text-wrap:balance
-        }
-
-        .micro-faq{ gap:8px; margin-top:10px }
-        .micro-faq details{ padding:10px; border-radius:10px }
-        .micro-faq summary{ font-size:14px }
-      }
-
-      /* Ultra-małe ekrany (≤380px) – jeszcze ciaśniej i czytelniej */
-      @media (max-width: 380px){
-        .order-section{ padding:14px 12px }
-        .pricecard{ padding:12px }
-        .pricecard .now{ font-size:clamp(30px,11.5vw,40px) }
-        .micro-quote{ display:none } /* opcjonalnie chowamy krótki cytat, żeby zyskać miejsce */
-        .subnote{ font-size:12.2px }
-      }
-
-      /* Sticky bar: bezpieczny „notch”, responsywny układ */
-      .order-sticky{
-        padding-bottom:max(8px, env(safe-area-inset-bottom));
-      }
-      .order-sticky-inner{
-        padding-bottom:max(8px, env(safe-area-inset-bottom));
-      }
-      @media (max-width:768px){
-        .order-sticky-inner{ gap:10px }
-        .order-sticky-price{ font-size:15px }
-        .order-sticky-price .lbl{ opacity:.9; margin-right:.4ch }
-        .order-sticky-price .cur{ font-weight:900 }
-        .btn-sticky{
-          min-height:46px; border-radius:12px; padding:10px 14px;
-          font-weight:900
-        }
-      }
-      @media (max-width:380px){
-        .order-sticky-inner{ gap:8px }
-        .order-sticky-price .lbl{ display:none } /* zostawiamy cenę – oszczędzamy miejsce */
-      }
-
-      /* Preferencje dostępności: mniej animacji dla użytkowników z reduce-motion */
-      @media (prefers-reduced-motion: reduce){
-        .order-sticky{ transition:none }
-        .shake{ animation:none }
+        .guarantee{font-size:13px;padding:8px 10px}
+        .trust-row{gap:6px;font-size:13px}
+        .consents-inline{gap:6px}
+        .consent-label{gap:10px}
+        .consent-label.optional{font-size:12.5px}
+        .btn-primary.btn-large{min-height:54px;font-size:clamp(16px,4.4vw,18px);border-radius:14px}
+        .order-sticky-inner{padding:8px 12px}
+        .btn-sticky{min-height:44px;border-radius:10px;font-weight:900}
       }
     </style>
 
@@ -1074,7 +1007,10 @@
         }, 6000);
       }
 
-      btn?.addEventListener('click', (e)=>{
+      const formEl = document.querySelector('#zamow form');
+      formEl?.addEventListener('submit', (e)=>{ e.preventDefault(); btn?.click(); });
+
+      const btnHandler = (e)=>{
         e.preventDefault();
         if (!validateConsent({focusFirstError:true, scrollIntoView:true, allowShake:true, setStatus:true})){
           window.gtag && gtag('event','consents_missing',{location:'order_section'});
@@ -1083,12 +1019,14 @@
         }
         withBusy(btn, true);
         goToStripe();
-      });
+      };
 
-      form?.addEventListener('submit', (e)=>{ e.preventDefault(); btn?.click(); });
+      const btn = document.getElementById('payBtn');
+      btn?.addEventListener('click', btnHandler);
+
       consentAll?.addEventListener('change', ()=> validateConsent());
 
-      // 4) Sticky bar – widoczny po lekkim scrollu i gdy sekcja zamówienia nie jest w viewport
+      // 4) Sticky bar – widoczny po lekkim scrollu i gdy sekcja nie jest w viewport
       function inViewport(el){
         if (!el) return false; const r = el.getBoundingClientRect();
         return r.top < window.innerHeight && r.bottom > 0;
