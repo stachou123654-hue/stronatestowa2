@@ -413,6 +413,78 @@
       @keyframes shakeX{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
       .consents-inline.shake{animation:shakeX .45s ease both}
     </style>
+
+    <style>
+      .order-section--m5{border-radius:18px;border:1px solid rgba(20,24,30,.14);padding:0;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));box-shadow:0 14px 34px rgba(14,22,34,.12)}
+      .order-section--m5 .m5-wrap{padding:16px 14px 12px}
+      .order-section--m5 .m5-head{position:relative;padding:8px 10px 12px;border:1px solid rgba(20,24,30,.14);border-radius:14px;background:radial-gradient(160% 120% at 80% -30%, rgba(109,178,240,.15), transparent 55%), radial-gradient(140% 120% at -20% 20%, rgba(242,145,88,.18), transparent 60%), #fff}
+      .order-section--m5 .m5-eyebrow{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+      .order-section--m5 .m5-title{margin:.15em 0 .1em;font-size:clamp(20px,5.4vw,26px);line-height:1.15;font-weight:900;color:#0e1420;text-wrap:balance}
+      .order-section--m5 .m5-sub{font-size:13.5px;color:#2f3846;font-weight:700}
+      .order-section--m5 .m5-price{display:grid;grid-template-columns:1fr;gap:10px;align-items:center;margin:12px 0 4px}
+      .order-section--m5 .m5-price-line{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+      .order-section--m5 .m5-was{color:#2f3846;text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600;font-size:13px}
+      .order-section--m5 .m5-now{font-weight:900;letter-spacing:-.02em;line-height:1;font-size:clamp(36px,8.8vw,48px)}
+      .order-section--m5 .m5-now .currency{font-size:.6em;opacity:.9}
+      .order-section--m5 .m5-save{display:inline-flex;align-items:center;gap:6px;padding:.34em .6em;border-radius:999px;border:1px solid rgba(20,24,30,.14);background:#fff;font-weight:900;font-size:12px;width:max-content}
+      .order-section--m5 .m5-cta{width:100%;min-height:54px;border:0;border-radius:14px;font-weight:900;font-size:clamp(16px,3.8vw,18px);color:#fff;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.38);background:linear-gradient(135deg,#F29158,#ea8d59)}
+      .order-section--m5 .m5-cta[aria-busy="true"]{opacity:.85;cursor:wait}
+      .order-section--m5 .m5-eta{margin:.25em 2px 0;color:#2f3846;font-size:12.8px}
+      .order-section--m5 .m5-accordion{border:1px solid rgba(20,24,30,.14);border-radius:12px;background:#fff;margin:12px 0 6px}
+      .order-section--m5 .m5-acc-summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px}
+      .order-section--m5 .m5-acc-title{font-weight:900;color:#0e1420}
+      .order-section--m5 .m5-acc-hint{font-size:12.5px;color:#2f3846}
+      .order-section--m5 .m5-value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
+      .order-section--m5 .m5-value-list .tick{display:inline-block;min-width:1.2em;font-weight:900;color:#0e1420}
+      .order-section--m5 .m5-trust{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 6px}
+      .order-section--m5 .m5-badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;color:#0e1420;white-space:nowrap}
+      .order-section--m5 .i{width:18px;height:18px}
+      .order-section--m5 .m5-wallets{display:inline-flex;align-items:center;gap:8px;font-size:12.8px;color:#2b3442}
+      .order-section--m5 .m5-wallets .pill{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid rgba(20,24,30,.14);background:#fff;font-weight:800;line-height:1}
+      .order-section--m5 .m5-consents{display:grid;gap:10px;margin:8px 0 0}
+      .order-section--m5 .consent-item{display:grid;grid-template-columns:20px 1fr;align-items:start;gap:10px;font-size:13.5px}
+      .order-section--m5 .consent-item input{transform:translateY(2px)}
+      .order-section--m5 .consent-more{border:1px solid rgba(20,24,30,.14);border-radius:12px;background:#fff;padding:8px 10px}
+      .order-section--m5 .consent-more > summary{cursor:pointer;font-weight:800}
+      .order-section--m5 .hint{font-size:13px;color:#2d3644}
+      .order-section--m5 .consent-msg{min-height:18px;font-size:13px;color:#b02a1f}
+      .order-section--m5 .m5-faq{border:1px solid rgba(20,24,30,.14);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
+      .order-section--m5 .m5-faq-summary{cursor:pointer;font-weight:800}
+      .order-section--m5 .m5-faq-grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
+      .order-section--m5 .m5-status{font-size:13px;min-height:18px}
+      .order-section--m5 .m5-status.error{color:#b02a1f}
+      .order-section--m5 .m5-status.ok{color:#1e7a31}
+      .order-section--m5 .m5-sticky{position:sticky;bottom:0;background:rgba(255,255,255,.98);border-top:1px solid rgba(20,24,30,.14);box-shadow:0 -10px 22px rgba(14,22,34,.12)}
+      .order-section--m5 .m5-sticky-inner{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+      .order-section--m5 .m5-sticky-cta{min-height:44px;border-radius:12px;border:0;font-weight:900;color:#fff;padding:10px 16px;box-shadow:0 10px 22px rgba(244,167,124,.36);background:linear-gradient(135deg,#F29158,#ea8d59)}
+    </style>
+
+    <style>
+      @media (max-width:768px){
+        #zamow.order-section--v4{display:none !important;}
+        #zamow-m5.order-section--m5{display:block !important;}
+        #orderSticky{display:none !important;}
+      }
+      @media (min-width:769px){
+        #zamow-m5.order-section--m5{display:none !important;}
+      }
+    </style>
+
+    <script>
+      (function(){
+        var mm = window.matchMedia('(max-width: 768px)');
+        function rerouteAnchors(){
+          try{
+            document.querySelectorAll('a[href="#zamow"]').forEach(function(a){
+              a.setAttribute('href', mm.matches ? '#zamow-m5' : '#zamow');
+            });
+          }catch(e){}
+        }
+        rerouteAnchors();
+        window.addEventListener('resize', rerouteAnchors);
+        document.addEventListener('DOMContentLoaded', rerouteAnchors);
+      })();
+    </script>
   </head>
 
   <body>
@@ -689,9 +761,7 @@
               </div>
               <div class="m5-save">Oszczędzasz 30&nbsp;zł</div>
             </div>
-            <button id="payBtnM5" class="m5-cta" type="button" aria-describedby="m5-eta" data-loading-text="Przekierowuję do płatności…">
-              Zamów teraz
-            </button>
+            <button id="payBtnM5" class="m5-cta" type="button" aria-describedby="m5-eta" data-loading-text="Przekierowuję do płatności…">Zamów teraz</button>
           </div>
 
           <p id="m5-eta" class="m5-eta" role="status">Zamów teraz — wyślemy w godzinach 8:00–18:00 (zwykle 3–4 h).</p>
@@ -918,7 +988,7 @@
             let done=false;
             const guard=setTimeout(()=>{ if(!done){ done=true; tryExt(); } }, TIMEOUT);
             img.onload=()=>{ if(done) return; done=true; clearTimeout(guard); cb(src); };
-            img.onerror=()=>{ ifdone) return; done=true; clearTimeout(guard); tryExt(); };
+            img.onerror=()=>{ if(done) return; done=true; clearTimeout(guard); tryExt(); };
             img.decoding="async";
             img.loading="eager";
             img.src=src;
@@ -1134,21 +1204,6 @@
         }
       });
     })();
-    </script>
-
-    <script>
-      (function(){
-        var mm = window.matchMedia('(max-width: 768px)');
-        function rerouteAnchors(){
-          try{
-            document.querySelectorAll('a[href="#zamow"]').forEach(function(a){
-              if (mm.matches) a.setAttribute('href','#zamow-m5'); else a.setAttribute('href','#zamow');
-            });
-          }catch(e){}
-        }
-        rerouteAnchors();
-        window.addEventListener('resize', rerouteAnchors);
-      })();
     </script>
 
     <script>
