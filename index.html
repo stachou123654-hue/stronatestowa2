@@ -133,7 +133,7 @@
       .card{background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
       .product{padding:76px 24px 24px;position:relative;overflow:visible}
 
-      .feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#2b3442;padding:8px 10px;border-radius:10px;border:1px solid var(--border-soft);background:#fff;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease}
+      .feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#2b3442;padding:8px 10px;border-radius:10px;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;will-change:transform;border:1px solid var(--border-soft);background:#fff}
       .feature svg{grid-column:1;width:22px;height:22px;margin-top:2px;color:#1f2a39}
       .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:14px 0 8px;align-items:start}
       @media (max-width: 980px){.feature-list{grid-template-columns:1fr;gap:10px 14px}}
@@ -291,53 +291,39 @@
       @media (max-width:768px){
         .order-section--v4{padding:16px 14px;border-radius:16px}
         .order-section--v4.card{border:0; box-shadow:0 6px 20px rgba(14,22,34,.10); background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94))}
-        .order-section--v4 .price-strip{
-          display:grid;
-          grid-template-columns:1fr;
-          grid-template-areas:
-            "btn"
-            "eta"
-            "proof"
-            "price";
-          gap:10px;
-          align-items:stretch
-        }
-        .order-section--v4 .price-strip__left,
-        .order-section--v4 .price-strip__right{display:contents}
-        #payBtn{grid-area:btn;width:100%}
-        #eta{grid-area:eta}
-        .order-section--v4 .micro-proof{grid-area:proof;justify-content:flex-start}
-        .order-section--v4 .price-pill{grid-area:price}
+        .order-section--v4 .price-strip{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+        .order-section--v4 .price-strip__left{display:grid;gap:6px}
+        .order-section--v4 .price-pill{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
         .order-section--v4 .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600;font-size:13px}
         .order-section--v4 .price-pill__now{font-weight:900;letter-spacing:-.02em;font-size:clamp(34px,8.2vw,48px);line-height:1}
         .order-section--v4 .price-pill__now .currency{font-size:.6em;opacity:.9}
         .order-section--v4 .price-pill__save{display:inline-block;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900;font-size:12px;line-height:1}
         .order-section--v4 .micro-proof{display:flex;align-items:center;gap:8px;color:#111827;font-size:13px}
         .order-section--v4 .micro-proof__dot{opacity:.5}
-        .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;font-size:clamp(16px,3.8vw,18px);font-weight:900}
-        .order-section--v4 .eta{margin:.2em 0 0;color:#2f3846;font-size:12.8px}
+        .order-section--v4 .price-strip__right{text-align:right}
+        .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
+        .order-section--v4 .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
         .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
         .order-section--v4 .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
         .order-section--v4 .trust{display:inline-flex;align-items:center;gap:6px}
         .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
         .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
-        .order-section--v4 .wallets__apple{font-family:Inter,system-ui}
+        .order-section--v4 .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
         .order-section--v4 .wallets__gpay{font-family:Inter,system-ui}
         .order-section--v4 .wallets__cards{opacity:.9}
-        .order-section--v4 .value-acc{border:0;border-radius:0;background:transparent;box-shadow:none;margin:6px 0 0;padding:0}
-        .order-section--v4 .value-acc > summary{list-style:none;cursor:pointer;padding:0;margin:8px 0 6px;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:8px}
+        .order-section--v4 .value-acc{border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(14,22,34,.08);margin:10px 0 8px}
+        .order-section--v4 .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
         .order-section--v4 .value-acc__title{font-weight:900;color:#0f1420}
-        .order-section--v4 .value-acc__hint{display:none}
-        .order-section--v4 .value-list{display:none}
-        .order-section--v4 .value-chips{display:flex;gap:8px;flex-wrap:wrap}
-        .order-section--v4 .value-chip{display:inline-flex;align-items:center;padding:.48em .8em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:900;font-size:13px}
-        .order-section--v4 .consents--compact{gap:8px;margin-top:10px}
+        .order-section--v4 .value-acc__hint{font-size:12.8px;color:#2d3644}
+        .order-section--v4 .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
+        .order-section--v4 .value-list li{display:flex;gap:8px;align-items:flex-start}
+        .order-section--v4 .value-list .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
+        .order-section--v4 .consents--compact{gap:8px;margin-top:8px}
         .order-section--v4 .consents--compact .consent-label{gap:10px;font-size:13.5px}
         .order-section--v4 .consents--compact .consent-msg{min-height:18px;font-size:13px}
         .order-section--v4 .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
         .order-section--v4 .micro-faq--single > summary{cursor:pointer;font-weight:800}
         .order-section--v4 .micro-faq__grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
-        .order-section--v4 .guarantee{font-size:13.5px;color:#0f1420;background:#fff;border:0;border-radius:12px;padding:10px 12px;margin:10px 0 0}
       }
       @media (min-width:769px){
         .order-section--v4{padding:22px 18px}
@@ -348,7 +334,6 @@
         .order-section--v4 .value-acc{border:0;box-shadow:none}
         .order-section--v4 .value-acc > summary{display:none}
         .order-section--v4 .value-acc .value-list{display:grid}
-        .order-section--v4 .value-chips{display:none}
       }
       .order-sticky{position:fixed;left:0;right:0;bottom:-120px;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--border);transition:transform .25s ease, bottom .25s ease;box-shadow:0 -10px 22px rgba(14,22,34,.12)}
       .order-sticky.show{bottom:0}
@@ -379,14 +364,40 @@
       .order-section--v4 .section-title{
         font-weight:900;letter-spacing:-.01em;margin:2px 0 14px;text-wrap:balance
       }
+      .order-section--v4 .price-strip{
+        display:grid;grid-template-columns:1fr auto;gap:14px 18px;align-items:end
+      }
+      @media (min-width:1024px){
+        .order-section--v4 .price-strip{grid-template-columns:1.2fr .8fr;align-items:center}
+      }
+      .order-section--v4 .price-pill{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px}
+      .order-section--v4 .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600}
+      .order-section--v4 .price-pill__now{font-size:clamp(36px,6vw,48px);line-height:.95;font-weight:900;letter-spacing:-.02em}
+      .order-section--v4 .price-pill__now .value{color:#0e1420;text-shadow:0 1px 0 rgba(0,0,0,.05)}
+      .order-section--v4 .price-pill__now .currency{opacity:.9;color:#0e1420}
+      .order-section--v4 .micro-proof{display:inline-flex;gap:8px;align-items:center;color:#111827;font-size:13.5px;margin-top:4px}
+      .order-section--v4 .micro-proof__dot{opacity:.5}
       .order-section--v4 .price-strip__right{text-align:right}
+      .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;padding:14px 18px;font-weight:900;box-shadow:0 12px 26px rgba(244,167,124,.38)}
+      .order-section--v4 .eta{margin:.45em 0 0;color:#2f3846;font-size:13px}
+      @media (max-width:768px){.order-section--v4 .price-strip__right{text-align:left}}
       .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px}
       .order-section--v4 .trust{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#101624;white-space:nowrap}
       .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12.8px;color:#2b3442}
       .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .6em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800;line-height:1}
       .order-section--v4 .wallets__apple{font-family:Inter,system-ui}
       .order-section--v4 .wallets__gpay{font-family:Inter,system-ui}
+      .order-section--v4 .value-acc{border:0;background:#fff;box-shadow:none;margin:10px 0 8px}
+      .order-section--v4 .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+      .order-section--v4 .value-acc__title{font-weight:900;color:#0f1420}
+      .order-section--v4 .value-acc__hint{font-size:12.8px;color:#2d3644}
+      .order-section--v4 .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
       .order-section--v4 .value-list .tick{display:inline-block;min-width:1.2em;font-weight:900;color:#0e1420}
+      .order-section--v4 .consents--compact{gap:10px;margin-top:10px}
+      .order-section--v4 .consents--compact .consent-label{display:grid;grid-template-columns:18px 1fr;align-items:start;gap:10px;font-size:13.5px}
+      .order-section--v4 .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
+      .order-section--v4 .micro-faq__grid{display:grid;gap:6px;margin-top:8px;color:#111827}
+      .order-section--v4 .guarantee{font-size:13.5px;color:#0f1420;background:#fff;border:0;border-radius:12px;padding:10px 12px;margin:8px 0}
       .order-sticky{background:rgba(255,255,255,.98);border-top:1px solid var(--border)}
       .order-sticky .btn-sticky{font-weight:900;box-shadow:0 10px 22px rgba(244,167,124,.36)}
       @keyframes shakeX{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
@@ -579,28 +590,8 @@
               <button id="payBtn" class="btn btn-primary btn-cta" type="button" aria-describedby="eta" data-loading-text="Przekierowuję do płatności…">
                 Zamów za 49&nbsp;zł
               </button>
-              <p class="eta" id="eta">Zamów teraz — wyślemy w godzinach 8:00–18:00 (zwykle 3–4 h).</p>
+              <p class="eta" id="eta">Dostawa w godzinach roboczych 8:00–18:00</p>
             </div>
-          </div>
-
-          <details class="value-acc" data-collapsed>
-            <summary>
-              <span class="value-acc__title">Co jest w zestawie</span>
-              <span class="value-acc__hint">PDF 13 stron + 3 plakaty</span>
-            </summary>
-            <div class="value-chips" aria-label="Zawartość skrócona">
-              <span class="value-chip">PDF 13 stron</span>
-              <span class="value-chip">3 plakaty</span>
-            </div>
-            <ul class="value-list" aria-label="Co jest w zestawie">
-              <li><span class="tick" aria-hidden>✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
-              <li><span class="tick" aria-hidden>✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</li>
-              <li><span class="tick" aria-hidden>✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h w dni robocze)</li>
-            </ul>
-          </details>
-
-          <div class="guarantee guarantee--short" role="note" aria-label="Gwarancja jakości">
-            Błąd techniczny? <strong>Poprawimy bezpłatnie.</strong>
           </div>
 
           <div class="trust-row trust-row--logos" aria-label="Płatności i bezpieczeństwo">
@@ -611,6 +602,22 @@
               <span class="wallets__logo wallets__gpay" aria-hidden>G Pay</span>
               <span class="wallets__logo wallets__cards" aria-hidden>Visa · MC</span>
             </span>
+          </div>
+
+          <details class="value-acc" data-collapsed>
+            <summary>
+              <span class="value-acc__title">Co jest w zestawie</span>
+              <span class="value-acc__hint">PDF 13 stron + 3 plakaty</span>
+            </summary>
+            <ul class="value-list" aria-label="Co jest w zestawie">
+              <li><span class="tick" aria-hidden>✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
+              <li><span class="tick" aria-hidden>✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</li>
+              <li><span class="tick" aria-hidden>✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h w dni robocze)</li>
+            </ul>
+          </details>
+
+          <div class="guarantee guarantee--short" role="note" aria-label="Gwarancja jakości">
+            Błąd techniczny? <strong>Poprawimy bezpłatnie.</strong>
           </div>
 
           <div class="consents consents-inline consents--compact">
@@ -817,7 +824,7 @@
             let done=false;
             const guard=setTimeout(()=>{ if(!done){ done=true; tryExt(); } }, TIMEOUT);
             img.onload=()=>{ if(done) return; done=true; clearTimeout(guard); cb(src); };
-            img.onerror=()=>{ if(done) return; done=true; clearTimeout(guard); tryExt(); };
+            img.onerror=()=>{ ifdone) return; done=true; clearTimeout(guard); tryExt(); };
             img.decoding="async";
             img.loading="eager";
             img.src=src;
@@ -837,8 +844,10 @@
               next.classList.add('show');
               requestAnimationFrame(()=>{ cur.classList.add('leave'); });
               setTimeout(()=>{
+                cur.classList.add('no-anim');
                 cur.classList.remove('show','leave');
                 void cur.offsetWidth;
+                cur.classList.remove('no-anim');
                 swap();
                 setTimeout(slide, Math.max(0, PERIOD-TRANSITION));
               }, TRANSITION);
