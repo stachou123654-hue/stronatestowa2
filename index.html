@@ -538,6 +538,22 @@
   .report-glide .glide__slide img{border-radius:inherit; display:block}
 </style>
 
+<style>
+  /* MOBILE: ciaśniejszy odstęp nad hero + mocniejsze, większe słowa w gradiencie */
+  @media (max-width:768px){
+    /* Zmniejsza przerwę między menu (Zamów raport/FAQ/Jak to działa) a nagłówkiem o ok. połowę */
+    .nav{padding-top: calc(var(--mobile-logo-offset) - 28px)}
+    .hero{padding-top: 2px}
+
+    /* +30% wielkości tylko dla kolorowych słów i większy kontrast */
+    .hero .h1-line1 .gradient-text,
+    .hero .h1-line2 .gradient-text{
+      font-size: 1.3em;                 /* +30% */
+      -webkit-text-stroke: .4px rgba(0,0,0,.28); /* delikatny kontur dla kontrastu */
+      text-shadow: 0 2px 6px rgba(0,0,0,.18), 0 1px 1px rgba(0,0,0,.12); /* subtelny cień */
+    }
+  }
+</style>
 
   </head>
 
