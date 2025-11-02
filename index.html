@@ -289,6 +289,17 @@
 
     <style>
       @media (max-width:768px){
+        .order-section--v4{display:none}
+        #orderSticky{display:none}
+        #zamow-m5.order-section--m5{display:block}
+      }
+      @media (min-width:769px){
+        #zamow-m5.order-section--m5{display:none}
+      }
+    </style>
+
+    <style>
+      @media (max-width:768px){
         .order-section--v4{padding:16px 14px;border-radius:16px}
         .order-section--v4.card{border:0; box-shadow:0 6px 20px rgba(14,22,34,.10); background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94))}
         .order-section--v4 .price-strip{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
@@ -305,7 +316,7 @@
         .order-section--v4 .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
         .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
         .order-section--v4 .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
-        .order-section--v4 .trust{display:inline-flex;align-items:center;gap:6px}
+        .order-section--v4 .trust{display:inline-flex;align-items:center;gap:8px}
         .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
         .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
         .order-section--v4 .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
@@ -322,7 +333,6 @@
         .order-section--v4 .consents--compact .consent-label{gap:10px;font-size:13.5px}
         .order-section--v4 .consents--compact .consent-msg{min-height:18px;font-size:13px}
         .order-section--v4 .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
-        .order-section--v4 .micro-faq--single > summary{cursor:pointer;font-weight:800}
         .order-section--v4 .micro-faq__grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
       }
       @media (min-width:769px){
@@ -662,6 +672,90 @@
           <button id="stickyCta" type="button" class="btn btn-sticky">Zamawiam za 49&nbsp;zł</button>
         </div>
       </div>
+
+      <section id="zamow-m5" class="card order-section order-section--m5" aria-labelledby="zamow-tytul-m5">
+        <div class="m5-wrap">
+          <header class="m5-head" role="group" aria-label="Nagłówek oferty">
+            <div class="m5-eyebrow" aria-hidden="true">Specjalna oferta</div>
+            <h2 id="zamow-tytul-m5" class="m5-title">Odbierz swój <strong>Portret&nbsp;Numerologiczny</strong></h2>
+            <div class="m5-sub">PDF 13 stron + 3 plakaty</div>
+          </header>
+
+          <div class="m5-price" role="group" aria-label="Cena i oszczędność">
+            <div class="m5-price-left">
+              <div class="m5-price-line">
+                <span class="m5-was" aria-label="Cena regularna">79&nbsp;zł</span>
+                <span class="m5-now" aria-label="Aktualna cena"><span class="value">49</span><span class="currency">&nbsp;zł</span></span>
+              </div>
+              <div class="m5-save">Oszczędzasz 30&nbsp;zł</div>
+            </div>
+            <button id="payBtnM5" class="m5-cta" type="button" aria-describedby="m5-eta" data-loading-text="Przekierowuję do płatności…">
+              Zamów teraz
+            </button>
+          </div>
+
+          <p id="m5-eta" class="m5-eta" role="status">Zamów teraz — wyślemy w godzinach 8:00–18:00 (zwykle 3–4 h).</p>
+
+          <details class="m5-accordion" data-collapsed>
+            <summary class="m5-acc-summary">
+              <span class="m5-acc-title">Co dokładnie otrzymasz</span>
+              <span class="m5-acc-hint">Kliknij, aby rozwinąć</span>
+            </summary>
+            <ul class="m5-value-list" aria-label="Zawartość zestawu">
+              <li><span class="tick" aria-hidden>✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
+              <li><span class="tick" aria-hidden>✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</li>
+              <li><span class="tick" aria-hidden>✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h w dni robocze)</li>
+            </ul>
+          </details>
+
+          <div class="m5-trust" aria-label="Płatności i bezpieczeństwo">
+            <div class="m5-badge">
+              <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              Płatność Stripe
+            </div>
+            <span class="dot" aria-hidden>•</span>
+            <div class="m5-wallets" aria-label="Obsługiwane portfele">
+              <span class="pill">Apple&nbsp;Pay</span>
+              <span class="pill">G&nbsp;Pay</span>
+              <span class="pill">Visa·MC</span>
+            </div>
+          </div>
+
+          <div class="m5-consents" role="group" aria-label="Zgody i ważne informacje">
+            <label class="consent-item">
+              <input type="checkbox" id="consentAllM5" required />
+              <span class="label">*Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.</span>
+            </label>
+            <details class="consent-more">
+              <summary>Ważna uwaga dot. poprawności danych</summary>
+              <p class="hint">Imię, nazwisko i data urodzenia wpływają na treść raportu. Błędne dane ≠ wada produktu. Zmiana po zakupie = <strong>nowe zamówienie</strong>.</p>
+            </details>
+            <label class="consent-item optional">
+              <input type="checkbox" id="marketingM5" />
+              <span class="label">[Opcjonalnie] Zgadzam się na e-maile z nowościami.</span>
+            </label>
+            <div id="msg-consentAllM5" class="consent-msg" aria-live="polite"></div>
+          </div>
+
+          <details class="m5-faq">
+            <summary class="m5-faq-summary">Najczęstsze pytania</summary>
+            <div class="m5-faq-grid">
+              <p><strong>Jak szybko?</strong> Zwykle <strong>3–4 h</strong> (dni robocze 8:00–18:00).</p>
+              <p><strong>Pomyłka w danych?</strong> Zmiana po zakupie = <strong>nowe zamówienie</strong>. Błąd techniczny poprawimy.</p>
+              <p><strong>Co otrzymam?</strong> Raport PDF + <strong>3 plakaty</strong> dopasowane do aury znaku.</p>
+            </div>
+          </details>
+
+          <div id="formStatusM5" class="m5-status" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="m5-sticky" aria-hidden="true">
+          <div class="m5-sticky-inner">
+            <div class="m5-sticky-price"><span class="lbl">Portret</span> <span class="cur">49&nbsp;zł</span></div>
+            <button id="stickyCtaM5" type="button" class="m5-sticky-cta">Zamawiam</button>
+          </div>
+        </div>
+      </section>
 
       <section class="faq" id="faq">
         <h2 class="section-title">FAQ</h2>
@@ -1040,6 +1134,127 @@
         }
       });
     })();
+    </script>
+
+    <script>
+      (function(){
+        var mm = window.matchMedia('(max-width: 768px)');
+        function rerouteAnchors(){
+          try{
+            document.querySelectorAll('a[href="#zamow"]').forEach(function(a){
+              if (mm.matches) a.setAttribute('href','#zamow-m5'); else a.setAttribute('href','#zamow');
+            });
+          }catch(e){}
+        }
+        rerouteAnchors();
+        window.addEventListener('resize', rerouteAnchors);
+      })();
+    </script>
+
+    <script>
+      (function(){
+        const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
+        const btn = document.getElementById('payBtnM5');
+        const statusEl = document.getElementById('formStatusM5');
+        const consentAll = document.getElementById('consentAllM5');
+        const sticky = document.querySelector('.order-section--m5 .m5-sticky');
+        const stickyCta = document.getElementById('stickyCtaM5');
+        const etaEl = document.getElementById('m5-eta');
+
+        (function updateETA(){
+          try{
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const workday = (day>=1 && day<=5);
+            const within = workday && hour>=8 && hour<18;
+            if (within) {
+              const est = new Date(now.getTime()+ 3*60*60*1000);
+              const hh = est.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+              etaEl.textContent = `Zamów teraz — wyślemy dziś ok. ${hh}`;
+            } else if (!workday) {
+              etaEl.textContent = "Zamów teraz — wyślemy w najbliższy dzień roboczy (zwykle 3–4 h).";
+            } else {
+              etaEl.textContent = "Zamów teraz — wyślemy w godzinach 8:00–18:00 (zwykle 3–4 h).";
+            }
+          }catch(e){}
+        })();
+
+        function withBusy(el, isBusy){
+          if (!el) return;
+          el.setAttribute('aria-busy', isBusy ? 'true' : 'false');
+          if (isBusy){
+            const label = el.getAttribute('data-loading-text') || 'Przetwarzam…';
+            el.dataset._orig = el.innerHTML;
+            el.innerHTML = '<span class="spinner" aria-hidden="true"></span>' + label;
+            el.disabled = true;
+          } else {
+            if (el.dataset._orig){ el.innerHTML = el.dataset._orig; delete el.dataset._orig; }
+            el.disabled = false;
+          }
+        }
+
+        function setError(msg){
+          statusEl.className = msg ? 'm5-status error' : 'm5-status';
+          statusEl.textContent = msg || '';
+        }
+
+        function validateConsent(){
+          if (!consentAll) return true;
+          const ok = !!consentAll.checked;
+          if (!ok){
+            const msg = document.getElementById('msg-consentAllM5');
+            if (msg) msg.textContent = 'Zaznacz wymagane oświadczenie.';
+            setError('Uzupełnij wymagane oświadczenie.');
+            consentAll.focus({preventScroll:true});
+          } else {
+            const msg = document.getElementById('msg-consentAllM5');
+            if (msg) msg.textContent = '';
+            setError('');
+          }
+          return ok;
+        }
+
+        function goToStripe(){
+          window.gtag && gtag('event','begin_checkout',{ value:49, currency:'PLN', items:[{item_name:'Portret numerologiczny'}] });
+          window.fbq && fbq('track','InitiateCheckout',{ value:49, currency:'PLN' });
+          statusEl.className = 'm5-status';
+          statusEl.textContent = 'Przekierowuję do płatności…';
+          window.location.href = STRIPE_CHECKOUT_URL;
+          setTimeout(() => {
+            if (document.visibilityState === 'visible') {
+              statusEl.className = 'm5-status error';
+              statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
+              window.gtag && gtag('event','redirect_fail');
+              window.fbq && fbq('trackCustom','RedirectFail');
+              withBusy(btn, false);
+            }
+          }, 6000);
+        }
+
+        btn?.addEventListener('click', (e)=>{
+          e.preventDefault();
+          if (!validateConsent()) return;
+          withBusy(btn, true);
+          goToStripe();
+        });
+
+        const target = document.querySelector('.order-section--m5');
+        function inViewport(el){ if (!el) return false; const r = el.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }
+        function toggleSticky(){
+          const orderVisible = inViewport(target);
+          if (!orderVisible && window.scrollY > 160) { sticky.classList.add('show'); sticky.setAttribute('aria-hidden','false'); }
+          else { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); }
+        }
+        window.addEventListener('scroll', toggleSticky, {passive:true});
+        window.addEventListener('resize', toggleSticky);
+        document.addEventListener('DOMContentLoaded', toggleSticky);
+
+        stickyCta?.addEventListener('click', ()=>{
+          if (consentAll && consentAll.checked){ btn?.click(); }
+          else { target?.scrollIntoView({behavior:'smooth', block:'start'}); }
+        });
+      })();
     </script>
 
     <script>
