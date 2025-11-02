@@ -171,8 +171,8 @@
       .price .was,.price .now{white-space:nowrap;line-height:1;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
       .price .was{color:var(--muted);font-weight:600;text-decoration-line:line-through;text-decoration-thickness:.08em;text-decoration-color:currentColor;text-decoration-skip-ink:none}
       .price .now{font-size:2.34em !important;font-weight:900}
-      .price .now .value{ color:#0a8f44; }
-      .price .now .currency{ color:#0a8f44; opacity:.95; }
+      .price .now .value{ color:#0e1420; }
+      .price .now .currency{ color:#0e1420; opacity:.95; }
       .price .now .value{ text-shadow: 0 1px 0 rgba(0,0,0,.05); }
       .btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4)}
       .btn:disabled{opacity:.6;cursor:not-allowed}
@@ -285,6 +285,123 @@
         .hero .h1-line2{font-size:clamp(26.4px,5.04vw,43.2px);margin-top:.22em}
         .hero .h1-desc{font-size:clamp(15.6px,3.12vw,19.2px);margin-top:.55em}
       }
+    </style>
+
+    <style>
+      @media (max-width:768px){
+        .order-section--v4{padding:16px 14px;border-radius:16px}
+        .order-section--v4.card{border:0; box-shadow:0 6px 20px rgba(14,22,34,.10); background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94))}
+        .order-section--v4 .price-strip{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+        .order-section--v4 .price-strip__left{display:grid;gap:6px}
+        .order-section--v4 .price-pill{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+        .order-section--v4 .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600;font-size:13px}
+        .order-section--v4 .price-pill__now{font-weight:900;letter-spacing:-.02em;font-size:clamp(34px,8.2vw,48px);line-height:1}
+        .order-section--v4 .price-pill__now .currency{font-size:.6em;opacity:.9}
+        .order-section--v4 .price-pill__save{display:inline-block;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900;font-size:12px;line-height:1}
+        .order-section--v4 .micro-proof{display:flex;align-items:center;gap:8px;color:#111827;font-size:13px}
+        .order-section--v4 .micro-proof__dot{opacity:.5}
+        .order-section--v4 .price-strip__right{text-align:right}
+        .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
+        .order-section--v4 .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
+        .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
+        .order-section--v4 .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
+        .order-section--v4 .trust{display:inline-flex;align-items:center;gap:6px}
+        .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
+        .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
+        .order-section--v4 .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+        .order-section--v4 .wallets__gpay{font-family:Inter,system-ui}
+        .order-section--v4 .wallets__cards{opacity:.9}
+        .order-section--v4 .value-acc{border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(14,22,34,.08);margin:10px 0 8px}
+        .order-section--v4 .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+        .order-section--v4 .value-acc__title{font-weight:900;color:#0f1420}
+        .order-section--v4 .value-acc__hint{font-size:12.8px;color:#2d3644}
+        .order-section--v4 .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
+        .order-section--v4 .value-list li{display:flex;gap:8px;align-items:flex-start}
+        .order-section--v4 .value-list .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
+        .order-section--v4 .consents--compact{gap:8px;margin-top:8px}
+        .order-section--v4 .consents--compact .consent-label{gap:10px;font-size:13.5px}
+        .order-section--v4 .consents--compact .consent-msg{min-height:18px;font-size:13px}
+        .order-section--v4 .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
+        .order-section--v4 .micro-faq--single > summary{cursor:pointer;font-weight:800}
+        .order-section--v4 .micro-faq__grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
+      }
+      @media (min-width:769px){
+        .order-section--v4{padding:22px 18px}
+        .order-section--v4 .price-strip{display:flex;align-items:flex-end;gap:16px}
+        .order-section--v4 .price-pill__save{display:none}
+        .order-section--v4 .btn-cta{width:auto}
+        .order-section--v4 .trust-row--logos{margin-top:6px}
+        .order-section--v4 .value-acc{border:0;box-shadow:none}
+        .order-section--v4 .value-acc > summary{display:none}
+        .order-section--v4 .value-acc .value-list{display:grid}
+      }
+      .order-sticky{position:fixed;left:0;right:0;bottom:-120px;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--border);transition:transform .25s ease, bottom .25s ease;box-shadow:0 -10px 22px rgba(14,22,34,.12)}
+      .order-sticky.show{bottom:0}
+      .order-sticky-inner{max-width:1120px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+      .order-sticky-price .lbl{opacity:.9;margin-right:.4ch}
+      .order-sticky-price .cur{font-weight:900}
+      .btn-sticky{min-height:44px;border-radius:12px}
+      @media (min-width: 769px){.order-sticky{display:none}}
+      #payBtn[aria-busy="true"]{opacity:.85;cursor:wait}
+      .btn .spinner{display:inline-block;width:1em;height:1em;border:.18em solid rgba(255,255,255,.6);border-top-color:#fff;border-radius:50%;animation:spin .9s linear infinite;margin-right:.45em;transform:translateY(.12em)}
+      @keyframes spin{to{transform:rotate(360deg)}}
+    </style>
+
+    <style>
+      .trust-row .i,
+      .order-section--v4 .trust-row--logos .i{
+        width:20px;height:20px;flex:0 0 20px;vertical-align:-3px
+      }
+      @media (max-width:768px){
+        .trust-row .i,
+        .order-section--v4 .trust-row--logos .i{width:18px;height:18px}
+      }
+      .order-section--v4.card{
+        border-radius:18px;border:1px solid var(--border);
+        background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));
+        box-shadow:0 14px 34px rgba(14,22,34,.12)
+      }
+      .order-section--v4 .section-title{
+        font-weight:900;letter-spacing:-.01em;margin:2px 0 14px;text-wrap:balance
+      }
+      .order-section--v4 .price-strip{
+        display:grid;grid-template-columns:1fr auto;gap:14px 18px;align-items:end
+      }
+      @media (min-width:1024px){
+        .order-section--v4 .price-strip{grid-template-columns:1.2fr .8fr;align-items:center}
+      }
+      .order-section--v4 .price-pill{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px}
+      .order-section--v4 .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600}
+      .order-section--v4 .price-pill__now{font-size:clamp(36px,6vw,48px);line-height:.95;font-weight:900;letter-spacing:-.02em}
+      .order-section--v4 .price-pill__now .value{color:#0e1420;text-shadow:0 1px 0 rgba(0,0,0,.05)}
+      .order-section--v4 .price-pill__now .currency{opacity:.9;color:#0e1420}
+      .order-section--v4 .micro-proof{display:inline-flex;gap:8px;align-items:center;color:#111827;font-size:13.5px;margin-top:4px}
+      .order-section--v4 .micro-proof__dot{opacity:.5}
+      .order-section--v4 .price-strip__right{text-align:right}
+      .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;padding:14px 18px;font-weight:900;box-shadow:0 12px 26px rgba(244,167,124,.38)}
+      .order-section--v4 .eta{margin:.45em 0 0;color:#2f3846;font-size:13px}
+      @media (max-width:768px){.order-section--v4 .price-strip__right{text-align:left}}
+      .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 2px}
+      .order-section--v4 .trust{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#101624;white-space:nowrap}
+      .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12.8px;color:#2b3442}
+      .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .6em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800;line-height:1}
+      .order-section--v4 .wallets__apple{font-family:Inter,system-ui}
+      .order-section--v4 .wallets__gpay{font-family:Inter,system-ui}
+      .order-section--v4 .value-acc{border:0;background:#fff;box-shadow:none;margin:10px 0 8px}
+      .order-section--v4 .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+      .order-section--v4 .value-acc__title{font-weight:900;color:#0f1420}
+      .order-section--v4 .value-acc__hint{font-size:12.8px;color:#2d3644}
+      .order-section--v4 .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
+      .order-section--v4 .value-list .tick{display:inline-block;min-width:1.2em;font-weight:900;color:#0e1420}
+      .order-section--v4 .consents--compact{gap:10px;margin-top:10px}
+      .order-section--v4 .consents--compact .consent-label{display:grid;grid-template-columns:18px 1fr;align-items:start;gap:10px;font-size:13.5px}
+      .order-section--v4 .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
+      .order-section--v4 .micro-faq__grid{display:grid;gap:6px;margin-top:8px;color:#111827}
+      .order-section--v4 .guarantee{font-size:13.5px;color:#0f1420;background:#fff;border:0;border-radius:12px;padding:10px 12px;margin:8px 0}
+      .order-sticky{background:rgba(255,255,255,.98);border-top:1px solid var(--border)}
+      .order-sticky .btn-sticky{font-weight:900;box-shadow:0 10px 22px rgba(244,167,124,.36)}
+      @keyframes shakeX{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
+      .consents-inline.shake{animation:shakeX .45s ease both}
     </style>
   </head>
 
@@ -481,7 +598,7 @@
             <span class="trust"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Płatność Stripe</span>
             <span class="dot" aria-hidden="true">•</span>
             <span class="wallets" aria-label="Obsługiwane portfele">
-              <span class="wallets__logo wallets__apple" aria-hidden> Pay</span>
+              <span class="wallets__logo wallets__apple" aria-label="Apple Pay">Apple&nbsp;Pay</span>
               <span class="wallets__logo wallets__gpay" aria-hidden>G Pay</span>
               <span class="wallets__logo wallets__cards" aria-hidden>Visa · MC</span>
             </span>
@@ -707,7 +824,7 @@
             let done=false;
             const guard=setTimeout(()=>{ if(!done){ done=true; tryExt(); } }, TIMEOUT);
             img.onload=()=>{ if(done) return; done=true; clearTimeout(guard); cb(src); };
-            img.onerror=()=>{ if(done) return; done=true; clearTimeout(guard); tryExt(); };
+            img.onerror=()=>{ ifdone) return; done=true; clearTimeout(guard); tryExt(); };
             img.decoding="async";
             img.loading="eager";
             img.src=src;
@@ -803,66 +920,6 @@
         document.addEventListener('DOMContentLoaded', ()=>show(0));
       })();
     </script>
-
-    <style>
-      @media (max-width:768px){
-        .order-section--v4{padding:16px 14px;border-radius:16px}
-        .order-section--v4.card{border:0; box-shadow:0 6px 20px rgba(14,22,34,.10); background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94))}
-        .order-section--v4 .price-strip{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-        .order-section--v4 .price-strip__left{display:grid;gap:6px}
-        .order-section--v4 .price-pill{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
-        .order-section--v4 .price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600;font-size:13px}
-        .order-section--v4 .price-pill__now{font-weight:900;letter-spacing:-.02em;font-size:clamp(34px,8.2vw,48px);line-height:1}
-        .order-section--v4 .price-pill__now .currency{font-size:.6em;opacity:.9}
-        .order-section--v4 .price-pill__save{display:inline-block;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);font-weight:900;font-size:12px;line-height:1}
-        .order-section--v4 .micro-proof{display:flex;align-items:center;gap:8px;color:#111827;font-size:13px}
-        .order-section--v4 .micro-proof__dot{opacity:.5}
-        .order-section--v4 .price-strip__right{text-align:right}
-        .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
-        .order-section--v4 .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
-        .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
-        .order-section--v4 .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
-        .order-section--v4 .trust{display:inline-flex;align-items:center;gap:6px}
-        .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
-        .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
-        .order-section--v4 .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-        .order-section--v4 .wallets__gpay{font-family:Inter,system-ui}
-        .order-section--v4 .wallets__cards{opacity:.9}
-        .order-section--v4 .value-acc{border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(14,22,34,.08);margin:10px 0 8px}
-        .order-section--v4 .value-acc > summary{list-style:none;cursor:pointer;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-        .order-section--v4 .value-acc__title{font-weight:900;color:#0f1420}
-        .order-section--v4 .value-acc__hint{font-size:12.8px;color:#2d3644}
-        .order-section--v4 .value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
-        .order-section--v4 .value-list li{display:flex;gap:8px;align-items:flex-start}
-        .order-section--v4 .value-list .tick{display:inline-block;min-width:1.2em;line-height:1.1;font-weight:900;color:#0e1420}
-        .order-section--v4 .consents--compact{gap:8px;margin-top:8px}
-        .order-section--v4 .consents--compact .consent-label{gap:10px;font-size:13.5px}
-        .order-section--v4 .consents--compact .consent-msg{min-height:18px;font-size:13px}
-        .order-section--v4 .micro-faq--single{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px;margin-top:8px}
-        .order-section--v4 .micro-faq--single > summary{cursor:pointer;font-weight:800}
-        .order-section--v4 .micro-faq__grid{display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:#111827}
-      }
-      @media (min-width:769px){
-        .order-section--v4{padding:22px 18px}
-        .order-section--v4 .price-strip{display:flex;align-items:flex-end;gap:16px}
-        .order-section--v4 .price-pill__save{display:none}
-        .order-section--v4 .btn-cta{width:auto}
-        .order-section--v4 .trust-row--logos{margin-top:6px}
-        .order-section--v4 .value-acc{border:0;box-shadow:none}
-        .order-section--v4 .value-acc > summary{display:none}
-        .order-section--v4 .value-acc .value-list{display:grid}
-      }
-      .order-sticky{position:fixed;left:0;right:0;bottom:-120px;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--border);transition:transform .25s ease, bottom .25s ease;box-shadow:0 -10px 22px rgba(14,22,34,.12)}
-      .order-sticky.show{bottom:0}
-      .order-sticky-inner{max-width:1120px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-      .order-sticky-price .lbl{opacity:.9;margin-right:.4ch}
-      .order-sticky-price .cur{font-weight:900}
-      .btn-sticky{min-height:44px;border-radius:12px}
-      @media (min-width: 769px){.order-sticky{display:none}}
-      #payBtn[aria-busy="true"]{opacity:.85;cursor:wait}
-      .btn .spinner{display:inline-block;width:1em;height:1em;border:.18em solid rgba(255,255,255,.6);border-top-color:#fff;border-radius:50%;animation:spin .9s linear infinite;margin-right:.45em;transform:translateY(.12em)}
-      @keyframes spin{to{transform:rotate(360deg)}}
-    </style>
 
     <script>
     (function(){
