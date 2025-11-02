@@ -1,0 +1,46 @@
+<!-- index.shtml -->
+<!DOCTYPE html>
+<html lang="pl">
+  <!-- ŁADUJE <head> -->
+  <!--#include virtual="partials/head.html" -->
+
+  <body>
+    <!-- NoScript dla GTM (idzie NA POCZĄTKU <body>) -->
+    <!--#include virtual="partials/gtm-noscript.html" -->
+
+    <!-- GÓRNY NAGŁÓWEK -->
+    <!--#include virtual="partials/header.html" -->
+
+    <main class="container">
+      <!-- HERO + slider -->
+      <!--#include virtual="partials/hero.html" -->
+
+      <!-- STATYSTYKI (desktop) -->
+      <!--#include virtual="partials/stats-desktop.html" -->
+
+      <!-- WIDGET OPINII -->
+      <!--#include virtual="partials/reviews-widget.html" -->
+
+      <!-- SEKCJA ZAMÓWIENIA (desktop) -->
+      <!--#include virtual="partials/order-desktop.html" -->
+
+      <!-- STICKY CTA (mobile/desktop) -->
+      <!--#include virtual="partials/order-sticky.html" -->
+
+      <!-- SEKCJA ZAMÓWIENIA (mobile) -->
+      <!--#include virtual="partials/order-mobile.html" -->
+
+      <!-- FAQ -->
+      <!--#include virtual="partials/faq.html" -->
+
+      <!-- INFORMACJE / DISCLAIMER -->
+      <!--#include virtual="partials/info.html" -->
+    </main>
+
+    <!-- STOPKA -->
+    <!--#include virtual="partials/footer.html" -->
+
+    <!-- SKRYPTY NA KOŃCU BODY -->
+    <!--#include virtual="partials/scripts.html" -->
+  </body>
+</html>

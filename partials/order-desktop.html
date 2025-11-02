@@ -1,0 +1,87 @@
+<section id="zamow" class="card order-section order-section--v4" aria-labelledby="zamow-tytul">
+  <form class="form" id="orderForm" action="#" novalidate>
+    <h2 id="zamow-tytul" class="section-title">Odbierz swój Portret Numerologiczny</h2>
+
+    <div class="price-strip" role="group" aria-label="Aktualna oferta">
+      <div class="price-strip__left">
+        <div class="price-pill" aria-live="polite">
+          <span class="price-pill__was" aria-label="Cena regularna">79&nbsp;zł</span>
+          <span class="price-pill__now" aria-label="Aktualna cena">
+            <span class="value">49</span><span class="currency" aria-hidden="true">&nbsp;zł</span>
+          </span>
+          <span class="price-pill__save">−30&nbsp;zł dziś</span>
+        </div>
+        <div class="micro-proof" role="status" aria-live="polite">
+          <span class="micro-proof__dot" aria-hidden="true">•</span>
+          <span class="micro-proof__text"><strong>900+ zamówień</strong> w Polsce</span>
+        </div>
+      </div>
+      <div class="price-strip__right">
+        <button id="payBtn" class="btn btn-primary btn-cta" type="button" aria-describedby="eta" data-loading-text="Przekierowuję do płatności…">
+          Zamów za 49&nbsp;zł
+        </button>
+        <p class="eta" id="eta">Dostawa w godzinach roboczych 8:00–18:00</p>
+      </div>
+    </div>
+
+    <div class="trust-row trust-row--logos" aria-label="Płatności i bezpieczeństwo">
+      <span class="trust"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Płatność Stripe</span>
+      <span class="dot" aria-hidden="true">•</span>
+      <span class="wallets" aria-label="Obsługiwane portfele">
+        <span class="wallets__logo wallets__apple" aria-label="Apple Pay">Apple&nbsp;Pay</span>
+        <span class="wallets__logo wallets__gpay" aria-hidden>G Pay</span>
+        <span class="wallets__logo wallets__cards" aria-hidden>Visa · MC</span>
+      </span>
+    </div>
+
+    <details class="value-acc" data-collapsed>
+      <summary>
+        <span class="value-acc__title">Co jest w zestawie</span>
+        <span class="value-acc__hint">PDF 13 stron + 3 plakaty</span>
+      </summary>
+      <ul class="value-list" aria-label="Co jest w zestawie">
+        <li><span class="tick" aria-hidden>✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
+        <li><span class="tick" aria-hidden>✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</li>
+        <li><span class="tick" aria-hidden>✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h)</li>
+      </ul>
+    </details>
+
+    <div class="guarantee guarantee--short" role="note" aria-label="Gwarancja jakości">
+      Błąd techniczny? <strong>Poprawimy bezpłatnie.</strong>
+    </div>
+
+    <div class="consents consents-inline consents--compact">
+      <label class="consent-label">
+        <input type="checkbox" id="consentAll" required />
+        <span>*Akceptuję <a href="regulamin-i-polityka-prywatnosci/">Regulamin i Politykę prywatności</a>.</span>
+      </label>
+      <div id="msg-consentAll" class="consent-msg" aria-live="polite"></div>
+      <details class="consent-more">
+        <summary>Ważna uwaga dot. poprawności danych</summary>
+        <p class="note">Imię, nazwisko i data urodzenia wpływają na treść raportu. Błędne dane ≠ wada produktu. Zmiana po zakupie = <strong>nowe zamówienie</strong>.</p>
+      </details>
+      <label class="consent-label optional">
+        <input type="checkbox" id="marketing" />
+        <span>[Opcjonalnie] Zgadzam się na e-maile z nowościami.</span>
+      </label>
+    </div>
+
+    <details class="micro-faq micro-faq--single">
+      <summary>Najczęstsze pytania</summary>
+      <div class="micro-faq__grid">
+        <p><strong>Jak szybko?</strong> Zwykle <strong>3–4 h</strong> (dni robocze 8:00–18:00).</p>
+        <p><strong>Pomyłka w danych?</strong> Zmiana po zakupie = <strong>nowe zamówienie</strong>. Błąd techniczny poprawimy.</p>
+        <p><strong>Co otrzymam?</strong> Raport PDF + <strong>3 plakaty</strong> dopasowane do aury znaku.</p>
+      </div>
+    </details>
+
+    <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+
+    <noscript>
+      <p>
+        JavaScript jest wyłączony.
+        <a class="btn" href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" rel="nofollow noopener">Zapłać przez Stripe</a>
+      </p>
+    </noscript>
+  </form>
+</section>

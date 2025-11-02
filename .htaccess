@@ -1,0 +1,7 @@
+# Włącz SSI dla plików .shtml
+Options +Includes
+AddType text/html .shtml
+AddOutputFilter INCLUDES .shtml
+
+# Ustaw stronę startową preferując index.shtml
+DirectoryIndex index.shtml index.html

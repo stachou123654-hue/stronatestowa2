@@ -1,0 +1,469 @@
+<script>
+  (function () {
+    const ASSET_VERSION = "2025-10-22";
+    const files = [
+      "naslasha1","naslasha2","naslasha3","naslasha4","naslasha5","naslasha6",
+      "naslasha7","naslasha8","naslasha9","naslasha10","naslasha11","naslasha12"
+    ];
+    const base = "assets/img/";
+    const exts = [".jpg",".JPG",".jpeg",".JPEG",".png",".PNG"];
+    const DISPLAY_MS = 1500;
+    const LOAD_TIMEOUT_MS = 3500;
+
+    const a = document.getElementById("slideA");
+    const b = document.getElementById("slideB");
+    let visible = a, hidden = b, idx = 0;
+
+    function swapImgs(){ const t = visible; visible = hidden; hidden = t; }
+
+    function resolveSrc(name, cb) {
+      let i = 0;
+      (function tryNext(){
+        if (i >= exts.length) { cb(null); return; }
+        const test = new Image();
+        const src = base + name + exts[i++] + "?v=" + ASSET_VERSION;
+        let settled = false;
+        const t = setTimeout(() => { if (!settled) { settled = true; tryNext(); } }, LOAD_TIMEOUT_MS);
+        test.onload = () => { if (settled) return; settled = true; clearTimeout(t); cb(src); };
+        test.onerror = () => { if (settled) return; settled = true; clearTimeout(t); tryNext(); };
+        test.decoding = "async";
+        test.loading = "eager";
+        test.src = src;
+      })();
+    }
+
+    function showNext() {
+      const name = files[idx];
+      idx = (idx + 1) % files.length;
+
+      resolveSrc(name, (src) => {
+        if (!src) { setTimeout(showNext, 0); return; }
+
+        let watchdog = setTimeout(() => {
+          hidden.onload = hidden.onerror = null;
+          setTimeout(showNext, 0);
+        }, LOAD_TIMEOUT_MS);
+
+        hidden.onload = () => {
+          clearTimeout(watchdog);
+          hidden.classList.add("show");
+          visible.classList.remove("show");
+          hidden.onload = hidden.onerror = null;
+          swapImgs();
+          setTimeout(showNext, DISPLAY_MS);
+        };
+
+        hidden.onerror = () => {
+          clearTimeout(watchdog);
+          hidden.onload = hidden.onerror = null;
+          setTimeout(showNext, 0);
+        };
+
+        hidden.alt = name;
+        hidden.decoding = "async";
+        hidden.loading = "eager";
+        hidden.src = src;
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      resolveSrc(files[0], (src) => {
+        if (src) {
+          visible.src = src;
+          visible.alt = files[0];
+        }
+        visible.classList.add("show");
+        idx = 1;
+        setTimeout(showNext, DISPLAY_MS);
+      });
+    });
+  })();
+</script>
+
+<script>
+  (function(){
+    const ASSET_VERSION = "2025-10-22";
+    const names = [
+      "Opinia1","Opinia2","Opinia3","Opinia4","Opinia5",
+      "Opinia6","Opinia7","Opinia8","Opinia9"
+    ];
+    const base = "assets/img/";
+    const exts = [".jpg",".jpeg",".png",".JPG",".JPEG",".PNG"];
+    const PERIOD = 3000;
+    const TRANSITION = 800;
+    const TIMEOUT = 4000;
+
+    const A = document.getElementById('opA');
+    const B = document.getElementById('opB');
+    let cur = A, next = B, idx = 0, started = false;
+
+    function swap(){ const t = cur; cur = next; next = t; }
+    function applyDur(){ next.style.transitionDuration = cur.style.transitionDuration = (TRANSITION/1000)+'s'; }
+
+    function resolve(name, cb){
+      let i=0;
+      (function tryExt(){
+        if(i>=exts.length){ cb(null); return; }
+        const img = new Image();
+        const src = base + name + exts[i++] + "?v=" + ASSET_VERSION;
+        let done=false;
+        const guard=setTimeout(()=>{ if(!done){ done=true; tryExt(); } }, TIMEOUT);
+        img.onload=()=>{ if(done) return; done=true; clearTimeout(guard); cb(src); };
+        img.onerror=()=>{ if(done) return; done=true; clearTimeout(guard); tryExt(); };
+        img.decoding="async";
+        img.loading="eager";
+        img.src=src;
+      })();
+    }
+
+    function slide(){
+      const name = names[idx];
+      idx = (idx+1) % names.length;
+
+      resolve(name,(src)=>{
+        if(!src){ setTimeout(slide, PERIOD); return; }
+        applyDur();
+
+        next.onload = ()=>{
+          next.classList.remove('leave');
+          next.classList.add('show');
+          requestAnimationFrame(()=>{ cur.classList.add('leave'); });
+          setTimeout(()=>{
+            cur.classList.add('no-anim');
+            cur.classList.remove('show','leave');
+            void cur.offsetWidth;
+            cur.classList.remove('no-anim');
+            swap();
+            setTimeout(slide, Math.max(0, PERIOD-TRANSITION));
+          }, TRANSITION);
+        };
+
+        next.onerror = ()=>{ setTimeout(slide, PERIOD); };
+
+        next.alt = name;
+        next.src = src;
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      resolve(names[0], (src)=>{
+        if(src){
+          cur.src = src; cur.alt = names[0]; cur.classList.add('show');
+        }
+        if(!started){
+          started=true;
+          setTimeout(slide, PERIOD);
+        }
+      });
+    });
+  })();
+</script>
+
+<script>
+  (function(){
+    const ASSET_VERSION = "2025-10-22";
+    const names = [
+      "nastrone11","nastrone12","nastrone13","nastrone14",
+      "nastrone21","nastrone22","nastrone23","nastrone24",
+      "nastrone31","nastrone32","nastrone33","nastrone34",
+      "nastrone41","nastrone42","nastrone43","nastrone44"
+    ];
+    const base = "assets/img/";
+    const exts = [".jpg",".JPG",".jpeg",".JPEG",".png",".PNG"];
+
+    const img  = document.getElementById('reportSlide');
+    const prev = document.querySelector('#reportSlider .prev');
+    const next = document.querySelector('#reportSlider .next');
+    let i = 0;
+
+    function resolve(name, cb){
+      let k = 0;
+      (function tryNext(){
+        if(k >= exts.length){ cb(null); return; }
+        const test = new Image();
+        const src  = base + name + exts[k++] + "?v=" + ASSET_VERSION;
+        let done = false;
+        const to = setTimeout(()=>{ if(!done){ done=true; tryNext(); } }, 3500);
+        test.onload  = ()=>{ if(done) return; done=true; clearTimeout(to); cb(src); };
+        test.onerror = ()=>{ if(done) return; done=true; clearTimeout(to); tryNext(); };
+        test.decoding="async"; test.loading="eager"; test.src=src;
+      })();
+    }
+
+    function show(index){
+      i = (index + names.length) % names.length;
+      resolve(names[i], (src)=>{
+        if(!src) return;
+        img.src = src;
+        img.alt = names[i];
+      });
+    }
+
+    prev?.addEventListener('click', ()=>show(i-1));
+    next?.addEventListener('click', ()=>show(i+1));
+
+    document.addEventListener('DOMContentLoaded', ()=>show(0));
+  })();
+</script>
+
+<script>
+(function(){
+  const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
+  const btn = document.getElementById('payBtn');
+  const statusEl = document.getElementById('formStatus');
+  const consentAll = document.getElementById('consentAll');
+  const sticky = document.getElementById('orderSticky');
+  const stickyCta = document.getElementById('stickyCta');
+  const etaEl = document.getElementById('eta');
+
+  (function updateETA(){
+    try{
+      const now = new Date();
+      const day = now.getDay();
+      const hour = now.getHours();
+      const workday = (day>=1 && day<=5);
+      const within = workday && hour>=8 && hour<18;
+      if (within) {
+        const est = new Date(now.getTime()+ 3*60*60*1000);
+        const hh = est.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+        etaEl.textContent = `Zamów teraz — wyślemy dziś ok. ${hh}`;
+      } else if (!workday) {
+        etaEl.textContent = "Zamów teraz — dostawa w kilka godzin (zwykle 3–4 h).";
+      } else {
+        etaEl.textContent = "Zamów teraz — dostawa w kilka godzin (zwykle 3–4 h).";
+      }
+    }catch(e){}
+  })();
+
+  function withBusy(el, isBusy){
+    if (!el) return;
+    el.setAttribute('aria-busy', isBusy ? 'true' : 'false');
+    if (isBusy){
+      const label = el.getAttribute('data-loading-text') || 'Przetwarzam…';
+      el.dataset._orig = el.innerHTML;
+      el.innerHTML = '<span class="spinner" aria-hidden="true"></span>' + label;
+      el.disabled = true;
+    } else {
+      if (el.dataset._orig){ el.innerHTML = el.dataset._orig; delete el.dataset._orig; }
+      el.disabled = false;
+    }
+  }
+
+  function setError(msg){
+    statusEl.className = msg ? 'status status--error' : 'status';
+    statusEl.textContent = msg || '';
+  }
+
+  function validateConsent(){
+    if (!consentAll) return true;
+    const ok = !!consentAll.checked;
+    const consentsBlock = document.querySelector('.consents-inline');
+    if (!ok){
+      consentsBlock?.classList.remove('shake');
+      void consentsBlock?.offsetWidth;
+      consentsBlock?.classList.add('shake');
+      const msg = document.getElementById('msg-consentAll');
+      if (msg) msg.textContent = 'Zaznacz wymagane oświadczenie.';
+      setError('Uzupełnij wymagane oświadczenie.');
+      consentsBlock?.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(()=>consentAll.focus({preventScroll:true}), 160);
+    } else {
+      const msg = document.getElementById('msg-consentAll');
+      if (msg) msg.textContent = '';
+      setError('');
+    }
+    return ok;
+  }
+
+  function goToStripe(){
+    window.gtag && gtag('event','begin_checkout',{ value:49, currency:'PLN', items:[{item_name:'Portret numerologiczny'}] });
+    window.fbq && fbq('track','InitiateCheckout',{ value:49, currency:'PLN' });
+    statusEl.className = 'status';
+    statusEl.textContent = 'Przekierowuję do płatności…';
+    window.location.href = STRIPE_CHECKOUT_URL;
+    setTimeout(() => {
+      if (document.visibilityState === 'visible') {
+        statusEl.className = 'status status--error';
+        statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
+        window.gtag && gtag('event','redirect_fail');
+        window.fbq && fbq('trackCustom','RedirectFail');
+        withBusy(btn, false);
+      }
+    }, 6000);
+  }
+
+  btn?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    if (!validateConsent()) return;
+    withBusy(btn, true);
+    goToStripe();
+  });
+
+  const target = document.getElementById('zamow');
+  function inViewport(el){ if (!el) return false; const r = el.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }
+  function toggleSticky(){
+    const orderVisible = inViewport(target);
+    if (!orderVisible && window.scrollY > 160) { sticky.classList.add('show'); sticky.setAttribute('aria-hidden','false'); }
+    else { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); }
+  }
+  window.addEventListener('scroll', toggleSticky, {passive:true});
+  window.addEventListener('resize', toggleSticky);
+  document.addEventListener('DOMContentLoaded', toggleSticky);
+
+  stickyCta?.addEventListener('click', ()=>{
+    if (consentAll && consentAll.checked){ btn?.click(); }
+    else { target?.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      statusEl.textContent = '';
+      consentAll && consentAll.removeAttribute('aria-invalid');
+      document.querySelectorAll('.consent-error').forEach(el=>el.classList.remove('consent-error'));
+      const msg = document.getElementById('msg-consentAll'); if (msg) msg.textContent='';
+      withBusy(btn, false);
+    }
+  });
+})();
+</script>
+
+<script>
+  (function(){
+    const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
+    const btn = document.getElementById('payBtnM5');
+    const statusEl = document.getElementById('formStatusM5');
+    const consentAll = document.getElementById('consentAllM5');
+    const sticky = document.querySelector('.order-section--m5 .m5-sticky');
+    const stickyCta = document.getElementById('stickyCtaM5');
+    const etaEl = document.getElementById('m5-eta');
+
+    (function updateETA(){
+      try{
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const workday = (day>=1 && day<=5);
+        const within = workday && hour>=8 && hour<18;
+        if (within) {
+          const est = new Date(now.getTime()+ 3*60*60*1000);
+          const hh = est.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+          etaEl.textContent = `Zamów teraz — wyślemy dziś ok. ${hh}`;
+        } else if (!workday) {
+          etaEl.textContent = "Zamów teraz — dostawa w kilka godzin (zwykle 3–4 h).";
+        } else {
+          etaEl.textContent = "Zamów teraz — dostawa w kilka godzin (zwykle 3–4 h).";
+        }
+      }catch(e){}
+    })();
+
+    function withBusy(el, isBusy){
+      if (!el) return;
+      el.setAttribute('aria-busy', isBusy ? 'true' : 'false');
+      if (isBusy){
+        const label = el.getAttribute('data-loading-text') || 'Przetwarzam…';
+        el.dataset._orig = el.innerHTML;
+        el.innerHTML = '<span class="spinner" aria-hidden="true"></span>' + label;
+        el.disabled = true;
+      } else {
+        if (el.dataset._orig){ el.innerHTML = el.dataset._orig; delete el.dataset._orig; }
+        el.disabled = false;
+      }
+    }
+
+    function setError(msg){
+      statusEl.className = msg ? 'm5-status error' : 'm5-status';
+      statusEl.textContent = msg || '';
+    }
+
+    function validateConsent(){
+      if (!consentAll) return true;
+      const ok = !!consentAll.checked;
+      if (!ok){
+        const msg = document.getElementById('msg-consentAllM5');
+        if (msg) msg.textContent = 'Zaznacz wymagane oświadczenie.';
+        setError('Uzupełnij wymagane oświadczenie.');
+        consentAll.focus({preventScroll:true});
+      } else {
+        const msg = document.getElementById('msg-consentAllM5');
+        if (msg) msg.textContent = '';
+        setError('');
+      }
+      return ok;
+    }
+
+    function goToStripe(){
+      window.gtag && gtag('event','begin_checkout',{ value:49, currency:'PLN', items:[{item_name:'Portret numerologiczny'}] });
+      window.fbq && fbq('track','InitiateCheckout',{ value:49, currency:'PLN' });
+      statusEl.className = 'm5-status';
+      statusEl.textContent = 'Przekierowuję do płatności…';
+      window.location.href = STRIPE_CHECKOUT_URL;
+      setTimeout(() => {
+        if (document.visibilityState === 'visible') {
+          statusEl.className = 'm5-status error';
+          statusEl.textContent = 'Nie udało się otworzyć płatności. Spróbuj ponownie.';
+          window.gtag && gtag('event','redirect_fail');
+          window.fbq && fbq('trackCustom','RedirectFail');
+          withBusy(btn, false);
+        }
+      }, 6000);
+    }
+
+    btn?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      if (!validateConsent()) return;
+      withBusy(btn, true);
+      goToStripe();
+    });
+
+    const target = document.querySelector('.order-section--m5');
+    function inViewport(el){ if (!el) return false; const r = el.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }
+    function toggleSticky(){
+      const orderVisible = inViewport(target);
+      if (!orderVisible && window.scrollY > 160) { sticky.classList.add('show'); sticky.setAttribute('aria-hidden','false'); }
+      else { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); }
+    }
+    window.addEventListener('scroll', toggleSticky, {passive:true});
+    window.addEventListener('resize', toggleSticky);
+    document.addEventListener('DOMContentLoaded', toggleSticky);
+
+    stickyCta?.addEventListener('click', ()=>{
+      if (consentAll && consentAll.checked){ btn?.click(); }
+      else { target?.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  })();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    if (window.matchMedia('(min-width: 769px)').matches) {
+      document.querySelectorAll('.order-section--v4 .value-acc').forEach(d=>d.setAttribute('open',''));
+    }
+  });
+</script>
+
+<script>
+  (function () {
+    const basePath = location.pathname.replace(/[^/]*$/, '');
+    document.querySelector('a[href="./regulamin/"]')?.setAttribute('href', basePath + 'regulamin/');
+    document.querySelector('a[href="./polityka-prywatnosci/"]')?.setAttribute('href', basePath + 'polityka-prywatnosci/');
+    document.querySelector('a[href="kontakt/"]')?.setAttribute('href', basePath + 'kontakt/');
+  })();
+</script>
+
+<script>
+  (function () {
+    const logo = document.querySelector('a.brand');
+    if (!logo) return;
+    const basePath = location.pathname.replace(/[^/]*$/, '');
+    const homeUrl = (basePath || '/');
+    logo.setAttribute('href', homeUrl);
+    logo.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (location.pathname === homeUrl) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.location.href = homeUrl;
+      }
+    });
+  })();
+</script>
