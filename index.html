@@ -737,7 +737,8 @@
 
       <!-- Zmieniasz tylko data-rating, jeśli chcesz inną wartość -->
       <div class="proof__rating" data-rating="4.93" data-max="5" aria-label="Średnia ocena 4.93 na 5">
-        <span class="proof__rating-text">(4.93/5</span>
+        <span class="proof__rating-text">(</span>
+        <span class="proof__rating-value">4.93/5</span>
         <span class="proof__stars" aria-hidden="true"></span>
         <span class="proof__rating-text">)</span>
       </div>
@@ -798,8 +799,19 @@
   .proof__rating{
     display:flex;align-items:center;gap:.45rem;margin-top:.25rem;
     font-weight:700;color:#2f3846;
-    text-decoration:underline;text-underline-offset:3px;
     justify-content:center;    /* wyśrodkuj (4.93/5 ★★★★☆) */
+    /* UWAGA: bez text-decoration tutaj, żeby nawiasy nie były podkreślone */
+  }
+
+  /* Podkreślenie tylko wartości 4.93/5 */
+  .proof__rating-value{
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* Nawiasy bez podkreślenia */
+  .proof__rating-text{
+    text-decoration:none;
   }
 
   .proof__stars{display:inline-flex;gap:4px;transform:translateY(1px)}
@@ -863,6 +875,7 @@
   starsEl.innerHTML = html;
 })();
 </script>
+
 <!-- ========== /SPOŁECZNY DOWÓD ========== -->
 
       <script src="https://elfsightcdn.com/platform.js" async></script>
