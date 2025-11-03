@@ -623,13 +623,14 @@
     }
   }
 
-  /* MOBILE: jawnie przywróć centrowanie hero (asekuracyjnie, by desktopowe nie weszło) */
-  @media (max-width: 768px){
-    .hero{ align-items: center; }
-    .badges{
-      justify-content: center; /* centruje każdy zawijany rząd */
-      width: 100%;
+/* MOBILE: jawnie przywróć centrowanie hero (asekuracyjnie, by desktopowe nie weszło) */
+@media (max-width: 768px){
+  .hero{ align-items: center; }
+  .badges{
+    justify-content: center;   /* centruje każdy zawijany rząd */
+    width: 100%;
   }
+}
 
   /* DESKTOP-ONLY: styl pod „drugiego screena” po przeniesieniu do aside */
   @media (min-width: 1024px){
