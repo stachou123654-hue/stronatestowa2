@@ -1484,7 +1484,7 @@
             const workday = (day>=1 && day<=5);
             const within = workday && hour>=8 && hour<18;
             if (within) {
-              const est = new Date(now.getTime()+ 3*60*60*1000);
+              const est = new Date(now.getTime()+ (3*60 + 7)*60*1000);
               const hh = est.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
               etaEl.textContent = `Zamów teraz — wyślemy dziś ok. ${hh}`;
             } else if (!workday) {
