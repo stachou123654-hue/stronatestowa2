@@ -721,6 +721,113 @@
           </div>
         </div>
       </section>
+<!-- ========== SPOŁECZNY DOWÓD: "Jak oceniają nas klienci" (przed Etsy) ========== -->
+<section class="proof card" aria-label="Jak oceniają nas klienci">
+  <div class="proof__inner">
+    <div class="proof__avatars" aria-hidden="true">
+      <!-- JPG w assets/img/ -->
+      <img src="assets/img/avatar1.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/img/avatar2.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/img/avatar3.jpg" alt="" loading="lazy" decoding="async">
+      <span class="proof__more">+900</span>
+    </div>
+
+    <div class="proof__copy">
+      <div class="proof__title">Dołącz do <strong class="gradient-text">+900 klientów</strong></div>
+
+      <!-- Zmieniasz tylko data-rating, jeśli chcesz inną wartość -->
+      <div class="proof__rating" data-rating="4.93" data-max="5" aria-label="Średnia ocena 4.93 na 5">
+        <span class="proof__rating-text">(4.93/5</span>
+        <span class="proof__stars" aria-hidden="true"></span>
+        <span class="proof__rating-text">)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Sekcja opinii — korzysta z Twoich zmiennych kolorów/typografii */
+  .proof{
+    padding:18px;
+    margin:6px 0 18px;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));
+    box-shadow:0 10px 22px rgba(14,22,34,.10);
+  }
+  .proof__inner{display:flex;align-items:center;gap:16px}
+  .proof__avatars{display:flex;align-items:center}
+  .proof__avatars img,
+  .proof__avatars .proof__more{
+    width:46px;height:46px;border-radius:999px;object-fit:cover;
+    border:2px solid rgba(20,24,30,.12);
+    box-shadow:0 2px 8px rgba(14,22,34,.12);
+    margin-left:-12px;background:#fff;display:block
+  }
+  .proof__avatars img:first-child{margin-left:0}
+  .proof__more{
+    display:flex;align-items:center;justify-content:center;
+    font:700 14px/1 Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+  }
+  .proof__copy{display:flex;flex-direction:column;line-height:1.2}
+  .proof__title{font-weight:900;color:#0e1420;font-size:clamp(16px,2.6vw,20px)}
+  .proof__rating{
+    display:flex;align-items:center;gap:.45rem;margin-top:.25rem;
+    font-weight:700;color:#2f3846;
+    text-decoration:underline;text-underline-offset:3px
+  }
+  .proof__stars{display:inline-flex;gap:4px;transform:translateY(1px)}
+  .proof__stars svg{
+    width:18px;height:18px;flex:0 0 auto;
+    fill:var(--brand); /* gwiazdki w kolorze brandu */
+    stroke:rgba(0,0,0,.25);stroke-width:.75
+  }
+
+  @media (max-width:600px){
+    .proof__inner{gap:12px}
+    .proof__avatars img,
+    .proof__avatars .proof__more{width:40px;height:40px;margin-left:-10px}
+  }
+</style>
+
+<script>
+/* Rysowanie gwiazdek wg data-rating / data-max */
+(function(){
+  const root = document.currentScript.previousElementSibling.previousElementSibling; // <style> -> <section>
+  const ratingEl = root.querySelector('.proof__rating');
+  const starsEl  = root.querySelector('.proof__stars');
+  if(!ratingEl || !starsEl) return;
+
+  const value = parseFloat(ratingEl.dataset.rating || '0');
+  const max   = parseInt(ratingEl.dataset.max || '5', 10);
+
+  const full = Math.floor(value);
+  const frac = Math.max(0, Math.min(1, value - full));
+
+  function starSVG(type='full', pct=100){
+    const id = 'star-' + Math.random().toString(36).slice(2);
+    const mask = type === 'partial'
+      ? `<mask id="${id}"><rect x="0" y="0" width="${pct}%" height="100%" fill="#fff"/></mask>`
+      : '';
+    const maskAttr = type === 'partial' ? `mask="url(#${id})"` : '';
+    return `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      ${mask}
+      <path ${maskAttr} d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 17.9 6.1 21l1.2-6.6L2.5 9.4l6.6-.9L12 2.5z"></path>
+      <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 17.9 6.1 21l1.2-6.6L2.5 9.4l6.6-.9L12 2.5z" fill="none"></path>
+    </svg>`;
+  }
+
+  let html = '';
+  for(let i=0;i<max;i++){
+    if(i < full) html += starSVG('full');
+    else if(i === full && frac > 0) html += starSVG('partial', Math.round(frac*100));
+    else html += starSVG('partial', 0); // pusta
+  }
+  starsEl.innerHTML = html;
+})();
+</script>
+<!-- ========== /SPOŁECZNY DOWÓD ========== -->
 
       <script src="https://elfsightcdn.com/platform.js" async></script>
       <div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
