@@ -297,6 +297,74 @@
         #zamow-m5.order-section--m5{display:none}
       }
     </style>
+<style>
+/* DESKTOP (>=1024px): maksymalna widoczność i wygoda kliku */
+@media (min-width:1024px){
+  /* trochę więcej miejsca dla prawej kolumny z przyciskiem */
+  .order-section--v4 .price-strip{
+    grid-template-columns: 1.25fr .75fr;   /* lewa:treści  | prawa: CTA */
+    align-items: start;
+  }
+
+  /* PRZYCISK: duży, szeroki, mięsisty */
+  .order-section--v4 .btn-cta{
+    width: 100%;
+    min-height: 72px;                      /* było ~54px */
+    padding: 18px 24px;
+    font-size: clamp(20px, 2vw, 24px);     /* większy tekst */
+    border-radius: 16px;
+    letter-spacing: .2px;
+    position: relative;                    /* pod animację shine */
+    overflow: hidden;                      /* pod animację shine */
+    transform: translateZ(0);              /* lepsza płynność */
+    box-shadow:
+      0 16px 34px rgba(244,167,124,.45),
+      0  8px 16px rgba(14,22,34,.12);
+  }
+  .order-section--v4 .btn-cta:hover{
+    transform: translateY(-1px);
+  }
+  .order-section--v4 .btn-cta:active{
+    transform: translateY(0);
+  }
+
+  /* Efekt „shine” co kilka sekund – subtelny, nie miga */
+  .order-section--v4 .btn-cta::after{
+    content:"";
+    position:absolute; top:0; left:-40%;
+    width:40%; height:100%;
+    transform:skewX(-22deg);
+    background:linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,.35) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    opacity:.0;
+    animation:ctaShine 3.8s ease-in-out infinite;
+  }
+  @keyframes ctaShine{
+    0%,65% { left:-40%; opacity:0; }
+    70%    { opacity:.55; }
+    84%    { left:120%;  opacity:.0; }
+    100%   { left:120%;  opacity:.0; }
+  }
+
+  /* Mały dopisek pod przyciskiem – czytelnie + center */
+  .order-section--v4 .eta{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* Prawa kolumna „przyklejona” – CTA stale w zasięgu wzroku */
+  .order-section--v4 .price-strip__right{
+    position: sticky;
+    top: 16px;               /* odległość od górnej krawędzi okna */
+    align-self: start;
+  }
+}
+</style>
 
     <style>
       @media (max-width:768px){
@@ -537,6 +605,258 @@
   .report-glide .glide__slide{border-radius:inherit}
   .report-glide .glide__slide img{border-radius:inherit; display:block}
 </style>
+<style>
+  /* DESKTOP-ONLY: powiększ slider raportu o ~40% i delikatnie dosuń strzałki */
+  @media (min-width: 1024px){
+    .report-glide{
+      width: min(540px, 56vw); /* było ~380px → +~40% */
+    }
+    .report-glide .glide__arrow--left{ left:-8px; }
+    .report-glide .glide__arrow--right{ right:-8px; }
+  }
+
+  /* DESKTOP-ONLY: wyrównanie karty po prawej do linii "Poznaj precyzyjny..." */
+  @media (min-width: 1024px){
+    .hero{ align-items: start; } /* zamiast center w osi kolumn */
+    .hero aside.product{
+      margin-top: clamp(-60px, -8vw, -140px);
+    }
+  }
+
+  /* MOBILE: jawnie przywróć centrowanie hero (asekuracyjnie, by desktopowe nie weszło) */
+  @media (max-width: 768px){
+    .hero{ align-items: center; }
+  }
+
+  /* DESKTOP-ONLY: styl pod „drugiego screena” po przeniesieniu do aside */
+  @media (min-width: 1024px){
+    .product .stacked-block{ margin: 12px 0; }
+    .product .stacked-block + .stacked-block{ margin-top: 14px; }
+
+    /* dopasowania szerokości przeniesionych sekcji */
+    .product .proof,
+    .product .stats{
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+</style>
+<style>
+  /* DESKTOP-ONLY: wymuś prawą kolumnę dla przenoszonych bloków + pionowe układanie statów */
+  @media (min-width: 1024px){
+    /* wszystkie przeniesione kafelki lądują w kolumnie 2 grida .hero */
+    .hero .stacked-hero{
+      grid-column: 2 / 3 !important;
+      margin: 12px 0 0;
+      max-width: 100%;
+    }
+    /* staty wewnątrz prawej kolumny = jedna kolumna pod sobą */
+    .hero .stacked-hero.stats .stats-wrap{
+      grid-template-columns: 1fr !important;
+    }
+    /* kosmetyka proof */
+    .hero .stacked-hero.proof{
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+</style>
+<style>
+  /* DESKTOP-ONLY: prawa kolumna jako flex-kolumna (wrapper) */
+  @media (min-width: 1024px){
+    .hero-right{
+      grid-column: 2 / 3;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;            /* odstęp między kartą a kafelkami */
+      min-width: 0;
+    }
+    /* przenoszone kafelki dopasowane do szerokości kolumny */
+    .hero-right .stats .stats-wrap{ grid-template-columns:1fr !important; }
+    .hero-right .proof{ margin-left:0; margin-right:0; max-width:100%; }
+  }
+</style>
+<style>
+  /* DESKTOP-ONLY: pełnoszerokowy, centrowany wiersz pod hero */
+  @media (min-width: 1024px){
+    .hero .hero-center{
+      grid-column: 1 / -1;      /* zajmij obie kolumny grida hero */
+      display: grid;
+      justify-items: center;     /* wyśrodkuj wszystko poziomo */
+      text-align: center;        /* wyśrodkuj tekst */
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .hero .hero-center .report-glide{
+      margin: 0 auto;            /* na wszelki wypadek */
+    }
+    .hero .hero-center .mini-slider-title{
+      margin: 0 0 4px;
+    }
+    .hero .hero-center .btn{
+      display: inline-block;
+      margin: 8px auto 0;
+    }
+  }
+</style>
+<style>
+  /* DESKTOP-ONLY: poszerz przycisk pod sliderem i zwęź blok "Dołącz do +900 klientów" */
+  @media (min-width: 1024px){
+
+    /* 1) Przycisk "Zamów teraz" pod sliderem (w hero-center) */
+    .hero .hero-center .btn{
+      width: min(560px, 60vw);     /* SZERZEJ – dopasowane do slidera */
+      min-height: 58px;            /* trochę wyższy */
+      font-size: clamp(18px, 1.6vw, 20px);
+      border-radius: 16px;
+      margin-left: auto;
+      margin-right: auto;          /* pewne wyśrodkowanie */
+    }
+
+    /* (opcjonalnie) wyrównaj też szerokość samego slidera, żeby ładnie grało z przyciskiem */
+    .hero .hero-center .report-glide{
+      width: min(560px, 60vw);
+    }
+
+    /* 2) Zwęż "Dołącz do +900 klientów" i zostaw wyśrodkowane */
+    section.proof{
+      max-width: 560px;            /* było ~960px → teraz węziej */
+      margin-left: auto;
+      margin-right: auto;          /* zostaje na środku strony */
+    }
+  }
+</style>
+<style>
+  /* DESKTOP: zamiast +40% dajemy ~+20% (ok. 456 px) */
+  @media (min-width: 1024px){
+    /* sam slider */
+    .report-glide{
+      width: min(456px, 62vw); /* było 540px/56vw */
+    }
+
+    /* jeśli wcześniej wyrównywaliśmy szerokość slidera w hero-center i przycisku,
+       ujednolić też te wartości, żeby wszystko było równe */
+    .hero .hero-center .report-glide{
+      width: min(456px, 62vw);
+    }
+    .hero .hero-center .btn{
+      width: min(456px, 62vw);
+    }
+  }
+</style>
+<style>
+  /* DESKTOP-ONLY: zerujemy wcześniejsze "podbicie" karty – JS ustawi idealny offset */
+  @media (min-width: 1024px){
+    .hero aside.product{ margin-top: 0 !important; }
+  }
+</style>
+<style>
+  /* Tylko desktop – poniżej 1024px sekcja się nie pokazuje */
+  @media (max-width: 1023.98px){
+    .how-inline-desktop{ display:none; }
+  }
+
+  @media (min-width: 1024px){
+    .how-inline-desktop{
+      margin: 18px 0 10px;
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
+      box-shadow: 0 10px 22px rgba(14,22,34,.10);
+    }
+
+    /* Tytuł – jak "Co otrzymujesz:" */
+    .how-inline__title{
+      font-size: 1.6rem;           /* jak u Ciebie w inline */
+      line-height: 1.2;
+      font-weight: 900;
+      color: #0e1420;
+      margin: 0 0 10px;
+    }
+
+    .how-inline__list{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .how-inline__list > li{
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      align-items: start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--border-soft);
+    }
+
+    .how-inline__num{
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      font: 900 20px/1 Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 8px 18px rgba(14,22,34,.12);
+    }
+
+    .how-inline__text{
+      color: #1f2734;
+      font-weight: 700;
+    }
+  }
+</style>
+<style>
+/* MOBILE (≤1023.98px): pokaż “Jak to działa” pod „Co otrzymujesz” i dopasuj rozmiary */
+@media (max-width:1023.98px){
+  .how-inline-desktop{
+    display:block;
+    margin:10px 0 12px;
+    padding:12px 12px 10px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));
+    box-shadow:0 8px 18px rgba(14,22,34,.10);
+  }
+  .how-inline__title{
+    font-size:clamp(18px,4.6vw,22px);
+    line-height:1.2;font-weight:900;margin:0 0 8px;color:#0e1420;
+  }
+  .how-inline__list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+  .how-inline__list > li{
+    display:grid;grid-template-columns:32px 1fr;align-items:start;gap:10px;
+    padding:8px 10px;border:1px solid var(--border-soft);border-radius:10px;background:#fff;
+  }
+  .how-inline__num{
+    width:32px;height:32px;border-radius:8px;display:grid;place-items:center;
+    font:900 16px/1 Inter,system-ui;color:#fff;
+    background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 14px rgba(14,22,34,.10);
+  }
+  .how-inline__text{color:#1f2734;font-weight:700;font-size:14.5px;line-height:1.35}
+
+  /* upewnij się, że karta jest tuż pod „Co otrzymujesz” */
+  .badges + .how-inline-desktop{ margin-top:10px; }
+}
+</style>
+
+<style>
+  @media (min-width:1024px){
+    .how-inline-desktop{ position:relative; } /* zapobiega dziwnym efektom marginesów */
+  }
+</style>
+<style>
+  @media (min-width:1024px){
+    .how-inline-desktop{ position: relative; } /* zapobiega kolapsowi marginesów */
+    .how-inline-spacer{ display:block; }
+  }
+</style>
 
 <style>
   /* MOBILE: ciaśniejszy odstęp nad hero + mocniejsze, większe słowa w gradiencie */
@@ -609,6 +929,23 @@
             <span class="badge">Raport + 3 spersonalizowane plakaty</span>
             <span class="badge">Dostawa e-mail</span>
           </div>
+<section class="how-inline-desktop" aria-labelledby="how-inline-title">
+  <h3 id="how-inline-title" class="how-inline__title">Jak to działa?</h3>
+  <ol class="how-inline__list">
+    <li>
+      <div class="how-inline__num">1</div>
+      <div class="how-inline__text">
+        Podajesz <strong>imię, nazwisko</strong> i <strong>datę urodzenia</strong>.
+      </div>
+    </li>
+    <li>
+      <div class="how-inline__num">2</div>
+      <div class="how-inline__text">
+        My obliczamy Twoją <strong>pełną numerologię</strong> i wysyłamy gotowy <strong>raport na e-mail</strong>.
+      </div>
+    </li>
+  </ol>
+</section>
 
           <div class="mini-slider-wrap">
             <div class="mini-slider-title">
@@ -1603,5 +1940,184 @@
         });
       })();
     </script>
+<script>
+  (function(){
+    function placeRightColumn(){
+      if (!window.matchMedia('(min-width: 1024px)').matches) return; // tylko desktop
+
+      const hero  = document.querySelector('section.hero');
+      const aside = hero?.querySelector('aside.product');
+      if (!hero || !aside) return;
+
+      // 1) Utwórz wrapper dla PRAWEJ kolumny, jeśli jeszcze go nie ma
+      let right = aside.parentElement;
+      if (!right.classList.contains('hero-right')) {
+        right = document.createElement('div');
+        right.className = 'hero-right';
+        hero.insertBefore(right, aside);   // wrapper na miejsce karty
+        right.appendChild(aside);          // karta do wrappera
+      }
+
+      // 2) PRZENIEŚ TYLKO STATYSTYKI do prawej kolumny (pod kartę)
+      const statsDesktop = document.querySelector('section.stats.only-desktop');
+      if (statsDesktop && statsDesktop.parentElement !== right) {
+        right.appendChild(statsDesktop);
+      }
+
+      // 3) UPEWNIJ SIĘ, że "Dołącz do +900 klientów" ( .proof ) NIE jest w prawej kolumnie
+      const proof = document.querySelector('section.proof');
+      if (proof) {
+        const isInsideRight = right.contains(proof);
+        if (isInsideRight) {
+          // Wstaw ZARAZ PO sekcji hero (szeroko, na środku – jak oryginalnie)
+          const parent = hero.parentNode;
+          parent.insertBefore(proof, hero.nextSibling);
+        }
+      }
+    }
+
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', placeRightColumn);
+    } else {
+      placeRightColumn();
+    }
+    window.addEventListener('resize', placeRightColumn, { passive: true });
+  })();
+</script>
+
+<script>
+  (function(){
+    function centerHeroSlider(){
+      if (!window.matchMedia('(min-width: 1024px)').matches) return; // tylko desktop
+
+      const hero = document.querySelector('section.hero');
+      if (!hero) return;
+
+      // Źródła: wewnątrz lewego <div> w hero
+      const leftCol = hero.querySelector(':scope > div'); // pierwszy grid item (lewa kolumna)
+      if (!leftCol) return;
+
+      const wrap   = leftCol.querySelector('.mini-slider-wrap'); // zawiera tytuł + slider
+      const ctaBtn = leftCol.querySelector('a.btn[href^="#zamow"]'); // przycisk "Zamów teraz"
+
+      if (!wrap && !ctaBtn) return;
+
+      // Jeśli już mamy wiersz center – nie dubluj
+      let centerRow = hero.querySelector(':scope > .hero-center');
+      if (!centerRow){
+        centerRow = document.createElement('div');
+        centerRow.className = 'hero-center';
+        // Wstaw NOWY wiersz jako ostatnie dziecko hero,
+        // czyli bezpośrednio pod dwukolumnowym układem.
+        hero.appendChild(centerRow);
+      }
+
+      // Przenieś elementy w tej kolejności: tytuł+slider, potem przycisk
+      if (wrap && wrap.parentElement !== centerRow) centerRow.appendChild(wrap);
+      if (ctaBtn && ctaBtn.parentElement !== centerRow) centerRow.appendChild(ctaBtn);
+    }
+
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', centerHeroSlider);
+    } else {
+      centerHeroSlider();
+    }
+    window.addEventListener('resize', centerHeroSlider, { passive: true });
+  })();
+</script>
+<script>
+(function(){
+  // Ile pikseli skorygować „na oko” (0 = idealnie geometrycznie)
+  var OPTICAL_NUDGE = 0; // np. -2 albo +2, jeśli chcesz delikatnie podnieść/opuścić
+
+  function q(sel, root){ return (root||document).querySelector(sel); }
+
+  // Znajdź kafelek +35: to DRUGA .stat wewnątrz .hero-right → .stats .stats-wrap
+  function getPlus35(){
+    var hero  = q('section.hero');
+    if(!hero) return null;
+    var right = q('.hero-right', hero);
+    if(!right) return null;
+    var wrap  = q('.stats .stats-wrap', right);
+    if(!wrap) return null;
+    var items = wrap.querySelectorAll('.stat');
+    return items[1] || null;
+  }
+
+  // Upewnij się, że tuż przed .how-inline-desktop istnieje „spacer”
+  function ensureSpacer(how){
+    if(!how) return null;
+    var s = how.previousElementSibling;
+    if(!s || !s.classList || !s.classList.contains('how-inline-spacer')){
+      s = document.createElement('div');
+      s.className = 'how-inline-spacer';
+      s.style.cssText = 'height:0;margin:0;padding:0;border:0;pointer-events:none';
+      how.parentNode.insertBefore(s, how);
+    }
+    return s;
+  }
+
+  // Główna logika wyrównania bottom → bottom (wraz z margin-bottom sekcji „Jak to działa?”)
+  function alignBottoms(){
+    // Działamy tylko na desktopie
+    if(!window.matchMedia('(min-width:1024px)').matches) return;
+
+    var hero   = q('section.hero');
+    var how    = hero && q('.how-inline-desktop', hero);
+    var plus35 = getPlus35();
+    if(!hero || !how || !plus35) return;
+
+    var spacer = ensureSpacer(how);
+    if(!spacer) return;
+
+    // reset przed pomiarem
+    spacer.style.height = '0px';
+
+    // Poczekaj 1 frame, żeby layout „osiadł”
+    requestAnimationFrame(function(){
+      var rHow  = how.getBoundingClientRect();
+      var rPlus = plus35.getBoundingClientRect();
+
+      // KLUCZ: dolicz realny margin-bottom „Jak to działa?”
+      var mb = parseFloat(getComputedStyle(how).marginBottom) || 0;
+
+      // Chcemy: (dół „Jak to działa?” + jego margin-bottom) == dół kafelka +35
+      var delta = Math.round( (rPlus.bottom) - (rHow.bottom + mb) + OPTICAL_NUDGE );
+
+      spacer.style.height = (delta > 0 ? delta : 0) + 'px';
+    });
+  }
+
+  function boot(){
+    if(!window.matchMedia('(min-width:1024px)').matches) return;
+    // Kilka wywołań „na wszelki wypadek”, żeby złapać układ po innych skryptach/fontach
+    setTimeout(alignBottoms, 0);
+    setTimeout(alignBottoms, 80);
+    setTimeout(alignBottoms, 200);
+  }
+
+  // Start
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  // Reakcje na zmiany
+  window.addEventListener('load', alignBottoms);
+  window.addEventListener('resize', alignBottoms, {passive:true});
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(alignBottoms); }
+
+  // Obserwuj zmiany wysokości „Jak to działa?” i prawej kolumny
+  if('ResizeObserver' in window){
+    var hero = q('section.hero');
+    if(hero){
+      var how   = q('.how-inline-desktop', hero);
+      var right = q('.hero-right', hero);
+      var ro = new ResizeObserver(alignBottoms);
+      if(how)  ro.observe(how);
+      if(right) ro.observe(right);
+    }
+  }
+})();
+</script>
+
   </body>
 </html>
