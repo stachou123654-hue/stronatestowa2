@@ -298,25 +298,22 @@
       }
     </style>
 <style>
-/* DESKTOP (>=1024px): maksymalna widoczność i wygoda kliku */
 @media (min-width:1024px){
-  /* trochę więcej miejsca dla prawej kolumny z przyciskiem */
   .order-section--v4 .price-strip{
-    grid-template-columns: 1.25fr .75fr;   /* lewa:treści  | prawa: CTA */
+    grid-template-columns: 1.25fr .75fr;
     align-items: start;
   }
 
-  /* PRZYCISK: duży, szeroki, mięsisty */
   .order-section--v4 .btn-cta{
     width: 100%;
-    min-height: 72px;                      /* było ~54px */
+    min-height: 72px;
     padding: 18px 24px;
-    font-size: clamp(20px, 2vw, 24px);     /* większy tekst */
+    font-size: clamp(20px, 2vw, 24px);
     border-radius: 16px;
     letter-spacing: .2px;
-    position: relative;                    /* pod animację shine */
-    overflow: hidden;                      /* pod animację shine */
-    transform: translateZ(0);              /* lepsza płynność */
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
     box-shadow:
       0 16px 34px rgba(244,167,124,.45),
       0  8px 16px rgba(14,22,34,.12);
@@ -328,7 +325,6 @@
     transform: translateY(0);
   }
 
-  /* Efekt „shine” co kilka sekund – subtelny, nie miga */
   .order-section--v4 .btn-cta::after{
     content:"";
     position:absolute; top:0; left:-40%;
@@ -350,17 +346,15 @@
     100%   { left:120%;  opacity:.0; }
   }
 
-  /* Mały dopisek pod przyciskiem – czytelnie + center */
   .order-section--v4 .eta{
     font-size: 14px;
     text-align: center;
     margin-top: 8px;
   }
 
-  /* Prawa kolumna „przyklejona” – CTA stale w zasięgu wzroku */
   .order-section--v4 .price-strip__right{
     position: sticky;
-    top: 16px;               /* odległość od górnej krawędzi okna */
+    top: 16px;
     align-self: start;
   }
 }
@@ -383,11 +377,11 @@
         .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
         .order-section--v4 .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
         .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
-        .order-section--v4 .trust-row--logos .i{width:18px;height:18px;margin-right:6px}
+        .order-section--v4 .trust-row--logos .i{width:18px;height:18px}
         .order-section--v4 .trust{display:inline-flex;align-items:center;gap:8px}
         .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
         .order-section--v4 .wallets__logo{display:inline-flex;align-items:center;padding:.32em .56em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:800}
-        .order-section--v4 .wallets__apple{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+        .order-section--v4 .wallets__apple{font-family:Inter,system-ui}
         .order-section--v4 .wallets__gpay{font-family:Inter,system-ui}
         .order-section--v4 .wallets__cards{opacity:.9}
         .order-section--v4 .value-acc{border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(14,22,34,.08);margin:10px 0 8px}
@@ -606,38 +600,33 @@
   .report-glide .glide__slide img{border-radius:inherit; display:block}
 </style>
 <style>
-  /* DESKTOP-ONLY: powiększ slider raportu o ~40% i delikatnie dosuń strzałki */
   @media (min-width: 1024px){
     .report-glide{
-      width: min(540px, 56vw); /* było ~380px → +~40% */
+      width: min(540px, 56vw);
     }
     .report-glide .glide__arrow--left{ left:-8px; }
     .report-glide .glide__arrow--right{ right:-8px; }
   }
 
-  /* DESKTOP-ONLY: wyrównanie karty po prawej do linii "Poznaj precyzyjny..." */
   @media (min-width: 1024px){
-    .hero{ align-items: start; } /* zamiast center w osi kolumn */
+    .hero{ align-items: start; }
     .hero aside.product{
       margin-top: clamp(-60px, -8vw, -140px);
     }
   }
 
-/* MOBILE: jawnie przywróć centrowanie hero (asekuracyjnie, by desktopowe nie weszło) */
 @media (max-width: 768px){
   .hero{ align-items: center; }
   .badges{
-    justify-content: center;   /* centruje każdy zawijany rząd */
+    justify-content: center;
     width: 100%;
   }
 }
 
-  /* DESKTOP-ONLY: styl pod „drugiego screena” po przeniesieniu do aside */
   @media (min-width: 1024px){
     .product .stacked-block{ margin: 12px 0; }
     .product .stacked-block + .stacked-block{ margin-top: 14px; }
 
-    /* dopasowania szerokości przeniesionych sekcji */
     .product .proof,
     .product .stats{
       max-width: 100%;
@@ -647,19 +636,15 @@
   }
 </style>
 <style>
-  /* DESKTOP-ONLY: wymuś prawą kolumnę dla przenoszonych bloków + pionowe układanie statów */
   @media (min-width: 1024px){
-    /* wszystkie przeniesione kafelki lądują w kolumnie 2 grida .hero */
     .hero .stacked-hero{
       grid-column: 2 / 3 !important;
       margin: 12px 0 0;
       max-width: 100%;
     }
-    /* staty wewnątrz prawej kolumny = jedna kolumna pod sobą */
     .hero .stacked-hero.stats .stats-wrap{
       grid-template-columns: 1fr !important;
     }
-    /* kosmetyka proof */
     .hero .stacked-hero.proof{
       margin-left: 0;
       margin-right: 0;
@@ -667,34 +652,31 @@
   }
 </style>
 <style>
-  /* DESKTOP-ONLY: prawa kolumna jako flex-kolumna (wrapper) */
   @media (min-width: 1024px){
     .hero-right{
       grid-column: 2 / 3;
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      gap: 12px;            /* odstęp między kartą a kafelkami */
+      gap: 12px;
       min-width: 0;
     }
-    /* przenoszone kafelki dopasowane do szerokości kolumny */
     .hero-right .stats .stats-wrap{ grid-template-columns:1fr !important; }
     .hero-right .proof{ margin-left:0; margin-right:0; max-width:100%; }
   }
 </style>
 <style>
-  /* DESKTOP-ONLY: pełnoszerokowy, centrowany wiersz pod hero */
   @media (min-width: 1024px){
     .hero .hero-center{
-      grid-column: 1 / -1;      /* zajmij obie kolumny grida hero */
+      grid-column: 1 / -1;
       display: grid;
-      justify-items: center;     /* wyśrodkuj wszystko poziomo */
-      text-align: center;        /* wyśrodkuj tekst */
+      justify-items: center;
+      text-align: center;
       gap: 12px;
       margin-top: 6px;
     }
     .hero .hero-center .report-glide{
-      margin: 0 auto;            /* na wszelki wypadek */
+      margin: 0 auto;
     }
     .hero .hero-center .mini-slider-title{
       margin: 0 0 4px;
@@ -706,42 +688,34 @@
   }
 </style>
 <style>
-  /* DESKTOP-ONLY: poszerz przycisk pod sliderem i zwęź blok "Dołącz do +900 klientów" */
   @media (min-width: 1024px){
 
-    /* 1) Przycisk "Zamów teraz" pod sliderem (w hero-center) */
     .hero .hero-center .btn{
-      width: min(560px, 60vw);     /* SZERZEJ – dopasowane do slidera */
-      min-height: 58px;            /* trochę wyższy */
+      width: min(560px, 60vw);
+      min-height: 58px;
       font-size: clamp(18px, 1.6vw, 20px);
       border-radius: 16px;
       margin-left: auto;
-      margin-right: auto;          /* pewne wyśrodkowanie */
+      margin-right: auto;
     }
 
-    /* (opcjonalnie) wyrównaj też szerokość samego slidera, żeby ładnie grało z przyciskiem */
     .hero .hero-center .report-glide{
       width: min(560px, 60vw);
     }
 
-    /* 2) Zwęż "Dołącz do +900 klientów" i zostaw wyśrodkowane */
     section.proof{
-      max-width: 560px;            /* było ~960px → teraz węziej */
+      max-width: 560px;
       margin-left: auto;
-      margin-right: auto;          /* zostaje na środku strony */
+      margin-right: auto;
     }
   }
 </style>
 <style>
-  /* DESKTOP: zamiast +40% dajemy ~+20% (ok. 456 px) */
   @media (min-width: 1024px){
-    /* sam slider */
     .report-glide{
-      width: min(456px, 62vw); /* było 540px/56vw */
+      width: min(456px, 62vw);
     }
 
-    /* jeśli wcześniej wyrównywaliśmy szerokość slidera w hero-center i przycisku,
-       ujednolić też te wartości, żeby wszystko było równe */
     .hero .hero-center .report-glide{
       width: min(456px, 62vw);
     }
@@ -751,13 +725,11 @@
   }
 </style>
 <style>
-  /* DESKTOP-ONLY: zerujemy wcześniejsze "podbicie" karty – JS ustawi idealny offset */
   @media (min-width: 1024px){
     .hero aside.product{ margin-top: 0 !important; }
   }
 </style>
 <style>
-  /* Tylko desktop – poniżej 1024px sekcja się nie pokazuje */
   @media (max-width: 1023.98px){
     .how-inline-desktop{ display:none; }
   }
@@ -772,9 +744,8 @@
       box-shadow: 0 10px 22px rgba(14,22,34,.10);
     }
 
-    /* Tytuł – jak "Co otrzymujesz:" */
     .how-inline__title{
-      font-size: 1.6rem;           /* jak u Ciebie w inline */
+      font-size: 1.6rem;
       line-height: 1.2;
       font-weight: 900;
       color: #0e1420;
@@ -817,7 +788,6 @@
   }
 </style>
 <style>
-/* MOBILE (≤1023.98px): pokaż “Jak to działa” pod „Co otrzymujesz” i dopasuj rozmiary */
 @media (max-width:1023.98px){
   .how-inline-desktop{
     display:block;
@@ -845,36 +815,32 @@
   }
   .how-inline__text{color:#1f2734;font-weight:700;font-size:14.5px;line-height:1.35}
 
-  /* upewnij się, że karta jest tuż pod „Co otrzymujesz” */
   .badges + .how-inline-desktop{ margin-top:10px; }
 }
 </style>
 
 <style>
   @media (min-width:1024px){
-    .how-inline-desktop{ position:relative; } /* zapobiega dziwnym efektom marginesów */
+    .how-inline-desktop{ position:relative; }
   }
 </style>
 <style>
   @media (min-width:1024px){
-    .how-inline-desktop{ position: relative; } /* zapobiega kolapsowi marginesów */
+    .how-inline-desktop{ position: relative; }
     .how-inline-spacer{ display:block; }
   }
 </style>
 
 <style>
-  /* MOBILE: ciaśniejszy odstęp nad hero + mocniejsze, większe słowa w gradiencie */
   @media (max-width:768px){
-    /* Zmniejsza przerwę między menu (Zamów raport/FAQ/Jak to działa) a nagłówkiem o ok. połowę */
     .nav{padding-top: calc(var(--mobile-logo-offset) - 28px)}
     .hero{padding-top: 2px}
 
-    /* +30% wielkości tylko dla kolorowych słów i większy kontrast */
     .hero .h1-line1 .gradient-text,
     .hero .h1-line2 .gradient-text{
-      font-size: 1.3em;                 /* +30% */
-      -webkit-text-stroke: .4px rgba(0,0,0,.28); /* delikatny kontur dla kontrastu */
-      text-shadow: 0 2px 6px rgba(0,0,0,.18), 0 1px 1px rgba(0,0,0,.12); /* subtelny cień */
+      font-size: 1.3em;
+      -webkit-text-stroke: .4px rgba(0,0,0,.28);
+      text-shadow: 0 2px 6px rgba(0,0,0,.18), 0 1px 1px rgba(0,0,0,.12);
     }
   }
 </style>
@@ -899,6 +865,7 @@
         </nav>
       </div>
     </header>
+
 
     <main class="container">
       <section class="hero">
@@ -1062,11 +1029,10 @@
           </div>
         </div>
       </section>
-<!-- ========== SPOŁECZNY DOWÓD: "Jak oceniają nas klienci" (przed Etsy) ========== -->
+
 <section class="proof card" aria-label="Jak oceniają nas klienci">
   <div class="proof__inner">
     <div class="proof__avatars" aria-hidden="true">
-      <!-- JPG w assets/img/ -->
       <img src="assets/img/avatar1.jpg" alt="" loading="lazy" decoding="async">
       <img src="assets/img/avatar2.jpg" alt="" loading="lazy" decoding="async">
       <img src="assets/img/avatar3.jpg" alt="" loading="lazy" decoding="async">
@@ -1076,7 +1042,6 @@
     <div class="proof__copy">
       <div class="proof__title">Dołącz do <strong class="gradient-text">+900 klientów</strong></div>
 
-      <!-- Zmieniasz tylko data-rating, jeśli chcesz inną wartość -->
       <div class="proof__rating" data-rating="4.93" data-max="5" aria-label="Średnia ocena 4.93 na 5">
         <span class="proof__rating-text">(</span>
         <span class="proof__rating-value">4.93/5</span>
@@ -1088,32 +1053,29 @@
 </section>
 
 <style>
-  /* Sekcja opinii — korzysta z Twoich zmiennych kolorów/typografii */
   .proof{
     padding:18px;
-    /* WYŚRODKOWANIE CAŁEGO BLOKU  */
-    max-width: 960px;          /* możesz zmniejszyć/zmienić wedle uznania */
-    margin:12px auto 18px;     /* auto = środek poziomo */
+    max-width: 960px;
+    margin:12px auto 18px;
     border-radius:var(--radius);
     border:1px solid var(--border);
     background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));
     box-shadow:0 10px 22px rgba(14,22,34,.10);
   }
 
-  /* DOMYŚLNIE (mobile-first): układ kolumnowy, wszystko wyśrodkowane */
   .proof__inner{
     display:flex;
-    flex-direction:column;     /* avatary nad tekstem */
-    align-items:center;        /* środek poprzecznie */
-    justify-content:center;    /* środek w osi głównej */
-    text-align:center;         /* środek dla tekstu */
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
     gap:14px;
   }
 
   .proof__avatars{
     display:flex;
     align-items:center;
-    justify-content:center;    /* wyśrodkuj rząd avatarów */
+    justify-content:center;
   }
 
   .proof__avatars img,
@@ -1125,7 +1087,6 @@
   }
   .proof__avatars img:first-child{margin-left:0}
 
-  /* ZMIANA: pomarańczowe kółeczko +900 i biały tekst */
   .proof__avatars .proof__more{
     display:flex;align-items:center;justify-content:center;
     font:700 14px/1 Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -1140,17 +1101,14 @@
   .proof__rating{
     display:flex;align-items:center;gap:.45rem;margin-top:.25rem;
     font-weight:700;color:#2f3846;
-    justify-content:center;    /* wyśrodkuj (4.93/5 ★★★★☆) */
-    /* UWAGA: bez text-decoration tutaj, żeby nawiasy nie były podkreślone */
+    justify-content:center;
   }
 
-  /* Podkreślenie tylko wartości 4.93/5 */
   .proof__rating-value{
     text-decoration:underline;
     text-underline-offset:3px;
   }
 
-  /* Nawiasy bez podkreślenia */
   .proof__rating-text{
     text-decoration:none;
   }
@@ -1158,16 +1116,15 @@
   .proof__stars{display:inline-flex;gap:4px;transform:translateY(1px)}
   .proof__stars svg{
     width:18px;height:18px;flex:0 0 auto;
-    fill:var(--brand); /* gwiazdki w kolorze brandu */
+    fill:var(--brand);
     stroke:rgba(0,0,0,.25);stroke-width:.75
   }
 
-  /* Desktop: zachowaj wyśrodkowanie, ale ułóż elementy w jednym rzędzie */
   @media (min-width: 900px){
     .proof__inner{
-      flex-direction:row;      /* rząd na desktopie */
-      justify-content:center;  /* całość dalej w środku */
-      text-align:left;         /* jeśli wolisz pozostać przy center, usuń tę linię */
+      flex-direction:row;
+      justify-content:center;
+      text-align:left;
       gap:18px;
     }
   }
@@ -1180,9 +1137,8 @@
 </style>
 
 <script>
-/* Rysowanie gwiazdek wg data-rating / data-max */
 (function(){
-  const root = document.currentScript.previousElementSibling.previousElementSibling; // <style> -> <section>
+  const root = document.currentScript.previousElementSibling.previousElementSibling;
   const ratingEl = root.querySelector('.proof__rating');
   const starsEl  = root.querySelector('.proof__stars');
   if(!ratingEl || !starsEl) return;
@@ -1211,13 +1167,13 @@
   for(let i=0;i<max;i++){
     if(i < full) html += starSVG('full');
     else if(i === full && frac > 0) html += starSVG('partial', Math.round(frac*100));
-    else html += starSVG('partial', 0); // pusta
+    else html += starSVG('partial', 0);
   }
   starsEl.innerHTML = html;
 })();
 </script>
 
-<!-- ========== /SPOŁECZNY DOWÓD ========== -->
+
 
       <script src="https://elfsightcdn.com/platform.js" async></script>
       <div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
@@ -1947,33 +1903,33 @@
 <script>
   (function(){
     function placeRightColumn(){
-      if (!window.matchMedia('(min-width: 1024px)').matches) return; // tylko desktop
+      if (!window.matchMedia('(min-width: 1024px)').matches) return;
 
       const hero  = document.querySelector('section.hero');
       const aside = hero?.querySelector('aside.product');
       if (!hero || !aside) return;
 
-      // 1) Utwórz wrapper dla PRAWEJ kolumny, jeśli jeszcze go nie ma
+
       let right = aside.parentElement;
       if (!right.classList.contains('hero-right')) {
         right = document.createElement('div');
         right.className = 'hero-right';
-        hero.insertBefore(right, aside);   // wrapper na miejsce karty
-        right.appendChild(aside);          // karta do wrappera
+        hero.insertBefore(right, aside);
+        right.appendChild(aside);
       }
 
-      // 2) PRZENIEŚ TYLKO STATYSTYKI do prawej kolumny (pod kartę)
+
       const statsDesktop = document.querySelector('section.stats.only-desktop');
       if (statsDesktop && statsDesktop.parentElement !== right) {
         right.appendChild(statsDesktop);
       }
 
-      // 3) UPEWNIJ SIĘ, że "Dołącz do +900 klientów" ( .proof ) NIE jest w prawej kolumnie
+
       const proof = document.querySelector('section.proof');
       if (proof) {
         const isInsideRight = right.contains(proof);
         if (isInsideRight) {
-          // Wstaw ZARAZ PO sekcji hero (szeroko, na środku – jak oryginalnie)
+
           const parent = hero.parentNode;
           parent.insertBefore(proof, hero.nextSibling);
         }
@@ -1992,31 +1948,30 @@
 <script>
   (function(){
     function centerHeroSlider(){
-      if (!window.matchMedia('(min-width: 1024px)').matches) return; // tylko desktop
+      if (!window.matchMedia('(min-width: 1024px)').matches) return;
 
       const hero = document.querySelector('section.hero');
       if (!hero) return;
 
-      // Źródła: wewnątrz lewego <div> w hero
-      const leftCol = hero.querySelector(':scope > div'); // pierwszy grid item (lewa kolumna)
+
+      const leftCol = hero.querySelector(':scope > div');
       if (!leftCol) return;
 
-      const wrap   = leftCol.querySelector('.mini-slider-wrap'); // zawiera tytuł + slider
-      const ctaBtn = leftCol.querySelector('a.btn[href^="#zamow"]'); // przycisk "Zamów teraz"
+      const wrap   = leftCol.querySelector('.mini-slider-wrap');
+      const ctaBtn = leftCol.querySelector('a.btn[href^="#zamow"]');
 
       if (!wrap && !ctaBtn) return;
 
-      // Jeśli już mamy wiersz center – nie dubluj
+
       let centerRow = hero.querySelector(':scope > .hero-center');
       if (!centerRow){
         centerRow = document.createElement('div');
         centerRow.className = 'hero-center';
-        // Wstaw NOWY wiersz jako ostatnie dziecko hero,
-        // czyli bezpośrednio pod dwukolumnowym układem.
+
         hero.appendChild(centerRow);
       }
 
-      // Przenieś elementy w tej kolejności: tytuł+slider, potem przycisk
+
       if (wrap && wrap.parentElement !== centerRow) centerRow.appendChild(wrap);
       if (ctaBtn && ctaBtn.parentElement !== centerRow) centerRow.appendChild(ctaBtn);
     }
@@ -2031,12 +1986,12 @@
 </script>
 <script>
 (function(){
-  // Ile pikseli skorygować „na oko” (0 = idealnie geometrycznie)
-  var OPTICAL_NUDGE = 0; // np. -2 albo +2, jeśli chcesz delikatnie podnieść/opuścić
+
+  var OPTICAL_NUDGE = 0;
 
   function q(sel, root){ return (root||document).querySelector(sel); }
 
-  // Znajdź kafelek +35: to DRUGA .stat wewnątrz .hero-right → .stats .stats-wrap
+
   function getPlus35(){
     var hero  = q('section.hero');
     if(!hero) return null;
@@ -2048,7 +2003,7 @@
     return items[1] || null;
   }
 
-  // Upewnij się, że tuż przed .how-inline-desktop istnieje „spacer”
+
   function ensureSpacer(how){
     if(!how) return null;
     var s = how.previousElementSibling;
@@ -2061,9 +2016,9 @@
     return s;
   }
 
-  // Główna logika wyrównania bottom → bottom (wraz z margin-bottom sekcji „Jak to działa?”)
+
   function alignBottoms(){
-    // Działamy tylko na desktopie
+
     if(!window.matchMedia('(min-width:1024px)').matches) return;
 
     var hero   = q('section.hero');
@@ -2074,18 +2029,18 @@
     var spacer = ensureSpacer(how);
     if(!spacer) return;
 
-    // reset przed pomiarem
+
     spacer.style.height = '0px';
 
-    // Poczekaj 1 frame, żeby layout „osiadł”
+
     requestAnimationFrame(function(){
       var rHow  = how.getBoundingClientRect();
       var rPlus = plus35.getBoundingClientRect();
 
-      // KLUCZ: dolicz realny margin-bottom „Jak to działa?”
+
       var mb = parseFloat(getComputedStyle(how).marginBottom) || 0;
 
-      // Chcemy: (dół „Jak to działa?” + jego margin-bottom) == dół kafelka +35
+
       var delta = Math.round( (rPlus.bottom) - (rHow.bottom + mb) + OPTICAL_NUDGE );
 
       spacer.style.height = (delta > 0 ? delta : 0) + 'px';
@@ -2094,22 +2049,22 @@
 
   function boot(){
     if(!window.matchMedia('(min-width:1024px)').matches) return;
-    // Kilka wywołań „na wszelki wypadek”, żeby złapać układ po innych skryptach/fontach
+
     setTimeout(alignBottoms, 0);
     setTimeout(alignBottoms, 80);
     setTimeout(alignBottoms, 200);
   }
 
-  // Start
+
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 
-  // Reakcje na zmiany
+
   window.addEventListener('load', alignBottoms);
   window.addEventListener('resize', alignBottoms, {passive:true});
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(alignBottoms); }
 
-  // Obserwuj zmiany wysokości „Jak to działa?” i prawej kolumny
+
   if('ResizeObserver' in window){
     var hero = q('section.hero');
     if(hero){
