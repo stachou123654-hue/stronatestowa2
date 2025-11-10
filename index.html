@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="pl">
   <head>
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D3MCUE3C77U1STIOGJDG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u2edxsamb5");
+</script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5CVK56C2M"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -835,6 +857,276 @@
     }
   }
 </style>
+<style>
+/* OSTATNI KROK — mobile polish */
+@media (max-width: 768px){
+
+  /* Karta: mniej „szumu”, więcej powietrza, lepszy kontrast */
+  #domkniecie.closing-cta{
+    border-radius:16px;
+    box-shadow:0 10px 26px rgba(14,22,34,.12);
+    border:1px solid rgba(20,24,30,.14);
+    background:
+      radial-gradient(90% 70% at 85% -10%, rgba(109,178,240,.16), transparent 55%),
+      radial-gradient(80% 60% at -15% 20%, rgba(242,145,88,.18), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
+  }
+
+  /* Grid -> kolumna, ciaśniejsze odstępy, center */
+  #domkniecie .closing__grid{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+    padding:14px !important;
+  }
+
+  /* Nagłówek: wyśrodkowanie i balans łamania */
+  #domkniecie .closing__head{
+    gap:6px;
+    text-align:center;
+    align-content:start;
+  }
+  #domkniecie .closing__eyebrow{
+    font-size:11.5px;
+    letter-spacing:.08em;
+    opacity:.85;
+  }
+  #domkniecie .closing__title{
+    font-size:clamp(20px,5.6vw,24px) !important;
+    line-height:1.18;
+    text-wrap:balance;
+    margin:0;
+  }
+  #domkniecie .closing__sub{
+    margin:.25em 0 0;
+    font-size:13.5px;
+    color:#2f3846;
+    font-weight:700;
+  }
+
+  /* Lista punktów: kompaktowo, „kafelkowo”, duży target */
+  #domkniecie .closing__bullets{
+    margin:10px 0 0;
+    gap:8px;
+  }
+  #domkniecie .closing__bullets li{
+    padding:8px 10px;
+    border-radius:10px;
+    border:1px solid var(--border-soft);
+    background:#fff;
+    font-weight:700;
+    color:#1f2734;
+    line-height:1.35;
+  }
+  #domkniecie .closing__bullets .tick{
+    min-width:1.2em;
+    transform:translateY(1px);
+    font-weight:900;
+    color:#0e1420;
+  }
+
+  /* Pasek z zaufaniem: skróć i ułóż w 2–3 pigułki */
+  #domkniecie .closing__trust{
+    justify-content:center;
+    gap:6px;
+    margin-top:8px;
+    font-size:12.5px;
+  }
+  #domkniecie .closing__trust .pill{
+    padding:.28em .56em;
+    border-radius:999px;
+    box-shadow:0 6px 14px rgba(14,22,34,.08);
+  }
+  #domkniecie .closing__trust .dot{ display:none; } /* mniej „kropek” na mobile */
+  #domkniecie .closing__rating{ font-weight:900; }
+
+  /* Kolumna kupna: bez bocznej kreski, center, lepsze zawijanie */
+  #domkniecie .closing__buy{
+    border-left:0 !important;
+    padding-left:0 !important;
+    align-content:start;
+    text-align:center;
+    gap:10px;
+  }
+
+  /* Cena: duża, ale zwarta; ładne zawijanie waluty */
+  #domkniecie .closing__price{
+    justify-content:center;
+    gap:10px;
+  }
+  #domkniecie .closing__price .was{
+    font-size:13px;
+    color:var(--muted);
+    text-decoration:line-through;
+    text-decoration-thickness:.08em;
+    font-weight:600;
+  }
+  #domkniecie .closing__price .now{
+    font-size:clamp(34px,8vw,42px) !important;
+    line-height:1;
+    letter-spacing:-.01em;
+    font-weight:900;
+  }
+  #domkniecie .closing__price .now .currency{
+    font-size:.6em;
+    opacity:.9;
+  }
+  #domkniecie .closing__price .save{
+    font-size:12px;
+    padding:.32em .6em;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:#fff;
+    font-weight:900;
+    box-shadow:0 6px 14px rgba(14,22,34,.08);
+  }
+
+  /* CTA: pełna szerokość, większy target, delikatniejszy cień, brak „skoku” */
+  #domkniecie .closing__cta{
+    width:100%;
+    min-height:56px;
+    border-radius:14px;
+    font-weight:900;
+    font-size:clamp(16px,4vw,18px);
+    letter-spacing:.2px;
+    box-shadow:0 14px 30px rgba(244,167,124,.36), 0 6px 14px rgba(14,22,34,.10);
+    transform:none !important;
+  }
+  #domkniecie .closing__cta:active{ transform:translateY(0); }
+
+  /* ETA: mniejsza, ciemniejsza, bliżej przycisku */
+  #domkniecie .closing__eta{
+    margin:.35em 0 0;
+    font-size:12.8px;
+    color:#2f3846;
+  }
+
+  /* Mini-FAQ: jeden „kafelek”, kompaktowo */
+  #domkniecie .closing__mini-faq{
+    padding:8px 10px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:#fff;
+  }
+  #domkniecie .closing__mini-faq summary{
+    font-weight:800;
+    cursor:pointer;
+  }
+}
+
+/* Dodatkowo: bardzo małe ekrany — lekko ciaśniej */
+@media (max-width: 380px){
+  #domkniecie .closing__grid{ padding:12px; gap:10px; }
+  #domkniecie .closing__bullets li{ padding:8px 9px; }
+}
+</style>
+<style>
+@media (max-width: 768px){
+  #domkniecie .closing__bullets{ margin:10px 0 0; padding:0; display:grid; gap:10px; }
+  #domkniecie .closing__bullets li{
+    position:relative;
+    display:block;
+    padding:10px 12px 10px 36px;
+    border:1px solid var(--border-soft);
+    border-radius:10px;
+    background:#fff;
+    font-weight:700;
+    color:#1f2734;
+    line-height:1.38;
+    text-align:left;
+    overflow-wrap:anywhere;
+  }
+  #domkniecie .closing__bullets .tick{
+    position:absolute;
+    left:10px; top:10px;
+    min-width:auto;
+    line-height:1;
+    font-weight:900;
+    color:#0e1420;
+  }
+
+  #domkniecie .closing__title{
+    font-size:clamp(20px,5.2vw,24px);
+    line-height:1.18;
+    text-wrap:balance;
+    margin:0;
+    text-align:center;
+  }
+  #domkniecie .closing__sub{
+    margin:.3em 0 0;
+    font-size:13.5px;
+    text-align:center;
+    color:#2f3846;
+    font-weight:700;
+  }
+
+  #domkniecie .closing__trust{
+    justify-content:center;
+    gap:6px;
+    margin-top:8px;
+    font-size:12.6px;
+    flex-wrap:wrap;
+  }
+  #domkniecie .closing__trust .pill{
+    padding:.28em .56em;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:#fff;
+    box-shadow:0 6px 14px rgba(14,22,34,.08);
+  }
+  #domkniecie .closing__trust .dot{ display:none; }
+
+  #domkniecie .closing__price{ justify-content:center; gap:10px; }
+  #domkniecie .closing__price .was{
+    font-size:13px; color:var(--muted);
+    text-decoration:line-through; text-decoration-thickness:.08em;
+    font-weight:600;
+  }
+  #domkniecie .closing__price .now{
+    font-size:clamp(34px,8vw,42px); line-height:1; letter-spacing:-.01em; font-weight:900;
+  }
+  #domkniecie .closing__price .now .currency{ font-size:.6em; opacity:.9; }
+  #domkniecie .closing__price .save{
+    font-size:12px; padding:.32em .6em; border-radius:999px;
+    border:1px solid var(--border); background:#fff; font-weight:900;
+    box-shadow:0 6px 14px rgba(14,22,34,.08);
+  }
+
+  #domkniecie .closing__cta{
+    width:100%; min-height:56px; border-radius:14px;
+    font-weight:900; font-size:clamp(16px,4vw,18px); letter-spacing:.2px;
+    box-shadow:0 14px 30px rgba(244,167,124,.36), 0 6px 14px rgba(14,22,34,.10);
+    transform:none !important;
+  }
+  #domkniecie .closing__eta{ margin:.35em 0 0; font-size:12.8px; color:#2f3846; text-align:center; }
+
+  #domkniecie .closing__buy{
+    border-left:0 !important; padding-left:0 !important;
+    text-align:center; gap:10px; align-content:start;
+  }
+
+  #domkniecie.closing-cta{
+    border-radius:16px;
+    border:1px solid rgba(20,24,30,.14);
+    box-shadow:0 10px 26px rgba(14,22,34,.12);
+    background:
+      radial-gradient(90% 70% at 85% -10%, rgba(109,178,240,.16), transparent 55%),
+      radial-gradient(80% 60% at -15% 20%, rgba(242,145,88,.18), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
+  }
+}
+
+@media (max-width: 380px){
+  #domkniecie .closing__bullets li{ padding:9px 10px 9px 34px; }
+  #domkniecie .closing__price{ gap:8px; }
+}
+</style>
+<style id="scroll-margin-patch">
+  /* Dzięki temu nagłówki nie schowają się pod przyklejoną belką / logo na mobile */
+  #zamow-tytul,
+  #zamow-tytul-m5{
+    scroll-margin-top: var(--mobile-logo-offset, 56px);
+  }
+</style>
 
   </head>
 
@@ -863,14 +1155,13 @@
         <div>
           <h1>
             <span class="h1-line1">
-              Zajrzyj pod powierzchnię <span class="gradient-text">Horoskopu</span>
+              Chcesz poznać swoją <span class="gradient-text">Przyszłość?</span>
             </span>
             <span class="h1-line2">
               Poznaj precyzyjny portret <span class="gradient-text">Numerologiczny</span> oparty na Twoich danych
             </span>
             <span class="h1-desc">
-              Wejdź głębiej niż horoskop. Zobacz, co masz zapisane w liczbach, zanim spojrzysz w gwiazdy.
-            </span>
+              Zajrzyj pod powierzchnię Horoskopu. Zobacz, co masz zapisane w liczbach.            </span>
           </h1>
 
           <div class="slidebox" aria-label="Podgląd kwadratowych stron/plakatów">
@@ -932,7 +1223,7 @@
           <div class="corner-badge" aria-hidden="true">✓</div>
           <div class="ribbon">
             <span class="ribbon--desktop">+ 3 plakaty</span>
-            <span class="ribbon--mobile">+3 plakaty dopasowane do aury znaku</span>
+            <span class="ribbon--mobile">+3 plakaty</span>
           </div>
 
           <h3 id="podglad" style="color:#0e1420">Co znajdziesz w środku?</h3>
@@ -1195,15 +1486,7 @@
             </div>
           </div>
 
-          <div class="trust-row trust-row--logos" aria-label="Płatności i bezpieczeństwo">
-            <span class="trust"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Płatność Stripe</span>
-            <span class="dot" aria-hidden="true">•</span>
-            <span class="wallets" aria-label="Obsługiwane portfele">
-              <span class="wallets__logo wallets__apple" aria-label="Apple Pay">Apple&nbsp;Pay</span>
-              <span class="wallets__logo wallets__gpay" aria-hidden>G Pay</span>
-              <span class="wallets__logo wallets__cards" aria-hidden>Visa · MC</span>
-            </span>
-          </div>
+
 
           <details class="value-acc" data-collapsed>
             <summary>
@@ -1294,18 +1577,7 @@
             </ul>
           </details>
 
-          <div class="m5-trust" aria-label="Płatności i bezpieczeństwo">
-            <div class="m5-badge">
-              <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-              Płatność Stripe
-            </div>
-            <span class="dot" aria-hidden>•</span>
-            <div class="m5-wallets" aria-label="Obsługiwane portfele">
-              <span class="pill">Apple&nbsp;Pay</span>
-              <span class="pill">G&nbsp;Pay</span>
-              <span class="pill">Visa·MC</span>
-            </div>
-          </div>
+
 
           <div class="m5-consents" role="group" aria-label="Zgody i ważne informacje">
             <label class="consent-item">
@@ -2188,19 +2460,46 @@
         }
       }catch(e){}
     }
+
+    // NOWE: funkcja przewijająca dokładnie do nagłówka sekcji zamówienia
+    function scrollToOrderHeading() {
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      var heading = document.getElementById(isMobile ? 'zamow-tytul-m5' : 'zamow-tytul');
+      if (!heading) return;
+
+      heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // a11y: po chwili przenieś fokus na nagłówek (bez dodatkowego scrolla)
+      setTimeout(function () {
+        try {
+          heading.setAttribute('tabindex', '-1');
+          heading.focus({ preventScroll: true });
+        } catch(e){}
+      }, 220);
+    }
+
+    // Inicjalizacja ETA
     if(document.readyState === 'loading'){
       document.addEventListener('DOMContentLoaded', updateClosingETA);
     }else{
       updateClosingETA();
     }
+
+    // PODMIANA: handler przycisku „Zobacz, co mówią Twoje liczby”
     var closingBtn = document.getElementById('closingCta');
     if(closingBtn){
-      closingBtn.addEventListener('click', function(){
-        var isMobile = window.matchMedia('(max-width: 768px)').matches;
-        var targetBtn = isMobile ? document.getElementById('payBtnM5') : document.getElementById('payBtn');
-        if(targetBtn){ targetBtn.click(); }
-        else { window.location.hash = isMobile ? '#zamow-m5' : '#zamow'; }
-      });
+      closingBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        // Zamiast otwierać płatność — przewiń do nagłówka sekcji zamówienia
+        scrollToOrderHeading();
+
+        // (opcjonalnie: jeśli na desktopie chcesz od razu klikać „Zamów”, odkomentuj poniższe 3 linie)
+        /*
+        if (!window.matchMedia('(max-width: 768px)').matches) {
+          document.getElementById('payBtn')?.click();
+        }
+        */
+      }, { passive:false });
     }
   })();
 </script>
