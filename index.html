@@ -61,14 +61,6 @@
       <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"/>
     </noscript>
 
-    <script defer>
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-MTSXK7Q3');
-    </script>
-
     <style>
       @media (min-width: 1024px) {
         .faq .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -376,7 +368,7 @@
         .order-section--v4 .price-strip__right{text-align:right}
         .order-section--v4 .btn-cta{min-height:54px;border-radius:14px;width:min(58vw,280px);font-size:clamp(16px,3.8vw,18px);font-weight:900}
         .order-section--v4 .eta{margin:.4em 0 0;color:#2f3846;font-size:12.8px}
-        .order-section--v4 .trust-row--logos{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
+        .order-section--v4 .trust-row--logos{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0}
         .order-section--v4 .trust-row--logos .i{width:18px;height:18px}
         .order-section--v4 .trust{display:inline-flex;align-items:center;gap:8px}
         .order-section--v4 .wallets{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#2b3442}
@@ -422,8 +414,7 @@
     <style>
       .trust-row .i,
       .order-section--v4 .trust-row--logos .i{
-        width:20px;height:20px;flex:0 0 20px;vertical-align:-3px
-      }
+        width:20px;height:20px;flex:0 0 20px;vertical-align:-3px}
       @media (max-width:768px){
         .trust-row .i,
         .order-section--v4 .trust-row--logos .i{width:18px;height:18px}
@@ -683,7 +674,7 @@
     }
     .hero .hero-center .btn{
       display: inline-block;
-      margin: 8px auto 0;
+      margin: 8 auto 0;
     }
   }
 </style>
@@ -1378,13 +1369,129 @@
         </div>
       </section>
 
-      <section class="card" style="padding:20px" aria-labelledby="disclaimer">
-        <h2 id="disclaimer" class="section-title" style="margin-bottom:6px">Ważne informacje</h2>
-        <ul>
-          <li>Treść ma charakter informacyjno-rozrywkowy – nie jest poradą finansową, prawną, medyczną ani psychologiczną.</li>
-          <li>Czas dostawy „3–4 h” dotyczy godzin roboczych i ma charakter orientacyjny.</li>
-          <li>Błędne dane w zamówieniu nie stanowią wady produktu. Zmiana danych = nowe zamówienie.</li>
-        </ul>
+      <style>
+        .closing-cta{
+          border-radius:18px;
+          padding:0;
+          overflow:hidden;
+          background:
+            radial-gradient(1200px 700px at 85% -10%, rgba(109,178,240,.20), transparent 55%),
+            radial-gradient(1000px 600px at -15% 20%, rgba(242,145,88,.22), transparent 60%),
+            linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
+          border:1px solid var(--border);
+          box-shadow:0 16px 40px rgba(14,22,34,.14);
+        }
+        .closing__grid{
+          display:grid;
+          grid-template-columns: 1.2fr .8fr;
+          gap: 18px;
+          padding: 18px;
+        }
+        .closing__head{
+          display:grid;gap:6px;align-content:start
+        }
+        .closing__eyebrow{
+          font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;opacity:.8
+        }
+        .closing__title{
+          margin:0;font-weight:900;color:#0e1420;
+          font-size: clamp(22px, 3.2vw, 32px);
+          line-height:1.15;
+          text-wrap:balance
+        }
+        .closing__sub{margin:.1em 0 0;color:#2f3846;font-weight:700}
+        .closing__bullets{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+        .closing__bullets li{display:flex;gap:8px;align-items:flex-start;background:#fff;border:1px solid var(--border-soft);border-radius:12px;padding:10px 12px;font-weight:700;color:#1f2734}
+        .closing__bullets .tick{min-width:1.2em;color:#0e1420;font-weight:900}
+
+        .closing__trust{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;color:#101624;font-weight:800}
+        .closing__trust .pill{display:inline-flex;align-items:center;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);box-shadow:0 6px 16px rgba(14,22,34,.08)}
+        .closing__trust .dot{opacity:.5}
+
+        .closing__buy{
+          position:relative;
+          border-left:1px solid var(--border);
+          padding-left:18px;
+          display:grid;gap:12px;align-content:start
+        }
+        .closing__price{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+        .closing__price .was{color:var(--muted);text-decoration:line-through;font-weight:600}
+        .closing__price .now{font-weight:900;letter-spacing:-.02em;line-height:.95;font-size:clamp(42px,6vw,56px)}
+        .closing__price .now .currency{font-size:.6em;opacity:.9}
+        .closing__price .save{display:inline-flex;align-items:center;gap:6px;padding:.34em .6em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:900;font-size:12px}
+
+        .closing__cta{
+          width:100%;
+          min-height:64px;
+          border-radius:16px;
+          font-weight:900;
+          font-size:clamp(18px,1.8vw,20px);
+          letter-spacing:.2px;
+          color:#fff;
+          background:linear-gradient(135deg,var(--brand),#ea8d59);
+          box-shadow:
+            0 18px 36px rgba(244,167,124,.45),
+            0  8px 18px rgba(14,22,34,.12);
+          position:relative;
+          overflow:hidden;
+        }
+        .closing__cta::after{
+          content:"";
+          position:absolute;inset:0;
+          background:radial-gradient(120% 200% at -10% -50%, rgba(255,255,255,.35), rgba(255,255,255,0) 40%);
+          pointer-events:none;
+          mix-blend-mode:screen;
+        }
+        .closing__cta:active{transform:translateY(1px)}
+        .closing__eta{margin:2px 0 0;color:#2f3846;font-size:13px;text-align:center}
+
+        .closing__mini-faq{border:1px solid var(--border);border-radius:12px;background:#fff;padding:8px 10px}
+        .closing__mini-faq details{margin:4px 0}
+        .closing__mini-faq summary{cursor:pointer;font-weight:800}
+
+        @media (max-width:900px){
+          .closing__grid{grid-template-columns:1fr;gap:14px}
+          .closing__buy{border-left:0;padding-left:0}
+        }
+      </style>
+
+      <section id="domkniecie" class="card closing-cta" aria-labelledby="closing-title">
+        <div class="closing__grid">
+          <header class="closing__head">
+            <div class="closing__eyebrow" aria-hidden="true">Ostatni krok</div>
+            <h2 id="closing-title" class="closing__title">Zobacz, co zyskasz dzięki swojej <span class="gradient-text">Numerologii</span>.</h2>
+            <p class="closing__sub">PDF 13 stron + 3 plakaty • Dostawa e-mail</p>
+            <ul class="closing__bullets" aria-label="Co dokładnie otrzymasz">
+              <li><span class="tick" aria-hidden>✓</span> Spersonalizowany Portret <strong>na podstawie Twoich danych</strong></li>
+              <li><span class="tick" aria-hidden>✓</span> <strong>Mapa Cykli Życia</strong>, Szczyty i Wyzwania w Twoim życiu</li>
+              <li><span class="tick" aria-hidden>✓</span> <strong>+3 plakaty</strong> dopasowane do aury Twojego Znaku Zodiaku</li>
+              <li><span class="tick" aria-hidden>✓</span> Dostawa zwykle w <strong>3–4 h</strong></li>
+            </ul>
+            <div class="closing__trust">
+              <div class="closing__rating"><strong>4.93/5</strong> na podstawie opinii klientów</div>
+              <span class="dot" aria-hidden="true">•</span>
+              <span class="pill">+900 zamówień w Polsce</span>
+              <span class="dot" aria-hidden="true">•</span>
+              <span class="pill">Zdobyliśmy zaufanie naszych klientów</span>
+            </div>
+          </header>
+
+          <div class="closing__buy">
+            <div class="closing__price" role="group" aria-label="Aktualna cena">
+              <div class="was">79&nbsp;zł</div>
+              <div class="now"><span class="value">49</span><span class="currency">&nbsp;zł</span></div>
+              <div class="save">−30&nbsp;zł dziś</div>
+            </div>
+            <button id="closingCta" class="btn closing__cta" type="button" aria-describedby="closing-eta">Zobacz, co mówią Twoje liczby</button>
+            <p id="closing-eta" class="closing__eta" role="status">Zamów teraz — wyślemy w kilka godzin (zwykle 3–4 h).</p>
+            <div class="closing__mini-faq">
+              <details>
+                <summary>Jak wygląda raport?</summary>
+                <p>Zobacz przykładowe strony w sekcji u góry strony („Zobacz jak wygląda…”).</p>
+              </details>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -1567,7 +1674,7 @@
       (function(){
         const ASSET_VERSION = "2025-10-22";
         const base = "assets/img/";
-        const exts = [".jpg",".JPG",".jpeg",".JPEG",".png",".PNG"];
+        const exts = [".jpg"];
         const names = [
           "nastrone11","nastrone12","nastrone13","nastrone14",
           "nastrone21","nastrone22","nastrone23","nastrone24",
@@ -1909,7 +2016,6 @@
       const aside = hero?.querySelector('aside.product');
       if (!hero || !aside) return;
 
-
       let right = aside.parentElement;
       if (!right.classList.contains('hero-right')) {
         right = document.createElement('div');
@@ -1918,18 +2024,15 @@
         right.appendChild(aside);
       }
 
-
       const statsDesktop = document.querySelector('section.stats.only-desktop');
       if (statsDesktop && statsDesktop.parentElement !== right) {
         right.appendChild(statsDesktop);
       }
 
-
       const proof = document.querySelector('section.proof');
       if (proof) {
         const isInsideRight = right.contains(proof);
         if (isInsideRight) {
-
           const parent = hero.parentNode;
           parent.insertBefore(proof, hero.nextSibling);
         }
@@ -1953,7 +2056,6 @@
       const hero = document.querySelector('section.hero');
       if (!hero) return;
 
-
       const leftCol = hero.querySelector(':scope > div');
       if (!leftCol) return;
 
@@ -1962,7 +2064,6 @@
 
       if (!wrap && !ctaBtn) return;
 
-
       let centerRow = hero.querySelector(':scope > .hero-center');
       if (!centerRow){
         centerRow = document.createElement('div');
@@ -1970,7 +2071,6 @@
 
         hero.appendChild(centerRow);
       }
-
 
       if (wrap && wrap.parentElement !== centerRow) centerRow.appendChild(wrap);
       if (ctaBtn && ctaBtn.parentElement !== centerRow) centerRow.appendChild(ctaBtn);
@@ -1991,7 +2091,6 @@
 
   function q(sel, root){ return (root||document).querySelector(sel); }
 
-
   function getPlus35(){
     var hero  = q('section.hero');
     if(!hero) return null;
@@ -2002,7 +2101,6 @@
     var items = wrap.querySelectorAll('.stat');
     return items[1] || null;
   }
-
 
   function ensureSpacer(how){
     if(!how) return null;
@@ -2016,7 +2114,6 @@
     return s;
   }
 
-
   function alignBottoms(){
 
     if(!window.matchMedia('(min-width:1024px)').matches) return;
@@ -2029,17 +2126,13 @@
     var spacer = ensureSpacer(how);
     if(!spacer) return;
 
-
     spacer.style.height = '0px';
-
 
     requestAnimationFrame(function(){
       var rHow  = how.getBoundingClientRect();
       var rPlus = plus35.getBoundingClientRect();
 
-
       var mb = parseFloat(getComputedStyle(how).marginBottom) || 0;
-
 
       var delta = Math.round( (rPlus.bottom) - (rHow.bottom + mb) + OPTICAL_NUDGE );
 
@@ -2055,15 +2148,12 @@
     setTimeout(alignBottoms, 200);
   }
 
-
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
-
 
   window.addEventListener('load', alignBottoms);
   window.addEventListener('resize', alignBottoms, {passive:true});
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(alignBottoms); }
-
 
   if('ResizeObserver' in window){
     var hero = q('section.hero');
@@ -2076,6 +2166,43 @@
     }
   }
 })();
+</script>
+
+<script>
+  (function(){
+    function updateClosingETA(){
+      try{
+        var eta = document.getElementById('closing-eta');
+        if(!eta) return;
+        var now = new Date();
+        var day = now.getDay();
+        var hour = now.getHours();
+        var workday = (day>=1 && day<=5);
+        var within  = workday && hour>=8 && hour<18;
+        if(within){
+          var est = new Date(now.getTime() + (3*60 + 7)*60*1000);
+          var hh  = est.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+          eta.textContent = 'Zamów teraz — wyślemy dziś ok. ' + hh;
+        }else{
+          eta.textContent = 'Zamów teraz — wyślemy w kilka godzin (zwykle 3–4 h).';
+        }
+      }catch(e){}
+    }
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', updateClosingETA);
+    }else{
+      updateClosingETA();
+    }
+    var closingBtn = document.getElementById('closingCta');
+    if(closingBtn){
+      closingBtn.addEventListener('click', function(){
+        var isMobile = window.matchMedia('(max-width: 768px)').matches;
+        var targetBtn = isMobile ? document.getElementById('payBtnM5') : document.getElementById('payBtn');
+        if(targetBtn){ targetBtn.click(); }
+        else { window.location.hash = isMobile ? '#zamow-m5' : '#zamow'; }
+      });
+    }
+  })();
 </script>
 
   </body>
