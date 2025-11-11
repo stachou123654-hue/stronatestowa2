@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl">
   <head>
-<!-- TikTok Pixel Code Start -->
 <script>
 !function (w, d, t) {
   w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
 var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
 ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
   ttq.load('D3MCUE3C77U1STIOGJDG');
   ttq.page();
 }(window, document, 'ttq');
 </script>
-<!-- TikTok Pixel Code End -->
 
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -71,7 +67,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    if(!f._fbq)n=f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
@@ -124,7 +120,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         @supports not (height: 1svh){.brand{font-size:min(9.2vw, 11vh, 34px)}}
       }
       .force-mobile .nav{flex-direction:column;align-items:center;justify-content:center;gap:10px}
-      .force-mobile .logo{width:100%;text-align:center}
+      .force-mobile .logo{width:100%}
       .force-mobile nav.nav-menu{order:2;width:100%;justify-content:center;gap:14px}
       .force-mobile nav.nav-menu a[href="#faq"]{order:1}
       .force-mobile nav.nav-menu a[href="#zamow"]{order:2}
@@ -845,8 +841,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </style>
 
 <style>
-  @media (max-width:768px){
-    .nav{padding-top: calc(var(--mobile-logo-offset) - 28px)}
+  @media (max-width: 768px){
+    .nav{
+      padding-top: calc(var(--mobile-logo-offset) - 28px)
+    }
     .hero{padding-top: 2px}
 
     .hero .h1-line1 .gradient-text,
@@ -856,168 +854,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       text-shadow: 0 2px 6px rgba(0,0,0,.18), 0 1px 1px rgba(0,0,0,.12);
     }
   }
-</style>
-<style>
-/* OSTATNI KROK — mobile polish */
-@media (max-width: 768px){
-
-  /* Karta: mniej „szumu”, więcej powietrza, lepszy kontrast */
-  #domkniecie.closing-cta{
-    border-radius:16px;
-    box-shadow:0 10px 26px rgba(14,22,34,.12);
-    border:1px solid rgba(20,24,30,.14);
-    background:
-      radial-gradient(90% 70% at 85% -10%, rgba(109,178,240,.16), transparent 55%),
-      radial-gradient(80% 60% at -15% 20%, rgba(242,145,88,.18), transparent 60%),
-      linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
-  }
-
-  /* Grid -> kolumna, ciaśniejsze odstępy, center */
-  #domkniecie .closing__grid{
-    grid-template-columns:1fr !important;
-    gap:12px !important;
-    padding:14px !important;
-  }
-
-  /* Nagłówek: wyśrodkowanie i balans łamania */
-  #domkniecie .closing__head{
-    gap:6px;
-    text-align:center;
-    align-content:start;
-  }
-  #domkniecie .closing__eyebrow{
-    font-size:11.5px;
-    letter-spacing:.08em;
-    opacity:.85;
-  }
-  #domkniecie .closing__title{
-    font-size:clamp(20px,5.6vw,24px) !important;
-    line-height:1.18;
-    text-wrap:balance;
-    margin:0;
-  }
-  #domkniecie .closing__sub{
-    margin:.25em 0 0;
-    font-size:13.5px;
-    color:#2f3846;
-    font-weight:700;
-  }
-
-  /* Lista punktów: kompaktowo, „kafelkowo”, duży target */
-  #domkniecie .closing__bullets{
-    margin:10px 0 0;
-    gap:8px;
-  }
-  #domkniecie .closing__bullets li{
-    padding:8px 10px;
-    border-radius:10px;
-    border:1px solid var(--border-soft);
-    background:#fff;
-    font-weight:700;
-    color:#1f2734;
-    line-height:1.35;
-  }
-  #domkniecie .closing__bullets .tick{
-    min-width:1.2em;
-    transform:translateY(1px);
-    font-weight:900;
-    color:#0e1420;
-  }
-
-  /* Pasek z zaufaniem: skróć i ułóż w 2–3 pigułki */
-  #domkniecie .closing__trust{
-    justify-content:center;
-    gap:6px;
-    margin-top:8px;
-    font-size:12.5px;
-  }
-  #domkniecie .closing__trust .pill{
-    padding:.28em .56em;
-    border-radius:999px;
-    box-shadow:0 6px 14px rgba(14,22,34,.08);
-  }
-  #domkniecie .closing__trust .dot{ display:none; } /* mniej „kropek” na mobile */
-  #domkniecie .closing__rating{ font-weight:900; }
-
-  /* Kolumna kupna: bez bocznej kreski, center, lepsze zawijanie */
-  #domkniecie .closing__buy{
-    border-left:0 !important;
-    padding-left:0 !important;
-    align-content:start;
-    text-align:center;
-    gap:10px;
-  }
-
-  /* Cena: duża, ale zwarta; ładne zawijanie waluty */
-  #domkniecie .closing__price{
-    justify-content:center;
-    gap:10px;
-  }
-  #domkniecie .closing__price .was{
-    font-size:13px;
-    color:var(--muted);
-    text-decoration:line-through;
-    text-decoration-thickness:.08em;
-    font-weight:600;
-  }
-  #domkniecie .closing__price .now{
-    font-size:clamp(34px,8vw,42px) !important;
-    line-height:1;
-    letter-spacing:-.01em;
-    font-weight:900;
-  }
-  #domkniecie .closing__price .now .currency{
-    font-size:.6em;
-    opacity:.9;
-  }
-  #domkniecie .closing__price .save{
-    font-size:12px;
-    padding:.32em .6em;
-    border-radius:999px;
-    border:1px solid var(--border);
-    background:#fff;
-    font-weight:900;
-    box-shadow:0 6px 14px rgba(14,22,34,.08);
-  }
-
-  /* CTA: pełna szerokość, większy target, delikatniejszy cień, brak „skoku” */
-  #domkniecie .closing__cta{
-    width:100%;
-    min-height:56px;
-    border-radius:14px;
-    font-weight:900;
-    font-size:clamp(16px,4vw,18px);
-    letter-spacing:.2px;
-    box-shadow:0 14px 30px rgba(244,167,124,.36), 0 6px 14px rgba(14,22,34,.10);
-    transform:none !important;
-  }
-  #domkniecie .closing__cta:active{ transform:translateY(0); }
-
-  /* ETA: mniejsza, ciemniejsza, bliżej przycisku */
-  #domkniecie .closing__eta{
-    margin:.35em 0 0;
-    font-size:12.8px;
-    color:#2f3846;
-  }
-
-  /* Mini-FAQ: jeden „kafelek”, kompaktowo */
-  #domkniecie .closing__mini-faq{
-    padding:8px 10px;
-    border-radius:12px;
-    border:1px solid var(--border);
-    background:#fff;
-  }
-  #domkniecie .closing__mini-faq summary{
-    font-weight:800;
-    cursor:pointer;
-  }
-}
-
-/* Dodatkowo: bardzo małe ekrany — lekko ciaśniej */
-@media (max-width: 380px){
-  #domkniecie .closing__grid{ padding:12px; gap:10px; }
-  #domkniecie .closing__bullets li{ padding:8px 9px; }
-}
 </style>
 <style>
 @media (max-width: 768px){
@@ -1121,7 +957,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 }
 </style>
 <style id="scroll-margin-patch">
-  /* Dzięki temu nagłówki nie schowają się pod przyklejoną belką / logo na mobile */
   #zamow-tytul,
   #zamow-tytul-m5{
     scroll-margin-top: var(--mobile-logo-offset, 56px);
@@ -1155,7 +990,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   }
 </style>
 
-
+<style>
+  @media (max-width: 768px){
+    .brand{display:inline-block;max-width:100%;text-wrap:nowrap}
+    .brand__text{display:inline-block;white-space:nowrap}
+  }
+</style>
 
   </head>
 
@@ -1167,7 +1007,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <header>
       <div class="container nav">
         <div class="logo">
-          <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna">Twój Cyfrowy Kompas</a>
+          <a class="brand" href="/" aria-label="Twój Cyfrowy Kompas – strona główna"><span class="brand__text">Twój Cyfrowy Kompas</span></a>
         </div>
 
         <nav class="nav-menu" aria-label="Główna nawigacja">
@@ -1197,6 +1037,20 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <img id="slideA" alt="" />
             <img id="slideB" alt="" />
           </div>
+
+          <p style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
+            Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język, łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>.
+          </p>
+
+          <h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
+            Co otrzymujesz:
+          </h3>
+
+          <div class="badges" style="font-weight:800;">
+            <span class="badge">PDF • 13 stron</span>
+            <span class="badge">Raport + 3 spersonalizowane plakaty</span>
+            <span class="badge">Dostawa e-mail</span>
+          </div>
 <section class="how-inline-desktop" aria-labelledby="how-inline-title">
   <h3 id="how-inline-title" class="how-inline__title">Jak to działa?</h3>
   <ol class="how-inline__list">
@@ -1214,16 +1068,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     </li>
   </ol>
 </section>
-          <h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
-            Co otrzymujesz:
-          </h3>
-
-          <div class="badges" style="font-weight:800;">
-            <span class="badge">PDF • 13 stron</span>
-            <span class="badge">Raport + 3 spersonalizowane plakaty</span>
-            <span class="badge">Dostawa e-mail</span>
-          </div>
-
 
           <div class="mini-slider-wrap">
             <div class="mini-slider-title">
@@ -1243,9 +1087,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
           <a class="btn" href="#zamow">Zamów teraz</a>
         </div>
-          <p style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
-            Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język, łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>.
-          </p>
+
         <aside class="card product" aria-labelledby="podglad">
           <div class="corner-badge" aria-hidden="true">✓</div>
           <div class="ribbon">
@@ -1600,7 +1442,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <ul class="m5-value-list" aria-label="Zawartość zestawu">
               <li><span class="tick" aria-hidden>✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
               <li><span class="tick" aria-hidden>✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</li>
-              <li><span class="tick" aria-hidden>✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h)</li>
+              <li><span class="tick" aria-hidden>✓</span> Dostawa <strong>e-mail</strong> (zwykle 3–4 h)</li>
             </ul>
           </details>
 
@@ -2488,7 +2330,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       }catch(e){}
     }
 
-    // NOWE: funkcja przewijająca dokładnie do nagłówka sekcji zamówienia
     function scrollToOrderHeading() {
       var isMobile = window.matchMedia('(max-width: 768px)').matches;
       var heading = document.getElementById(isMobile ? 'zamow-tytul-m5' : 'zamow-tytul');
@@ -2496,7 +2337,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
       heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // a11y: po chwili przenieś fokus na nagłówek (bez dodatkowego scrolla)
       setTimeout(function () {
         try {
           heading.setAttribute('tabindex', '-1');
@@ -2505,30 +2345,104 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       }, 220);
     }
 
-    // Inicjalizacja ETA
     if(document.readyState === 'loading'){
       document.addEventListener('DOMContentLoaded', updateClosingETA);
     }else{
       updateClosingETA();
     }
 
-    // PODMIANA: handler przycisku „Zobacz, co mówią Twoje liczby”
     var closingBtn = document.getElementById('closingCta');
     if(closingBtn){
       closingBtn.addEventListener('click', function(e){
         e.preventDefault();
-        // Zamiast otwierać płatność — przewiń do nagłówka sekcji zamówienia
         scrollToOrderHeading();
-
-        // (opcjonalnie: jeśli na desktopie chcesz od razu klikać „Zamów”, odkomentuj poniższe 3 linie)
-        /*
-        if (!window.matchMedia('(max-width: 768px)').matches) {
-          document.getElementById('payBtn')?.click();
-        }
-        */
       }, { passive:false });
     }
   })();
+</script>
+
+<script>
+(function(){
+  var mm = window.matchMedia('(max-width:768px)');
+  function q(sel, root){ return (root||document).querySelector(sel); }
+  function apply(){
+    var hero = q('section.hero');
+    var left = hero && q(':scope > div', hero);
+    if(!left) return;
+    var slidebox = q('.slidebox', left);
+    var how = q('.how-inline-desktop', left);
+    var allH3 = Array.from(left.querySelectorAll('h3'));
+    var coTitle = allH3.find(function(h){ return (h.textContent||'').trim().toLowerCase().startsWith('co otrzymujesz'); });
+    var badges = q('.badges', left);
+    var mini = q('.mini-slider-wrap', left);
+    var cta = q('a.btn[href="#zamow"]', left);
+    var descP = (function(){
+      var p = left.querySelector('p');
+      return p;
+    })();
+    if(mm.matches){
+      if(how && slidebox){ left.insertBefore(how, slidebox.nextSibling); }
+      if(coTitle && how){ left.insertBefore(coTitle, how.nextSibling); }
+      if(badges && coTitle){ left.insertBefore(badges, coTitle.nextSibling); }
+      if(descP && cta){ left.insertBefore(descP, cta.nextSibling); }
+    }else{
+      if(slidebox && descP){ left.insertBefore(descP, coTitle||badges||mini||cta); }
+      if(badges && how){ if (how.previousElementSibling !== badges) left.insertBefore(how, badges.nextSibling); }
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', apply); else apply();
+  window.addEventListener('resize', apply, {passive:true});
+  if(mm.addEventListener) mm.addEventListener('change', apply);
+})();
+</script>
+
+<script>
+(function(){
+  var text = document.querySelector('.brand__text');
+  if(!text) return;
+
+  var MAX = 34;
+  var MIN = 14;
+
+  function currentFontSizePx(el){
+    var fs = parseFloat(getComputedStyle(el).fontSize);
+    return isFinite(fs) && fs > 0 ? fs : MAX;
+  }
+
+  function fitOnce(){
+    text.style.fontSize = '';
+
+    var container = text.parentElement;
+    var avail = Math.max(0, container.clientWidth - 2);
+    var need  = text.scrollWidth;
+
+    if(need <= avail) return;
+
+    var fs = currentFontSizePx(text);
+    var scale = avail / need;
+    var next = Math.max(MIN, Math.floor(fs * scale));
+
+    text.style.fontSize = next + 'px';
+  }
+
+  function fit(){
+    fitOnce();
+    requestAnimationFrame(fitOnce);
+  }
+
+  if('ResizeObserver' in window){
+    var ro = new ResizeObserver(fit);
+    ro.observe(text);
+    ro.observe(text.parentElement);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', fit);
+  }else{
+    fit();
+  }
+  window.addEventListener('resize', fit, {passive:true});
+})();
 </script>
 
   </body>
