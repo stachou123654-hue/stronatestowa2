@@ -5,7 +5,7 @@
 !function (w, d, t) {
   w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
 var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+;n.type="text/javascript",n.async=!0;n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
 
   ttq.load('D3MCUE3C77U1STIOGJDG');
@@ -831,24 +831,23 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </style>
 
 <style>
-  @media (min-width: 1024px){
+  @media (min-width:1024px){
     .how-inline-desktop{ position:relative; }
   }
 </style>
 <style>
-  @media (min-width: 1024px){
+  @media (min-width:1024px){
     .how-inline-desktop{ position: relative; }
     .how-inline-spacer{ display:block; }
   }
 </style>
 
 <style>
-  @media (max-width:768px){
+  @media (max-width: 768px){
     .nav{
       padding-top: calc(var(--mobile-logo-offset) - 28px)
     }
     .hero{padding-top: 2px}
-
     .hero .h1-line1 .gradient-text,
     .hero .h1-line2 .gradient-text{
       font-size: 1.3em;
@@ -1142,10 +1141,29 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   }
 </style>
 
+<!-- MOBILE-ONLY OVERRIDES PER REQUEST -->
 <style>
-@media (max-width:768px){
-  .brand{white-space:nowrap;max-width:calc(100vw - 28px - 28px);display:inline-block}
-}
+  @media (max-width:768px){
+    :root{ --bg:#ffffff; }
+    body{ background:#ffffff !important; }
+    body::before, body::after{ content:none !important; }
+    .hero-left{ display:flex; flex-direction:column; }
+    .hero-left .report-glide{ order:3; }
+    .hero-left .main-cta{ order:4; }
+    .hero-left .how-inline-desktop{ order:5; }
+    .hero-left .receives-section{ order:6; }
+    .hero-left .manifesto-text{ order:7; }
+    .hero .h1-line1 .gradient-text,
+    .hero .h1-line2 .gradient-text{
+      background:none !important;
+      -webkit-background-clip:initial !important;
+      color:#000 !important;
+      -webkit-text-fill-color:#000 !important;
+      -webkit-text-stroke:0 !important;
+      text-shadow:none !important;
+      font-weight:900 !important;
+    }
+  }
 </style>
 
   </head>
@@ -1172,7 +1190,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
     <main class="container">
       <section class="hero">
-        <div>
+        <div class="hero-left">
           <h1>
             <span class="h1-line1">
               Chcesz poznać swoją <span class="gradient-text">Przyszłość?</span>
@@ -1189,16 +1207,19 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <img id="slideB" alt="" />
           </div>
 
-          <h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
-            Co otrzymujesz:
-          </h3>
+          <div class="receives-section">
+            <h3 style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
+              Co otrzymujesz:
+            </h3>
 
-          <div class="badges" style="font-weight:800;">
-            <span class="badge">PDF • 13 stron</span>
-            <span class="badge">Raport + 3 spersonalizowane plakaty</span>
-            <span class="badge">Dostawa e-mail</span>
+            <div class="badges" style="font-weight:800;">
+              <span class="badge">PDF • 13 stron</span>
+              <span class="badge">Raport + 3 spersonalizowane plakaty</span>
+              <span class="badge">Dostawa e-mail</span>
+            </div>
           </div>
-<section class="how-inline-desktop" aria-labelledby="how-inline-title">
+
+<section class="how-inline-desktop" aria-labelledby="how-inline-title" id="jak-to-dziala">
   <h3 id="how-inline-title" class="how-inline__title">Jak to działa?</h3>
   <ol class="how-inline__list">
     <li>
@@ -1232,9 +1253,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             </div>
           </div>
 
-          <a class="btn" href="#zamow">Zamów teraz</a>
+          <a class="btn main-cta" href="#zamow">Zamów teraz</a>
 
-          <p style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
+          <p class="manifesto-text" style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
             Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język, łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>.
           </p>
         </div>
@@ -1250,7 +1271,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-              <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
               <rect x="4" y="3" width="16" height="18" rx="2" stroke="url(#g1)" stroke-width="2"/>
               <path d="M8 8h8M8 12h8M8 16h6" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
             </svg>
@@ -1259,7 +1280,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-              <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+              <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
             <circle cx="12" cy="12" r="10" stroke="url(#g2)" stroke-width="2"/>
               <path d="M12 6v6l4 2" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1268,7 +1289,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-              <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+              <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
               <path d="M4 17h16V7H4z" stroke="url(#g3)" stroke-width="2"/>
               <path d="M7 14l3-3 4 4" stroke="url(#g3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1277,7 +1298,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-              <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+              <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
               <path d="M12 20l9-16H3z" stroke="url(#g4)" stroke-width="2" stroke-linejoin="round"/>
             </svg>
             <div><strong>Wyzwania: lekcje, które Cię wzmacniają</strong><br><span class="note">Delikatne punkty nacisku, z których rodzi się klarowność i siła.</span></div>
@@ -1285,7 +1306,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-              <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+              <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
               <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="url(#g5)" stroke-width="2"/>
               <path d="M14 3v6h6" stroke="url(#g5)" stroke-width="2"/>
               <path d="M8 13h8M8 17h8M8 9h3" stroke="url(#g5)" stroke-width="2" stroke-linecap="round"/>
@@ -1295,7 +1316,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
           <div class="feature">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-              <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
+              <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-2)"/></linearGradient></defs>
               <rect x="6" y="5" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
               <rect x="3" y="8" width="12" height="14" rx="2" stroke="url(#g6)" stroke-width="2"/>
               <path d="M9 13l2-2 3 3" stroke="url(#g6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2510,86 +2531,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       }, { passive:false });
     }
   })();
-</script>
-
-<script>
-(function(){
-  if (!window.matchMedia('(max-width: 768px)').matches) return;
-  var el = document.querySelector('.logo .brand');
-  if(!el) return;
-
-  function fitOneLine(){
-    el.style.fontSize = '';
-    var max = parseFloat(getComputedStyle(el).fontSize) || 34;
-    var min = 14;
-    var step = 0.5;
-    var box = el.parentElement;
-    var avail = box ? box.clientWidth - 4 : window.innerWidth - 8;
-
-    while (el.scrollWidth > avail && max > min){
-      max -= step;
-      el.style.fontSize = max + 'px';
-    }
-  }
-
-  var ro = new ResizeObserver(fitOneLine);
-  ro.observe(document.documentElement);
-  window.addEventListener('load', fitOneLine);
-  document.fonts && document.fonts.ready && document.fonts.ready.then(fitOneLine);
-})();
-</script>
-
-<script>
-(function(){
-  var isMobile = window.matchMedia('(max-width: 768px)');
-  function reorder(){
-    if(!isMobile.matches) return;
-
-    var hero      = document.querySelector('section.hero');
-    if(!hero) return;
-
-    var leftCol   = hero.querySelector(':scope > div');
-    var slideBox  = leftCol && leftCol.querySelector('.slidebox');
-    var how       = leftCol && leftCol.querySelector('.how-inline-desktop');
-    var coTitle   = leftCol && Array.from(leftCol.querySelectorAll('h3')).find(h=>h.textContent.trim().startsWith('Co otrzymujesz'));
-    var badges    = leftCol && leftCol.querySelector('.badges');
-    var report    = document.querySelector('.report-glide')?.closest('.mini-slider-wrap') 
-                    || leftCol && leftCol.querySelector('.mini-slider-wrap');
-    var cta       = leftCol && leftCol.querySelector('a.btn[href^="#zamow"]');
-    var desc      = leftCol && Array.from(leftCol.querySelectorAll('p')).find(p=>p.textContent.includes('Numerologia to nasza pasja'));
-
-    if(!how){
-      how = document.getElementById('how-inline-title')?.closest('.how-inline-desktop') || null;
-    }
-
-    if(slideBox && how && slideBox.nextElementSibling !== how){
-      slideBox.parentNode.insertBefore(how, slideBox.nextSibling);
-    }
-
-    if(how && coTitle && how.nextElementSibling !== coTitle){
-      how.parentNode.insertBefore(coTitle, how.nextSibling);
-    }
-    if(coTitle && badges && coTitle.nextElementSibling !== badges){
-      coTitle.parentNode.insertBefore(badges, coTitle.nextSibling);
-    }
-
-    if(badges && report && badges.nextElementSibling !== report){
-      badges.parentNode.insertBefore(report, badges.nextSibling);
-    }
-
-    if(report && cta && report.nextElementSibling !== cta){
-      report.parentNode.insertBefore(cta, report.nextSibling);
-    }
-
-    if(cta && desc && cta.nextElementSibling !== desc){
-      cta.parentNode.insertBefore(desc, cta.nextSibling);
-    }
-  }
-
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', reorder);
-  else reorder();
-  window.addEventListener('resize', reorder, { passive:true });
-})();
 </script>
 
   </body>
