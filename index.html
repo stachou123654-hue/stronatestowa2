@@ -1243,8 +1243,23 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     main.container{ padding-top: 8px !important; }
   }
 </style>
+@media (min-width: 981px) {
+  .hero-slider-bottom {
+    grid-column: 1 / -1; 
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
-
+@media (max-width: 980px) {
+  .hero-slider-bottom {
+    order: 10; 
+    margin-bottom: 20px;
+  }
+}
 
   </head>
 
@@ -1271,20 +1286,17 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <main class="container">
 <section class="hero">
   <div class="hero-wrapper-hybrid">
-
+    
     <div class="mob-order-1">
         <h1 class="desktop-only-content">
             <span class="h1-line1">Chcesz poznać swoją <span class="gradient-text">Przyszłość?</span></span>
             <span class="h1-line2">Poznaj precyzyjny portret <span class="gradient-text">Numerologiczny</span> oparty na Twoich danych</span>
             <span class="h1-desc">Zajrzyj pod powierzchnię Horoskopu. Zobacz, co masz zapisane w liczbach.</span>
         </h1>
-
         <h1 class="mobile-only-content mobile-h1-style">
             <div>Twoja data urodzenia to <span class="gradient-text">nie przypadek.</span></div>
             <div style="margin-top:5px">Odkryj <span class="gradient-text">Kod Przeznaczenia</span> ukryty w Twoich liczbach.</div>
-            <span class="mobile-sub-h1">
-                Odbierz osobistą "Instrukcję Obsługi" swojego życia (PDF + 3 Plakaty).
-            </span>
+            <span class="mobile-sub-h1">Odbierz osobistą "Instrukcję Obsługi" swojego życia (PDF + 3 Plakaty).</span>
         </h1>
     </div>
 
@@ -1318,16 +1330,46 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <section class="how-inline-desktop" aria-labelledby="how-inline-title">
             <h3 id="how-inline-title" class="how-inline__title">Jak to działa?</h3>
             <ol class="how-inline__list">
-                <li>
-                    <div class="how-inline__num">1</div>
-                    <div class="how-inline__text">Podajesz <strong>imię, nazwisko</strong> i <strong>datę urodzenia</strong>.</div>
-                </li>
-                <li>
-                    <div class="how-inline__num">2</div>
-                    <div class="how-inline__text">My obliczamy Twoją <strong>pełną Numerologię</strong> i wysyłamy gotowy <strong>Raport na E-mail</strong>.</div>
-                </li>
+                <li><div class="how-inline__num">1</div><div class="how-inline__text">Podajesz <strong>imię, nazwisko</strong> i <strong>datę urodzenia</strong>.</div></li>
+                <li><div class="how-inline__num">2</div><div class="how-inline__text">My obliczamy Twoją <strong>pełną Numerologię</strong> i wysyłamy gotowy <strong>Raport na E-mail</strong>.</div></li>
             </ol>
         </section>
+        
+        <a class="btn desktop-only-content" href="#zamow">Zamów teraz</a>
+    </div>
+  </div>
+
+  <aside class="card product" aria-labelledby="podglad">
+    <div class="corner-badge" aria-hidden="true">✓</div>
+    <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty</span><span class="ribbon--mobile">+3 plakaty</span></div>
+    <h3 id="podglad" style="color:#0e1420">Co znajdziesz w środku?</h3>
+    <div class="feature"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#F29158" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h6" stroke="#F29158" stroke-width="2"/></svg><div><strong>Spersonalizowana mapa</strong><br><span class="note">Przeszłość, teraźniejszość i przyszłość.</span></div></div>
+    <div class="feature"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="10" stroke="#F29158" stroke-width="2"/><path d="M12 6v6l4 2" stroke="#F29158" stroke-width="2"/></svg><div><strong>Cykle Życia</strong><br><span class="note">Kiedy przyspieszać, a kiedy czekać.</span></div></div>
+    <div class="feature"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="#F29158" stroke-width="2"/><path d="M14 3v6h6" stroke="#F29158" stroke-width="2"/></svg><div><strong>Podsumowanie PDF</strong><br><span class="note">Przejrzyste i gotowe do druku.</span></div></div>
+    <div class="feature"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="6" y="5" width="12" height="14" rx="2" stroke="#F29158" stroke-width="2"/><circle cx="14" cy="9" r="1" fill="#F29158"/></svg><div><strong>3 plakaty</strong><br><span class="note">Dopasowane do Twojego znaku.</span></div></div>
+  </aside>
+
+  <div class="mini-slider-wrap hero-slider-bottom">
+      <div class="mini-slider-title">Zobacz jak wygląda kilka przykładowych stron raportu</div>
+      <div class="glide report-glide" aria-label="Przykładowe strony raportu (karuzela)">
+          <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides"></ul>
+          </div>
+          <div class="glide__arrows" data-glide-el="controls">
+              <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Poprzednie">‹</button>
+              <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Następne">›</button>
+          </div>
+          <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="Nawigacja slajdów"></div>
+      </div>
+  </div>
+
+  <section class="stats stats--mobile only-mobile" aria-label="zaufanie i liczby">
+    <div class="stats-wrap">
+      <div class="stat pulse"><div class="stat-number gradient-text">+900</div><div class="stat-label">Raportów</div></div>
+      <div class="stat pulse"><div class="stat-number gradient-text">+35</div><div class="stat-label">Dziennie</div></div>
+    </div>
+  </section>
+</section>
 
         <div class="mini-slider-wrap">
             <div class="mini-slider-title">Zobacz jak wygląda kilka przykładowych stron raportu</div>
@@ -2545,42 +2587,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   })();
 </script>
 
-<script>
-  (function(){
-    function centerHeroSlider(){
-      if (!window.matchMedia('(min-width: 1024px)').matches) return;
 
-      const hero = document.querySelector('section.hero');
-      if (!hero) return;
-
-      const leftCol = hero.querySelector(':scope > div');
-      if (!leftCol) return;
-
-      const wrap   = leftCol.querySelector('.mini-slider-wrap');
-      const ctaBtn = leftCol.querySelector('a.btn[href^="#zamow"]');
-
-      if (!wrap && !ctaBtn) return;
-
-      let centerRow = hero.querySelector(':scope > .hero-center');
-      if (!centerRow){
-        centerRow = document.createElement('div');
-        centerRow.className = 'hero-center';
-
-        hero.appendChild(centerRow);
-      }
-
-      if (wrap && wrap.parentElement !== centerRow) centerRow.appendChild(wrap);
-      if (ctaBtn && ctaBtn.parentElement !== centerRow) centerRow.appendChild(ctaBtn);
-    }
-
-    if (document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', centerHeroSlider);
-    } else {
-      centerHeroSlider();
-    }
-    window.addEventListener('resize', centerHeroSlider, { passive: true });
-  })();
-</script>
 <script>
 (function(){
 
