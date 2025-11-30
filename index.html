@@ -1,504 +1,306 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Twój Cyfrowy Kompas — Spersonalizowany raport numerologiczny</title>
-<meta name="description" content="Weź ster w swoje ręce. Spersonalizowany raport numerologiczny w PDF: przejrzyste wnioski, konkretne kroki, szybka dostawa na e-mail.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Spersonalizowany raport numerologiczny">
-<meta property="og:image" content="https://twojcyfrowykompas.pl/assets/img/OG.jpg?v=2025-10-22">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ffffff' stroke='%23101824' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23101824'/%3E%3Cg transform='rotate(45 32 32)'%3E%3Cpolygon points='32,10 40,32 32,30 24,32' fill='%236DB2F0'/%3E%3Cpolygon points='32,34 40,32 32,54 24,32' fill='%23F29158'/%3E%3C/g%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Twój Cyfrowy Kompas — Spersonalizowany raport numerologiczny</title>
+  <meta name="description" content="Weź ster w swoje ręce. Spersonalizowany raport numerologiczny w PDF.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ffffff' stroke='%23101824' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23101824'/%3E%3Cg transform='rotate(45 32 32)'%3E%3Cpolygon points='32,10 40,32 32,30 24,32' fill='%236DB2F0'/%3E%3Cpolygon points='32,34 40,32 32,54 24,32' fill='%23F29158'/%3E%3C/g%3E%3C/svg%3E">
 
-<style>
-/* --- BASE & VARIABLES --- */
-:root{--bg:#eff1f6;--text:#141824;--muted:#4a5361;--card:#ffffff;--brand:#F29158;--brand-2:#6DB2F0;--shadow:0 12px 34px rgba(14,22,34,.16);--radius:16px;--danger:#b02a1f;--ok:#1e7a31;--mobile-logo-offset:56px;--border:rgba(20,24,30,.18);--border-soft:rgba(20,24,30,.12)}
-*{box-sizing:border-box}html,body{height:100%}
-body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
-/* ORYGINALNE TŁA */
-body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:url('assets/img/Rak.jpg?v=2025-10-22');background-repeat:no-repeat;background-size:cover;background-position:center center;background-attachment:fixed;filter:saturate(105%) contrast(104%)}
-body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(1200px 700px at 80% -10%, rgba(109,178,240,.32), transparent 55%),radial-gradient(900px 600px at -10% 20%, rgba(242,145,88,.30), transparent 60%),linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));pointer-events:none}
-a{color:var(--brand);text-underline-offset:2px}
-.container{max-width:1120px;margin:0 auto;padding:24px}
+  <script>
+    !function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};ttq.load('D3MCUE3C77U1STIOGJDG');ttq.page();}(window,document,'ttq');
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","u2edxsamb5");
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5CVK56C2M"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-G5CVK56C2M');
+  </script>
 
-/* --- HEADER --- */
-header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.78);border-bottom:1px solid var(--border);z-index:10}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.brand{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(22px,3.2vw,36px);line-height:1;letter-spacing:.4px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-nav.nav-menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.nav-menu a{color:var(--text);text-decoration:none;opacity:.95;padding:.25rem .125rem;font-weight:600}
-.nav-menu .cta{padding:10px 16px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)}
+  <style>
+    /* --- BAZA I ZMIENNE --- */
+    :root {
+      --bg: #eff1f6; --text: #141824; --muted: #4b5563; --card-bg: #ffffff;
+      --brand: #F29158; --brand-2: #6DB2F0; --blue-light: #f0f9ff;
+      --shadow: 0 12px 34px rgba(14, 22, 34, 0.08); --radius: 18px;
+      --border: rgba(20, 24, 30, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); line-height: 1.5; overflow-x: hidden; }
+    
+    /* Tło */
+    body::before { content: ""; position: fixed; inset: 0; z-index: -2; background: url('assets/img/Rak.jpg?v=2025') center/cover fixed; filter: saturate(105%) contrast(104%); }
+    body::after { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(1200px 700px at 80% -10%, rgba(109,178,240,.25), transparent 55%), radial-gradient(900px 600px at -10% 20%, rgba(242,145,88,.25), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.8)); pointer-events: none; }
 
-/* --- HERO --- */
-.hero{padding:72px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
-.hero h1{line-height:1.15;font-weight:900;margin:0}
-.hero .h1-line1{display:block;font-size:clamp(32px,6.8vw,64px);letter-spacing:-.2px;color:#0e1420}
-.hero .h1-line2{display:block;font-size:clamp(22px,4.2vw,36px);font-weight:800;margin-top:.18em;color:#111827}
-.hero .h1-desc{display:block;font-size:clamp(13px,2.6vw,16px);font-weight:600;margin-top:.45em;color:#1e2633}
-.gradient-text{background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px}
-.badge{padding:8px 12px;border:1px solid var(--border);border-radius:999px;color:#202836;background:#fff}
-.btn{display:inline-block;text-align:center;border:0;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 26px rgba(244,167,124,.4);min-height:48px}
+    a { color: var(--text); text-decoration: none; transition: 0.2s; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    .gradient-text { background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .card { background: rgba(255, 255, 255, 0.98); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    
+    /* Przyciski */
+    .btn { display: inline-flex; justify-content: center; align-items: center; border: 0; padding: 14px 24px; border-radius: 12px; background: linear-gradient(135deg, var(--brand), #ea8d59); color: #fff; font-weight: 900; font-size: 18px; cursor: pointer; box-shadow: 0 10px 20px rgba(242, 145, 88, 0.4); transition: transform 0.2s; text-align: center; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-full { width: 100%; }
 
-/* --- SLIDERS --- */
-.slidebox{position:relative;width:min(390px,80vw);aspect-ratio:1/1;margin:12px auto 22px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--border);box-shadow:0 8px 18px rgba(14,22,34,.12)}
-.slidebox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;opacity:0;transition:opacity .6s ease;will-change:opacity;display:block}
-.slidebox img.show{opacity:1}
-.mini-slider-wrap{margin:14px 0 6px;text-align:center}
-.mini-slider-title{font-weight:900;font-size:clamp(16px,2.8vw,20px);margin:8px 0 10px}
-.report-glide{width:min(380px,68vw);aspect-ratio:210/297;margin:0 auto 22px;border:1px solid var(--border);border-radius:14px;box-shadow:0 14px 30px rgba(14,22,34,.16);background:#fff;position:relative;overflow:visible;perspective:1200px}
-.report-glide .glide__track,.report-glide .glide__slides{height:100%;overflow:hidden;border-radius:inherit;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black)}
-.report-glide .glide__slide img{width:100%;height:100%;object-fit:contain;display:block;border-radius:inherit}
-.report-glide .glide__arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:50px;border:0;border-radius:12px;font-weight:900;font-size:22px;color:#fff;background:linear-gradient(135deg,var(--brand),#ea8d59);box-shadow:0 12px 24px rgba(244,167,124,.36);cursor:pointer}
-.report-glide .glide__arrow--left{left:-18px}.report-glide .glide__arrow--right{right:-18px}
+    /* --- HEADER --- */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; padding-bottom: 16px; }
+    .brand { font-family: 'Cinzel', serif; font-weight: 700; font-size: 24px; }
+    .nav-links { display: flex; gap: 20px; font-weight: 600; font-size: 14px; align-items: center; }
+    .nav-cta { background: var(--text); color: #fff; padding: 8px 16px; border-radius: 8px; }
 
-/* --- RIGHT COL: PRODUCT & STATS --- */
-.card{background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-.product{padding:76px 24px 24px;position:relative;overflow:visible}
-.corner-badge{position:absolute;top:-10px;left:-10px;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow);display:grid;place-items:center;color:#fff;font-weight:800}
-.ribbon{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;padding:8px 12px;border-radius:12px;box-shadow:0 8px 18px rgba(244,167,124,.32);font-weight:800;border:1px solid var(--border);transform:rotate(2.5deg) translateY(2px);transform-origin:5% 0}
-.ribbon::after{content:"";position:absolute;right:18px;top:100%;border:6px solid transparent;border-top-color:#ea8d59;filter:saturate(95%)}
-.ribbon .ribbon--desktop{display:inline}.ribbon .ribbon--mobile{display:none}
+    /* --- HERO --- */
+    .hero { padding: 48px 0; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 900; line-height: 1.1; margin: 0 0 16px; }
+    .hero p { font-size: 18px; color: #374151; margin-bottom: 24px; }
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; font-weight: 700; font-size: 13px; }
+    .badge { background: #fff; border: 1px solid var(--border); padding: 6px 12px; border-radius: 20px; }
+    .slidebox { width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; position: relative; box-shadow: var(--shadow); background: #fff; }
+    .slidebox img { width: 100%; height: 100%; object-fit: cover; position: absolute; opacity: 0; transition: opacity 1s; }
+    .slidebox img.show { opacity: 1; }
 
-.feature{display:grid;grid-template-columns:24px 1fr;column-gap:12px;align-items:start;color:#2b3442;padding:8px 10px;border-radius:10px;transition:transform .18s;border:1px solid var(--border-soft);background:#fff;margin-bottom:6px}
-.feature svg{grid-column:1;width:22px;height:22px;margin-top:2px;color:#1f2a39}
-.feature .note{display:block;margin-top:4px;font-size:13px}
-.feature:hover{background:#fff;box-shadow:0 8px 18px rgba(14,22,34,.12);transform:translateY(-2px)}
+    /* --- PROOF & STATS --- */
+    .proof-section { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; justify-content: center; }
+    .proof-card { flex: 1; min-width: 280px; padding: 16px; display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    .proof-avatars img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; }
+    
+    /* --- SEKCJA ZAMÓWIENIA (Vertical Layout) --- */
+    #zamow { padding: 40px; margin-bottom: 40px; }
+    #zamow h2 { font-size: 28px; font-weight: 900; margin: 0 0 24px; color: #111827; }
+    .order-grid { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+    
+    .price-block { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+    .price-old { font-size: 18px; text-decoration: line-through; color: var(--muted); font-weight: 500; }
+    .price-main { font-size: 56px; font-weight: 900; line-height: 1; color: #111827; }
+    .social-proof { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 32px; display: flex; align-items: center; gap: 6px; }
+    
+    .list-title { font-weight: 800; font-size: 16px; margin-bottom: 16px; display: block; }
+    .features-list { list-style: none; padding: 0; margin: 0 0 32px; }
+    .features-list li { display: flex; gap: 10px; margin-bottom: 12px; font-size: 15px; color: #374151; }
+    .check { font-weight: 900; color: #111827; }
 
-.stats{padding:24px 0}
-.stats .stats-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stats .stat{display:flex;align-items:center;gap:16px;padding:18px 22px;border-radius:16px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));box-shadow:0 10px 22px rgba(14,22,34,.10)}
-.stats .stat-number{font-weight:900;letter-spacing:.5px;line-height:1;font-size:clamp(36px,7vw,64px)}
-.stats .stat-label{font-weight:800;color:#0f1420;font-size:clamp(14px,2.2vw,18px);line-height:1.25}
-.stats .pulse{position:relative}
-.stats .pulse::after{content:"";position:absolute;inset:-6px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand-2));opacity:.12;filter:blur(10px)}
+    .sticky-buy-box { text-align: center; }
+    .delivery-info { font-size: 13px; color: var(--muted); margin-top: 12px; }
 
-.how-inline-desktop{display:block;margin:18px 0 10px;padding:16px 16px 14px;border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));box-shadow:0 10px 22px rgba(14,22,34,.10)}
-.how-inline__title{font-size:1.6rem;line-height:1.2;font-weight:900;color:#0e1420;margin:0 0 10px}
-.how-inline__list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.how-inline__list>li{display:grid;grid-template-columns:40px 1fr;align-items:start;gap:12px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--border-soft)}
-.how-inline__num{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font:900 20px/1 Inter,system-ui;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 8px 18px rgba(14,22,34,.12)}
+    .consents { font-size: 13px; color: #4b5563; display: grid; gap: 10px; margin-top: 24px; }
+    .consent-row { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: start; cursor: pointer; }
+    
+    .details-box { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .details-box summary { cursor: pointer; font-weight: 600; font-size: 14px; color: #374151; margin-bottom: 8px; }
+    .details-box p { font-size: 13px; color: #6b7280; margin: 0; padding-left: 16px; }
+    .faq-btn { width: 100%; text-align: left; padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-weight: 700; cursor: pointer; margin-top: 20px; }
 
-.proof{padding:18px;max-width:960px;margin:12px auto 18px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));box-shadow:0 10px 22px rgba(14,22,34,.10)}
-.proof__inner{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
-.proof__avatars{display:flex;justify-content:center}
-.proof__avatars img,.proof__avatars .proof__more{width:46px;height:46px;border-radius:999px;border:2px solid rgba(20,24,30,.12);margin-left:-12px;background:#fff}
-.proof__avatars img:first-child{margin-left:0}
-.proof__avatars .proof__more{display:flex;align-items:center;justify-content:center;font-weight:700;background:var(--brand);color:#fff}
-.proof__rating{display:flex;align-items:center;gap:.45rem;margin-top:.25rem;font-weight:700;color:#2f3846;justify-content:center}
-.proof__stars svg{width:18px;height:18px;fill:var(--brand);stroke:rgba(0,0,0,.25);stroke-width:.75}
+    /* --- SEKCJA DOMKNIĘCIA (Blue Right, Cards Left) --- */
+    .closing-card { padding: 0; overflow: hidden; display: grid; grid-template-columns: 1.2fr 0.8fr; margin-bottom: 60px; }
+    
+    .closing-left { padding: 40px; }
+    .eyebrow { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #6b7280; letter-spacing: 1px; margin-bottom: 8px; }
+    .closing-title { font-size: 32px; font-weight: 900; line-height: 1.15; margin: 0 0 12px; color: #111827; }
+    .closing-desc { font-size: 15px; font-weight: 600; color: #4b5563; margin-bottom: 24px; }
+    
+    .benefit-cards { display: grid; gap: 10px; list-style: none; padding: 0; margin: 0 0 32px; }
+    .benefit-item { background: #fff; border: 1px solid var(--border); padding: 14px 16px; border-radius: 12px; display: flex; gap: 12px; align-items: center; font-weight: 700; font-size: 15px; color: #1f2937; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    
+    .trust-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; font-weight: 700; color: #111827; }
+    .trust-pill { background: #f3f4f6; padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); }
 
-/* --- ORDER SECTIONS (DESKTOP V4 & MOBILE M5) --- */
-.order-section--v4{padding:22px 18px;border-radius:18px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));box-shadow:0 14px 34px rgba(14,22,34,.12)}
-.section-title{font-size:24px;margin:0 0 14px;color:#0f1420;font-weight:900}
-.order-section--v4 .price-strip{display:flex;align-items:flex-end;gap:16px;grid-template-columns:1.25fr .75fr;align-items:center}
-.price-pill__was{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em;font-weight:600}
-.price-pill__now{font-size:clamp(36px,6vw,48px);line-height:.95;font-weight:900}
-.btn-cta{width:100%;min-height:72px;padding:18px 24px;font-size:clamp(20px,2vw,24px);border-radius:16px;font-weight:900;position:relative;overflow:hidden;box-shadow:0 16px 34px rgba(244,167,124,.45),0 8px 16px rgba(14,22,34,.12)}
-.btn-cta::after{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;transform:skewX(-22deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.35),rgba(255,255,255,0));animation:ctaShine 3.8s ease-in-out infinite}
-@keyframes ctaShine{0%,65%{left:-40%;opacity:0}70%{opacity:.55}84%,100%{left:120%;opacity:0}}
-.eta{font-size:14px;text-align:center;margin-top:8px;color:#2f3846}
-.consents{display:grid;gap:10px;font-size:13px}.consents-inline{margin-top:10px}
-.consent-label{display:grid;grid-template-columns:18px 1fr;align-items:start;gap:10px}
-.value-acc{border:0;background:transparent;box-shadow:none;margin:10px 0 8px}
-.value-list{margin:0;padding:10px 12px 12px;list-style:none;display:grid;gap:8px}
-.value-list li{display:flex;gap:8px;align-items:flex-start}
-.value-list .tick{display:inline-block;min-width:1.2em;font-weight:900;color:#0e1420}
+    .closing-right { background: var(--blue-light); padding: 40px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--border); }
+    .closing-price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+    .save-badge { background: #fff; border: 1px solid var(--border); font-size: 12px; font-weight: 800; padding: 4px 8px; border-radius: 20px; }
+    .report-toggle { margin-top: 24px; background: #fff; padding: 14px; border-radius: 12px; border: 1px solid var(--border); font-weight: 800; cursor: pointer; }
 
-.order-section--m5{display:none;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.94));box-shadow:0 14px 34px rgba(14,22,34,.12);border:1px solid rgba(20,24,30,.14);overflow:hidden}
-.m5-wrap{padding:16px 14px 12px}
-.m5-head{padding:8px 10px 12px;border:1px solid rgba(20,24,30,.14);border-radius:14px;background:radial-gradient(160% 120% at 80% -30%, rgba(109,178,240,.15), transparent 55%), radial-gradient(140% 120% at -20% 20%, rgba(242,145,88,.18), transparent 60%), #fff}
-.m5-title{font-size:clamp(20px,5.4vw,26px);line-height:1.15;font-weight:900;text-wrap:balance}
-.m5-price{display:grid;gap:10px;margin:12px 0 4px}
-.m5-now{font-weight:900;font-size:clamp(36px,8.8vw,48px);line-height:1}
-.m5-cta{width:100%;min-height:54px;border-radius:14px;font-weight:900;font-size:clamp(16px,3.8vw,18px);background:linear-gradient(135deg,#F29158,#ea8d59);color:#fff;border:0;box-shadow:0 12px 26px rgba(244,167,124,.38)}
-.order-sticky,.m5-sticky{position:fixed;bottom:-120px;left:0;right:0;background:rgba(255,255,255,.98);border-top:1px solid var(--border);transition:bottom .25s ease;z-index:50;box-shadow:0 -10px 22px rgba(14,22,34,.12)}
-.order-sticky.show,.m5-sticky.show{bottom:0}
-.order-sticky-inner,.m5-sticky-inner{max-width:1120px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.btn-sticky,.m5-sticky-cta{min-height:44px;border-radius:12px;border:0;background:linear-gradient(135deg,var(--brand),#ea8d59);color:#fff;font-weight:900;padding:0 16px;box-shadow:0 10px 22px rgba(244,167,124,.36)}
+    /* --- RESPONSYWNOŚĆ --- */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding: 32px 0; }
+      .nav-links { display: none; }
+      .badges { justify-content: center; }
+      
+      /* Order Mobile */
+      .order-grid { grid-template-columns: 1fr; gap: 24px; }
+      .sticky-buy-box { order: -1; } /* Przycisk nad listą */
+      #zamow { padding: 24px; }
+      .price-block, .social-proof { justify-content: center; }
 
-/* --- CLOSING CTA --- */
-.closing-cta{border-radius:18px;background:radial-gradient(1200px 700px at 85% -10%, rgba(109,178,240,.20), transparent 55%),radial-gradient(1000px 600px at -15% 20%, rgba(242,145,88,.22), transparent 60%),linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94));border:1px solid var(--border);box-shadow:0 16px 40px rgba(14,22,34,.14)}
-.closing__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;padding:18px}
-.closing__eyebrow{font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
-.closing__title{font-size:clamp(22px,3.2vw,32px);line-height:1.15;font-weight:900;text-wrap:balance;margin:0}
-.closing__sub{margin:.1em 0 0;color:#2f3846;font-weight:700}
-.closing__bullets{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
-.closing__bullets li{display:flex;gap:8px;background:#fff;border:1px solid var(--border-soft);border-radius:12px;padding:10px 12px;font-weight:700;color:#1f2734}
-.closing__bullets .tick{min-width:1.2em;color:#0e1420;font-weight:900}
-.closing__trust{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;color:#101624;font-weight:800;font-size:12.5px}
-.closing__trust .pill{display:inline-flex;align-items:center;padding:.32em .6em;border-radius:999px;background:#fff;border:1px solid var(--border);box-shadow:0 6px 16px rgba(14,22,34,.08)}
-.closing__buy{border-left:1px solid var(--border);padding-left:18px;display:grid;gap:12px;align-content:start}
-.closing__price{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
-.closing__price .was{color:var(--muted);text-decoration:line-through;font-weight:600}
-.closing__price .now{font-weight:900;letter-spacing:-.02em;line-height:.95;font-size:clamp(42px,6vw,56px)}
-.closing__price .save{display:inline-flex;align-items:center;gap:6px;padding:.34em .6em;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:900;font-size:12px}
-.closing__cta{width:100%;min-height:64px;border-radius:16px;font-weight:900;font-size:clamp(18px,1.8vw,20px);color:#fff;background:linear-gradient(135deg,var(--brand),#ea8d59);border:0;box-shadow:0 18px 36px rgba(244,167,124,.45);position:relative;overflow:hidden}
-.closing__cta::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 200% at -10% -50%, rgba(255,255,255,.35), rgba(255,255,255,0) 40%);pointer-events:none;mix-blend-mode:screen}
-
-.faq details{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
-.faq summary{cursor:pointer;font-weight:700}
-footer{border-top:1px solid var(--border);padding:28px 0;background:rgba(255,255,255,.92);backdrop-filter:blur(6px)}
-.btn .spinner{display:inline-block;width:1em;height:1em;border:.18em solid rgba(255,255,255,.6);border-top-color:#fff;border-radius:50%;animation:spin .9s linear infinite;margin-right:.45em}
-@keyframes spin{to{transform:rotate(360deg)}}
-.status--error{color:var(--danger)}.status--ok{color:var(--ok)}
-
-/* --- DESKTOP (Min 1024px) --- */
-@media (min-width:1024px){
-  .faq .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .faq .grid-3>details:nth-of-type(4){grid-column:2/3}
-  .hero{align-items:start}
-  .hero .hero-center{grid-column:1/-1;text-align:center;margin-top:6px}
-  .hero .hero-center .btn,.hero .hero-center .report-glide{width:min(456px,62vw);margin:0 auto}
-  .hero-right{grid-column:2/3;display:flex;flex-direction:column;gap:12px}
-  .proof__inner{flex-direction:row;justify-content:center;text-align:left;gap:18px}
-  .order-section--v4 .price-strip{grid-template-columns:1.25fr .75fr;align-items:center}
-  .order-sticky{display:none} 
-  .stats .stats-wrap{grid-template-columns:1fr}
-  #zamow-m5{display:none!important}
-}
-/* --- MOBILE/TABLET --- */
-@media (max-width:980px){
-  .hero{grid-template-columns:1fr}
-  .grid-3,.closing__grid{grid-template-columns:1fr}
-  .closing__buy{border-left:0;padding-left:0}
-}
-@media (max-width:768px){
-  body{padding-top:var(--mobile-logo-offset)}
-  body::before{background-attachment:scroll;background-position:50% 50%}
-  header{background:transparent;border-bottom:0;backdrop-filter:none}
-  .logo{position:fixed;top:0;left:0;right:0;text-align:center;z-index:1000;padding:6px 14px;background:rgba(255,255,255,.98);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}
-  .nav{flex-direction:column;gap:4px;padding-top:calc(var(--mobile-logo-offset) - 14px);margin-bottom:2px;align-items:center;justify-content:center}
-  .brand{font-size:min(9.2vw,11vh,34px);text-wrap:balance;line-height:1.02}
-  .hero{padding-top:4px}
-  .hero > div{text-align:center}
-  .ribbon .ribbon--desktop{display:none}.ribbon .ribbon--mobile{display:inline}
-  .order-section--v4{display:none!important}
-  .order-section--m5{display:block!important}
-  #orderSticky{display:none!important}
-  .m5-sticky{display:block}
-  /* Closing mobile */
-  .closing-cta{border-radius:16px;box-shadow:0 10px 26px rgba(14,22,34,.12)}
-  .closing__grid{gap:12px;padding:14px}
-  .closing__head{text-align:center}
-  .closing__buy{text-align:center;gap:10px}
-  .closing__price{justify-content:center;gap:10px}
-  .closing__trust{justify-content:center}
-  .closing__trust .dot{display:none}
-  #zamow-tytul,#zamow-tytul-m5{scroll-margin-top:var(--mobile-logo-offset)}
-}
-</style>
+      /* Closing Mobile */
+      .closing-card { grid-template-columns: 1fr; }
+      .closing-right { border-left: 0; border-top: 1px solid var(--border); padding: 32px 24px; }
+      .closing-left { padding: 32px 24px; }
+      .closing-title { font-size: 26px; }
+      .closing-price-row { justify-content: center; }
+    }
+  </style>
 </head>
-
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTSXK7Q3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header>
-<div class="container nav">
-  <div class="logo"><a class="brand" href="/">Twój Cyfrowy Kompas</a></div>
-  <nav class="nav-menu" aria-label="Główna nawigacja">
-    <a href="#jak-to-dziala">Jak to działa</a>
-    <a href="#faq">FAQ</a>
-    <a class="cta" href="#zamow">Zamów raport</a>
-  </nav>
-</div>
+  <div class="container nav">
+    <div class="brand">Twój Cyfrowy Kompas</div>
+    <div class="nav-links">
+      <a href="#jak-to-dziala">Jak to działa</a>
+      <a href="#faq">FAQ</a>
+      <a href="#zamow" class="nav-cta">Zamów raport</a>
+    </div>
+  </div>
 </header>
 
 <main class="container">
-<section class="hero">
-  <div>
-    <h1>
-      <span class="h1-line1">Chcesz poznać swoją <span class="gradient-text">Przyszłość?</span></span>
-      <span class="h1-line2">Poznaj precyzyjny portret <span class="gradient-text">Numerologiczny</span> oparty na Twoich danych</span>
-      <span class="h1-desc">Zajrzyj pod powierzchnię Horoskopu. Zobacz, co masz zapisane w liczbach.</span>
-    </h1>
-    <div class="slidebox" aria-label="Podgląd">
-      <img id="slideA" alt="">
-      <img id="slideB" alt="">
-    </div>
-    <p style="display:block;font-size:0.98rem;font-weight:600;margin-top:0.6em;color:#1f2734">
-      Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język. Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>.
-    </p>
-    <h3 style="font-size:1.6rem;line-height:1.2;font-weight:900;margin:0.9em 0 0.5em;color:#0e1420;">Co otrzymujesz:</h3>
-    <div class="badges">
-      <span class="badge">PDF • 13 stron</span>
-      <span class="badge">Raport + 3 spersonalizowane plakaty</span>
-      <span class="badge">Dostawa e-mail</span>
-    </div>
-    
-    <section class="how-inline-desktop">
-      <h3 class="how-inline__title">Jak to działa?</h3>
-      <ol class="how-inline__list">
-        <li><div class="how-inline__num">1</div><div class="how-inline__text">Podajesz <strong>imię, nazwisko</strong> i <strong>datę urodzenia</strong>.</div></li>
-        <li><div class="how-inline__num">2</div><div class="how-inline__text">My obliczamy Twoją <strong>pełną Numerologię</strong> i wysyłamy gotowy <strong>Raport na E-mail</strong>.</div></li>
-      </ol>
-    </section>
-    <div class="how-inline-spacer"></div>
 
-    <div class="mini-slider-wrap">
-      <div class="mini-slider-title">Zobacz jak wygląda kilka przykładowych stron raportu</div>
-      <div class="glide report-glide">
-        <div class="glide__track" data-glide-el="track"><ul class="glide__slides"></ul></div>
-        <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">‹</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">›</button>
-        </div>
-        <div class="glide__bullets" data-glide-el="controls[nav]"></div>
+  <section class="hero">
+    <div>
+      <h1>Odkryj co mówią Twoje liczby. Poznaj swój <span class="gradient-text">Portret Numerologiczny</span>.</h1>
+      <p>Profesjonalny raport PDF (13 stron) tworzony na podstawie imienia, nazwiska i daty urodzenia.</p>
+      <div class="badges">
+        <span class="badge">Raport PDF</span><span class="badge">+3 plakaty</span><span class="badge">Dostawa e-mail</span>
       </div>
+      <a href="#zamow" class="btn" style="padding: 16px 32px;">Zamów teraz</a>
     </div>
-    <a class="btn" href="#zamow">Zamów teraz</a>
-  </div>
-
-  <div class="hero-right">
-    <aside class="card product">
-      <div class="corner-badge">✓</div>
-      <div class="ribbon"><span class="ribbon--desktop">+ 3 plakaty</span><span class="ribbon--mobile">+3 plakaty</span></div>
-      <h3 style="color:#0e1420">Co znajdziesz w środku?</h3>
-      <div class="feature"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h6" stroke="currentColor" stroke-width="2"/></svg><div><strong>Spersonalizowana mapa w głąb siebie</strong><span class="note">Przeszłość, teraźniejszość i możliwe ścieżki przyszłości.</span></div></div>
-      <div class="feature"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/></svg><div><strong>Mapa Cykli Życia</strong><span class="note">Zobacz, kiedy przyspieszać, kiedy zbierać plony, a kiedy zmieniać kurs.</span></div></div>
-      <div class="feature"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17h16V7H4z" stroke="currentColor" stroke-width="2"/><path d="M7 14l3-3 4 4" stroke="currentColor" stroke-width="2"/></svg><div><strong>Szczyty: momenty najwyższego potencjału</strong><span class="note">Gdzie liczby otwierają panoramę możliwości — i zapraszają, by wejść wyżej.</span></div></div>
-      <div class="feature"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20l9-16H3z" stroke="currentColor" stroke-width="2"/></svg><div><strong>Wyzwania: lekcje, które Cię wzmacniają</strong><span class="note">Delikatne punkty nacisku, z których rodzi się klarowność i siła.</span></div></div>
-      <div class="feature"><svg viewBox="0 0 24 24" fill="none"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="currentColor" stroke-width="2"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="2"/><path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="2"/></svg><div><strong>Podsumowanie PDF</strong><span class="note">Przejrzyste sekcje, gotowe do druku.</span></div></div>
-      <div class="feature"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2"/><rect x="3" y="8" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2"/></svg><div><strong>3 plakaty</strong><span class="note">Spersonalizowane pod kolor aury Twojego znaku zodiaku.</span></div></div>
-    </aside>
-
-    <section class="stats">
-      <div class="stats-wrap">
-        <div class="stat pulse"><div class="stat-number gradient-text">+900</div><div class="stat-label">Sporządzonych spersonalizowanych raportów numerologicznych dla klientów w Polsce</div></div>
-        <div class="stat pulse"><div class="stat-number gradient-text">+35</div><div class="stat-label">Osób, które codziennie otrzymują nasze raporty i plakaty cyfrowe</div></div>
-      </div>
-    </section>
-  </div>
-</section>
-
-<section class="proof card">
-  <div class="proof__inner">
-    <div class="proof__avatars">
-      <img src="assets/img/avatar1.jpg" loading="lazy"><img src="assets/img/avatar2.jpg" loading="lazy"><img src="assets/img/avatar3.jpg" loading="lazy"><span class="proof__more">+900</span>
+    <div class="slidebox">
+      <img src="assets/img/naslasha1.jpg?v=1" class="show" alt="">
+      <img src="assets/img/naslasha2.jpg?v=1" alt="">
     </div>
-    <div class="proof__copy">
-      <div class="proof__title">Dołącz do <strong class="gradient-text">+900 klientów</strong></div>
-      <div class="proof__rating" data-rating="4.93" data-max="5">
-        ( <span style="text-decoration:underline">4.93/5</span> <span class="proof__stars"></span> )
-      </div>
+  </section>
+
+  <section class="proof-section">
+    <div class="card proof-card">
+      <div class="proof-avatars"><img src="assets/img/avatar1.jpg"><img src="assets/img/avatar2.jpg"></div>
+      <div>900+ zadowolonych klientów</div>
     </div>
-  </div>
-</section>
-
-<div class="elfsight-app-d36c8489-158f-4e65-be51-9626586742e7" data-elfsight-app-lazy></div>
-<script src="https://elfsightcdn.com/platform.js" async></script>
-
-<section id="zamow" class="card order-section order-section--v4">
-  <form class="form" id="orderFormV4" action="#" novalidate>
-    <h2 id="zamow-tytul" class="section-title">Odbierz swój Portret Numerologiczny</h2>
-    <div class="price-strip">
-      <div class="price-strip__left">
-        <div class="price-pill">
-          <span class="price-pill__was">79&nbsp;zł</span>
-          <span class="price-pill__now">49<span class="currency">&nbsp;zł</span></span>
-          <span class="price-pill__save">−30&nbsp;zł dziś</span>
-        </div>
-        <div class="micro-proof"><span style="opacity:.5">•</span> <strong>900+ zamówień</strong> w Polsce</div>
-      </div>
-      <div class="price-strip__right">
-        <button id="payBtn" class="btn btn-cta" type="button">Zamów za 49&nbsp;zł</button>
-        <p class="eta">Dostawa w godzinach roboczych 8:00–18:00</p>
-      </div>
+    <div class="card proof-card" style="justify-content: center;">
+      <span style="font-size: 24px;">★</span> 4.93/5 Średnia ocena
     </div>
-    <details class="value-acc" open>
-      <summary><span class="value-acc__title">Co jest w zestawie</span></summary>
-      <ul class="value-list">
-        <li><span class="tick">✓</span> PDF <strong>13 stron</strong> z klarownym podsumowaniem</li>
-        <li><span class="tick">✓</span> <strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</li>
-        <li><span class="tick">✓</span> Dostawa <strong>e-mail</strong> (zwykle w 3–4 h)</li>
-      </ul>
-    </details>
-    <div class="consents consents-inline">
-      <label class="consent-label"><input type="checkbox" id="consentAll" required><span>*Akceptuję <a href="regulamin/">Regulamin i Politykę prywatności</a>.</span></label>
-      <div id="msg-consentAll" class="consent-msg"></div>
-    </div>
-    <div id="formStatus" class="status"></div>
-  </form>
-</section>
+  </section>
 
-<div id="orderSticky" class="order-sticky">
-  <div class="order-sticky-inner">
-    <div><span style="opacity:.9">Portret Numerologiczny</span> <strong>49&nbsp;zł</strong></div>
-    <button id="stickyCta" class="btn btn-sticky">Zamawiam za 49&nbsp;zł</button>
-  </div>
-</div>
+  <section id="zamow" class="card">
+    <h2>Odbierz swój Portret Numerologiczny</h2>
 
-<section id="zamow-m5" class="order-section order-section--m5">
-  <div class="m5-wrap">
-    <header class="m5-head">
-      <div style="font-size:12px;font-weight:800;text-transform:uppercase;opacity:.8">Specjalna oferta</div>
-      <h2 id="zamow-tytul-m5" class="m5-title">Odbierz swój <strong>Portret&nbsp;Numerologiczny</strong></h2>
-      <div style="font-size:13.5px;font-weight:700;color:#2f3846">PDF 13 stron + 3 plakaty</div>
-    </header>
-    <div class="m5-price">
+    <div class="order-grid">
       <div>
-        <span class="m5-was">79&nbsp;zł</span> <span class="m5-now">49<span class="currency">&nbsp;zł</span></span>
-        <span style="display:inline-flex;gap:6px;padding:.34em .6em;border-radius:99px;border:1px solid rgba(20,24,30,.14);background:#fff;font-weight:900;font-size:12px">Oszczędzasz 30&nbsp;zł</span>
+        <div class="price-block">
+          <span class="price-old">79 zł</span>
+          <span class="price-main">49 zł</span>
+        </div>
+        <div class="social-proof">
+          <span style="color:#10b981">•</span> <strong>900+ zamówień</strong> w Polsce
+        </div>
+
+        <strong class="list-title">Co jest w zestawie</strong>
+        <ul class="features-list">
+          <li><span class="check">✓</span> <span>PDF <strong>13 stron</strong> z klarownym podsumowaniem</span></li>
+          <li><span class="check">✓</span> <span><strong>+3 spersonalizowane plakaty</strong> dopasowane do aury znaku</span></li>
+          <li><span class="check">✓</span> <span>Dostawa <strong>e-mail</strong> (zwykle w 3–4 h)</span></li>
+        </ul>
+
+        <div class="consents">
+          <label class="consent-row">
+            <input type="checkbox" id="consent1" required>
+            <span>*Akceptuję <a href="regulamin/" style="text-decoration:underline">Regulamin i Politykę prywatności</a>.</span>
+          </label>
+          <label class="consent-row">
+            <input type="checkbox" id="marketing">
+            <span>[Opcjonalnie] Zgadzam się na e-maile z nowościami.</span>
+          </label>
+        </div>
+
+        <details class="details-box">
+          <summary>▶ Ważna uwaga dot. poprawności danych</summary>
+          <p>Dane (imię, nazwisko, data) są podstawą obliczeń. Błędne dane = błędny raport. Zmiana po zakupie wymaga nowego zamówienia.</p>
+        </details>
+        
+        <button class="faq-btn">▶ Najczęstsze pytania</button>
       </div>
-      <button id="payBtnM5" class="m5-cta" type="button">Zamów teraz</button>
-    </div>
-    <p id="m5-eta" style="margin:4px 0 0;font-size:12.8px;color:#2f3846">Zamów teraz — wyślemy w godzinach 8:00–18:00</p>
-    <div class="m5-consents" style="margin-top:10px">
-      <label class="consent-item" style="display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:13.5px"><input type="checkbox" id="consentAllM5" required><span>*Akceptuję <a href="regulamin/">Regulamin i Politykę prywatności</a>.</span></label>
-      <div id="msg-consentAllM5" class="consent-msg"></div>
-    </div>
-    <div id="formStatusM5" class="m5-status"></div>
-  </div>
-  <div class="m5-sticky">
-    <div class="m5-sticky-inner">
-      <div><span>Portret</span> <strong>49&nbsp;zł</strong></div>
-      <button id="stickyCtaM5" class="m5-sticky-cta">Zamawiam</button>
-    </div>
-  </div>
-</section>
 
-<section class="faq" id="faq">
-  <h2 class="section-title">FAQ</h2>
-  <div class="grid-3">
-    <details><summary>Jak szybko otrzymam raport?</summary><p>Zwykle w <strong>3–4 godziny</strong> w dni robocze (8:00–18:00). Zamówienia poza tymi godzinami realizujemy później.</p></details>
-    <details><summary>Pomyliłem imię/nazwisko – czy mogę prosić o korektę?</summary><p>Imię i nazwisko wpływają na obliczenia, dlatego każda zmiana wymaga <strong>nowego zamówienia</strong>.</p></details>
-    <details><summary>Co jeśli raport „nie pasuje”?</summary><p>Raport ma charakter informacyjny. Jeśli widzisz <em>błąd techniczny</em> – napisz do nas.</p></details>
-    <details><summary>Czy użyć swojego nazwiska panieńskiego?</summary><p>W numerologii pitagorejskiej zalecane jest użycie <strong>nazwiska nadanego przy urodzeniu</strong>.</p></details>
-  </div>
-</section>
+      <div class="sticky-buy-box">
+        <button id="payBtn" class="btn btn-full">Zamów za 49 zł</button>
+        <p class="delivery-info">Zamów teraz — dostawa w kilka godzin (zwykle 3–4 h).</p>
+      </div>
+    </div>
+  </section>
 
-<section id="domkniecie" class="card closing-cta">
-  <div class="closing__grid">
-    <header class="closing__head">
-      <div class="closing__eyebrow">Ostatni krok</div>
-      <h2 id="closing-title" class="closing__title">Zobacz, co zyskasz dzięki swojej <span class="gradient-text">Numerologii</span>.</h2>
-      <p class="closing__sub">PDF 13 stron + 3 plakaty • Dostawa e-mail</p>
-      <ul class="closing__bullets">
-        <li><span class="tick">✓</span> Spersonalizowany Portret <strong>na podstawie Twoich danych</strong></li>
-        <li><span class="tick">✓</span> <strong>Mapa Cykli Życia</strong>, Szczyty i Wyzwania w Twoim życiu</li>
-        <li><span class="tick">✓</span> <strong>+3 plakaty</strong> dopasowane do aury Twojego Znaku Zodiaku</li>
-        <li><span class="tick">✓</span> Dostawa zwykle w <strong>3–4 h</strong></li>
+  <section id="domkniecie" class="card closing-card">
+    <div class="closing-left">
+      <div class="eyebrow">OSTATNI KROK</div>
+      <h2 class="closing-title">Zobacz, co zyskasz dzięki swojej <span class="gradient-text">Numerologii</span>.</h2>
+      <p class="closing-desc">PDF 13 stron + 3 plakaty • Dostawa e-mail</p>
+
+      <ul class="benefit-cards">
+        <li class="benefit-item"><span class="check">✓</span> Spersonalizowany Portret na podstawie Twoich danych</li>
+        <li class="benefit-item"><span class="check">✓</span> Mapa Cykli Życia, Szczyty i Wyzwania w Twoim życiu</li>
+        <li class="benefit-item"><span class="check">✓</span> +3 plakaty dopasowane do aury Twojego Znaku Zodiaku</li>
+        <li class="benefit-item"><span class="check">✓</span> Dostawa zwykle w 3–4 h</li>
       </ul>
-      <div class="closing__trust">
-         <div style="font-weight:900">4.93/5</div> <span class="dot">•</span> <span class="pill">+900 zamówień w Polsce</span> <span class="dot">•</span> <span class="pill">Zdobyliśmy zaufanie</span>
+
+      <div class="trust-row">
+        <strong>4.93/5 na podstawie opinii</strong>
+        <span class="trust-pill">+900 zamówień w Polsce</span>
+        <span class="trust-pill">Zdobyliśmy zaufanie</span>
       </div>
-    </header>
-    <div class="closing__buy">
-      <div class="closing__price">
-        <span class="was">79&nbsp;zł</span>
-        <span class="now">49<span style="font-size:.6em;opacity:.9">&nbsp;zł</span></span>
-        <span class="save">−30&nbsp;zł dziś</span>
-      </div>
-      <button id="closingCta" class="closing__cta">Zobacz, co mówią Twoje liczby</button>
-      <p id="closing-eta" style="margin:2px 0 0;font-size:13px;color:#2f3846;text-align:center"></p>
     </div>
-  </div>
-</section>
+
+    <div class="closing-right">
+      <div class="closing-price-row">
+        <span class="price-old">79 zł</span>
+        <span class="price-main" style="font-size:48px">49 zł</span>
+        <span class="save-badge">-30 zł dziś</span>
+      </div>
+      <button id="closingCta" class="btn btn-full">Zobacz, co mówią Twoje liczby</button>
+      <p class="delivery-info" style="text-align:center">Zamów teraz — wyślemy w kilka godzin (zwykle 3–4 h).</p>
+      
+      <details class="report-toggle">
+        <summary>▶ Jak wygląda raport?</summary>
+        <p style="font-size:13px; margin-top:10px">Przykłady stron znajdziesz w galerii powyżej.</p>
+      </details>
+    </div>
+  </section>
+
 </main>
 
-<footer>
-<div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px">
-  <small>© 2025 Twój Cyfrowy Kompas</small>
-  <div style="display:flex;gap:16px"><a href="regulamin/">Regulamin</a><a href="polityka-prywatnosci/">Polityka prywatności</a><a href="#zamow">Zamów</a><a href="kontakt/">Kontakt</a></div>
-</div>
+<footer style="border-top:1px solid var(--border); padding:32px 0; margin-top:40px; font-size:14px; color:var(--muted);">
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+    <div>© 2025 Twój Cyfrowy Kompas</div>
+    <div style="display:flex; gap:16px;">
+      <a href="regulamin/">Regulamin</a>
+      <a href="polityka-prywatnosci/">Polityka prywatności</a>
+      <a href="kontakt/">Kontakt</a>
+    </div>
+  </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
 <script>
-(function(){
-  var mm = window.matchMedia('(max-width: 768px)');
-  function route(){ document.querySelectorAll('a[href="#zamow"]').forEach(a=>a.href = mm.matches ? '#zamow-m5' : '#zamow'); }
-  route(); window.addEventListener('resize', route);
-
-  function stickyLogic(sectionId, stickySel){
-    var sec=document.getElementById(sectionId), bar=document.querySelector(stickySel);
-    if(!sec || !bar) return;
-    function t(){ var r=sec.getBoundingClientRect(); (r.top<window.innerHeight && r.bottom>0) || window.scrollY<160 ? bar.classList.remove('show') : bar.classList.add('show'); }
-    window.addEventListener('scroll',t,{passive:true}); t();
+  /* Slider Logic */
+  const slides = document.querySelectorAll('.slidebox img');
+  let current = 0;
+  if(slides.length > 0) {
+    setInterval(() => {
+      slides[current].classList.remove('show');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('show');
+    }, 3000);
   }
-  stickyLogic('zamow','#orderSticky');
-  stickyLogic('zamow-m5','.m5-sticky');
+
+  /* Checkout Redirect */
+  const STRIPE_URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
   
-  document.getElementById('closingCta')?.addEventListener('click', function(e){
+  document.getElementById('payBtn')?.addEventListener('click', function(e) {
     e.preventDefault();
-    var id = mm.matches ? 'zamow-tytul-m5' : 'zamow-tytul';
-    var el = document.getElementById(id);
-    if(el) { el.scrollIntoView({behavior:'smooth'}); setTimeout(()=>el.focus(),250); }
+    const consent = document.getElementById('consent1');
+    if (consent && !consent.checked) {
+      alert("Proszę zaakceptować regulamin.");
+      consent.focus();
+      return;
+    }
+    const btn = e.target;
+    btn.innerHTML = "Przetwarzam...";
+    window.location.href = STRIPE_URL;
   });
-})();
 
-/* Star Rating */
-(function(){
-  var el=document.querySelector('.proof__rating'), stars=document.querySelector('.proof__stars');
-  if(!el||!stars)return;
-  var val=parseFloat(el.dataset.rating), full=Math.floor(val), h='';
-  function s(p){return `<svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 17.9 6.1 21l1.2-6.6L2.5 9.4l6.6-.9L12 2.5z" ${p?'mask="url(#m)"':''}></path>${p?`<mask id="m"><rect width="${p}%" height="100%" fill="#fff"/></mask><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 17.9 6.1 21l1.2-6.6L2.5 9.4l6.6-.9L12 2.5z" fill="none" stroke="currentColor"></path>`:''}</svg>`}
-  for(var i=0;i<5;i++) h+=s(i<full?null:(i===full?Math.round((val-full)*100):0));
-  stars.innerHTML=h;
-})();
-
-/* Slider Logic */
-document.addEventListener('DOMContentLoaded', function(){
-  var names=["nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22","nastrone31","nastrone32","nastrone41"];
-  var ul=document.querySelector('.report-glide .glide__slides'), dots=document.querySelector('.report-glide .glide__bullets');
-  if(ul){
-    names.forEach(function(n,i){
-      var li=document.createElement('li'); li.className='glide__slide';
-      li.innerHTML=`<img src="assets/img/${n}.jpg?v=2025" loading="lazy">`;
-      ul.appendChild(li);
-      var b=document.createElement('button'); b.className='glide__bullet'; b.dataset.glideDir='='+i;
-      dots.appendChild(b);
-    });
-    new Glide('.report-glide',{type:'carousel',perView:1,autoplay:2400,gap:16}).mount();
-  }
-  var imgs=[document.getElementById('slideA'),document.getElementById('slideB')], idx=0, files=["naslasha1","naslasha2","naslasha3"];
-  function showNext(){
-    var next=imgs[1-idx%2], curr=imgs[idx%2], f=files[idx%files.length];
-    next.src="assets/img/"+f+".jpg?v=2025";
-    next.onload=function(){ next.classList.add('show'); curr.classList.remove('show'); idx++; setTimeout(showNext,2500); };
-  }
-  showNext();
-});
-
-/* Checkout Logic */
-(function(){
-  var URL = "https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04";
-  function initForm(btnId, statusId, consentId, stickyBtnId){
-    var btn=document.getElementById(btnId), status=document.getElementById(statusId), chk=document.getElementById(consentId), sBtn=document.getElementById(stickyBtnId);
-    if(!btn) return;
-    var now=new Date(), h=now.getHours(), d=now.getDay(), isWork=(d>0&&d<6&&h>=8&&h<18);
-    var txt = isWork ? "Zamów teraz — wyślemy dziś ok. "+new Date(now.getTime()+197*60000).toLocaleTimeString('pl',{hour:'2-digit',minute:'2-digit'}) : "Zamów teraz — dostawa w kilka godzin (3–4 h).";
-    document.querySelectorAll('.eta, #m5-eta, #closing-eta').forEach(e=>e.textContent=txt);
-    function pay(){
-      if(!chk.checked){
-        status.textContent="Zaznacz wymagane oświadczenie."; status.className="status status--error";
-        chk.parentElement.classList.add('shake'); setTimeout(()=>chk.parentElement.classList.remove('shake'),500);
-        return;
-      }
-      btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Przetwarzam...';
-      status.textContent=""; window.location.href=URL;
-      setTimeout(()=>{ btn.disabled=false; btn.innerHTML="Zamów teraz"; status.textContent="Błąd otwarcia płatności."; },6000);
-    }
-    btn.addEventListener('click', function(e){ e.preventDefault(); pay(); });
-    if(sBtn) sBtn.addEventListener('click', function(){ chk.checked ? btn.click() : btn.scrollIntoView({behavior:'smooth'}); });
-  }
-  initForm('payBtn', 'formStatus', 'consentAll', 'stickyCta');
-  initForm('payBtnM5', 'formStatusM5', 'consentAllM5', 'stickyCtaM5');
-})();
-
-(function(){
-  function align(){
-    if(window.matchMedia('(min-width:1024px)').matches){
-       var spacer=document.querySelector('.how-inline-spacer'), how=document.querySelector('.how-inline-desktop');
-       if(spacer && how) spacer.style.height = Math.max(0, 300 - how.getBoundingClientRect().height) + 'px';
-    }
-  }
-  window.addEventListener('resize', align); setTimeout(align, 100);
-})();
+  document.getElementById('closingCta')?.addEventListener('click', function(){
+    document.getElementById('zamow').scrollIntoView({behavior: 'smooth'});
+  });
 </script>
+
 </body>
 </html>
