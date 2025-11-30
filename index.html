@@ -722,6 +722,95 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       margin-right: auto;
     }
   }
+  /* --- LOGIKA HYBRYDOWA (Desktop vs Mobile) --- */
+
+/* 1. Domyślne style (DESKTOP) - to widzi komputer */
+.mobile-only-content { 
+    display: none !important; 
+}
+.desktop-only-content { 
+    display: block; 
+}
+
+/* 2. Zmiana zachowania na TELEFONACH */
+@media (max-width: 768px) {
+    /* Ukrywamy stare elementy desktopowe */
+    .desktop-only-content { 
+        display: none !important; 
+    }
+    /* Pokazujemy nowe elementy mobilne */
+    .mobile-only-content { 
+        display: block !important; 
+    }
+
+    /* REORDERING: Zmieniamy kolejność klocków tylko na mobile */
+    .hero-wrapper-hybrid {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Ustawiamy kolejność: 1. Nagłówek, 2. Przycisk, 3. Obrazek */
+    .mob-order-1 { order: 1; margin-bottom: 15px; } /* Nagłówek */
+    .mob-order-2 { order: 2; margin-bottom: 25px; } /* Przycisk CTA */
+    .mob-order-3 { order: 3; margin-bottom: 20px; } /* Obrazek */
+    .mob-order-4 { order: 4; } /* Reszta (badges, jak to działa) */
+
+    /* Stylizacja nowego nagłówka mobilnego */
+    .mobile-h1-style {
+        font-size: clamp(26px, 6.5vw, 38px);
+        line-height: 1.2;
+        font-weight: 900;
+        text-align: center;
+    }
+    .mobile-sub-h1 {
+        display: block;
+        font-size: 15px;
+        color: #4a5361;
+        margin-top: 10px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Stylizacja przycisku mobilnego (Above the fold) */
+    .mobile-cta-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .btn-mobile-pulse {
+        width: 100%;
+        max-width: 360px;
+        padding: 16px;
+        font-size: 18px;
+        background: linear-gradient(135deg, var(--brand), #ea8d59);
+        color: #fff;
+        border-radius: 14px;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(242, 145, 88, 0.4);
+        animation: pulseBtn 2s infinite;
+    }
+    .mobile-trust-stars {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #4a5361;
+        font-weight: 600;
+    }
+    
+    /* Dostosowanie slidera na mobile, żeby był mniejszy */
+    .hero .slidebox.mob-order-3 {
+        width: 240px !important; /* Mniejszy obrazek */
+        margin: 0 auto;
+    }
+
+    @keyframes pulseBtn {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+        100% { transform: scale(1); }
+    }
+}
 </style>
 <style>
   @media (min-width: 1024px){
@@ -1155,62 +1244,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   }
 </style>
 
-<style>
-/* Domyślnie (Desktop) ukrywamy elementy typowo mobilne */
-.mobile-show-impact, 
-.mobile-cta-container { display: none; }
-.desktop-only { display: block; }
 
-/* Pulsowanie przycisku */
-@keyframes btnPulse {
-  0% { transform: scale(1); box-shadow: 0 10px 20px rgba(242, 145, 88, 0.4); }
-  50% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(242, 145, 88, 0.6); }
-  100% { transform: scale(1); box-shadow: 0 10px 20px rgba(242, 145, 88, 0.4); }
-}
-
-@media (max-width: 768px) {
-  /* Ukrywamy elementy zbędne na pierwszym ekranie mobile */
-  .desktop-only { display: none !important; }
-  
-  /* Pokazujemy elementy dedykowane mobile */
-  .mobile-show-impact {
-    display: block; font-size: 15px; margin-top: 10px; color: #4a5361; font-weight: 600;
-  }
-  .mobile-cta-container {
-    display: flex; flex-direction: column; align-items: center; width: 100%; margin: 18px 0 24px;
-  }
-  
-  /* Flexbox do zmiany kolejności */
-  .hero-content-wrapper { display: flex; flex-direction: column; }
-  .mobile-order-1 { order: 1; } /* Nagłówek */
-  .mobile-order-2 { order: 2; } /* PRZYCISK */
-  .mobile-order-3 { order: 3; } /* Obrazek */
-  .mobile-order-4 { order: 4; }
-  .mobile-order-5 { order: 5; }
-  .mobile-order-6 { order: 6; }
-  .mobile-order-7 { order: 7; }
-
-  /* Stylizacja nagłówka na mobile */
-  .hero .h1-line1 { font-size: clamp(28px, 7vw, 42px) !important; }
-  .hero .h1-line2 { font-size: clamp(20px, 5vw, 26px) !important; margin-top: 6px; line-height: 1.3; }
-
-  /* Stylizacja głównego przycisku na mobile */
-  .btn-hero-primary {
-    display: flex; justify-content: center; align-items: center; width: 100%; max-width: 380px;
-    padding: 16px 20px; font-size: 19px; background: linear-gradient(135deg, var(--brand), #ea8d59);
-    color: #fff; border-radius: 14px; text-decoration: none; font-weight: 800;
-    box-shadow: 0 10px 25px rgba(242, 145, 88, 0.4); animation: btnPulse 2.5s infinite ease-in-out;
-  }
-  
-  .micro-trust {
-    margin-top: 8px; font-size: 13px; font-weight: 600; color: #4a5361; display: flex; align-items: center; gap: 6px;
-  }
-  .micro-trust .stars { letter-spacing: -2px; filter: grayscale(0%); }
-
-  /* Zmniejszenie obrazka */
-  .slidebox { margin: 0 auto 20px !important; max-width: 280px !important; }
-}
-</style>
 
   </head>
 
@@ -1235,95 +1269,89 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
 
     <main class="container">
-     <section class="hero">
- <h1 class="mobile-order-1">
-  <span class="h1-line1">
-    Twoja data urodzenia to <span class="gradient-text">nie przypadek.</span>
-  </span>
-  <span class="h1-line2">
-    Odkryj <span class="gradient-text">Kod Przeznaczenia</span> ukryty w Twoich liczbach.
-  </span>
-  
-  <span class="h1-desc mobile-show-impact">
-    Odbierz osobistą "Instrukcję Obsługi" swojego życia (PDF + 3 Plakaty).
-  </span>
-  
-  <span class="h1-desc desktop-only">
-    Zajrzyj głębiej niż w horoskop. Zrozum swoje talenty, wyzwania i cykle życia dzięki precyzji szkoły pitagorejskiej.
-  </span>
-</h1>
+<section class="hero">
+  <div class="hero-wrapper-hybrid">
 
-    <div class="mobile-cta-container mobile-order-2">
-      <a class="btn btn-hero-primary" href="#zamow">
-        Oblicz moją Numerologię &raquo;
-      </a>
-      <div class="micro-trust">
-        <span class="stars">⭐⭐⭐⭐⭐</span> 4.93/5 (900+ opinii)
-      </div>
+    <div class="mob-order-1">
+        <h1 class="desktop-only-content">
+            <span class="h1-line1">Chcesz poznać swoją <span class="gradient-text">Przyszłość?</span></span>
+            <span class="h1-line2">Poznaj precyzyjny portret <span class="gradient-text">Numerologiczny</span> oparty na Twoich danych</span>
+            <span class="h1-desc">Zajrzyj pod powierzchnię Horoskopu. Zobacz, co masz zapisane w liczbach.</span>
+        </h1>
+
+        <h1 class="mobile-only-content mobile-h1-style">
+            <div>Twoja data urodzenia to <span class="gradient-text">nie przypadek.</span></div>
+            <div style="margin-top:5px">Odkryj <span class="gradient-text">Kod Przeznaczenia</span> ukryty w Twoich liczbach.</div>
+            <span class="mobile-sub-h1">
+                Odbierz osobistą "Instrukcję Obsługi" swojego życia (PDF + 3 Plakaty).
+            </span>
+        </h1>
     </div>
 
-    <div class="slidebox mobile-order-3" aria-label="Podgląd kwadratowych stron/plakatów">
-      <img id="slideA" alt="" />
-      <img id="slideB" alt="" />
-    </div>
-
-    <p class="desktop-only mobile-order-4" style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
-      Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język, łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>.
-    </p>
-
-    <h3 class="desktop-only" style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
-      Co otrzymujesz:
-    </h3>
-    <div class="badges mobile-order-5" style="font-weight:800;">
-      <span class="badge">PDF • 13 stron</span>
-      <span class="badge">Raport + 3 spersonalizowane plakaty</span>
-      <span class="badge">Dostawa e-mail</span>
-    </div>
-
-    <section class="how-inline-desktop mobile-order-6" aria-labelledby="how-inline-title">
-      <h3 id="how-inline-title" class="how-inline__title">Jak to działa?</h3>
-      <ol class="how-inline__list">
-        <li>
-          <div class="how-inline__num">1</div>
-          <div class="how-inline__text">
-            Podajesz <strong>imię, nazwisko</strong> i <strong>datę urodzenia</strong>.
-          </div>
-        </li>
-        <li>
-          <div class="how-inline__num">2</div>
-          <div class="how-inline__text">
-            My obliczamy Twoją <strong>pełną Numerologię</strong> i wysyłamy gotowy <strong>Raport na E-mail</strong>.
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <div class="mini-slider-wrap mobile-order-7">
-      <div class="mini-slider-title">
-        Zobacz jak wygląda kilka przykładowych stron raportu
-      </div>
-      <div class="glide report-glide" aria-label="Przykładowe strony raportu (karuzela)">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides"></ul>
+    <div class="mob-order-2 mobile-only-content">
+        <div class="mobile-cta-box">
+            <a class="btn-mobile-pulse" href="#zamow">Oblicz moją Numerologię &raquo;</a>
+            <div class="mobile-trust-stars">⭐⭐⭐⭐⭐ 4.93/5 (900+ opinii)</div>
         </div>
-        <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Poprzednie">‹</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Następne">›</button>
-        </div>
-        <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="Nawigacja slajdów"></div>
-      </div>
     </div>
 
-    <a class="btn desktop-only" href="#zamow">Zamów teraz</a>
-  </div>
+    <div class="slidebox mob-order-3" aria-label="Podgląd kwadratowych stron/plakatów">
+        <img id="slideA" alt="" />
+        <img id="slideB" alt="" />
+    </div>
 
-  <aside class="card product" aria-labelledby="podglad">
+    <div class="mob-order-4">
+        <p class="desktop-only-content" style="display:block; font-size:0.98rem; font-weight:600; margin-top:0.6em; color:#1f2734">
+            Tworzony w duchu klasycznej szkoły pitagorejskiej. Numerologia to nasza pasja — od lat zgłębiamy jej język, łącząc merytoryczną precyzję z wyrafinowaną formą. Wykonany na podstawie <strong>imienia, nazwiska i daty urodzenia</strong>.
+        </p>
+
+        <h3 class="desktop-only-content" style="font-size:1.6rem; line-height:1.2; font-weight:900; margin:0.9em 0 0.5em; color:#0e1420;">
+            Co otrzymujesz:
+        </h3>
+
+        <div class="badges" style="font-weight:800;">
+            <span class="badge">PDF • 13 stron</span>
+            <span class="badge">Raport + 3 plakaty</span>
+            <span class="badge">Dostawa e-mail</span>
+        </div>
+
+        <section class="how-inline-desktop" aria-labelledby="how-inline-title">
+            <h3 id="how-inline-title" class="how-inline__title">Jak to działa?</h3>
+            <ol class="how-inline__list">
+                <li>
+                    <div class="how-inline__num">1</div>
+                    <div class="how-inline__text">Podajesz <strong>imię, nazwisko</strong> i <strong>datę urodzenia</strong>.</div>
+                </li>
+                <li>
+                    <div class="how-inline__num">2</div>
+                    <div class="how-inline__text">My obliczamy Twoją <strong>pełną Numerologię</strong> i wysyłamy gotowy <strong>Raport na E-mail</strong>.</div>
+                </li>
+            </ol>
+        </section>
+
+        <div class="mini-slider-wrap">
+            <div class="mini-slider-title">Zobacz jak wygląda kilka przykładowych stron raportu</div>
+            <div class="glide report-glide" aria-label="Przykładowe strony raportu (karuzela)">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides"></ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Poprzednie">‹</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Następne">›</button>
+                </div>
+                <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="Nawigacja slajdów"></div>
+            </div>
+        </div>
+
+        <a class="btn desktop-only-content" href="#zamow">Zamów teraz</a>
+    </div>
+
+  </div> <aside class="card product" aria-labelledby="podglad">
     <div class="corner-badge" aria-hidden="true">✓</div>
     <div class="ribbon">
       <span class="ribbon--desktop">+ 3 plakaty</span>
       <span class="ribbon--mobile">+3 plakaty</span>
     </div>
-
     <h3 id="podglad" style="color:#0e1420">Co znajdziesz w środku?</h3>
 
     <div class="feature">
