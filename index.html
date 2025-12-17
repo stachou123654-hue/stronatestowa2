@@ -157,7 +157,7 @@
     <!-- Sticky Navigation -->
     <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-4">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-center">
-            <a href="/" class="font-cinzel text-[23px] font-bold tracking-widest gradient-text uppercase text-white">Twój Cyfrowy Kompas</a>
+            <a href="#zamow" class="font-cinzel text-[23px] font-bold tracking-widest gradient-text uppercase text-white">Twój Cyfrowy Kompas</a>
             <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider">
                 <a href="#o-raporcie" class="hover:text-mystic-gold transition text-white">O raporcie</a>
                 <a href="#jak-to-dziala" class="hover:text-mystic-gold transition text-white">Jak to działa</a>
@@ -368,7 +368,7 @@
 
                 <div class="text-center mb-10">
                     <h3 class="font-cinzel text-2xl font-bold mb-2 uppercase text-white">Pakiet Pełny</h3>
-                    <p class="text-gray-400 text-sm mb-6 uppercase tracking-wider">Spersonalizowany Raport 13 stron + 3 Plakaty Numerologiczne</p>
+                    <p class="text-gray-400 text-sm mb-6 uppercase tracking-wider">Twój Raport Numerologiczny 13 stron + 3 Spersonalizowane Plakaty </p>
                     <div class="flex items-center justify-center space-x-4">
                         <span class="text-gray-500 line-through text-xl font-bold">79 zł</span>
                         <span class="text-6xl font-black gradient-text">49 zł</span>
@@ -487,20 +487,24 @@
             const consentCheckbox = document.getElementById('consent-checkbox');
             const consentError = document.getElementById('consent-error');
 
-            checkoutLink.addEventListener('click', function(e) {
-                if (!consentCheckbox.checked) {
-                    e.preventDefault();
-                    consentError.classList.remove('hidden');
-                } else {
-                    consentError.classList.add('hidden');
-                }
-            });
+            if (checkoutLink) {
+                checkoutLink.addEventListener('click', function(e) {
+                    if (!consentCheckbox.checked) {
+                        e.preventDefault();
+                        consentError.classList.remove('hidden');
+                    } else {
+                        consentError.classList.add('hidden');
+                    }
+                });
+            }
 
-            consentCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    consentError.classList.add('hidden');
-                }
-            });
+            if (consentCheckbox) {
+                consentCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        consentError.classList.add('hidden');
+                    }
+                });
+            }
         })();
 
         // Slidebox Slider (Fade for naslasha images)
@@ -517,6 +521,8 @@
 
             const a = document.getElementById("slideA");
             const b = document.getElementById("slideB");
+            if (!a || !b) return;
+
             let visible = a, hidden = b, idx = 0;
 
             function swapImgs(){ const t = visible; visible = hidden; hidden = t; }
@@ -603,29 +609,31 @@
                     track.appendChild(li);
                 });
 
-                const glide = new Glide('#heroSlider', {
-                    type: 'carousel',
-                    startAt: 0,
-                    perView: 1,
-                    focusAt: 'center',
-                    autoplay: 3000,
-                    hoverpause: true,
-                    gap: 0,
-                    animationDuration: 800
-                });
+                if (document.querySelectorAll('#heroSlider .glide__slide').length > 0) {
+                    const glide = new Glide('#heroSlider', {
+                        type: 'carousel',
+                        startAt: 0,
+                        perView: 1,
+                        focusAt: 'center',
+                        autoplay: 3000,
+                        hoverpause: true,
+                        gap: 0,
+                        animationDuration: 800
+                    });
 
-                function markNeighbors(){
-                    const slides = Array.from(document.querySelectorAll('#heroSlider .glide__slide'));
-                    slides.forEach(s => s.classList.remove('is-prev', 'is-next'));
-                    const i = glide.index;
-                    const prev = (i - 1 + slides.length) % slides.length;
-                    const next = (i + 1) % slides.length;
-                    slides[prev]?.classList.add('is-prev');
-                    slides[next]?.classList.add('is-next');
+                    function markNeighbors(){
+                        const slides = Array.from(document.querySelectorAll('#heroSlider .glide__slide'));
+                        slides.forEach(s => s.classList.remove('is-prev', 'is-next'));
+                        const i = glide.index;
+                        const prev = (i - 1 + slides.length) % slides.length;
+                        const next = (i + 1) % slides.length;
+                        slides[prev]?.classList.add('is-prev');
+                        slides[next]?.classList.add('is-next');
+                    }
+
+                    glide.on(['mount.after', 'run.after'], markNeighbors);
+                    glide.mount();
                 }
-
-                glide.on(['mount.after', 'run.after'], markNeighbors);
-                glide.mount();
             }
 
             document.addEventListener('DOMContentLoaded', initSlider);
