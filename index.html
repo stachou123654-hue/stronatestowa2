@@ -10,6 +10,8 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Glide.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
 
     <style>
         :root {
@@ -43,17 +45,53 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
-        .floating {
-            animation: floating 6s ease-in-out infinite;
+        /* Slider Styles from original code */
+        .report-glide {
+            width: min(380px, 85vw);
+            aspect-ratio: 210/297;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            background: #1e293b;
+            position: relative;
+            overflow: visible;
+            perspective: 1200px;
         }
-
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        .report-glide .glide__track { height: 100%; overflow: hidden; border-radius: inherit; }
+        .report-glide .glide__slides { height: 100%; display: flex; align-items: center; }
+        .report-glide .glide__slide { 
+            height: 100%; 
+            display: grid; 
+            place-items: center; 
+            transition: transform .5s ease, opacity .5s ease;
+            border-radius: inherit;
         }
+        .report-glide .glide__slide img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: inherit; }
+        
+        .report-glide .glide__arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 12px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--mystic-gold), #b4941f);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 10;
+        }
+        .report-glide .glide__arrow--left { left: -22px; }
+        .report-glide .glide__arrow--right { right: -22px; }
 
-        /* Subtelne gwiazdy w tle */
+        /* Carousel effect */
+        .report-glide .glide__slide { opacity: .35; }
+        .report-glide .glide__slide--active { opacity: 1; transform: scale(1); }
+        .report-glide .glide__slide.is-prev { transform: translateX(-10%) rotateY(20deg) scale(0.85); opacity: 0.7; }
+        .report-glide .glide__slide.is-next { transform: translateX(10%) rotateY(-20deg) scale(0.85); opacity: 0.7; }
+
         .stars-bg {
             background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
             background-size: 40px 40px;
@@ -62,6 +100,9 @@
         .cta-button {
             background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cta-button:hover {
@@ -74,12 +115,12 @@
 
     <!-- Sticky Navigation -->
     <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-4">
-        <div class="max-w-7-xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="font-cinzel text-xl font-bold tracking-widest gradient-text uppercase text-white">Twój Cyfrowy Kompas</a>
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="/" class="font-cinzel text-xl font-bold tracking-widest gradient-text uppercase text-white">Twój Cyfrowy Kompas</a>
             <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider">
-                <a href="#o-raporcie" class="hover:text-mystic-gold transition">O raporcie</a>
-                <a href="#jak-to-dziala" class="hover:text-mystic-gold transition">Jak to działa</a>
-                <a href="#faq" class="hover:text-mystic-gold transition">FAQ</a>
+                <a href="#o-raporcie" class="hover:text-mystic-gold transition text-white">O raporcie</a>
+                <a href="#jak-to-dziala" class="hover:text-mystic-gold transition text-white">Jak to działa</a>
+                <a href="#faq" class="hover:text-mystic-gold transition text-white">FAQ</a>
             </div>
             <a href="#zamow" class="cta-button px-6 py-2 rounded-full text-sm font-bold text-white">ZAMÓW RAPORT</a>
         </div>
@@ -88,7 +129,7 @@
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 px-6 overflow-hidden">
         <!-- Dekoracyjne koło numerologiczne w tle -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 pointer-events-none text-white">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 pointer-events-none text-white font-black">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="animate-[spin_120s_linear_infinite]">
                 <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2" />
                 <path d="M100 10 L100 190 M10 100 L190 100 M35 35 L165 165 M165 35 L35 165" stroke="currentColor" stroke-width="0.2" />
@@ -101,28 +142,27 @@
                     Odkryj Ukryty Kod <br> 
                     <span class="gradient-text uppercase">Twojego Przeznaczenia</span>
                 </h1>
-                <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
                     Twoja data urodzenia to nie przypadek. Odbierz 13-stronicową, osobistą mapę drogową, która ujawni Twoje ukryte talenty, zidentyfikuje blokady i wskaże najlepszy czas na kluczowe życiowe zmiany. Poznaj siebie na poziomie, o którym większość tylko marzy.
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
                     <div class="glass px-4 py-2 rounded-lg flex items-center space-x-2">
                         <i data-lucide="file-text" class="text-mystic-gold w-5 h-5"></i>
-                        <span class="text-sm font-semibold">13 stron wiedzy</span>
+                        <span class="text-sm font-semibold text-white">13 stron wiedzy</span>
                     </div>
                     <div class="glass px-4 py-2 rounded-lg flex items-center space-x-2">
                         <i data-lucide="image" class="text-mystic-gold w-5 h-5"></i>
-                        <span class="text-sm font-semibold">+3 Plakaty Aury</span>
+                        <span class="text-sm font-semibold text-white">+3 Plakaty Aury</span>
                     </div>
                     <div class="glass px-4 py-2 rounded-lg flex items-center space-x-2">
                         <i data-lucide="clock" class="text-mystic-gold w-5 h-5"></i>
-                        <span class="text-sm font-semibold">Dostawa w 3h</span>
+                        <span class="text-sm font-semibold text-white">Dostawa w 3h</span>
                     </div>
                 </div>
                 <a href="#zamow" class="cta-button inline-block px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl text-white uppercase tracking-wider">
                     Odbierz swoją mapę życia
                 </a>
                 
-                <!-- Social Proof Mini -->
                 <div class="mt-8 flex items-center justify-center lg:justify-start space-x-4">
                     <div class="flex -space-x-3">
                         <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
@@ -134,10 +174,17 @@
             </div>
 
             <div class="relative" data-aos="fade-left">
-                <div class="floating relative z-20">
-                    <img src="https://via.placeholder.com/600x800/1e293b/d4af37?text=PORTRET+NUMEROLOGICZNY+PREVIEW" 
-                         alt="Raport Preview" 
-                         class="rounded-3xl shadow-[0_0_50px_rgba(99,102,241,0.3)] border border-white/10 mx-auto w-full max-w-[450px]">
+                <!-- Glide.js Slider in Hero -->
+                <div class="glide report-glide" id="heroSlider">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <!-- Slides will be populated via script -->
+                        </ul>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Poprzednie">‹</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Następne">›</button>
+                    </div>
                 </div>
                 <div class="absolute -top-10 -right-10 text-8xl font-cinzel opacity-10 select-none text-white font-black">7</div>
                 <div class="absolute -bottom-10 left-10 text-7xl font-cinzel opacity-10 select-none text-white font-black">9</div>
@@ -212,31 +259,31 @@
                     
                     <div class="space-y-12">
                         <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10">1</div>
+                            <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10 font-cinzel">1</div>
                             <div>
                                 <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white">Podaj dane</h4>
                                 <p class="text-gray-400">Wpisz imię, nazwisko oraz pełną datę urodzenia w formularzu zamówienia.</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10">2</div>
+                            <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10 font-cinzel">2</div>
                             <div>
-                                <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white">Analiza energetyczna</h4>
-                                <p class="text-gray-400">Wyliczamy Twoją unikalną matrycę energetyczną i tworzymy Twój spersonalizowany Porter Numerologiczny.</p>
+                                <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white font-cinzel">Analiza energetyczna</h4>
+                                <p class="text-gray-400">Wyliczamy Twoją unikalną matrycę energetyczną i tworzymy Twój spersonalizowany Portret Numerologiczny.</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10">3</div>
+                            <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10 font-cinzel">3</div>
                             <div>
-                                <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white">Odbierz e-mail</h4>
+                                <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white font-cinzel">Odbierz e-mail</h4>
                                 <p class="text-gray-400">Gotowy raport ląduje w Twojej skrzynce w ciągu kilku godzin. To Twoja nowa instrukcja obsługi życia.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="glass p-2 rounded-3xl" data-aos="zoom-in">
-                    <img src="https://via.placeholder.com/800x600/1e293b/6366f1?text=PODGLĄD+PLAKATU+AURY" alt="Plakat" class="rounded-2xl w-full">
+                <div class="glass p-4 rounded-3xl" data-aos="zoom-in">
+                    <img src="https://via.placeholder.com/800x600/1e293b/6366f1?text=SPERSONALIZOWANE+PLAKATY+AURY" alt="Plakat" class="rounded-2xl w-full">
                 </div>
             </div>
         </div>
@@ -245,7 +292,7 @@
     <!-- Pricing / Order Card -->
     <section id="zamow" class="py-24 px-6 bg-mystic-accent/5">
         <div class="max-w-md mx-auto" data-aos="flip-up">
-            <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden gold-glow border-white/20">
+            <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden gold-glow border-white/20 text-center">
                 <div class="absolute top-0 right-0 bg-mystic-gold text-mystic-blue text-[10px] font-black px-8 py-1 rotate-45 translate-x-8 translate-y-4 uppercase tracking-widest">
                     Limitowana Oferta
                 </div>
@@ -279,15 +326,19 @@
                 </ul>
 
                 <form class="space-y-4">
-                    <div class="text-xs text-left text-gray-500 px-2 mb-4">
+                    <div class="text-xs text-left text-gray-500 px-2 mb-4 leading-relaxed font-light">
                         <label class="flex items-start space-x-3 cursor-pointer">
-                            <input type="checkbox" class="mt-1 accent-mystic-accent" checked required>
-                            <span>Akceptuję regulamin i politykę prywatności.</span>
+                            <input type="checkbox" id="consent-checkbox" class="mt-1 accent-mystic-accent" checked required>
+                            <span>Akceptuję <a href="regulamin-i-polityka-prywatnosci/" class="underline">Regulamin i Politykę prywatności</a>.</span>
                         </label>
+                        <!-- Error message container -->
+                        <div id="consent-error" class="text-red-500 text-[10px] mt-1 font-bold hidden uppercase tracking-wider">
+                            Zaakceptuj wymagane zgody, by przejść do kolejnego kroku.
+                        </div>
                     </div>
-                    <button type="button" class="cta-button w-full py-5 rounded-2xl text-xl font-bold uppercase tracking-widest shadow-lg text-white">
+                    <a href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" id="checkout-link" class="cta-button w-full py-5 rounded-2xl text-xl font-bold uppercase tracking-widest shadow-lg text-white text-center">
                         ODBIERAM KLUCZ DO MOJEGO PRZEZNACZENIA
-                    </button>
+                    </a>
                     <div class="mt-6 flex justify-center space-x-4 opacity-40">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" class="h-4" alt="Stripe">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-4" alt="Visa">
@@ -307,51 +358,134 @@
                     Czy muszę znać godzinę urodzenia?
                     <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
                 </summary>
-                <p class="mt-4 text-gray-400 text-sm">Nie, numerologia pitagorejska opiera się wyłącznie na dacie urodzenia oraz imionach. Godzina nie jest wymagana.</p>
+                <p class="mt-4 text-gray-400 text-sm font-light">Nie, numerologia pitagorejska opiera się wyłącznie na dacie urodzenia oraz imionach. Godzina nie jest wymagana.</p>
             </details>
             <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="100">
                 <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white">
                     Kiedy otrzymam swój raport?
                     <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
                 </summary>
-                <p class="mt-4 text-gray-400 text-sm">Czas dostawy na e-mail to zwykle od 3 do 4 godzin w godzinach roboczych.</p>
+                <p class="mt-4 text-gray-400 text-sm font-light">Czas dostawy na e-mail to zwykle od 3 do 4 godzin w godzinach roboczych.</p>
             </details>
-                        <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="100">
+            <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="100">
                 <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white">
                     Co to jest Numerologia?
                     <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
                 </summary>
-                <p class="mt-4 text-gray-400 text-sm">Numerologia pitagorejska to fascynująca koncepcja, według której ukryta w liczbach od 1 do 9 energia pozwala odkrywać sens wydarzeń, cechy charakteru i życiowe kierunki zapisane w dacie urodzenia oraz imieniu.
-</p>
+                <p class="mt-4 text-gray-400 text-sm font-light">Numerologia pitagorejska to fascynująca koncepcja, według której ukryta w liczbach od 1 do 9 energia pozwala odkrywać sens wydarzeń, cechy charakteru i życiowe kierunki zapisane w dacie urodzenia oraz imieniu.</p>
             </details>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 border-t border-white/5 px-6 text-white">
+    <footer class="py-20 border-t border-white/5 px-6 text-white font-cinzel">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-12">
             <div>
                 <h3 class="font-cinzel text-2xl font-black mb-3 gradient-text uppercase tracking-widest">Twój Cyfrowy Kompas</h3>
-                <p class="text-gray-500 text-sm max-w-xs">Twoja mapa w głąb siebie i planu zapisanego w Twojej dacie urodzenia.</p>
+                <p class="text-gray-500 text-sm max-w-xs font-sans">Twoja mapa w głąb siebie i planu zapisanego w Twojej dacie urodzenia.</p>
             </div>
-            <div class="flex flex-wrap justify-center space-x-8 text-xs text-gray-400 uppercase tracking-widest font-bold">
-                <a href="#" class="hover:text-white transition">Regulamin</a>
-                <a href="#" class="hover:text-white transition">Polityka Prywatności</a>
-                <a href="mailto:kontakt@twojcyfrowykompas.pl" class="hover:text-white transition">Kontakt</a>
-                <a href="#zamow" class="hover:text-white transition border-b border-mystic-gold pb-0.5">Zamów Raport</a>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold">
+                <a href="regulamin-i-polityka-prywatnosci/" class="hover:text-white transition">Regulamin</a>
+                <a href="regulamin-i-polityka-prywatnosci/" class="hover:text-white transition">Polityka Prywatności</a>
+                <a href="kontakt/" class="hover:text-white transition">Kontakt</a>
+                <a href="#zamow" class="cta-button px-6 py-2 rounded-full border border-mystic-gold text-mystic-gold hover:bg-mystic-gold hover:text-mystic-blue transition duration-300">Zamów Raport</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Glide.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
     <script>
         lucide.createIcons();
         AOS.init({ duration: 1000, once: true, offset: 100 });
 
+        // Consent Validation with Error Message
+        (function() {
+            const checkoutLink = document.getElementById('checkout-link');
+            const consentCheckbox = document.getElementById('consent-checkbox');
+            const consentError = document.getElementById('consent-error');
+
+            checkoutLink.addEventListener('click', function(e) {
+                if (!consentCheckbox.checked) {
+                    e.preventDefault();
+                    consentError.classList.remove('hidden');
+                } else {
+                    consentError.classList.add('hidden');
+                }
+            });
+
+            // Hide error if checkbox is clicked again
+            consentCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    consentError.classList.add('hidden');
+                }
+            });
+        })();
+
+        // Glide Slider Logic
+        (function(){
+            const names = [
+                "nastrone11","nastrone12","nastrone13","nastrone14",
+                "nastrone21","nastrone22","nastrone23","nastrone24",
+                "nastrone31","nastrone32","nastrone33","nastrone34",
+                "nastrone41","nastrone42","nastrone43","nastrone44"
+            ];
+            const base = "assets/img/";
+            const version = "2025-10-22";
+            
+            function resolveSrc(name){
+                return new Promise((resolve)=>{
+                    const img = new Image();
+                    const src = base + name + ".jpg?v=" + version;
+                    img.onload = () => resolve(src);
+                    img.onerror = () => resolve(null);
+                    img.src = src;
+                });
+            }
+
+            async function initSlider(){
+                const track = document.querySelector('#heroSlider .glide__slides');
+                if(!track) return;
+
+                const srcs = await Promise.all(names.map(resolveSrc));
+                srcs.filter(Boolean).forEach((src, idx) => {
+                    const li = document.createElement('li');
+                    li.className = 'glide__slide';
+                    li.innerHTML = `<img src="${src}" alt="Strona raportu ${idx+1}" loading="lazy">`;
+                    track.appendChild(li);
+                });
+
+                const glide = new Glide('#heroSlider', {
+                    type: 'carousel',
+                    startAt: 0,
+                    perView: 1,
+                    focusAt: 'center',
+                    autoplay: 3000,
+                    hoverpause: true,
+                    gap: 0,
+                    animationDuration: 800
+                });
+
+                function markNeighbors(){
+                    const slides = Array.from(document.querySelectorAll('#heroSlider .glide__slide'));
+                    slides.forEach(s => s.classList.remove('is-prev', 'is-next'));
+                    const i = glide.index;
+                    const prev = (i - 1 + slides.length) % slides.length;
+                    const next = (i + 1) % slides.length;
+                    slides[prev]?.classList.add('is-prev');
+                    slides[next]?.classList.add('is-next');
+                }
+
+                glide.on(['mount.after', 'run.after'], markNeighbors);
+                glide.mount();
+            }
+
+            document.addEventListener('DOMContentLoaded', initSlider);
+        })();
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId.startsWith('#')) {
                     const target = document.querySelector(targetId);
