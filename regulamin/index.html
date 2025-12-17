@@ -1,311 +1,302 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Regulamin – Twój Cyfrowy Kompas</title>
-<meta content="Regulamin sprzedaży i świadczenia usług drogą elektroniczną dla sklepu Twój Cyfrowy Kompas." name="description"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<style>
-  :root{
-    --bg:#f4f5f9; --text:#1f2430; --muted:#5f6b7a; --card:#ffffff;
-    --brand:#F4A77C; --brand-2:#8EC5F5; --shadow:0 10px 30px rgba(14,22,34,.12); --radius:16px;
-    --mobile-logo-offset: 74px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    color:var(--text);background:var(--bg);font-size:14px;line-height:1.5
-  }
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-2;
-    background-image:url('../assets/img/Rak.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center center;
-    background-attachment:fixed;
-    filter:saturate(105%) contrast(102%);
-  }
-  body::after{
-    content:""; position:fixed; inset:0; z-index:-1;
-    background:
-      radial-gradient(1200px 700px at 80% -10%, rgba(142,197,245,.28), transparent 55%),
-      radial-gradient(900px 600px at -10% 20%, rgba(244,167,124,.30), transparent 60%),
-      linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
-    pointer-events:none
-  }
-  a{color:var(--brand);text-underline-offset:2px}
-  .container{max-width:1120px;margin:0 auto;padding:24px}
-  header{
-    position:sticky; top:0;
-    backdrop-filter:saturate(180%) blur(12px);
-    background:rgba(255,255,255,.6);
-    border-bottom:1px solid rgba(20,24,30,.06);
-    z-index:10
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .brand{
-    font-family:"Cinzel", serif;
-    font-weight:700;
-    font-size:clamp(22px, 3.2vw, 36px);
-    line-height:1;
-    letter-spacing:.4px;
-    text-decoration:none;
-    display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
-    background:linear-gradient(135deg,var(--brand),var(--brand-2));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  nav.nav-menu{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-  .nav-menu a{color:var(--text);text-decoration:none;opacity:.9;padding:.25rem .125rem}
-  .nav-menu .cta{
-    padding:10px 16px;border-radius:12px;
-    background:linear-gradient(135deg,var(--brand),#ea8d59);
-    color:#fff;box-shadow:0 10px 20px rgba(244,167,124,.35)
-  }
-  main{min-height:60vh}
-  .breadcrumbs{font-size:14px;color:#465061}
-  .breadcrumbs a{color:inherit}
-  .page-title{padding:48px 0 8px;margin:0}
-  .card{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));border:1px solid rgba(20,24,30,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
-  .prose{padding:18px;font-size:14px}
-  .prose h2,.prose h3{margin:1em 0 .3em}
-  .prose h2{font-size:18px}
-  .prose h3{font-size:16px;color:#2d394a}
-  .prose p, .prose li{color:#3f4a5a}
-  .prose ul{padding-left:18px}
-  .notice{padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.8);border:1px solid rgba(20,24,30,.08);margin:.8rem 0}
-  .toc{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
-  .toc a{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.85);border:1px solid rgba(20,24,30,.08);color:#3b4656;text-decoration:none}
-  footer{border-top:1px solid rgba(20,24,30,.08);padding:28px 0;color:#5b6678;background:rgba(255,255,255,.5);backdrop-filter:blur(6px)}
-  @media (max-width: 980px){.container{padding:20px}}
-  @media (max-width: 768px){
-    body::before{ background-attachment:scroll; background-position:50% 50%; }
-    .logo{
-      position:fixed; top:8px; left:0; right:0; text-align:center; z-index:1000;
-      padding:10px 16px; background:rgba(255,255,255,.92);
-      border-bottom:1px solid rgba(20,24,30,.06);
-      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-    }
-    body{ padding-top: var(--mobile-logo-offset); }
-    .nav{ flex-direction:column; align-items:center; gap:10px; padding-top: calc(var(--mobile-logo-offset) - 24px); }
-    nav.nav-menu{ gap:14px; justify-content:center; }
-  }
-</style>
-<script>
-  (function () {
-    const p = location.pathname;
-    const cleaned = p.replace(/index\.html$/i, '');
-    if (cleaned !== p) {
-      const newUrl = (cleaned || '/') + location.search + location.hash;
-      history.replaceState(null, '', newUrl);
-    }
-  })();
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamin – Twój Cyfrowy Kompas</title>
+    <meta name="description" content="Regulamin sprzedaży i świadczenia usług drogą elektroniczną dla sklepu Twój Cyfrowy Kompas." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        :root {
+            --mystic-blue: #0f172a;
+            --mystic-gold: #d4af37;
+            --mystic-accent: #6366f1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--mystic-blue);
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stars-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Stylizacja tekstu regulaminu */
+        .prose h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--mystic-gold);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .prose h3 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .prose p, .prose li {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+            font-weight: 300;
+        }
+
+        .prose strong {
+            color: #fff;
+            font-weight: 600;
+        }
+    </style>
 </head>
-<body>
-<header>
-  <div class="container nav">
-    <div class="logo">
-      <a aria-label="Twój Cyfrowy Kompas – strona główna" class="brand" href="../">Twój Cyfrowy Kompas</a>
-    </div>
-    <nav aria-label="Główna nawigacja" class="nav-menu">
-      <a href="../#jak-to-dziala">Jak to działa</a>
-      <a href="../#faq">FAQ</a>
-      <a class="cta" href="../#zamow">Zamów raport</a>
+<body class="stars-bg">
+
+    <!-- Sticky Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-center">
+            <a href="../" class="font-cinzel text-[23px] font-bold tracking-widest gradient-text uppercase text-white">Twój Cyfrowy Kompas</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider">
+                <a href="../#o-raporcie" class="hover:text-mystic-gold transition text-white">O raporcie</a>
+                <a href="../#jak-to-dziala" class="hover:text-mystic-gold transition text-white">Jak to działa</a>
+                <a href="../#faq" class="hover:text-mystic-gold transition text-white">FAQ</a>
+            </div>
+            <a href="../#zamow" class="cta-button px-6 py-2 rounded-full text-sm font-bold text-white text-center">ZAMÓW RAPORT</a>
+        </div>
     </nav>
-  </div>
-</header>
-<main class="container">
-  <div class="breadcrumbs"><a href="../">Strona główna</a> › <span>Regulamin</span></div>
-  <h1 class="page-title">Regulamin</h1>
-  <section class="card prose">
-    <nav aria-label="Spis treści" class="toc">
-      <a href="#regulamin">Regulamin</a>
-    </nav>
-    <article id="regulamin">
-      <h2>REGULAMIN SPRZEDAŻY I ŚWIADCZENIA USŁUG DROGĄ ELEKTRONICZNĄ</h2>
-     
-      <h3>1. Definicje</h3>
-      <p><strong>Klient/Konsument</strong> – osoba fizyczna dokonująca zakupu w Sklepie, w tym konsument w rozumieniu art. 22(1) KC oraz „przedsiębiorca na prawach konsumenta” (art. 38a ustawy o prawach konsumenta).</p>
-      <p><strong>Produkt</strong> – spersonalizowany raport numerologiczny (treść cyfrowa), przygotowywany indywidualnie na podstawie danych Klienta (imię, nazwisko, data urodzenia) i dostarczany w formacie PDF.</p>
-      <p><strong>Umowa</strong> – umowa o dostarczenie treści cyfrowej zawierana na odległość pomiędzy Sprzedawcą a Klientem.</p>
-      <p><strong>Dzień Roboczy</strong> – poniedziałek–piątek, z wyłączeniem dni ustawowo wolnych od pracy.</p>
-      <p><strong>Treść cyfrowa</strong> – treść wytwarzana i dostarczana w postaci cyfrowej; w Regulaminie Produkt stanowi treść cyfrową dostarczaną konsumentowi odpłatnie.</p>
 
-      <h3>2. Postanowienia ogólne</h3>
-      <p>1. Regulamin określa zasady korzystania ze Sklepu, zawierania i wykonywania Umów, płatności, dostawy, reklamacji, odpowiedzialności oraz inne istotne warunki świadczenia usług drogą elektroniczną.</p>
-      <p>2. Zakup w Sklepie wymaga akceptacji niniejszego Regulaminu.</p>
-      <p>3. Żadne postanowienie Regulaminu nie wyłącza ani nie ogranicza uprawnień Konsumenta wynikających z bezwzględnie obowiązujących przepisów prawa.</p>
-      <p>4. Regulamin jest nieodpłatnie udostępniany przed zawarciem Umowy oraz w sposób umożliwiający jego pozyskanie, odtwarzanie i utrwalanie (plik PDF do pobrania).</p>
-      <p>5. Na korespondencję operacyjną (niebędącą reklamacją) Sprzedawca odpowiada zazwyczaj do 2 Dni Roboczych.</p>
+    <!-- Header Section -->
+    <section class="relative pt-32 pb-12 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <nav class="text-sm text-gray-500 mb-4 font-medium uppercase tracking-widest">
+                <a href="../" class="hover:text-mystic-gold transition">Strona główna</a> 
+                <span class="mx-2">/</span> 
+                <span class="text-white">Regulamin</span>
+            </nav>
+            <h1 class="font-cinzel text-4xl md:text-6xl font-black gradient-text uppercase mb-8" data-aos="fade-up">Regulamin</h1>
+        </div>
+    </section>
 
-      <h3>3. Charakter produktu i przeznaczenie</h3>
-      <p>1. Produkt jest treścią cyfrową niedostarczaną na nośniku materialnym i powstaje według specyfikacji Klienta.</p>
-      <p>2. Raport może zawierać uogólnienia typowe dla metodologii numerologicznej.</p>
+    <!-- Main Content Section -->
+    <main class="max-w-4xl mx-auto px-6 pb-24">
+        <div class="glass p-8 md:p-12 rounded-[40px] border-white/10" data-aos="fade-up">
+            <article class="prose max-w-none">
+                <h2>REGULAMIN SPRZEDAŻY I ŚWIADCZENIA USŁUG DROGĄ ELEKTRONICZNĄ</h2>
+                
+                <h3>1. Definicje</h3>
+                <p><strong>Klient/Konsument</strong> – osoba fizyczna dokonująca zakupu w Sklepie, w tym konsument w rozumieniu art. 22(1) KC oraz „przedsiębiorca na prawach konsumenta” (art. 38a ustawy o prawach konsumenta).</p>
+                <p><strong>Produkt</strong> – spersonalizowany raport numerologiczny (treść cyfrowa), przygotowywany indywidualnie na podstawie danych Klienta (imię, nazwisko, data urodzenia) i dostarczany w formacie PDF.</p>
+                <p><strong>Umowa</strong> – umowa o dostarczenie treści cyfrowej zawierana na odległość pomiędzy Sprzedawcą a Klientem.</p>
+                <p><strong>Dzień Roboczy</strong> – poniedziałek–piątek, z wyłączeniem dni ustawowo wolnych od pracy.</p>
+                <p><strong>Treść cyfrowa</strong> – treść wytwarzana i dostarczana w postaci cyfrowej; w Regulaminie Produkt stanowi treść cyfrową dostarczaną konsumentowi odpłatnie.</p>
 
-      <h3>4. Charakter informacji – brak porad specjalistycznych</h3>
-      <p>1. Produkt ma charakter informacyjno-rozrywkowy. Treści nie stanowią porady psychologicznej, medycznej, prawnej, finansowej ani inwestycyjnej i nie powinny być traktowane jako rekomendacje do podjęcia określonych działań.</p>
-      <p>2. Sprzedawca nie gwarantuje osiągnięcia jakichkolwiek rezultatów ani dopasowania treści do subiektywnych oczekiwań Klienta. Postanowienia niniejszego paragrafu nie ograniczają uprawnień konsumenta z tytułu braku zgodności treści cyfrowej z umową.</p>
+                <h3>2. Postanowienia ogólne</h3>
+                <p>1. Regulamin określa zasady korzystania ze Sklepu, zawierania i wykonywania Umów, płatności, dostawy, reklamacji, odpowiedzialności oraz inne istotne warunki świadczenia usług drogą elektroniczną.</p>
+                <p>2. Zakup w Sklepie wymaga akceptacji niniejszego Regulaminu.</p>
+                <p>3. Żadne postanowienie Regulaminu nie wyłącza ani nie ogranicza uprawnień Konsumenta wynikających z bezwzględnie obowiązujących przepisów prawa.</p>
+                <p>4. Regulamin jest nieodpłatnie udostępniany przed zawarciem Umowy oraz w sposób umożliwiający jego pozyskanie, odtwarzanie i utrwalanie (plik PDF do pobrania).</p>
+                <p>5. Na korespondencję operacyjną (niebędącą reklamacją) Sprzedawca odpowiada zazwyczaj do 2 Dni Roboczych.</p>
 
-      <h3>5. Odpowiedzialność za decyzje Klienta</h3>
-      <p>1. Klient podejmuje wszelkie decyzje życiowe, biznesowe i finansowe samodzielnie i na własną odpowiedzialność.</p>
-      <p>2. Sprzedawca nie odpowiada za skutki ekonomiczne lub osobiste decyzji Klienta podjętych na podstawie raportu – z zastrzeżeniem bezwzględnie obowiązujących przepisów oraz zasad odpowiedzialności za brak zgodności treści cyfrowej z umową.</p>
+                <h3>3. Charakter produktu i przeznaczenie</h3>
+                <p>1. Produkt jest treścią cyfrową niedostarczaną na nośniku materialnym i powstaje według specyfikacji Klienta.</p>
+                <p>2. Raport może zawierać uogólnienia typowe dla metodologii numerologicznej.</p>
 
-      <h3>6. Zakres odpowiedzialności Sprzedawcy wobec Konsumenta</h3>
-      <p>1. Sprzedawca odpowiada za zgodność treści cyfrowej z Umową oraz usuwa stwierdzone wady techniczne zgodnie z prawem konsumenckim.</p>
-      <p>2. W najszerszym zakresie dopuszczalnym przez prawo Sprzedawca nie odpowiada za szkody pośrednie (w tym utracone korzyści) wynikłe z korzystania z raportu lub podejmowania decyzji na jego podstawie. Postanowienie to nie ogranicza praw Konsumenta wynikających z bezwzględnie obowiązujących przepisów.</p>
-      <p>3. Żadne postanowienie Regulaminu nie wyłącza odpowiedzialności Sprzedawcy w przypadkach, w których wyłączenie lub ograniczenie odpowiedzialności jest niedopuszczalne.</p>
+                <h3>4. Charakter informacji – brak porad specjalistycznych</h3>
+                <p>1. Produkt ma charakter informacyjno-rozrywkowy. Treści nie stanowią porady psychologicznej, medycznej, prawnej, finansowej ani inwestycyjnej i nie powinny być traktowane jako rekomendacje do podjęcia określonych działań.</p>
+                <p>2. Sprzedawca nie gwarantuje osiągnięcia jakichkolwiek rezultatów ani dopasowania treści do subiektywnych oczekiwań Klienta. Postanowienia niniejszego paragrafu nie ograniczają uprawnień konsumenta z tytułu braku zgodności treści cyfrowej z umową.</p>
 
-      <h3>7. Postanowienia dla przedsiębiorców (B2B)</h3>
-      <p>1. W relacjach B2B (z wyłączeniem przedsiębiorcy na prawach konsumenta) odpowiedzialność Sprzedawcy jest ograniczona do rzeczywiście poniesionej szkody i nie przekracza wysokości zapłaconej ceny za Produkt.</p>
-      <p>2. W relacjach B2B Sprzedawca nie ponosi odpowiedzialności za utracone korzyści.</p>
+                <h3>5. Odpowiedzialność za decyzje Klienta</h3>
+                <p>1. Klient podejmuje wszelkie decyzje życiowe, biznesowe i finansowe samodzielnie i na własną odpowiedzialność.</p>
+                <p>2. Sprzedawca nie odpowiada za skutki ekonomiczne lub osobiste decyzji Klienta podjętych na podstawie raportu – z zastrzeżeniem bezwzględnie obowiązujących przepisów oraz zasad odpowiedzialności za brak zgodności treści cyfrowej z umową.</p>
 
-      <h3>8. Informacje techniczne, funkcjonalność, kompatybilność i interoperacyjność</h3>
-      <p>1. Minimalne wymagania po stronie Klienta: urządzenie z dostępem do Internetu, aktywne konto e-mail z dostępem do otrzymywania wiadomości e-mail oraz oprogramowanie umożliwiające odczyt plików PDF (np. aktualna wersja Adobe Acrobat Reader lub równoważne).</p>
-      <p>2. Produkt jest kompatybilny z powszechnie używanymi systemami operacyjnymi (Windows, macOS, iOS, Android) w zakresie umożliwiającym otwarcie pliku PDF.</p>
-      <p>3. Produkt jest plikiem PDF przeznaczonym do odczytu (brak gwarancji możliwości edytowania). Korzystanie z nieaktualnego oprogramowania do obsługi PDF może uniemożliwić prawidłowe wyświetlenie treści; nie stanowi to wady Produktu, o ile plik jest zgodny z powszechnie stosowanymi wersjami czytników PDF.</p>
+                <h3>6. Zakres odpowiedzialności Sprzedawcy wobec Konsumenta</h3>
+                <p>1. Sprzedawca odpowiada za zgodność treści cyfrowej z Umową oraz usuwa stwierdzone wady techniczne zgodnie z prawem konsumenckim.</p>
+                <p>2. W najszerszym zakresie dopuszczalnym przez prawo Sprzedawca nie odpowiada za szkody pośrednie (w tym utracone korzyści) wynikłe z korzystania z raportu lub podejmowania decyzji na jego podstawie. Postanowienie to nie ogranicza praw Konsumenta wynikających z bezwzględnie obowiązujących przepisów.</p>
+                <p>3. Żadne postanowienie Regulaminu nie wyłącza odpowiedzialności Sprzedawcy w przypadkach, w których wyłączenie lub ograniczenie odpowiedzialności jest niedopuszczalne.</p>
 
-      <h3>9. Aktualizacje i utrzymanie zgodności</h3>
-      <p>Sprzedawca zapewnia, w zakresie wymaganym przepisami, aktualizacje niezbędne do utrzymania zgodności treści cyfrowej z Umową przez okres rozsądnie oczekiwany przez konsumenta, biorąc pod uwagę rodzaj i przeznaczenie treści cyfrowej. W przypadku Produktu w formacie PDF aktualizacje polegają w szczególności na usunięciu stwierdzonych wad pliku (np. błędów technicznych), o ile są one konieczne do zachowania zgodności z Umową.</p>
-      <p>Aktualizacje, o których mowa, dotyczą wyłącznie utrzymania zgodności technicznej (np. naprawy błędów pliku), nie obejmują zmian merytorycznych, interpretacyjnych ani tworzenia nowych wersji raportu.</p>
-      <p>Produkt dostarczany jest w formacie PDF do odczytu; brak gwarancji poprawnego działania narzędzi edycyjnych PDF. Zastosowane mogą być zabezpieczenia (np. znak wodny, ograniczenie drukowania)</p>
+                <h3>7. Postanowienia dla przedsiębiorców (B2B)</h3>
+                <p>1. W relacjach B2B (z wyłączeniem przedsiębiorcy na prawach konsumenta) odpowiedzialność Sprzedawcy jest ograniczona do rzeczywiście poniesionej szkody i nie przekracza wysokości zapłaconej ceny za Produkt.</p>
+                <p>2. W relacjach B2B Sprzedawca nie ponosi odpowiedzialności za utracone korzyści.</p>
 
-      <h3>10. Zamówienie</h3>
-      <p>1. Zamówienia można składać 24/7 poprzez formularz w Sklepie (wyświetlający się przy płatności), podając: imię, nazwisko, datę urodzenia, adres e-mail.</p>
-      <p>2. Z chwilą potwierdzenia płatności dochodzi do zawarcia Umowy.</p>
-      <p>3. Złożenie zamówienia jest równoznaczne z potwierdzeniem zapoznania się z informacjami przedkontraktowymi oraz akceptacją Regulaminu.</p>
+                <h3>8. Informacje techniczne, funkcjonalność, kompatybilność i interoperacyjność</h3>
+                <p>1. Minimalne wymagania po stronie Klienta: urządzenie z dostępem do Internetu, aktywne konto e-mail z dostępem do otrzymywania wiadomości e-mail oraz oprogramowanie umożliwiające odczyt plików PDF (np. aktualna wersja Adobe Acrobat Reader lub równoważne).</p>
+                <p>2. Produkt jest kompatybilny z powszechnie używanymi systemami operacyjnymi (Windows, macOS, iOS, Android) w zakresie umożliwiającym otwarcie pliku PDF.</p>
+                <p>3. Produkt jest plikiem PDF przeznaczonym do odczytu (brak gwarancji możliwości edytowania). Korzystanie z nieaktualnego oprogramowania do obsługi PDF może uniemożliwić prawidłowe wyświetlenie treści; nie stanowi to wady Produktu, o ile plik jest zgodny z powszechnie stosowanymi wersjami czytników PDF.</p>
 
-      <h3>11. Ceny, płatności i faktury</h3>
-      <p>1. Ceny podawane są w złotych polskich i zawierają wszelkie podatki; całkowity koszt zamówienia prezentowany jest Klientowi przed złożeniem zamówienia.</p>
-      <p>2. Płatności realizowane są z góry za pośrednictwem operatora płatności Stripe (Stripe Payments Europe, Ltd.), który jako niezależny dostawca usług płatniczych odpowiada za autoryzację i rozliczenia transakcji. Ewentualne reklamacje dotyczące procesu płatności (w tym chargeback) są rozpatrywane zgodnie z regulaminem Stripe. Reklamacje dotyczące Produktu rozpatruje Sprzedawca na zasadach określonych w niniejszym Regulaminie. Ewentualne wstrzymanie płatności przez operatora może opóźnić rozpoczęcie świadczenia do czasu autoryzacji. Płatności obsługuje Stripe Payments Europe, Ltd. Dane karty płatniczej są wprowadzane bezpośrednio do systemu Stripe i nie są przechowywane przez Sprzedawcę. Stripe działa jako niezależny administrator danych.</p>
-      <p>3. <strong>Zakup na firmę:</strong> W przypadku nabycia Usługi/Produktu na cele działalności gospodarczej Nabywca jest zobowiązany podać numer NIP w chwili składania zamówienia, przesyłając wiadomość e-mail na adres: kontakt@twojcyfrowykompas.pl</p>
-      <p>Wiadomość, o której mowa w pkt 3.1, powinna zawierać:<br/>
-        a) dane Nabywcy, na podstawie których ma zostać sporządzony raport, zgodne z danymi podanymi przy płatności,<br/>
-        b) adres e-mail do doręczenia faktury,<br/>
-        c) numer NIP.</p>
-      <p>Brak podania numeru NIP na etapie zakupu może uniemożliwić wystawienie faktury na przedsiębiorcę.</p>
-      <p>Na życzenie wystawiana jest faktura elektroniczna.</p>
-      <p>W przypadku ogłoszenia obniżki ceny, Sklep wyświetla najniższą cenę Produktu z ostatnich 30 dni przed wprowadzeniem obniżki, zgodnie z przepisami.</p>
+                <h3>9. Aktualizacje i utrzymanie zgodności</h3>
+                <p>Sprzedawca zapewnia, w zakresie wymaganym przepisami, aktualizacje niezbędne do utrzymania zgodności treści cyfrowej z Umową przez okres rozsądnie oczekiwany przez konsumenta, biorąc pod uwagę rodzaj i przeznaczenie treści cyfrowej. W przypadku Produktu w formacie PDF aktualizacje polegają w szczególności na usunięciu stwierdzonych wad pliku (np. błędów technicznych), o ile są one konieczne do zachowania zgodności z Umową.</p>
+                <p>Aktualizacje, o których mowa, dotyczą wyłącznie utrzymania zgodności technicznej (np. naprawy błędów pliku), nie obejmują zmian merytorycznych, interpretacyjnych ani tworzenia nowych wersji raportu.</p>
+                <p>Produkt dostarczany jest w formacie PDF do odczytu; brak gwarancji poprawnego działania narzędzi edycyjnych PDF. Zastosowane mogą być zabezpieczenia (np. znak wodny, ograniczenie drukowania)</p>
 
-      <h3>12. Rozpoczęcie świadczenia i prawo odstąpienia</h3>
-      <p>1. Ze względu na charakter Produktu Sprzedawca rozpoczyna świadczenie niezwłocznie po złożeniu zamówienia.</p>
-      <p>2. W trakcie zamówienia Klient: (a) żąda rozpoczęcia świadczenia przed upływem terminu do odstąpienia; (b) jest informowany, że po pełnym wykonaniu usługi (dostarczeniu pliku PDF) utraci prawo odstąpienia.</p>
-      <p>3. Dodatkowo, jako że Produkt stanowi treść wykonaną według specyfikacji Klienta i służy zaspokojeniu jego zindywidualizowanych potrzeb, prawo odstąpienia nie przysługuje po pełnym wykonaniu usługi.</p>
-      <p><strong>Zwroty.</strong> W przypadku treści cyfrowych wykonywanych na zamówienie, po ich pełnym dostarczeniu prawo odstąpienia nie przysługuje (art. 38 pkt 1 i 13 ustawy o prawach konsumenta), o czym Klient jest informowany i na co wyraża zgodę przed zakupem. Niezależnie od tego, w razie braku zgodności treści cyfrowej z umową stosujemy procedurę z §15 (naprawa/obniżenie ceny/odstąpienie).</p>
+                <h3>10. Zamówienie</h3>
+                <p>1. Zamówienia można składać 24/7 poprzez formularz w Sklepie (wyświetlający się przy płatności), podając: imię, nazwisko, datę urodzenia, adres e-mail.</p>
+                <p>2. Z chwilą potwierdzenia płatności dochodzi do zawarcia Umowy.</p>
+                <p>3. Złożenie zamówienia jest równoznaczne z potwierdzeniem zapoznania się z informacjami przedkontraktowymi oraz akceptacją Regulaminu.</p>
 
-      <h3>13. Dostawa i czas realizacji; niedoręczenie</h3>
-      <p>1. Dostawa Produktu następuje drogą elektroniczną na adres e-mail wskazany przez Klienta.</p>
-      <p>2. Deklarowany czas dostawy: zwykle do 3–4 godzin w godzinach roboczych (pn–pt, 8:00–18:00 czasu polskiego – Europa/Warszawa), nie później niż do najbliższych godzin roboczych. Określone czasy mają charakter deklaracji i nie stanowią gwarantowanego SLA.</p>
-      <p>3. Jeżeli wiadomość z Produktem nie dotarła w deklarowanym czasie, Klient powinien sprawdzić folder SPAM/„Oferty”/„Inne” oraz limity skrzynki e-mail.</p>
-      <p>4. W przypadku niedoręczenia z przyczyn technicznych po stronie Klienta Sprzedawca – po weryfikacji – udostępni plik ponownie na podany podczas składania zamówienia adres e-mail.</p>
-      <p>5. Sprzedawca może stosować zabezpieczenia dostępu (link jednorazowy/ograniczona liczba pobrań). Po ich wyczerpaniu Sprzedawca może – po weryfikacji – ponownie udostępnić plik na adres e-mail z zamówienia.</p>
-      <p>6. Klient odpowiada za bezpieczeństwo swojej skrzynki e-mail i nieudostępnianie linków do pobrania osobom trzecim. Sprzedawca nie odpowiada za skutki przejęcia wiadomości po stronie Klienta (np. przez malware), z zastrzeżeniem przepisów bezwzględnie obowiązujących.</p>
-      <p>Umowę uznaje się za wykonaną z chwilą udostępnienia pliku w formacie PDF na adres e-mail Klienta podany podczas płatności. System Sprzedawcy utrwala logi wysyłki i pobrań jako dowód doręczenia.</p>
+                <h3>11. Ceny, płatności i faktury</h3>
+                <p>1. Ceny podawane are w złotych polskich i zawierają wszelkie podatki; całkowity koszt zamówienia prezentowany jest Klientowi przed złożeniem zamówienia.</p>
+                <p>2. Płatności realizowane są z góry za pośrednictwem operatora płatności Stripe (Stripe Payments Europe, Ltd.), który jako niezależny dostawca usług płatniczych odpowiada za autoryzację i rozliczenia transakcji. Ewentualne reklamacje dotyczące procesu płatności (w tym chargeback) są rozpatrywane zgodnie z regulaminem Stripe. Reklamacje dotyczące Produktu rozpatruje Sprzedawca na zasadach określonych w niniejszym Regulaminie. Ewentualne wstrzymanie płatności przez operatora może opóźnić rozpoczęcie świadczenia do czasu autoryzacji. Płatności obsługuje Stripe Payments Europe, Ltd. Dane karty płatniczej są wprowadzane bezpośrednio do systemu Stripe i nie są przechowywane przez Sprzedawcę. Stripe działa jako niezależny administrator danych.</p>
+                <p>3. <strong>Zakup na firmę:</strong> W przypadku nabycia Usługi/Produktu na cele działalności gospodarczej Nabywca jest zobowiązany podać numer NIP w chwili składania zamówienia, przesyłając wiadomość e-mail na adres: kontakt@twojcyfrowykompas.pl</p>
+                <p>Wiadomość, o której mowa w pkt 3.1, powinna zawierać:<br/>
+                a) dane Nabywcy, na podstawie których ma zostać sporządzony raport, zgodne z danymi podanymi przy płatności,<br/>
+                b) adres e-mail do doręczenia faktury,<br/>
+                c) numer NIP.</p>
+                <p>Brak podania numeru NIP na etapie zakupu może uniemożliwić wystawienie faktury na przedsiębiorcę.</p>
+                <p>Na życzenie wystawiana jest faktura elektroniczna.</p>
+                <p>W przypadku ogłoszenia obniżki ceny, Sklep wyświetla najniższą cenę Produktu z ostatnich 30 dni przed wprowadzeniem obniżki, zgodnie z przepisami.</p>
 
-      <h3>14. Odpowiedzialność Klienta za dane i zakazane treści</h3>
-      <p>1. Klient odpowiada za prawidłowość i kompletność danych podanych w zamówieniu (imię, nazwisko, data urodzenia, adres e-mail).</p>
-      <p>2. Produkt powstaje ściśle na podstawie wprowadzonych danych; błędne dane nie stanowią wady Produktu i nie uprawniają do zwrotu ani bezpłatnej korekty, chyba że brak zgodności wynika z okoliczności leżących po stronie Sprzedawcy.</p>
-      <p>3. Klient nie powinien podawać danych osób trzecich bez uprawnienia.</p>
-      <p>4. Klient oświadcza, że posiada uprawnienie do podania w Sklepie danych osobowych wykorzystywanych do przygotowania Produktu (w tym imienia, nazwiska i daty urodzenia), w szczególności gdy dane te dotyczą osoby trzeciej (np. osoby obdarowanej).</p>
-      <p>5. Sprzedawca wykorzystuje podane dane wyłącznie w celu przygotowania spersonalizowanego raportu (Produktu) i nie dokonuje weryfikacji tożsamości ani prawdziwości tych danych.</p>
-      <p>6. W najszerszym zakresie dopuszczalnym przez prawo, Sprzedawca nie ponosi odpowiedzialności za skutki wynikające z podania przez Klienta danych nieprawidłowych, niepełnych, należących do osób trzecich bez odpowiedniego uprawnienia albo wbrew przepisom prawa lub dobrym obyczajom. Powyższe nie wyłącza odpowiedzialności Sprzedawcy przewidzianej bezwzględnie obowiązującymi przepisami, w tym w zakresie braku zgodności treści cyfrowej z umową.</p>
-      <p>7. Zabronione jest przekazywanie w formularzu danych szczególnych kategorii w rozumieniu RODO (np. danych dotyczących zdrowia, poglądów politycznych, przekonań religijnych). W przypadku naruszenia Sprzedawca może – z ważnej przyczyny – odmówić realizacji zamówienia, informując Klienta i zwracając płatność, o ile zwrot jest należny.</p>
+                <h3>12. Rozpoczęcie świadczenia i prawo odstąpienia</h3>
+                <p>1. Ze względu na charakter Produktu Sprzedawca rozpoczyna świadczenie niezwłocznie po złożeniu zamówienia.</p>
+                <p>2. W trakcie zamówienia Klient: (a) żąda rozpoczęcia świadczenia przed upływem terminu do odstąpienia; (b) jest informowany, że po pełnym wykonaniu usługi (dostarczeniu pliku PDF) utraci prawo odstąpienia.</p>
+                <p>3. Dodatkowo, jako że Produkt stanowi treść wykonaną według specyfikacji Klienta i służy zaspokojeniu jego zindywidualizowanych potrzeb, prawo odstąpienia nie przysługuje po pełnym wykonaniu usługi.</p>
+                <p><strong>Zwroty.</strong> W przypadku treści cyfrowych wykonywanych na zamówienie, po ich pełnym dostarczeniu prawo odstąpienia nie przysługuje (art. 38 pkt 1 i 13 ustawy o prawach konsumenta), o czym Klient jest informowany i na co wyraża zgodę przed zakupem. Niezależnie od tego, w razie braku zgodności treści cyfrowej z umową stosujemy procedurę z §15 (naprawa/obniżenie ceny/odstąpienie).</p>
 
-      <h3>15. Reklamacje (brak zgodności treści cyfrowej z umową)</h3>
-      <p>1. Reklamację można złożyć na adres: reklamacje@twojcyfrowykompas.pl</p>
-      <p>Reklamacje będą najszybciej obsłużone pod adresem reklamacje@twojcyfrowykompas.pl, a zapytania ogólne pod kontakt@twojcyfrowykompas.pl</p>
-      <p>2. Zaleca się podanie: imienia i nazwiska, adresu e-mail użytego przy zamówieniu, numeru zamówienia, opisu zastrzeżeń oraz żądania.</p>
-      <p>3. Sprzedawca ustosunkuje się do reklamacji Konsumenta niezwłocznie, nie później niż w terminie 14 dni. Brak odpowiedzi w tym terminie oznacza uwzględnienie reklamacji Konsumenta.</p>
-      <p>4. W razie stwierdzenia braku zgodności treści cyfrowej z umową Sprzedawca – stosownie do przepisów – doprowadzi treść do zgodności (np. przekaże poprawioną wersję PDF) w rozsądnym czasie, bez nadmiernych niedogodności dla Klienta.</p>
-      <p>5. Jeżeli doprowadzenie do zgodności jest niemożliwe albo wymaga nadmiernych kosztów, Klient może żądać odpowiedniego obniżenia ceny albo odstąpić od umowy, gdy brak zgodności nie jest nieistotny. Zwrot ceny nastąpi niezwłocznie w terminie przewidzianym przepisami.</p>
-      <p>6. W przypadku jednorazowej dostawy treści cyfrowej Sprzedawca odpowiada za brak zgodności ujawniony w terminie określonym ustawowo.</p>
+                <h3>13. Dostawa i czas realizacji; niedoręczenie</h3>
+                <p>1. Dostawa Produktu następuje drogą elektroniczną na adres e-mail wskazany przez Klienta.</p>
+                <p>2. Deklarowany czas dostawy: zwykle do 3–4 godzin w godzinach roboczych (pn–pt, 8:00–18:00 czasu polskiego – Europa/Warszawa), nie później niż do najbliższych godzin roboczych. Określone czasy mają charakter deklaracji i nie stanowią gwarantowanego SLA.</p>
+                <p>3. Jeżeli wiadomość z Produktem nie dotarła w deklarowanym czasie, Klient powinien sprawdzić folder SPAM/„Oferty”/„Inne” oraz limity skrzynki e-mail.</p>
+                <p>4. W przypadku niedoręczenia z przyczyn technicznych po stronie Klienta Sprzedawca – po weryfikacji – udostępni plik ponownie na podany podczas składania zamówienia adres e-mail.</p>
+                <p>5. Sprzedawca może stosować zabezpieczenia dostępu (link jednorazowy/ograniczona liczba pobrań). Po ich wyczerpaniu Sprzedawca może – po weryfikacji – ponownie udostępnić plik na adres e-mail z zamówienia.</p>
+                <p>6. Klient odpowiada za bezpieczeństwo swojej skrzynki e-mail i nieudostępnianie linków do pobrania osobom trzecim. Sprzedawca nie odpowiada za skutki przejęcia wiadomości po stronie Klienta (np. przez malware), z zastrzeżeniem przepisów bezwzględnie obowiązujących.</p>
+                <p>Umowę uznaje się za wykonaną z chwilą udostępnienia pliku w formacie PDF na adres e-mail Klienta podany podczas płatności. System Sprzedawcy utrwala logi wysyłki i pobrań jako dowód doręczenia.</p>
 
-      <h3>16. Re-issue (ponowne przygotowanie)</h3>
-      <p>1. Na życzenie Klienta Sprzedawca może odpłatnie przygotować nową wersję raportu (re-issue), w szczególności w razie zmiany danych po złożeniu zamówienia lub na życzenie wprowadzenia korekt niemających charakteru wady.</p>
-      <p>2. Re-issue z przyczyn leżących po stronie Klienta (np. zmiana/nieprecyzyjne dane) jest usługą odpłatną według cennika wskazanego w Sklepie przed przyjęciem zlecenia. Brak akceptacji warunków oznacza rezygnację z re-issue.</p>
-      <p>3. Re-issue z przyczyn leżących po stronie Sprzedawcy (wada) – bezpłatnie.</p>
+                <h3>14. Odpowiedzialność Klienta za dane i zakazane treści</h3>
+                <p>1. Klient odpowiada za prawidłowość i kompletność danych podanych w zamówieniu (imię, nazwisko, data urodzenia, adres e-mail).</p>
+                <p>2. Produkt powstaje ściśle na podstawie wprowadzonych danych; błędne dane nie stanowią wady Produktu i nie uprawniają do zwrotu ani bezpłatnej korekty, chyba że brak zgodności wynika z okoliczności leżących po stronie Sprzedawcy.</p>
+                <p>3. Klient nie powinien podawać danych osób trzecich bez uprawnienia.</p>
+                <p>4. Klient oświadcza, że posiada uprawnienie do podania w Sklepie danych osobowych wykorzystywanych do przygotowania Produktu (w tym imienia, nazwiska i daty urodzenia), w szczególności gdy dane te dotyczą osoby trzeciej (np. osoby obdarowanej).</p>
+                <p>5. Sprzedawca wykorzystuje podane dane wyłącznie w celu przygotowania spersonalizowanego raportu (Produktu) i nie dokonuje weryfikacji tożsamości ani prawdziwości tych danych.</p>
+                <p>6. W najszerszym zakresie dopuszczalnym przez prawo, Sprzedawca nie ponosi odpowiedzialności za skutki wynikające z podania przez Klienta danych nieprawidłowych, niepełnych, należących do osób trzecich bez odpowiedniego uprawnienia albo wbrew przepisom prawa lub dobrym obyczajom. Powyższe nie wyłącza odpowiedzialności Sprzedawcy przewidzianej bezwzględnie obowiązującymi przepisami, w tym w zakresie braku zgodności treści cyfrowej z umową.</p>
+                <p>7. Zabronione jest przekazywanie w formularzu danych szczególnych kategorii w rozumieniu RODO (np. danych dotyczących zdrowia, poglądów politycznych, przekonań religijnych). W przypadku naruszenia Sprzedawca może – z ważnej przyczyny – odmówić realizacji zamówienia, informując Klienta i zwracając płatność, o ile zwrot jest należny.</p>
 
-      <h3>17. Prawa autorskie i licencja</h3>
-      <p>1. Produkt stanowi utwór w rozumieniu ustawy o prawie autorskim.</p>
-      <p>2. Klient otrzymuje niewyłączną, nieprzenoszalną licencję do osobistego użytku, udzielaną na czas nieoznaczony, terytorialnie nieograniczoną, wyłącznie do celów prywatnych Klienta.</p>
-      <p>3. Zabronione jest w szczególności: publiczne udostępnianie, publikowanie w Internecie, odsprzedaż, sublicencjonowanie, modyfikowanie i wykorzystywanie komercyjne Produktu bez uprzedniej pisemnej zgody Sprzedawcy.</p>
-      <p>4. Zakazane jest wprowadzanie Produktu do systemów uczących się/zbiorów danych, trenowanie modeli AI na Produkcie oraz publikowanie w repozytoriach danych bez uprzedniej pisemnej zgody.</p>
-      <p>5. Produkt może być oznaczony znakiem wodnym lub innym identyfikatorem w celu ochrony praw autorskich.</p>
+                <h3>15. Reklamacje (brak zgodności treści cyfrowej z umową)</h3>
+                <p>1. Reklamację można złożyć na adres: reklamacje@twojcyfrowykompas.pl</p>
+                <p>Reklamacje będą najszybciej obsłużone pod adresem reklamacje@twojcyfrowykompas.pl, a zapytania ogólne pod kontakt@twojcyfrowykompas.pl</p>
+                <p>2. Zaleca się podanie: imienia i nazwiska, adresu e-mail użytego przy zamówieniu, numeru zamówienia, opisu zastrzeżeń oraz żądania.</p>
+                <p>3. Sprzedawca ustosunkuje się do reklamacji Konsumenta niezwłocznie, nie później niż w terminie 14 dni. Brak odpowiedzi w tym terminie oznacza uwzględnienie reklamacji Konsumenta.</p>
+                <p>4. W razie stwierdzenia braku zgodności treści cyfrowej z umową Sprzedawca – stosownie do przepisów – doprowadzi treść do zgodności (np. przekaże poprawioną wersję PDF) w rozsądnym czasie, bez nadmiernych niedogodności dla Klienta.</p>
+                <p>5. Jeżeli doprowadzenie do zgodności jest niemożliwe albo wymaga nadmiernych kosztów, Klient może żądać odpowiedniego obniżenia ceny albo odstąpić od umowy, gdy brak zgodności nie jest nieistotny. Zwrot ceny nastąpi niezwłocznie w terminie przewidzianym przepisami.</p>
+                <p>6. W przypadku jednorazowej dostawy treści cyfrowej Sprzedawca odpowiada za brak zgodności ujawniony w terminie określonym ustawowo.</p>
 
-      <h3>18. Wiek i zdolność do czynności prawnych</h3>
-      <p>1. Złożenie zamówienia możliwe jest dla osób pełnoletnich posiadających pełną zdolność do czynności prawnych.</p>
-      <p>2. Osoba, która nie spełnia powyższych wymogów, może zawrzeć umowę wyłącznie za zgodą przedstawiciela ustawowego.</p>
-      <p>3. Zamówienie może złożyć wyłącznie osoba pełnoletnia posiadająca pełną zdolność do czynności prawnych. Osoba niepełnoletnia może zawrzeć umowę wyłącznie za zgodą przedstawiciela ustawowego.</p>
-      <p>4. Sprzedawca nie weryfikuje tożsamości na podstawie danych wprowadzanych w formularzu; dane te służą jedynie do przygotowania raportu zgodnie ze specyfikacją Klienta.</p>
+                <h3>16. Re-issue (ponowne przygotowanie)</h3>
+                <p>1. Na życzenie Klienta Sprzedawca może odpłatnie przygotować nową wersję raportu (re-issue), w szczególności w razie zmiany danych po złożeniu zamówienia lub na życzenie wprowadzenia korekt niemających charakteru wady.</p>
+                <p>2. Re-issue z przyczyn leżących po stronie Klienta (np. zmiana/nieprecyzyjne dane) jest usługą odpłatną według cennika wskazanego w Sklepie przed przyjęciem zlecenia. Brak akceptacji warunków oznacza rezygnację z re-issue.</p>
+                <p>3. Re-issue z przyczyn leżących po stronie Sprzedawcy (wada) – bezpłatnie.</p>
 
-      <h3>19. Siła wyższa i przerwy techniczne</h3>
-      <p>1. Sprzedawca nie odpowiada za niewykonanie lub nienależyte wykonanie spowodowane siłą wyższą, tj. zdarzeniem zewnętrznym, niemożliwym do przewidzenia i zapobieżenia (np. poważne awarie dostawców hostingu, ogólnokrajowe awarie sieci, klęski żywiołowe).</p>
-      <p>2. Sprzedawca może czasowo wstrzymać dostępność Sklepu w celu przeprowadzenia prac technicznych, informując uprzednio, jeżeli to możliwe.</p>
+                <h3>17. Prawa autorskie i licencja</h3>
+                <p>1. Produkt stanowi utwór w rozumieniu ustawy o prawie autorskim.</p>
+                <p>2. Klient otrzymuje niewyłączną, nieprzenoszalną licencję do osobistego użytku, udzielaną na czas nieoznaczony, terytorialnie nieograniczoną, wyłącznie do celów prywatnych Klienta.</p>
+                <p>3. Zabronione jest w szczególności: publiczne udostępnianie, publikowanie w Internecie, odsprzedaż, sublicencjonowanie, modyfikowanie i wykorzystywanie komercyjne Produktu bez uprzedniej pisemnej zgody Sprzedawcy.</p>
+                <p>4. Zakazane jest wprowadzanie Produktu do systemów uczących się/zbiorów danych, trenowanie modeli AI na Produkcie oraz publikowanie w repozytoriach danych bez uprzedniej pisemnej zgody.</p>
+                <p>5. Produkt może być oznaczony znakiem wodnym lub innym identyfikatorem w celu ochrony praw autorskich.</p>
 
-      <h3>20. Rozwiązywanie sporów i ADR</h3>
-      <p>1. Konsument może skorzystać z pozasądowych sposobów rozpatrywania reklamacji i dochodzenia roszczeń (ADR), w szczególności u właściwych podmiotów ADR lub za pośrednictwem Europejskiego Centrum Konsumenckiego (ECK Polska).</p>
-      <p>2. Platforma ODR została zamknięta 20 lipca 2025 r.</p>
-      <p>3. W sprawach spornych właściwe są sądy powszechne według przepisów Kodeksu postępowania cywilnego; w relacjach z przedsiębiorcami – sąd właściwy dla siedziby Sprzedawcy.</p>
-      <p>4. Postanowienie o właściwości sądu, o którym mowa w ust. 3, nie dotyczy konsumentów – w ich przypadku stosuje się przepisy powszechnie obowiązujące.</p>
+                <h3>18. Wiek i zdolność do czynności prawnych</h3>
+                <p>1. Złożenie zamówienia możliwe jest dla osób pełnoletnich posiadających pełną zdolność do czynności prawnych.</p>
+                <p>2. Osoba, która nie spełnia powyższych wymogów, może zawrzeć umowę wyłącznie za zgodą przedstawiciela ustawowego.</p>
+                <p>3. Zamówienie może złożyć wyłącznie osoba pełnoletnia posiadająca pełną zdolność do czynności prawnych. Osoba niepełnoletnia może zawrzeć umowę wyłącznie za zgodą przedstawiciela ustawowego.</p>
+                <p>4. Sprzedawca nie weryfikuje tożsamości na podstawie danych wprowadzanych w formularzu; dane te służą jedynie do przygotowania raportu zgodnie ze specyfikacją Klienta.</p>
 
-      <h3>21. Zmiany Regulaminu</h3>
-      <p>1. Sprzedawca może zmienić Regulamin z ważnych przyczyn (np. zmiana przepisów, zmiany funkcjonalności Sklepu, zmiana podmiotów realizujących płatności).</p>
-      <p>2. Zmiany nie wpływają na umowy już zawarte i wykonane. Nowe brzmienie stosuje się do zamówień złożonych po dacie wejścia w życie zmian.</p>
-      <p>3. Aktualne brzmienie Regulaminu jest nieprzerwanie dostępne w Sklepie.</p>
+                <h3>19. Siła wyższa i przerwy techniczne</h3>
+                <p>1. Sprzedawca nie odpowiada za niewykonanie lub nienależyte wykonanie spowodowane siłą wyższą, tj. zdarzeniem zewnętrznym, niemożliwym do przewidzenia i zapobieżenia (np. poważne awarie dostawców hostingu, ogólnokrajowe awarie sieci, klęski żywiołowe).</p>
+                <p>2. Sprzedawca może czasowo wstrzymać dostępność Sklepu w celu przeprowadzenia prac technicznych, informując uprzednio, jeżeli to możliwe.</p>
 
-      <h3>22. Ochrona danych osobowych</h3>
-      <p>1. Administratorem danych osobowych Klientów jest Twoj Cyfrowy Kompas Stanisław Kuchno.</p>
-      <p>2. Dane przetwarzane są w celu zawarcia i wykonania Umowy (art. 6 ust. 1 lit. b RODO), obsługi reklamacji oraz rozliczeń.</p>
-      <p>3. Szczegółowe informacje (kategorie danych, odbiorcy, okresy przechowywania, prawa osób) znajdują się w Polityce prywatności dostępnej w Sklepie.</p>
+                <h3>20. Rozwiązywanie sporów i ADR</h3>
+                <p>1. Konsument może skorzystać z pozasądowych sposobów rozpatrywania reklamacji i dochodzenia roszczeń (ADR), w szczególności u właściwych podmiotów ADR lub za pośrednictwem Europejskiego Centrum Konsumenckiego (ECK Polska).</p>
+                <p>2. Platforma ODR została zamknięta 20 lipca 2025 r.</p>
+                <p>3. W sprawach spornych właściwe są sądy powszechne według przepisów Kodeksu postępowania cywilnego; w relacjach z przedsiębiorcami – sąd właściwy dla siedziby Sprzedawcy.</p>
+                <p>4. Postanowienie o właściwości sądu, o którym mowa w ust. 3, nie dotyczy konsumentów – w ich przypadku stosuje się przepisy powszechnie obowiązujące.</p>
 
-      <h3>23. Postanowienia końcowe</h3>
-      <p>1. W sprawach nieuregulowanych zastosowanie mają właściwe przepisy prawa powszechnie obowiązującego.</p>
-      <p>2. Do umów zawartych przed zmianą Regulaminu stosuje się Regulamin obowiązujący w dacie zamówienia.</p>
+                <h3>21. Zmiany Regulaminu</h3>
+                <p>1. Sprzedawca może zmienić Regulamin z ważnych przyczyn (np. zmiana przepisów, zmiany funkcjonalności Sklepu, zmiana podmiotów realizujących płatności).</p>
+                <p>2. Zmiany nie wpływają na umowy już zawarte i wykonane. Nowe brzmienie stosuje się do zamówień złożonych po dacie wejścia w życie zmian.</p>
+                <p>3. Aktualne brzmienie Regulaminu jest nieprzerwanie dostępne w Sklepie.</p>
 
- <p><strong>Obowiązuje od:</strong> 13.10.2025</p>
-      <p><strong>Sprzedawca/Usługodawca:</strong> Twój Cyfrowy Kompas Stanisław Kuchno (jednoosobowa działalność gospodarcza)</p>
-      <p><strong>NIP:</strong> 9452318946</p>
-      <p><strong>REGON:</strong> 542962587</p>
-      <p><strong>E-mail (kontakt ogólny):</strong> kontakt@twojcyfrowykompas.pl, raport@twojcyfrowykompas.pl</p>
-      <p><strong>E-mail (reklamacje):</strong> reklamacje@twojcyfrowykompas.pl</p>
-      <p><strong>Adres:</strong> ul. Krzywy Zaułek 3/20 30-123 Kraków</p>
-      <p><strong>Sklep:</strong> serwis internetowy Sprzedawcy umożliwiający zakup spersonalizowanych raportów numerologicznych (treści cyfrowe) w formacie PDF.</p>
-      <p><strong>Język umowy:</strong> polski.</p>
-      <p><strong>Prawo właściwe:</strong> prawo polskie.</p>
+                <h3>22. Ochrona danych osobowych</h3>
+                <p>1. Administratorem danych osobowych Klientów jest Twoj Cyfrowy Kompas Stanisław Kuchno.</p>
+                <p>2. Dane przetwarzane są w celu zawarcia i wykonania Umowy (art. 6 ust. 1 lit. b RODO), obsługi reklamacji oraz rozliczeń.</p>
+                <p>3. Szczegółowe informacje (kategorie danych, odbiorcy, okresy przechowywania, prawa osób) znajdują się w Polityce prywatności dostępnej w Sklepie.</p>
 
-    </article>
-    <hr style="margin:28px 0;border:0;border-top:1px solid rgba(20,24,30,.08)"/>
-  </section>
-</main>
-<footer>
-  <div class="container">
-    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
-      <small>© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</small>
-      <div style="display:flex;gap:16px">
-        <a href="../">Strona główna</a>
-        <a href="../#zamow">Zamów</a>
-        <a href="../kontakt/">Kontakt</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<script>
-  (function () {
-    const logo = document.querySelector('a.brand');
-    if (!logo) return;
-    logo.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = '../';
-      if (location.pathname.replace(/\/+$/, '') === ''.replace(/\/+$/, '')) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.location.href = target;
-      }
-    });
-  })();
-</script>
+                <h3>23. Postanowienia końcowe</h3>
+                <p>1. W sprawach nieuregulowanych zastosowanie mają właściwe przepisy prawa powszechnie obowiązującego.</p>
+                <p>2. Do umów zawartych przed zmianą Regulaminu stosuje się Regulamin obowiązujący w dacie zamówienia.</p>
+
+                <div class="mt-12 p-6 bg-white/5 rounded-2xl border border-white/10 text-sm">
+                    <p><strong>Obowiązuje od:</strong> 13.10.2025</p>
+                    <p><strong>Sprzedawca/Usługodawca:</strong> Twój Cyfrowy Kompas Stanisław Kuchno (jednoosobowa działalność gospodarcza)</p>
+                    <p><strong>NIP:</strong> 9452318946</p>
+                    <p><strong>REGON:</strong> 542962587</p>
+                    <p><strong>E-mail (kontakt ogólny):</strong> kontakt@twojcyfrowykompas.pl, raport@twojcyfrowykompas.pl</p>
+                    <p><strong>E-mail (reklamacje):</strong> reklamacje@twojcyfrowykompas.pl</p>
+                    <p><strong>Adres:</strong> ul. Krzywy Zaułek 3/20 30-123 Kraków</p>
+                    <p><strong>Sklep:</strong> serwis internetowy Sprzedawcy umożliwiający zakup spersonalizowanych raportów numerologicznych (treści cyfrowe) w formacie PDF.</p>
+                    <p><strong>Język umowy:</strong> polski.</p>
+                    <p><strong>Prawo właściwe:</strong> prawo polskie.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 px-6 text-white font-cinzel">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-12">
+            <div>
+                <h3 class="font-cinzel text-2xl font-black mb-3 gradient-text uppercase tracking-widest text-center md:text-left">Twój Cyfrowy Kompas</h3>
+                <p class="text-gray-500 text-sm max-w-xs font-sans text-center md:text-left mx-auto md:mx-0">© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</p>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold">
+                <a href="../" class="hover:text-white transition">Strona główna</a>
+                <a href="../#faq" class="hover:text-white transition">Pomoc / FAQ</a>
+                <a href="../kontakt/" class="hover:text-white transition">Kontakt</a>
+                <a href="../#zamow" class="cta-button px-6 py-2 rounded-full border border-mystic-gold text-white hover:bg-mystic-gold hover:text-mystic-blue transition duration-300 uppercase tracking-widest text-[10px] font-black text-center">Zamów Raport</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+    </script>
 </body>
 </html>
