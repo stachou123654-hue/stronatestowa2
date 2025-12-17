@@ -45,6 +45,26 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
+        /* Gwiazdki - Naprawiony złoty kolor */
+        .premium-star-gold {
+            color: #fcd34d !important;
+            fill: #fcd34d !important;
+        }
+
+        /* Stylizacja wstążek Premium */
+        .premium-ribbon-bg {
+            background: linear-gradient(135deg, #d4af37 0%, #fcd34d 50%, #b4941f 100%);
+            color: #0a0f1d;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
         /* Slider Styles for Glide (Hero) */
         .report-glide {
             width: min(380px, 85vw);
@@ -164,7 +184,7 @@
                     <span class="gradient-text uppercase">Twojego Przeznaczenia</span>
                 </h1>
                 <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
-                    Twoja data urodzenia to nie przypadek. Odbierz 13-stronicową, osobistą mapę drogową, która ujawni Twoje ukryte talenty, zidentyfikuje blokady i wskaże najlepszy czas na kluczowe życiowe zmiany. Poznaj siebie na poziomie, o którym większość tylko marzy.
+                    Odszyfruj kod swojego przeznaczenia. Odbierz 13-stronicowy, spersonalizowany raport o Tobie i poznaj ukryte talenty oraz plan zapisany w Twojej dacie urodzenia.
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
                     <div class="glass px-4 py-2 rounded-lg flex items-center space-x-2">
@@ -184,22 +204,36 @@
                     Odbierz swoją mapę życia
                 </a>
                 
-                <div class="mt-8 flex items-center justify-center lg:justify-start space-x-4">
-                    <div class="flex -space-x-3">
-                        <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
-                        <img src="https://i.pravatar.cc/100?u=2" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
-                        <img src="https://i.pravatar.cc/100?u=3" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
+                <!-- Social Proof Block -->
+                <div class="mt-8 flex flex-col items-center lg:items-start space-y-3">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex -space-x-3">
+                            <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
+                            <img src="https://i.pravatar.cc/100?u=2" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
+                            <img src="https://i.pravatar.cc/100?u=3" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
+                        </div>
+                        <p class="text-sm text-gray-400"><span class="text-white font-bold">+900 zadowolonych osób</span> zaufało liczbom</p>
                     </div>
-                    <p class="text-sm text-gray-400"><span class="text-white font-bold">+900 zadowolonych osób</span> zaufało liczbom</p>
+                    <!-- Ocena Widget - Gwiazdki dopasowane do wstążek -->
+                    <div class="flex items-center space-x-2 bg-white/5 px-4 py-1.5 rounded-full border border-white/10 w-fit backdrop-blur-sm shadow-sm transition hover:bg-white/10">
+                        <div class="flex">
+                            <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                            <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                            <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                            <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                            <i data-lucide="star" class="premium-star-gold w-4 h-4 opacity-80"></i>
+                        </div>
+                        <span class="text-xs font-bold text-white tracking-wider">4.93/5 Średnia ocena naszych klientów</span>
+                    </div>
                 </div>
             </div>
 
             <div class="relative" data-aos="fade-left">
                 <!-- Glide.js Slider in Hero -->
                 <div class="glide report-glide" id="heroSlider">
-                    <!-- Ribbon: Przykładowe Strony Raportu -->
-                    <div class="absolute top-0 right-0 bg-mystic-gold text-mystic-blue text-[9px] font-black w-[200px] py-1.5 rotate-45 translate-x-[65px] translate-y-[25px] uppercase tracking-widest whitespace-nowrap shadow-lg z-20 text-center pointer-events-none">
-                        PRZYKŁADOWE STRONY RAPORTU
+                    <!-- Ribbon: Przykładowe Strony Raportu - Estetyka Premium -->
+                    <div class="absolute top-0 right-0 premium-ribbon-bg text-[8px] md:text-[9px] w-[220px] py-2 rotate-45 translate-x-[75px] translate-y-[35px] whitespace-nowrap z-20 text-center pointer-events-none">
+                        Przykładowe strony raportu
                     </div>
 
                     <div class="glide__track" data-glide-el="track">
@@ -309,9 +343,9 @@
                 </div>
                 
                 <div class="glass p-4 rounded-3xl relative" data-aos="zoom-in">
-                    <!-- Slidebox: Wstążka Plakaty -->
-                    <div class="absolute top-0 right-0 bg-mystic-gold text-mystic-blue text-[9px] font-black w-[200px] py-1.5 rotate-45 translate-x-[65px] translate-y-[25px] uppercase tracking-widest whitespace-nowrap shadow-lg z-20 text-center pointer-events-none">
-                        PRZYKŁADOWE PLAKATY
+                    <!-- Slidebox: Wstążka Plakaty - Estetyka Premium -->
+                    <div class="absolute top-0 right-0 premium-ribbon-bg text-[8px] md:text-[9px] w-[220px] py-2 rotate-45 translate-x-[75px] translate-y-[35px] whitespace-nowrap z-20 text-center pointer-events-none">
+                        Przykładowe plakaty
                     </div>
                     <!-- Slidebox from original code -->
                     <div class="slidebox" aria-label="Podgląd kwadratowych stron/plakatów">
@@ -385,15 +419,15 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-24 px-6 max-w-4xl mx-auto">
+    <section id="faq" class="py-24 px-6 max-w-4xl mx-auto pb-12">
         <h2 class="font-cinzel text-3xl font-bold mb-12 text-center uppercase text-white" data-aos="fade-up">Częste Pytania</h2>
         <div class="space-y-4">
             <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up">
                 <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left">
-                    Czy muszę znać godzinę urodzenia?
+                    Czy użyć swojego nazwiska panieńskiego, czy aktualnego?
                     <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
                 </summary>
-                <p class="mt-4 text-gray-400 text-sm font-light">Nie, numerologia pitagorejska opiera się wyłącznie na dacie urodzenia oraz imionach. Godzina nie jest wymagana.</p>
+                <p class="mt-4 text-gray-400 text-sm font-light">W numerologii pitagorejska zalecane jest użycie imienia i nazwiska nadanego przy urodzeniu, czyli nazwiska panieńskiego.</p>
             </details>
             <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="100">
                 <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left">
@@ -402,7 +436,7 @@
                 </summary>
                 <p class="mt-4 text-gray-400 text-sm font-light">Czas dostawy na e-mail to zwykle od 3 do 4 godzin w godzinach roboczych.</p>
             </details>
-            <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="100">
+            <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="200">
                 <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left">
                     Co to jest Numerologia?
                     <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
@@ -412,18 +446,31 @@
         </div>
     </section>
 
+    <!-- Final High-Engagement CTA -->
+    <section class="pb-24 px-6 text-center" data-aos="zoom-in">
+        <div class="max-w-3xl mx-auto glass p-8 md:p-12 rounded-[40px] border-white/10 gold-glow">
+            <h3 class="font-cinzel text-2xl md:text-3xl font-black mb-6 text-white uppercase tracking-widest">Nadal się wahasz?</h3>
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-10 font-light">
+                To zaledwie symboliczna kwota za wiedzę, która może <span class="text-white font-bold">całkowicie odmienić Twój sposób patrzenia na świat.</span> Zainwestuj w siebie równowartość dwóch kaw i zyskaj jasność, której szukasz od lat. <span class="gradient-text font-black uppercase">Naprawdę warto – poczuj tę zmianę już dziś.</span>
+            </p>
+            <a href="#zamow" class="cta-button inline-flex px-12 py-5 rounded-2xl text-xl font-black uppercase tracking-widest text-white shadow-2xl hover:scale-110 transition duration-300">
+                ODKRYWAM SWÓJ POTENCJAŁ
+            </a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-20 border-t border-white/5 px-6 text-white font-cinzel">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-12">
             <div>
                 <h3 class="font-cinzel text-2xl font-black mb-3 gradient-text uppercase tracking-widest text-center md:text-left">Twój Cyfrowy Kompas</h3>
-                <p class="text-gray-500 text-sm max-w-xs font-sans text-center md:text-left mx-auto md:mx-0">Twoja mapa w głąb siebie i planu zapisanego w Twojej dacie urodzenia.</p>
+                <p class="text-gray-500 text-sm max-w-xs font-sans text-center md:text-left mx-auto md:mx-0">© 2025 Twój Cyfrowy Kompas. Wszelkie prawa zastrzeżone.</p>
             </div>
             <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold">
                 <a href="./regulamin/" target="_self" class="hover:text-white transition">Regulamin</a>
                 <a href="./polityka-prywatnosci/" target="_self" class="hover:text-white transition">Polityka Prywatności</a>
                 <a href="kontakt/" class="hover:text-white transition">Kontakt</a>
-                <a href="#zamow" class="cta-button px-6 py-2 rounded-full border border-mystic-gold text-mystic-gold hover:bg-mystic-gold hover:text-mystic-blue transition duration-300 uppercase tracking-widest text-[10px] font-black text-center">Zamów Raport</a>
+                <a href="#zamow" class="cta-button px-6 py-2 rounded-full border border-mystic-gold text-white hover:bg-mystic-gold hover:text-mystic-blue transition duration-300 uppercase tracking-widest text-[10px] font-black text-center">Zamów Raport</a>
             </div>
         </div>
     </footer>
