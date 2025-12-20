@@ -89,7 +89,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Behind everything */
+            z-index: -1;
             pointer-events: none;
             background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
         }
@@ -116,7 +116,8 @@
             padding: 0;
             overflow-x: hidden;
             position: relative;
-            background-color: var(--mystic-blue);
+            /* KLUCZOWA POPRAWKA: Przezroczyste tło body, by widzieć Canvas pod spodem */
+            background-color: transparent;
         }
 
         body {
@@ -369,7 +370,7 @@
         </section>
 
         <!-- O RAPORCIE -->
-        <section id="o-raporcie" class="py-24 px-6">
+        <section id="o-raporcie" class="py-24 px-6 bg-white/5">
             <div class="max-w-7xl mx-auto text-center">
                 <h2 class="font-cinzel text-3xl md:text-5xl font-black mb-16 uppercase text-white" data-aos="fade-up">Co dokładnie otrzymasz?</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
@@ -380,7 +381,6 @@
                         <h3 class="font-cinzel text-xl font-black mb-3 uppercase text-white">Mapa Cykli Życia</h3>
                         <p class="text-gray-400 text-sm leading-relaxed font-light">Twój osobisty harmonogram. Dowiedz się, kiedy przyspieszyć, a kiedy przeczekać.</p>
                     </div>
-                    <!-- ... rest of the blocks ... -->
                     <div class="glass p-8 rounded-3xl hover:bg-white/10 transition group border-white/10" data-aos="zoom-in" data-aos-delay="100">
                         <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-6">
                             <i data-lucide="trending-up" class="text-yellow-500 w-6 h-6"></i>
@@ -570,61 +570,59 @@
             const ctx = canvas.getContext('2d');
             let width, height;
             let particles = [];
-            let scrollY = window.scrollY;
+            let lastScrollY = window.scrollY;
 
-            // Types of particles: 0 = dust, 1 = floating number
             const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
             function initCanvas() {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
                 particles = [];
-                // Create dust
-                for (let i = 0; i < 80; i++) {
-                    particles.push(new Particle(0));
-                }
-                // Create numbers
-                for (let i = 0; i < 15; i++) {
-                    particles.push(new Particle(1));
-                }
+                // Więcej cząsteczek dla lepszego efektu
+                for (let i = 0; i < 100; i++) particles.push(new Particle(0));
+                for (let i = 0; i < 20; i++) particles.push(new Particle(1));
             }
 
             class Particle {
                 constructor(type) {
                     this.type = type;
-                    this.reset();
+                    this.reset(true);
                 }
 
-                reset() {
+                reset(initial = false) {
                     this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    this.size = this.type === 0 ? Math.random() * 2 : 12 + Math.random() * 20;
-                    this.speedY = (Math.random() * 0.5 + 0.2) * (this.type === 0 ? 1 : 0.5);
-                    this.opacity = Math.random() * 0.5 + 0.1;
+                    // Jeśli initial, rozrzuć po całym ekranie, jeśli nie - spawnuje na dole/górze
+                    this.y = initial ? Math.random() * height : (Math.random() > 0.5 ? -20 : height + 20);
+                    this.size = this.type === 0 ? Math.random() * 2.5 + 0.5 : 14 + Math.random() * 18;
+                    this.speedY = (Math.random() * 0.4 + 0.1);
+                    this.opacity = Math.random() * 0.4 + 0.2;
                     this.char = numbers[Math.floor(Math.random() * numbers.length)];
-                    this.parallaxFactor = Math.random() * 0.5 + 0.2; // How much it reacts to scroll
+                    this.parallaxFactor = Math.random() * 0.6 + 0.3; 
+                    // Kolor złoty dla liczb, biały dla pyłu
+                    this.color = this.type === 1 ? `rgba(212, 175, 55, ${this.opacity})` : `rgba(255, 255, 255, ${this.opacity})`;
                 }
 
                 update() {
-                    // Constant slow movement
+                    // Stały ruch w górę
                     this.y -= this.speedY;
 
-                    // Scroll reaction - this creates the "pull" effect
-                    const scrollDelta = window.scrollY - scrollY;
+                    // Reakcja na scroll
+                    const currentScrollY = window.scrollY;
+                    const scrollDelta = currentScrollY - lastScrollY;
                     this.y -= scrollDelta * this.parallaxFactor;
 
-                    if (this.y < -50) this.y = height + 50;
-                    if (this.y > height + 50) this.y = -50;
+                    if (this.y < -100) this.y = height + 100;
+                    if (this.y > height + 100) this.y = -100;
                 }
 
                 draw() {
-                    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                    ctx.fillStyle = this.color;
                     if (this.type === 0) {
                         ctx.beginPath();
                         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                         ctx.fill();
                     } else {
-                        ctx.font = `${this.size}px Cinzel`;
+                        ctx.font = `bold ${this.size}px Cinzel`;
                         ctx.fillText(this.char, this.x, this.y);
                     }
                 }
@@ -636,7 +634,7 @@
                     p.update();
                     p.draw();
                 });
-                scrollY = window.scrollY;
+                lastScrollY = window.scrollY;
                 requestAnimationFrame(animate);
             }
 
