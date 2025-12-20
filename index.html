@@ -91,7 +91,63 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            background: #0f172a; /* Fallback */
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, var(--mystic-gold), var(--mystic-accent));
+            z-index: 100;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Bouncing Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.8;
+            transition: opacity 0.5s ease;
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mouse-icon {
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .mouse-icon::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: scroll-dot 2s infinite;
+        }
+
+        @keyframes scroll-dot {
+            0% { opacity: 1; transform: translate(-50%, 0); }
+            100% { opacity: 0; transform: translate(-50%, 15px); }
         }
 
         .is-ios h1 {
@@ -116,7 +172,6 @@
             padding: 0;
             overflow-x: hidden;
             position: relative;
-            /* KLUCZOWA POPRAWKA: Przezroczyste tło body, by widzieć Canvas pod spodem */
             background-color: transparent;
         }
 
@@ -271,6 +326,9 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="progressBar"></div>
+
     <!-- CANVAS BACKGROUND ANIMATION -->
     <canvas id="mystic-canvas"></canvas>
 
@@ -295,7 +353,7 @@
         </nav>
 
         <!-- HERO SECTION -->
-        <section class="pt-32 pb-20 px-6">
+        <section class="min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 pointer-events-none text-white font-black z-0">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="animate-[spin_120s_linear_infinite]">
                     <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2" />
@@ -339,16 +397,6 @@
                             </div>
                             <p class="text-sm text-gray-400"><span class="text-white font-bold">+900 zadowolonych osób</span> zaufało liczbom</p>
                         </div>
-                        <div class="flex items-center space-x-2 bg-white/5 px-4 py-1.5 rounded-full border border-white/10 w-fit backdrop-blur-sm shadow-sm transition hover:bg-white/10">
-                            <div class="flex">
-                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
-                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
-                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
-                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
-                                <i data-lucide="star" class="premium-star-gold w-4 h-4 opacity-80"></i>
-                            </div>
-                            <span class="text-xs font-bold text-white tracking-wider">4.93/5 Średnia ocena naszych klientów</span>
-                        </div>
                     </div>
                 </div>
 
@@ -366,6 +414,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Animated Scroll Indicator -->
+            <div class="scroll-indicator" id="scrollIndicator">
+                <span class="text-[10px] uppercase tracking-[0.3em] mb-3 opacity-60">Przewiń w dół</span>
+                <div class="mouse-icon"></div>
             </div>
         </section>
 
@@ -564,6 +618,27 @@
         lucide.createIcons();
         AOS.init({ duration: 1000, once: true, offset: 100 });
 
+        // --- SCROLL PROGRESS & INDICATOR LOGIC ---
+        (function() {
+            const progressBar = document.getElementById('progressBar');
+            const scrollIndicator = document.getElementById('scrollIndicator');
+
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                
+                if (progressBar) progressBar.style.width = scrolled + "%";
+                
+                // Hide indicator after first scroll
+                if (winScroll > 100 && scrollIndicator) {
+                    scrollIndicator.classList.add('hidden');
+                } else if (winScroll <= 100 && scrollIndicator) {
+                    scrollIndicator.classList.remove('hidden');
+                }
+            });
+        })();
+
         // --- MYSTIC BACKGROUND ANIMATION ENGINE ---
         (function() {
             const canvas = document.getElementById('mystic-canvas');
@@ -578,7 +653,6 @@
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
                 particles = [];
-                // Więcej cząsteczek dla lepszego efektu
                 for (let i = 0; i < 100; i++) particles.push(new Particle(0));
                 for (let i = 0; i < 20; i++) particles.push(new Particle(1));
             }
@@ -591,22 +665,17 @@
 
                 reset(initial = false) {
                     this.x = Math.random() * width;
-                    // Jeśli initial, rozrzuć po całym ekranie, jeśli nie - spawnuje na dole/górze
                     this.y = initial ? Math.random() * height : (Math.random() > 0.5 ? -20 : height + 20);
                     this.size = this.type === 0 ? Math.random() * 2.5 + 0.5 : 14 + Math.random() * 18;
                     this.speedY = (Math.random() * 0.4 + 0.1);
                     this.opacity = Math.random() * 0.4 + 0.2;
                     this.char = numbers[Math.floor(Math.random() * numbers.length)];
                     this.parallaxFactor = Math.random() * 0.6 + 0.3; 
-                    // Kolor złoty dla liczb, biały dla pyłu
                     this.color = this.type === 1 ? `rgba(212, 175, 55, ${this.opacity})` : `rgba(255, 255, 255, ${this.opacity})`;
                 }
 
                 update() {
-                    // Stały ruch w górę
                     this.y -= this.speedY;
-
-                    // Reakcja na scroll
                     const currentScrollY = window.scrollY;
                     const scrollDelta = currentScrollY - lastScrollY;
                     this.y -= scrollDelta * this.parallaxFactor;
@@ -629,6 +698,12 @@
             }
 
             function animate() {
+                // Background color shift based on scroll
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollFraction = window.scrollY / maxScroll;
+                const hue = 222 + (scrollFraction * 20); // Shift from blue to deep violet
+                canvas.style.background = `radial-gradient(circle at center, hsl(${hue}, 33%, 20%) 0%, hsl(${hue}, 47%, 11%) 100%)`;
+
                 ctx.clearRect(0, 0, width, height);
                 particles.forEach(p => {
                     p.update();
