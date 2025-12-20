@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 <head>
+    <!-- WSZYSTKIE SKRYPTY ANALITYCZNE Z ORYGINAŁU -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
@@ -68,6 +69,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Twój Cyfrowy Kompas — Spersonalizowany Raport Numerologiczny</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -91,7 +93,6 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
-            background: #0f172a; /* Fallback */
         }
 
         /* Scroll Progress Bar */
@@ -100,16 +101,43 @@
             top: 0;
             left: 0;
             width: 0%;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(to right, var(--mystic-gold), var(--mystic-accent));
             z-index: 100;
             transition: width 0.1s ease-out;
         }
 
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 40;
+            transform: translateY(120px);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .floating-cta.show {
+            transform: translateY(0);
+        }
+
+        /* Social Proof Toast */
+        .social-toast {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 50;
+            max-width: 320px;
+            transform: translateX(-160%);
+            transition: transform 0.6s ease;
+        }
+        .social-toast.show {
+            transform: translateX(0);
+        }
+
         /* Bouncing Scroll Indicator */
         .scroll-indicator {
             position: absolute;
-            bottom: 2rem;
+            bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -117,29 +145,25 @@
             align-items: center;
             opacity: 0.8;
             transition: opacity 0.5s ease;
+            z-index: 20;
         }
-
-        .scroll-indicator.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
 
         .mouse-icon {
-            width: 24px;
-            height: 38px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
+            width: 26px;
+            height: 42px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 14px;
             position: relative;
         }
-
         .mouse-icon::after {
             content: '';
             position: absolute;
-            top: 8px;
+            top: 10px;
             left: 50%;
             width: 4px;
             height: 4px;
-            background: white;
+            background: var(--mystic-gold);
             border-radius: 50%;
             transform: translateX(-50%);
             animation: scroll-dot 2s infinite;
@@ -147,23 +171,15 @@
 
         @keyframes scroll-dot {
             0% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, 15px); }
+            100% { opacity: 0; transform: translate(-50%, 18px); }
         }
 
-        .is-ios h1 {
-            font-size: 2.4rem !important;
-        }
-        .is-ios section:first-of-type {
-            padding-top: 10rem !important;
-        }
+        .is-ios h1 { font-size: 2.4rem !important; }
+        .is-ios section:first-of-type { padding-top: 10rem !important; }
         
         @media (min-width: 768px) {
-            .is-ios h1 {
-                font-size: 3.6rem !important;
-            }
-            .is-ios section:first-of-type {
-                padding-top: 12rem !important;
-            }
+            .is-ios h1 { font-size: 3.6rem !important; }
+            .is-ios section:first-of-type { padding-top: 12rem !important; }
         }
 
         html, body {
@@ -182,20 +198,12 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        [data-aos] {
-            pointer-events: none;
-            max-width: 100%;
-        }
-        .aos-animate {
-            pointer-events: auto;
-        }
-
         .font-cinzel { font-family: 'Cinzel', serif; }
 
         .glass {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -206,7 +214,7 @@
         }
 
         .gold-glow {
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
         }
 
         .premium-star-gold {
@@ -233,7 +241,7 @@
             margin: 0 auto;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 1.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
             background: #1e293b;
             position: relative;
             overflow: visible !important;
@@ -245,10 +253,12 @@
             height: 100%; 
             display: grid; 
             place-items: center; 
-            transition: transform .5s ease, opacity .5s ease;
+            transition: transform .6s ease, opacity .6s ease;
             border-radius: inherit;
+            opacity: 0.3;
         }
-        .report-glide .glide__slide img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: inherit; }
+        .report-glide .glide__slide--active { opacity: 1; transform: scale(1); }
+        .report-glide .glide__slide img { width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
         
         .report-glide .glide__arrow {
             position: absolute;
@@ -267,14 +277,33 @@
         .report-glide .glide__arrow--left { left: -22px; }
         .report-glide .glide__arrow--right { right: -22px; }
 
-        .report-glide .glide__slide { opacity: .35; }
-        .report-glide .glide__slide--active { opacity: 1; transform: scale(1); }
+        .cta-button {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+        }
+
+        .benefit-card {
+            transition: all 0.4s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--mystic-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
 
         .slidebox {
             position: relative;
             width: 100%;
             aspect-ratio: 1/1;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             overflow: hidden !important; 
             background: #1e293b;
             border: 1px solid rgba(255,255,255,0.1);
@@ -286,38 +315,14 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.6s ease;
-            will-change: opacity;
+            transition: opacity 0.8s ease;
             border-radius: inherit;
         }
-        .slidebox img.show {
-            opacity: 1;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
-        }
-
-        section {
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden !important;
-            position: relative;
-        }
+        .slidebox img.show { opacity: 1; }
 
         .site-wrapper {
             width: 100%;
             position: relative;
-            overflow-x: hidden !important;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -326,11 +331,30 @@
 </head>
 
 <body>
-    <!-- Scroll Progress Bar -->
+    <!-- Scroll Progress -->
     <div class="scroll-progress" id="progressBar"></div>
 
-    <!-- CANVAS BACKGROUND ANIMATION -->
+    <!-- Background Canvas -->
     <canvas id="mystic-canvas"></canvas>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" id="floatingCta">
+        <a href="#zamow" class="cta-button px-8 py-5 rounded-3xl font-bold text-white shadow-2xl flex items-center space-x-3 text-lg uppercase tracking-wider">
+            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+            <span>ZAMÓW RAPORT</span>
+        </a>
+    </div>
+
+    <!-- Social Proof Toast -->
+    <div class="social-toast glass p-5 rounded-3xl flex items-center space-x-5 border-white/20 shadow-2xl" id="purchaseToast">
+        <div class="w-12 h-12 rounded-full bg-mystic-gold/20 flex items-center justify-center shrink-0 border border-mystic-gold/30">
+            <i data-lucide="user-check" class="text-mystic-gold w-7 h-7"></i>
+        </div>
+        <div>
+            <p class="text-[11px] text-gray-400 uppercase font-black tracking-widest mb-1">Przed chwilą</p>
+            <p class="text-sm text-white leading-tight font-semibold" id="toastText">Ania z Gdańska odebrała swój raport!</p>
+        </div>
+    </div>
 
     <div class="site-wrapper">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTSXK7Q3"
@@ -340,6 +364,7 @@
           <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=25081262318167853&ev=PageView&noscript=1"/>
         </noscript>
 
+        <!-- NAVIGATION -->
         <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-4">
             <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-center">
                 <a href="#zamow" class="font-cinzel text-[23px] font-bold tracking-widest gradient-text uppercase text-white">Twój Cyfrowy Kompas</a>
@@ -354,55 +379,65 @@
 
         <!-- HERO SECTION -->
         <section class="min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 pointer-events-none text-white font-black z-0">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="animate-[spin_120s_linear_infinite]">
-                    <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2" />
-                    <path d="M100 10 L100 190 M10 100 L190 100 M35 35 L165 165 M165 35 L35 165" stroke="currentColor" stroke-width="0.2" />
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-10 pointer-events-none text-white font-black z-0">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="animate-[spin_150s_linear_infinite]">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="2 2" />
+                    <path d="M100 10 L100 190 M10 100 L190 100 M35 35 L165 165 M165 35 L35 165" stroke="currentColor" stroke-width="0.1" />
                 </svg>
             </div>
 
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10 text-center lg:text-left">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10 text-center lg:text-left">
                 <div data-aos="fade-right">
-                    <h1 class="font-cinzel text-5xl md:text-7xl font-black mb-6 leading-tight uppercase text-white">
+                    <h1 class="font-cinzel text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] uppercase text-white">
                         Odkryj Tajny Zapis <br> 
                         <span class="gradient-text uppercase">Twojego Losu</span>
                     </h1>
-                    <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
+                    <p class="text-gray-400 text-lg md:text-xl mb-12 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
                         Odszyfruj kod swojego przeznaczenia. Odbierz 13-stronicowy, spersonalizowany raport o Tobie i poznaj ukryte talenty oraz plan zapisany w Twojej dacie urodzenia.
                     </p>
-                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
-                        <div class="glass px-4 py-2 rounded-lg flex items-center space-x-2">
-                            <i data-lucide="file-text" class="text-mystic-gold w-5 h-5"></i>
-                            <span class="text-sm font-semibold text-white">13 stron wiedzy o Tobie</span>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-5 mb-12">
+                        <div class="glass px-5 py-3 rounded-2xl flex items-center space-x-3 border-white/10">
+                            <i data-lucide="file-text" class="text-mystic-gold w-6 h-6"></i>
+                            <span class="text-sm font-bold text-white">13 stron wiedzy</span>
                         </div>
-                        <div class="glass px-4 py-2 rounded-lg flex items-center space-x-2">
-                            <i data-lucide="image" class="text-mystic-gold w-5 h-5"></i>
-                            <span class="text-sm font-semibold text-white">+3 Spersonalizowane Plakaty</span>
+                        <div class="glass px-5 py-3 rounded-2xl flex items-center space-x-3 border-white/10">
+                            <i data-lucide="image" class="text-mystic-gold w-6 h-6"></i>
+                            <span class="text-sm font-bold text-white">+3 Spersonalizowane Plakaty</span>
                         </div>
-                        <div class="glass px-4 py-2 rounded-lg flex items-center space-x-2">
-                            <i data-lucide="clock" class="text-mystic-gold w-5 h-5"></i>
-                            <span class="text-sm font-semibold text-white">Dostawa w 3h</span>
+                        <div class="glass px-5 py-3 rounded-2xl flex items-center space-x-3 border-white/10">
+                            <i data-lucide="clock" class="text-mystic-gold w-6 h-6"></i>
+                            <span class="text-sm font-bold text-white">Dostawa w 3h</span>
                         </div>
                     </div>
-                    <a href="#zamow" class="cta-button inline-block px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl text-white uppercase tracking-wider">
+                    <a href="#zamow" class="cta-button inline-block px-12 py-6 rounded-3xl text-2xl font-black shadow-2xl text-white uppercase tracking-widest transition-transform hover:scale-110">
                         Odbierz swoją mapę życia
                     </a>
                     
-                    <div class="mt-8 flex flex-col items-center lg:items-start space-y-3">
+                    <div class="mt-12 flex flex-col items-center lg:items-start space-y-4">
                         <div class="flex items-center space-x-4">
-                            <div class="flex -space-x-3">
-                                <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
-                                <img src="https://i.pravatar.cc/100?u=2" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
-                                <img src="https://i.pravatar.cc/100?u=3" class="w-10 h-10 rounded-full border-2 border-mystic-blue" alt="Użytkownik">
+                            <div class="flex -space-x-4">
+                                <img src="https://i.pravatar.cc/100?u=1" class="w-12 h-12 rounded-full border-2 border-[#0f172a]" alt="User">
+                                <img src="https://i.pravatar.cc/100?u=2" class="w-12 h-12 rounded-full border-2 border-[#0f172a]" alt="User">
+                                <img src="https://i.pravatar.cc/100?u=3" class="w-12 h-12 rounded-full border-2 border-[#0f172a]" alt="User">
                             </div>
-                            <p class="text-sm text-gray-400"><span class="text-white font-bold">+900 zadowolonych osób</span> zaufało liczbom</p>
+                            <p class="text-sm text-gray-400"><span class="text-white font-black">+900 zadowolonych osób</span> zaufało liczbom</p>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white/5 px-5 py-2 rounded-full border border-white/10 backdrop-blur-md">
+                            <div class="flex">
+                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                                <i data-lucide="star" class="premium-star-gold w-4 h-4"></i>
+                                <i data-lucide="star" class="premium-star-gold w-4 h-4 opacity-80"></i>
+                            </div>
+                            <span class="text-xs font-black text-white tracking-widest">4.93/5 Średnia ocena naszych klientów</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative overflow-visible" data-aos="fade-left">
                     <div class="glide report-glide" id="heroSlider">
-                        <div class="absolute top-0 right-0 premium-ribbon-bg text-[8px] md:text-[9px] w-[220px] py-2 rotate-45 translate-x-[75px] translate-y-[35px] whitespace-nowrap z-20 text-center pointer-events-none">
+                        <div class="absolute top-0 right-0 premium-ribbon-bg text-[9px] w-[240px] py-2.5 rotate-45 translate-x-[85px] translate-y-[45px] whitespace-nowrap z-20 text-center pointer-events-none">
                             Przykładowe strony raportu
                         </div>
                         <div class="glide__track" data-glide-el="track">
@@ -413,99 +448,100 @@
                             <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Następne">›</button>
                         </div>
                     </div>
+                    <div class="absolute -top-12 -right-12 text-[120px] font-cinzel opacity-10 select-none text-white font-black hidden lg:block">7</div>
+                    <div class="absolute -bottom-12 left-12 text-[100px] font-cinzel opacity-10 select-none text-white font-black hidden lg:block">9</div>
                 </div>
             </div>
 
-            <!-- Animated Scroll Indicator -->
             <div class="scroll-indicator" id="scrollIndicator">
-                <span class="text-[10px] uppercase tracking-[0.3em] mb-3 opacity-60">Przewiń w dół</span>
+                <span class="text-[11px] uppercase font-bold tracking-[0.4em] mb-4 opacity-50">Zejdź głębiej</span>
                 <div class="mouse-icon"></div>
             </div>
         </section>
 
-        <!-- O RAPORCIE -->
-        <section id="o-raporcie" class="py-24 px-6 bg-white/5">
+        <!-- BENEFITS SECTION -->
+        <section id="o-raporcie" class="py-32 px-6">
             <div class="max-w-7xl mx-auto text-center">
-                <h2 class="font-cinzel text-3xl md:text-5xl font-black mb-16 uppercase text-white" data-aos="fade-up">Co dokładnie otrzymasz?</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                    <div class="glass p-8 rounded-3xl hover:bg-white/10 transition group border-white/10" data-aos="zoom-in">
-                        <div class="w-12 h-12 bg-mystic-accent/20 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="calendar" class="text-mystic-accent w-6 h-6"></i>
+                <h2 class="font-cinzel text-4xl md:text-6xl font-black mb-20 uppercase text-white" data-aos="fade-up">Co dokładnie otrzymasz?</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
+                    <div class="benefit-card glass p-10 rounded-[40px] group border-white/10" data-aos="zoom-in">
+                        <div class="w-14 h-14 bg-mystic-accent/20 rounded-2xl flex items-center justify-center mb-8 border border-mystic-accent/30">
+                            <i data-lucide="calendar" class="text-mystic-accent w-7 h-7"></i>
                         </div>
-                        <h3 class="font-cinzel text-xl font-black mb-3 uppercase text-white">Mapa Cykli Życia</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed font-light">Twój osobisty harmonogram. Dowiedz się, kiedy przyspieszyć, a kiedy przeczekać.</p>
+                        <h3 class="font-cinzel text-2xl font-black mb-4 uppercase text-white">Mapa Cykli Życia</h3>
+                        <p class="text-gray-400 text-base leading-relaxed font-light">Twój osobisty harmonogram. Dowiedz się, kiedy przyspieszyć, a kiedy przeczekać.</p>
                     </div>
-                    <div class="glass p-8 rounded-3xl hover:bg-white/10 transition group border-white/10" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="trending-up" class="text-yellow-500 w-6 h-6"></i>
+                    <div class="benefit-card glass p-10 rounded-[40px] border-white/10" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="w-14 h-14 bg-yellow-500/20 rounded-2xl flex items-center justify-center mb-8 border border-yellow-500/30">
+                            <i data-lucide="trending-up" class="text-yellow-500 w-7 h-7"></i>
                         </div>
-                        <h3 class="font-cinzel text-xl font-black mb-3 uppercase text-white">Szczyty i Wyzwania</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed font-light">Punkty przełomowe. Wykorzystaj okresy mocy i zhakuj ukryte blokady.</p>
+                        <h3 class="font-cinzel text-2xl font-black mb-4 uppercase text-white">Szczyty i Wyzwania</h3>
+                        <p class="text-gray-400 text-base leading-relaxed font-light">Punkty przełomowe. Wykorzystaj okresy mocy i zhakuj ukryte blokady.</p>
                     </div>
-                    <div class="glass p-8 rounded-3xl hover:bg-white/10 transition group border-white/10" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="history" class="text-red-500 w-6 h-6"></i>
+                    <div class="benefit-card glass p-10 rounded-[40px] border-white/10" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-14 h-14 bg-red-500/20 rounded-2xl flex items-center justify-center mb-8 border border-red-500/30">
+                            <i data-lucide="history" class="text-red-500 w-7 h-7"></i>
                         </div>
-                        <h3 class="font-cinzel text-xl font-black mb-3 uppercase text-white">Lekcje Karmiczne</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed font-light">Zrozumienie wzorców. Rozwiąż węzły przeszłości i uwolnij potencjał.</p>
+                        <h3 class="font-cinzel text-2xl font-black mb-4 uppercase text-white">Lekcje Karmiczne</h3>
+                        <p class="text-gray-400 text-base leading-relaxed font-light">Zrozumienie wzorców. Rozwiąż węzły przeszłości i uwolnij potencjał.</p>
                     </div>
-                    <div class="glass p-8 rounded-3xl hover:bg-white/10 transition group border-white/10" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="user" class="text-emerald-500 w-6 h-6"></i>
+                    <div class="benefit-card glass p-10 rounded-[40px] border-white/10" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-8 border border-emerald-500/30">
+                            <i data-lucide="user" class="text-emerald-500 w-7 h-7"></i>
                         </div>
-                        <h3 class="font-cinzel text-xl font-black mb-3 uppercase text-white">Dusza i Osobowość</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed font-light">Twoja esencja. Odkryj co Cię napędza i jak widzi Cię świat.</p>
+                        <h3 class="font-cinzel text-2xl font-black mb-4 uppercase text-white">Dusza i Osobowość</h3>
+                        <p class="text-gray-400 text-base leading-relaxed font-light">Twoja esencja. Odkryj co Cię napędza i jak widzi Cię świat.</p>
                     </div>
-                    <div class="glass p-8 rounded-3xl hover:bg-white/10 transition group border-white/10" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="clipboard-list" class="text-cyan-500 w-6 h-6"></i>
+                    <div class="benefit-card glass p-10 rounded-[40px] border-white/10" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="w-14 h-14 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-8 border border-cyan-500/30">
+                            <i data-lucide="clipboard-list" class="text-cyan-500 w-7 h-7"></i>
                         </div>
-                        <h3 class="font-cinzel text-xl font-black mb-3 uppercase text-white">Pełna Synteza</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed font-light">Podsumowanie całokształtu. Konkretne kroki i jasne wnioski na teraz.</p>
+                        <h3 class="font-cinzel text-2xl font-black mb-4 uppercase text-white">Pełna Synteza</h3>
+                        <p class="text-gray-400 text-base leading-relaxed font-light">Podsumowanie całokształtu. Konkretne kroki i jasne wnioski na teraz.</p>
                     </div>
-                    <div class="glass p-8 rounded-3xl hover:bg-white/10 transition group border-white/10" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="sparkles" class="text-purple-500 w-6 h-6"></i>
+                    <div class="benefit-card glass p-10 rounded-[40px] border-white/10" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-8 border border-purple-500/30">
+                            <i data-lucide="sparkles" class="text-purple-500 w-7 h-7"></i>
                         </div>
-                        <h3 class="font-cinzel text-xl font-black mb-3 uppercase text-white">Wyjątkowe plakaty</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed font-light">3 spersonalizowane plakaty pod kolor aury Twojego znaku zodiaku.</p>
+                        <h3 class="font-cinzel text-2xl font-black mb-4 uppercase text-white">Wyjątkowe plakaty</h3>
+                        <p class="text-gray-400 text-base leading-relaxed font-light">3 spersonalizowane plakaty pod kolor aury Twojego znaku zodiaku.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- JAK TO DZIAŁA -->
-        <section id="jak-to-dziala" class="py-24 px-6">
+        <!-- HOW IT WORKS -->
+        <section id="jak-to-dziala" class="py-32 px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
                     <div data-aos="fade-right">
-                        <h2 class="font-cinzel text-4xl font-bold mb-8 uppercase text-white">Jak otrzymać swój <br><span class="gradient-text uppercase">Cyfrowy Kompas?</span></h2>
-                        <div class="space-y-12">
-                            <div class="flex items-start space-x-6">
-                                <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10 font-cinzel">1</div>
+                        <h2 class="font-cinzel text-5xl font-black mb-12 uppercase text-white leading-tight">Jak otrzymać swój <br><span class="gradient-text uppercase">Cyfrowy Kompas?</span></h2>
+                        <div class="space-y-16">
+                            <div class="flex items-start space-x-8">
+                                <div class="w-14 h-14 rounded-full border-2 border-mystic-gold flex items-center justify-center shrink-0 font-black text-mystic-gold bg-mystic-gold/10 font-cinzel text-xl">1</div>
                                 <div>
-                                    <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white font-cinzel">Podaj dane</h4>
+                                    <h4 class="font-bold text-xl mb-3 uppercase tracking-wide text-white font-cinzel">Podaj dane</h4>
                                     <p class="text-gray-400">Wpisz imię, nazwisko oraz pełną datę urodzenia w formularzu zamówienia.</p>
                                 </div>
                             </div>
-                            <div class="flex items-start space-x-6">
-                                <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10 font-cinzel">2</div>
+                            <div class="flex items-start space-x-8">
+                                <div class="w-14 h-14 rounded-full border-2 border-mystic-gold flex items-center justify-center shrink-0 font-black text-mystic-gold bg-mystic-gold/10 font-cinzel text-xl">2</div>
                                 <div>
-                                    <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white font-cinzel">Analiza energetyczna</h4>
+                                    <h4 class="font-bold text-xl mb-3 uppercase tracking-wide text-white font-cinzel">Analiza energetyczna</h4>
                                     <p class="text-gray-400">Wyliczamy Twoją unikalną matrycę energetyczną i tworzymy Twój spersonalizowany Portret Numerologiczny.</p>
                                 </div>
                             </div>
-                            <div class="flex items-start space-x-6">
-                                <div class="w-12 h-12 rounded-full border border-mystic-gold flex items-center justify-center shrink-0 font-bold text-mystic-gold text-white bg-mystic-gold/10 font-cinzel">3</div>
+                            <div class="flex items-start space-x-8">
+                                <div class="w-14 h-14 rounded-full border-2 border-mystic-gold flex items-center justify-center shrink-0 font-black text-mystic-gold bg-mystic-gold/10 font-cinzel text-xl">3</div>
                                 <div>
-                                    <h4 class="font-bold text-lg mb-2 uppercase tracking-wide text-white font-cinzel">Odbierz e-mail</h4>
+                                    <h4 class="font-bold text-xl mb-3 uppercase tracking-wide text-white font-cinzel">Odbierz e-mail</h4>
                                     <p class="text-gray-400">Gotowy raport ląduje w Twojej skrzynce w ciągu kilku godzin. To Twoja nowa instrukcja obsługi życia.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="glass p-4 rounded-3xl relative overflow-visible" data-aos="zoom-in">
-                        <div class="absolute top-0 right-0 premium-ribbon-bg text-[8px] md:text-[9px] w-[220px] py-2 rotate-45 translate-x-[75px] translate-y-[35px] whitespace-nowrap z-20 text-center pointer-events-none">
+                    <div class="glass p-6 rounded-[50px] relative overflow-visible" data-aos="zoom-in">
+                        <div class="absolute top-0 right-0 premium-ribbon-bg text-[10px] w-[260px] py-3 rotate-45 translate-x-[90px] translate-y-[50px] whitespace-nowrap z-20 text-center pointer-events-none">
                             Przykładowe plakaty
                         </div>
                         <div class="slidebox" aria-label="Podgląd kwadratowych stron/plakatów">
@@ -517,87 +553,111 @@
             </div>
         </section>
 
-        <!-- ZAMÓW -->
-        <section id="zamow" class="py-24 px-6">
-            <div class="max-w-md mx-auto" data-aos="flip-up">
-                <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden gold-glow border-white/20 text-center">
-                    <div class="absolute top-0 right-0 bg-mystic-gold text-mystic-blue text-[11px] font-black w-[250px] py-2 rotate-45 translate-x-[75px] translate-y-[35px] uppercase tracking-widest whitespace-nowrap shadow-lg z-10 text-center">
+        <!-- ORDER FORM SECTION (FULL RECOVERY) -->
+        <section id="zamow" class="py-32 px-6">
+            <div class="max-w-xl mx-auto" data-aos="flip-up">
+                <div class="glass rounded-[50px] p-10 md:p-16 relative overflow-hidden gold-glow border-white/20 text-center">
+                    <div class="absolute top-0 right-0 bg-mystic-gold text-mystic-blue text-[12px] font-black w-[280px] py-2.5 rotate-45 translate-x-[90px] translate-y-[45px] uppercase tracking-[0.2em] whitespace-nowrap shadow-xl z-10">
                         Limitowana Oferta
                     </div>
-                    <div class="text-center mb-10">
-                        <h3 class="font-cinzel text-2xl font-bold mb-2 uppercase text-white">Pakiet Pełny</h3>
-                        <p class="text-gray-400 text-sm mb-6 uppercase tracking-wider">Spersonalizowany Raport 13 stron + 3 Plakaty Numerologiczne</p>
-                        <div class="flex items-center justify-center space-x-4">
-                            <span class="text-gray-500 line-through text-xl font-bold">79 zł</span>
-                            <span class="text-6xl font-black gradient-text">49 zł</span>
+                    <div class="text-center mb-12">
+                        <h3 class="font-cinzel text-3xl font-bold mb-3 uppercase text-white">Pakiet Pełny</h3>
+                        <p class="text-gray-400 text-sm mb-8 uppercase tracking-wider">Spersonalizowany Raport 13 stron + 3 Plakaty Numerologiczne</p>
+                        <div class="flex items-center justify-center space-x-6">
+                            <span class="text-gray-500 line-through text-2xl font-bold">79 zł</span>
+                            <span class="text-7xl font-black gradient-text">49 zł</span>
                         </div>
                     </div>
-                    <ul class="space-y-4 mb-10 text-left text-sm">
-                        <li class="flex items-center space-x-3 text-white">
-                            <i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5"></i>
+                    <ul class="space-y-5 mb-10 text-left text-sm">
+                        <li class="flex items-center space-x-4 text-white">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i>
                             <span class="font-bold uppercase tracking-tight">Pełny portret osobowości</span>
                         </li>
-                        <li class="flex items-center space-x-3 text-white">
-                            <i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5"></i>
+                        <li class="flex items-center space-x-4 text-white">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i>
                             <span class="font-bold uppercase tracking-tight">Analiza karmiczna i wyzwania</span>
                         </li>
-                        <li class="flex items-center space-x-3 text-white">
-                            <i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5"></i>
+                        <li class="flex items-center space-x-4 text-white">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i>
                             <span class="font-bold uppercase tracking-tight">+3 spersonalizowane plakaty</span>
                         </li>
-                        <li class="flex items-center space-x-3 text-white">
-                            <i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5"></i>
+                        <li class="flex items-center space-x-4 text-white">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i>
                             <span class="font-bold uppercase tracking-tight">Dostawa e-mail w 3h</span>
                         </li>
                     </ul>
-                    <form class="space-y-4">
+
+                    <div class="flex items-center justify-center space-x-3 bg-emerald-500/10 border border-emerald-500/20 py-4 px-6 rounded-3xl mb-10">
+                        <i data-lucide="shield-check" class="text-emerald-500 w-6 h-6"></i>
+                        <span class="text-[11px] text-white font-black uppercase tracking-[0.2em]">Bezpieczny zakup & Gwarancja Satysfakcji</span>
+                    </div>
+
+                    <form class="space-y-6">
                         <div class="text-xs text-left text-gray-500 px-2 mb-4 leading-relaxed font-light">
                             <label class="flex items-start space-x-3 cursor-pointer text-white">
-                                <input type="checkbox" id="consent-checkbox" class="mt-1 accent-mystic-accent" checked required>
+                                <input type="checkbox" id="consent-checkbox" class="mt-1 accent-mystic-accent w-5 h-5 rounded border-white/20" checked required>
                                 <span>Akceptuję <a href="./regulamin/" target="_self" class="underline text-white">Regulamin i Politykę prywatności</a>.</span>
                             </label>
-                            <div id="consent-error" class="text-red-500 text-[10px] mt-1 font-bold hidden uppercase tracking-wider text-left">
+                            <div id="consent-error" class="text-red-500 text-[10px] mt-2 font-bold hidden uppercase tracking-wider text-left">
                                 Zaakceptuj wymagane zgody, by przejść do kolejnego kroku.
                             </div>
                         </div>
-                        <a href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" id="checkout-link" class="cta-button w-full py-5 rounded-2xl text-xl font-bold uppercase tracking-widest shadow-lg text-white text-center">
+                        <a href="https://buy.stripe.com/dRmfZa9EDaslbiNbUN5gc04" target="_blank" id="checkout-link" class="cta-button w-full py-6 rounded-3xl text-2xl font-black uppercase tracking-[0.15em] shadow-2xl text-white text-center">
                             ODBIERAM KLUCZ DO MOJEGO PRZEZNACZENIA
                         </a>
+                        <div class="mt-10 flex justify-center space-x-6 opacity-30 grayscale">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" class="h-5" alt="Stripe">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-5" alt="Visa">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-5" alt="Mastercard">
+                        </div>
                     </form>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section id="faq" class="py-24 px-6 max-w-4xl mx-auto pb-12">
-            <h2 class="font-cinzel text-3xl font-bold mb-12 text-center uppercase text-white" data-aos="fade-up">Częste Pytania</h2>
-            <div class="space-y-4">
-                <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up">
+        <!-- FAQ SECTION (FULL RECOVERY) -->
+        <section id="faq" class="py-32 px-6 max-w-5xl mx-auto">
+            <h2 class="font-cinzel text-4xl font-bold mb-16 text-center uppercase text-white" data-aos="fade-up">Częste Pytania</h2>
+            <div class="space-y-6">
+                <details class="glass p-8 rounded-3xl group cursor-pointer border-white/5 transition-all">
                     <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left">
                         Czy użyć swojego nazwiska panieńskiego, czy aktualnego?
                         <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm font-light">W numerologii pitagorejska zalecane jest użycie imienia i nazwiska nadanego przy urodzeniu, czyli nazwiska panieńskiego.</p>
+                    <p class="mt-6 text-gray-400 text-sm font-light">W numerologii pitagorejska zalecane jest użycie imienia i nazwiska nadanego przy urodzeniu, czyli nazwiska panieńskiego.</p>
                 </details>
-                <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="100">
+                <details class="glass p-8 rounded-3xl group cursor-pointer border-white/5 transition-all">
                     <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left">
                         Kiedy otrzymam swój raport?
                         <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm font-light">Czas dostawy na e-mail to zwykle od 3 do 4 godzin w godzinach roboczych.</p>
+                    <p class="mt-6 text-gray-400 text-sm font-light">Czas dostawy na e-mail to zwykle od 3 do 4 godzin w godzinach roboczych.</p>
                 </details>
-                <details class="glass p-6 rounded-2xl group cursor-pointer border-white/5" data-aos="fade-up" data-aos-delay="200">
+                <details class="glass p-8 rounded-3xl group cursor-pointer border-white/5 transition-all">
                     <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left">
                         Co to jest Numerologia?
                         <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white"></i>
                     </summary>
-                    <p class="mt-4 text-gray-400 text-sm font-light text-left">Numerologia pitagorejska to fascynująca koncepcja, według której ukryta in liczbach od 1 do 9 energia pozwala odkrywać sens wydarzeń, cechy charakteru i życiowe kierunki zapisane w dacie urodzenia oraz imieniu.</p>
+                    <p class="mt-6 text-gray-400 text-sm font-light text-left">Numerologia pitagorejska to fascynująca koncepcja, według której ukryta in liczbach od 1 do 9 energia pozwala odkrywać sens wydarzeń, cechy charakteru i życiowe kierunki zapisane w dacie urodzenia oraz imieniu.</p>
                 </details>
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="py-20 border-t border-white/5 px-6 text-white font-cinzel">
+        <!-- FINAL CTA (RECOVERY) -->
+        <section class="py-32 px-6 text-center" data-aos="zoom-in">
+            <div class="max-w-4xl mx-auto glass p-10 md:p-16 rounded-[60px] border-white/10 gold-glow">
+                <h3 class="font-cinzel text-3xl md:text-4xl font-black mb-8 text-white uppercase tracking-widest">Nadal się wahasz?</h3>
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-12 font-light">
+                    To zaledwie symboliczna kwota za wiedzę, która może <span class="text-white font-bold">całkowicie odmienić Twój sposób patrzenia na świat.</span> Zainwestuj w siebie równowartość dwóch kaw i zyskaj jasność, której szukasz od lat. <span class="gradient-text font-black uppercase">Naprawdę warto – poczuj tę zmianę już dziś.</span>
+                </p>
+                <a href="#zamow" class="cta-button inline-flex px-16 py-7 rounded-3xl text-2xl font-black uppercase tracking-widest text-white shadow-2xl transition duration-500 hover:scale-110">
+                    ODKRYWAM SWÓJ POTENCJAŁ
+                </a>
+            </div>
+        </section>
+
+        <!-- FOOTER (FULL RECOVERY) -->
+        <footer class="py-24 border-t border-white/5 px-6 text-white font-cinzel">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-12">
                 <div>
                     <h3 class="font-cinzel text-2xl font-black mb-3 gradient-text uppercase tracking-widest text-center md:text-left">Twój Cyfrowy Kompas</h3>
@@ -613,47 +673,86 @@
         </footer>
     </div>
 
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
     <script>
         lucide.createIcons();
-        AOS.init({ duration: 1000, once: true, offset: 100 });
+        AOS.init({ duration: 1200, once: true, offset: 120 });
 
-        // --- SCROLL PROGRESS & INDICATOR LOGIC ---
+        // --- SCROLL PROGRESS & FLOATING CTA & INDICATOR ---
         (function() {
             const progressBar = document.getElementById('progressBar');
             const scrollIndicator = document.getElementById('scrollIndicator');
+            const floatingCta = document.getElementById('floatingCta');
 
             window.addEventListener('scroll', () => {
-                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const winScroll = document.documentElement.scrollTop;
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 
                 if (progressBar) progressBar.style.width = scrolled + "%";
                 
-                // Hide indicator after first scroll
-                if (winScroll > 100 && scrollIndicator) {
-                    scrollIndicator.classList.add('hidden');
-                } else if (winScroll <= 100 && scrollIndicator) {
-                    scrollIndicator.classList.remove('hidden');
+                if (winScroll > 150) {
+                    if (scrollIndicator) scrollIndicator.classList.add('hidden');
+                } else {
+                    if (scrollIndicator) scrollIndicator.classList.remove('hidden');
+                }
+
+                if (winScroll > 1000) {
+                    floatingCta.classList.add('show');
+                } else {
+                    floatingCta.classList.remove('show');
                 }
             });
+        })();
+
+        // --- SOCIAL PROOF TOAST ---
+        (function() {
+            const toast = document.getElementById('purchaseToast');
+            const toastText = document.getElementById('toastText');
+            // ZMODYFIKOWANA LISTA: Tylko żeńskie imiona z dużych polskich miast
+            const names = [
+                "Anna z Krakowa", 
+                "Zofia z Warszawy", 
+                "Magda z Gdańska", 
+                "Ewa z Wrocławia", 
+                "Katarzyna z Poznania", 
+                "Małgorzata z Łodzi", 
+                "Karolina ze Szczecina", 
+                "Aleksandra z Bydgoszczy", 
+                "Natalia z Katowic", 
+                "Marta z Lublina"
+            ];
+            
+            function showToast() {
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                toastText.innerText = `${randomName} odebrała właśnie swój raport!`;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 6000);
+            }
+
+            setTimeout(() => {
+                showToast();
+                setInterval(showToast, 25000 + Math.random() * 10000);
+            }, 8000);
         })();
 
         // --- MYSTIC BACKGROUND ANIMATION ENGINE ---
         (function() {
             const canvas = document.getElementById('mystic-canvas');
             const ctx = canvas.getContext('2d');
-            let width, height;
-            let particles = [];
+            let width, height, particles = [];
             let lastScrollY = window.scrollY;
-
             const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
             function initCanvas() {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
                 particles = [];
-                for (let i = 0; i < 100; i++) particles.push(new Particle(0));
+                for (let i = 0; i < 110; i++) particles.push(new Particle(0));
                 for (let i = 0; i < 20; i++) particles.push(new Particle(1));
             }
 
@@ -662,34 +761,28 @@
                     this.type = type;
                     this.reset(true);
                 }
-
                 reset(initial = false) {
                     this.x = Math.random() * width;
-                    this.y = initial ? Math.random() * height : (Math.random() > 0.5 ? -20 : height + 20);
-                    this.size = this.type === 0 ? Math.random() * 2.5 + 0.5 : 14 + Math.random() * 18;
-                    this.speedY = (Math.random() * 0.4 + 0.1);
-                    this.opacity = Math.random() * 0.4 + 0.2;
+                    this.y = initial ? Math.random() * height : (Math.random() > 0.5 ? -30 : height + 30);
+                    this.size = this.type === 0 ? Math.random() * 2.5 + 0.5 : 16 + Math.random() * 18;
+                    this.speedY = (Math.random() * 0.35 + 0.05);
+                    this.opacity = Math.random() * 0.35 + 0.15;
+                    this.parallax = Math.random() * 0.5 + 0.2;
                     this.char = numbers[Math.floor(Math.random() * numbers.length)];
-                    this.parallaxFactor = Math.random() * 0.6 + 0.3; 
                     this.color = this.type === 1 ? `rgba(212, 175, 55, ${this.opacity})` : `rgba(255, 255, 255, ${this.opacity})`;
                 }
-
                 update() {
                     this.y -= this.speedY;
                     const currentScrollY = window.scrollY;
                     const scrollDelta = currentScrollY - lastScrollY;
-                    this.y -= scrollDelta * this.parallaxFactor;
-
-                    if (this.y < -100) this.y = height + 100;
-                    if (this.y > height + 100) this.y = -100;
+                    this.y -= scrollDelta * this.parallax;
+                    if (this.y < -120) this.y = height + 120;
+                    if (this.y > height + 120) this.y = -120;
                 }
-
                 draw() {
                     ctx.fillStyle = this.color;
                     if (this.type === 0) {
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fill();
+                        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
                     } else {
                         ctx.font = `bold ${this.size}px Cinzel`;
                         ctx.fillText(this.char, this.x, this.y);
@@ -698,27 +791,21 @@
             }
 
             function animate() {
-                // Background color shift based on scroll
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
                 const scrollFraction = window.scrollY / maxScroll;
-                const hue = 222 + (scrollFraction * 20); // Shift from blue to deep violet
-                canvas.style.background = `radial-gradient(circle at center, hsl(${hue}, 33%, 20%) 0%, hsl(${hue}, 47%, 11%) 100%)`;
-
+                const hue = 222 + (scrollFraction * 25);
+                canvas.style.background = `radial-gradient(circle at center, hsl(${hue}, 33%, 12%) 0%, #0f172a 100%)`;
                 ctx.clearRect(0, 0, width, height);
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
+                particles.forEach(p => { p.update(); p.draw(); });
                 lastScrollY = window.scrollY;
                 requestAnimationFrame(animate);
             }
 
             window.addEventListener('resize', initCanvas);
-            initCanvas();
-            animate();
+            initCanvas(); animate();
         })();
 
-        // Consent Validation
+        // --- CONSENT VALIDATION (FROM ORIGINAL) ---
         (function() {
             const checkoutLink = document.getElementById('checkout-link');
             const consentCheckbox = document.getElementById('consent-checkbox');
@@ -728,12 +815,19 @@
                     if (!consentCheckbox.checked) {
                         e.preventDefault();
                         consentError.classList.remove('hidden');
+                    } else {
+                        consentError.classList.add('hidden');
                     }
+                });
+            }
+            if (consentCheckbox) {
+                consentCheckbox.addEventListener('change', function() {
+                    if (this.checked) consentError.classList.add('hidden');
                 });
             }
         })();
 
-        // Slidebox Logic
+        // --- SLIDEBOX IMAGES (FROM ORIGINAL) ---
         (function () {
             const ASSET_VERSION = "2025-10-22";
             const files = ["naslasha1","naslasha2","naslasha3","naslasha4","naslasha5","naslasha6","naslasha7","naslasha8","naslasha9","naslasha10","naslasha11","naslasha12"];
@@ -755,7 +849,7 @@
                         hidden.classList.add("show");
                         visible.classList.remove("show");
                         [visible, hidden] = [hidden, visible];
-                        setTimeout(showNext, 1500);
+                        setTimeout(showNext, 2500);
                     };
                     test.onerror = tryNext;
                     test.src = src;
@@ -764,7 +858,7 @@
             showNext();
         })();
 
-        // Glide Slider
+        // --- GLIDE SLIDER INIT (FROM ORIGINAL) ---
         (function(){
             const names = ["nastrone11","nastrone12","nastrone13","nastrone14","nastrone21","nastrone22","nastrone23","nastrone24","nastrone31","nastrone32","nastrone33","nastrone34","nastrone41","nastrone42","nastrone43","nastrone44"];
             async function initSlider(){
@@ -775,10 +869,22 @@
                     li.innerHTML = `<img src="assets/img/${name}.jpg?v=2025-10-22" alt="Strona ${idx+1}" loading="lazy">`;
                     track.appendChild(li);
                 });
-                new Glide('#heroSlider', { type: 'carousel', autoplay: 3000, perView: 1, focusAt: 'center' }).mount();
+                if(names.length > 0) new Glide('#heroSlider', { type: 'carousel', autoplay: 4000, perView: 1, animationDuration: 800 }).mount();
             }
             initSlider();
         })();
+
+        // --- SMOOTH SCROLL ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(targetId);
+                    if(target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
