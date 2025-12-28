@@ -334,13 +334,13 @@
 
         <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-3 md:py-4">
             <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center text-center">
-                <a href="#zamow" class="font-cinzel text-lg md:text-[23px] font-bold tracking-widest gradient-text uppercase text-white truncate mr-2">Twój Cyfrowy Kompas</a>
+                <a href="#zamow" class="font-cinzel text-sm md:text-[23px] font-bold tracking-widest gradient-text uppercase text-white leading-tight mr-2">Twój Cyfrowy Kompas</a>
                 <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider">
                     <a href="#o-raporcie" class="hover:text-mystic-gold transition text-white">O raporcie</a>
                     <a href="#jak-to-dziala" class="hover:text-mystic-gold transition text-white">Jak to działa</a>
                     <a href="#faq" class="hover:text-mystic-gold transition text-white">FAQ</a>
                 </div>
-                <a href="#zamow" class="cta-button px-4 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-bold text-white text-center whitespace-nowrap">ZAMÓW</a>
+                <a href="#zamow" class="cta-button px-3 py-2 md:px-6 md:py-2 rounded-full text-[10px] md:text-sm font-bold text-white text-center whitespace-nowrap">ZAMÓW RAPORT</a>
             </div>
         </nav>
 
@@ -643,6 +643,7 @@
             const progressBar = document.getElementById('progressBar');
             const scrollIndicator = document.getElementById('scrollIndicator');
             const floatingCta = document.getElementById('floatingCta');
+            const zamowSection = document.getElementById('zamow');
 
             window.addEventListener('scroll', () => {
                 const winScroll = document.documentElement.scrollTop;
@@ -657,7 +658,18 @@
                     if (scrollIndicator) scrollIndicator.classList.remove('hidden');
                 }
 
-                if (winScroll > 600) { // Pokazuj CTA wcześniej na mobile
+                // Sprawdzamy czy sekcja zamówienia jest widoczna na ekranie
+                let isZamowVisible = false;
+                if (zamowSection) {
+                    const rect = zamowSection.getBoundingClientRect();
+                    // Jeśli góra sekcji jest w oknie LUB dół sekcji jest w oknie (jest widoczna)
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        isZamowVisible = true;
+                    }
+                }
+
+                // Jeśli scroll > 600 ORAZ sekcja zamówienia NIE JEST widoczna -> pokaż CTA
+                if (winScroll > 600 && !isZamowVisible) { 
                     floatingCta.classList.add('show');
                 } else {
                     floatingCta.classList.remove('show');
@@ -672,9 +684,12 @@
             let lastScrollY = window.scrollY;
             const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-            function initCanvas() {
+            function resizeCanvas() {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
+            }
+
+            function initParticles() {
                 particles = [];
                 // Mniej cząsteczek na mniejszych ekranach dla wydajności
                 const isMobile = width < 768;
@@ -730,8 +745,11 @@
                 requestAnimationFrame(animate);
             }
 
-            window.addEventListener('resize', initCanvas);
-            initCanvas(); animate();
+            // Rozdzielono resize od initParticles aby uniknąć resetowania animacji przy chowaniu paska adresu na mobile
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            initParticles();
+            animate();
         })();
 
         (function() {
