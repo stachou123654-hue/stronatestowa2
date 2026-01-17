@@ -98,7 +98,7 @@
             top: 0;
             left: 0;
             width: 0%;
-            height: 3px; /* Zmniejszono z 4px */
+            height: 3px;
             background: linear-gradient(to right, var(--mystic-gold), var(--mystic-accent));
             z-index: 100;
             transition: width 0.1s ease-out;
@@ -110,7 +110,7 @@
             right: 20px;
             z-index: 40;
             transform: translateY(120px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Szybsza animacja */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .floating-cta.show {
             transform: translateY(0);
@@ -118,7 +118,7 @@
 
         .scroll-indicator {
             position: absolute;
-            bottom: 2rem; /* Zmniejszono odstęp */
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -131,8 +131,8 @@
         .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
 
         .mouse-icon {
-            width: 24px; /* Zmniejszono */
-            height: 38px; /* Zmniejszono */
+            width: 24px;
+            height: 38px;
             border: 2px solid rgba(255,255,255,0.4);
             border-radius: 14px;
             position: relative;
@@ -147,7 +147,7 @@
             background: var(--mystic-gold);
             border-radius: 50%;
             transform: translateX(-50%);
-            animation: scroll-dot 1.5s infinite; /* Przyspieszona animacja */
+            animation: scroll-dot 1.5s infinite;
         }
 
         @keyframes scroll-dot {
@@ -155,7 +155,6 @@
             100% { opacity: 0; transform: translate(-50%, 15px); }
         }
 
-        /* Zmniejszono fonty dla iOS specyficznie */
         .is-ios h1 { font-size: 2rem !important; }
         .is-ios section:first-of-type { padding-top: 8rem !important; }
         
@@ -196,7 +195,7 @@
         }
 
         .gold-glow {
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15); /* Zmniejszono glow na mobile */
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
         }
 
         .premium-star-gold {
@@ -218,7 +217,7 @@
         }
 
         .report-glide {
-            width: min(340px, 90vw); /* Zmniejszono max szerokość dla mobile */
+            width: min(340px, 90vw);
             aspect-ratio: 210/297;
             margin: 0 auto;
             border: 1px solid rgba(255,255,255,0.1);
@@ -246,7 +245,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 36px; /* Mniejsze strzałki */
+            width: 36px;
             height: 36px;
             border: 0;
             border-radius: 10px;
@@ -267,7 +266,7 @@
             justify-content: center;
         }
         .cta-button:hover {
-            transform: scale(1.02); /* Mniejszy scale na hover */
+            transform: scale(1.02);
             box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
         }
 
@@ -275,7 +274,7 @@
             transition: all 0.4s ease;
         }
         .benefit-card:hover {
-            transform: translateY(-8px); /* Mniejsze przesunięcie */
+            transform: translateY(-8px);
             background: rgba(255, 255, 255, 0.08);
             border-color: var(--mystic-gold);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
@@ -297,7 +296,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.6s ease; /* Szybsze przejście */
+            transition: opacity 0.6s ease;
             border-radius: inherit;
         }
         .slidebox img.show { opacity: 1; }
@@ -522,15 +521,15 @@
         </section>
 
         <section id="zamow" class="py-16 md:py-32 px-4 md:px-6">
-            <div class="max-w-6xl mx-auto" data-aos="fade-up">
+            <div class="max-w-7xl mx-auto" data-aos="fade-up">
                 <div class="text-center mb-12">
                     <h2 class="font-cinzel text-3xl md:text-5xl font-black uppercase text-white mb-4">Wybierz Swoją Drogę</h2>
                     <p class="text-gray-400 font-light">Zainwestuj w wiedzę, która procentuje przez całe życie.</p>
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-8 items-start relative">
-                    <!-- Standard Package -->
-                    <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden border-white/10 opacity-90 hover:opacity-100 transition-all duration-300 order-2 lg:order-1">
+                <div class="grid lg:grid-cols-3 gap-8 items-stretch relative">
+                    <!-- Standard Package (79 zł) -->
+                    <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden border-white/10 opacity-90 hover:opacity-100 transition-all duration-300 order-1 lg:order-1 flex flex-col">
                          <div class="text-center mb-8">
                             <h3 class="font-cinzel text-2xl font-bold mb-2 uppercase text-gray-300">Pakiet Pełny</h3>
                             <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Solidna podstawa wiedzy</p>
@@ -540,7 +539,7 @@
                             </div>
                         </div>
 
-                        <ul class="space-y-4 mb-8 text-left text-xs md:text-sm">
+                        <ul class="space-y-4 mb-8 text-left text-xs md:text-sm flex-grow">
                             <li class="flex items-start space-x-3 text-gray-300">
                                 <i data-lucide="check" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i>
                                 <span>Pełny portret osobowości</span>
@@ -559,35 +558,22 @@
                             </li>
                         </ul>
 
-                        <div class="flex items-center justify-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 py-3 px-4 rounded-3xl mb-6">
-                            <i data-lucide="shield-check" class="text-emerald-500 w-5 h-5 shrink-0"></i>
-                            <span class="text-[9px] text-white font-black uppercase tracking-wider">Bezpieczny zakup & Gwarancja Satysfakcji</span>
-                        </div>
-
-                        <form class="space-y-6 mt-auto checkout-form" data-package="standard">
+                        <form class="space-y-6 checkout-form mt-auto" data-package="standard">
                             <div class="text-xs text-left text-gray-500 leading-relaxed font-light bg-black/20 p-3 rounded-xl">
                                 <label class="flex items-start space-x-3 cursor-pointer text-gray-300">
                                     <input type="checkbox" class="mt-1 accent-mystic-accent w-4 h-4 rounded border-white/20 shrink-0 consent-cb" required checked>
                                     <span class="text-[10px]">Akceptuję <a href="./regulamin/" target="_self" class="underline hover:text-white">Regulamin i Politykę prywatności</a>.</span>
                                 </label>
-                                <div class="text-red-500 text-[10px] mt-1 font-bold hidden uppercase tracking-wider text-left consent-err">
-                                    Wymagana zgoda.
-                                </div>
+                                <div class="text-red-500 text-[10px] mt-1 font-bold hidden uppercase tracking-wider text-left consent-err">Wymagana zgoda.</div>
                             </div>
                             <a href="https://buy.stripe.com/00wdR2aIH581aeJcYR5gc06" target="_blank" class="cta-button w-full py-4 rounded-2xl text-lg font-bold uppercase tracking-widest text-white text-center border border-white/10 hover:bg-white/10 checkout-btn">
                                 Wybieram Standard
                             </a>
-                            
-                            <div class="mt-4 flex justify-center space-x-4 opacity-30 grayscale">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" class="h-3 md:h-4" alt="Stripe">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-3 md:h-4" alt="Visa">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-3 md:h-4" alt="Mastercard">
-                            </div>
                         </form>
                     </div>
 
-                    <!-- Deluxe Package (Highlight) -->
-                    <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden border-mystic-gold glow-strong transform md:-translate-y-4 z-10 order-1 lg:order-2">
+                    <!-- Deluxe Package (99 zł) - Middle on PC -->
+                    <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden border-mystic-gold glow-strong transform lg:scale-105 z-10 order-2 lg:order-2 flex flex-col">
                         <div class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-mystic-gold to-yellow-500 text-mystic-blue text-[10px] md:text-xs font-black px-6 py-2 rounded-b-2xl uppercase tracking-[0.15em] whitespace-nowrap shadow-[0_4px_20px_rgba(212,175,55,0.4)] z-20">
                             Najczęściej Wybierany
                         </div>
@@ -602,7 +588,7 @@
                             </div>
                         </div>
 
-                        <ul class="space-y-4 mb-8 text-left text-xs md:text-sm">
+                        <ul class="space-y-4 mb-8 text-left text-xs md:text-sm flex-grow">
                             <li class="flex items-start space-x-3 text-white opacity-60">
                                 <i data-lucide="check" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i>
                                 <span>Wszystko co w pakiecie pełnym</span>
@@ -625,33 +611,70 @@
                             </li>
                         </ul>
 
-                        <div class="flex items-center justify-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 py-3 px-4 rounded-3xl mb-6">
-                            <i data-lucide="shield-check" class="text-emerald-500 w-5 h-5 shrink-0"></i>
-                            <span class="text-[9px] text-white font-black uppercase tracking-wider">Bezpieczny zakup & Gwarancja Satysfakcji</span>
-                        </div>
-
-                        <form class="space-y-6 mt-auto checkout-form" data-package="deluxe">
+                        <form class="space-y-6 checkout-form mt-auto" data-package="deluxe">
                             <div class="text-xs text-left text-gray-500 leading-relaxed font-light bg-black/20 p-3 rounded-xl border border-mystic-gold/20">
                                 <label class="flex items-start space-x-3 cursor-pointer text-white">
                                     <input type="checkbox" class="mt-1 accent-mystic-accent w-4 h-4 rounded border-mystic-gold/40 shrink-0 consent-cb" required checked>
                                     <span class="text-[10px]">Akceptuję <a href="./regulamin/" target="_self" class="underline hover:text-mystic-gold">Regulamin i Politykę prywatności</a>.</span>
                                 </label>
-                                <div class="text-red-500 text-[10px] mt-1 font-bold hidden uppercase tracking-wider text-left consent-err">
-                                    Wymagana zgoda.
-                                </div>
+                                <div class="text-red-500 text-[10px] mt-1 font-bold hidden uppercase tracking-wider text-left consent-err">Wymagana zgoda.</div>
                             </div>
-                            <!-- Placeholder link for Deluxe -->
-                            <a href="https://buy.stripe.com/eVq14g2cbfMFcmR7Ex5gc05" target="_blank" class="cta-button w-full py-5 rounded-2xl text-xl font-black uppercase tracking-widest text-white text-center shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)] transform hover:-translate-y-1 transition-all checkout-btn">
+                            <a href="https://buy.stripe.com/eVq14g2cbfMFcmR7Ex5gc05" target="_blank" class="cta-button w-full py-5 rounded-2xl text-xl font-black uppercase tracking-widest text-white text-center shadow-[0_0_30px_rgba(99,102,241,0.4)] checkout-btn">
                                 ZAMAWIAM PAKIET DELUXE
                             </a>
-
-                            <div class="mt-4 flex justify-center space-x-4 opacity-30 grayscale">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" class="h-3 md:h-4" alt="Stripe">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-3 md:h-4" alt="Visa">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-3 md:h-4" alt="Mastercard">
-                            </div>
                         </form>
                     </div>
+
+                    <!-- Deluxe Duo Package (179 zł) - Last on Mobile -->
+                    <div class="glass rounded-[40px] p-8 md:p-12 relative overflow-hidden border-white/20 opacity-90 hover:opacity-100 transition-all duration-300 order-3 lg:order-3 flex flex-col">
+                        <div class="text-center mb-8">
+                            <h3 class="font-cinzel text-2xl font-bold mb-2 uppercase text-white">Deluxe dla Dwojga</h3>
+                            <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Dla par=</p>
+                            <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">42 strony</p>
+                            <div class="flex items-center justify-center space-x-3">
+                                <span class="text-4xl font-black text-white">179 zł</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 mb-8 text-left text-xs md:text-sm flex-grow">
+                            <li class="flex items-start space-x-3 text-white opacity-80">
+                                <i data-lucide="users" class="text-mystic-accent w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span>2x Pakiet Deluxe (dla dwóch osób)</span>
+                            </li>
+                            <li class="flex items-start space-x-3 text-white font-bold bg-white/5 p-2 rounded-xl border border-mystic-gold/20">
+                                <i data-lucide="heart-handshake" class="text-mystic-gold w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-mystic-gold">Dodatkowy rozdział: Wasz Kosmiczny Duet (analiza wspólnej wibracji relacji)</span>
+                            </li>
+                            <li class="flex items-start space-x-3 text-white opacity-80">
+                                <i data-lucide="sparkles" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span>6 spersonalizowanych plakatów</span>
+                            </li>
+                            <li class="flex items-start space-x-3 text-white opacity-80">
+                                <i data-lucide="zap" class="text-mystic-gold w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span>Wgląd w dynamikę Waszej relacji</span>
+                            </li>
+                        </ul>
+
+                        <form class="space-y-6 checkout-form mt-auto" data-package="duet">
+                            <div class="text-xs text-left text-gray-500 leading-relaxed font-light bg-black/20 p-3 rounded-xl border border-white/5">
+                                <label class="flex items-start space-x-3 cursor-pointer text-gray-300">
+                                    <input type="checkbox" class="mt-1 accent-mystic-accent w-4 h-4 rounded border-white/20 shrink-0 consent-cb" required checked>
+                                    <span class="text-[10px]">Akceptuję <a href="./regulamin/" target="_self" class="underline hover:text-white">Regulamin i Politykę prywatności</a>.</span>
+                                </label>
+                                <div class="text-red-500 text-[10px] mt-1 font-bold hidden uppercase tracking-wider text-left consent-err">Wymagana zgoda.</div>
+                            </div>
+                            <a href="https://buy.stripe.com/bJe6oA0431VP2Mh0c55gc07" target="_blank" class="cta-button w-full py-4 rounded-2xl text-lg font-bold uppercase tracking-widest text-white text-center border border-white/10 hover:bg-white/10 checkout-btn">
+                                ZAMAWIAM DLA DWOJGA
+                            </a>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="mt-12 flex justify-center space-x-6 opacity-30 grayscale items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" class="h-4 md:h-5" alt="Stripe">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-4 md:h-5" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-4 md:h-5" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Blik_logo.svg" class="h-4 md:h-6" alt="Blik">
                 </div>
             </div>
         </section>
@@ -671,7 +694,7 @@
                         Kiedy otrzymam swój raport?
                         <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white w-5 h-5 shrink-0 ml-2"></i>
                     </summary>
-                    <p class="mt-4 md:mt-6 text-gray-400 text-xs md:text-sm font-light">Czas dostawy na e-mail to zwykle od 3 do 4 godzin.</p>
+                    <p class="mt-4 md:mt-6 text-gray-400 text-xs md:text-sm font-light">Czas dostawy na e-mail to zwykle od 3 do 4 godzin od momentu zaksięgowania wpłaty.</p>
                 </details>
                 <details class="glass p-5 md:p-8 rounded-3xl group cursor-pointer border-white/5 transition-all">
                     <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left text-sm md:text-base">
@@ -682,10 +705,10 @@
                 </details>
                 <details class="glass p-5 md:p-8 rounded-3xl group cursor-pointer border-white/5 transition-all">
                     <summary class="font-bold flex justify-between items-center list-none uppercase tracking-wider text-white text-left text-sm md:text-base">
-                        Czym różni się Pakiet Deluxe?
+                        Czym różni się Pakiet Deluxe dla Dwojga?
                         <i data-lucide="chevron-down" class="group-open:rotate-180 transition text-white w-5 h-5 shrink-0 ml-2"></i>
                     </summary>
-                    <p class="mt-4 md:mt-6 text-gray-400 text-xs md:text-sm font-light text-left">Pakiet Deluxe zawiera wszystko z Pakietu Pełnego plus 4 pogłębione analizy specjalistyczne: Finansową, Miłosną, Zdrowotną oraz dokładną prognozę miesiąc po miesiącu na rok 2026.</p>
+                    <p class="mt-4 md:mt-6 text-gray-400 text-xs md:text-sm font-light text-left">To nasz najbardziej kompletny pakiet. Otrzymujesz dwa niezależne raporty Deluxe dla dwóch osób oraz trzeci, unikalny rozdział analizujący Waszą wspólną numerologiczną relację ("Kosmiczny Duet"). To oszczędność ponad 20% względem zakupu osobnych raportów.</p>
                 </details>
             </div>
         </section>
@@ -721,7 +744,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
     <script>
         lucide.createIcons();
-        AOS.init({ duration: 400, once: true, offset: 30 }); // Faster, smaller offset for quicker trigger on mobile
+        AOS.init({ duration: 400, once: true, offset: 30 });
 
         (function() {
             const progressBar = document.getElementById('progressBar');
@@ -775,7 +798,6 @@
                 const isMobile = width < 768;
                 const pCount = isMobile ? 60 : 110;
                 const numCount = isMobile ? 10 : 20;
-
                 for (let i = 0; i < pCount; i++) particles.push(new Particle(0));
                 for (let i = 0; i < numCount; i++) particles.push(new Particle(1));
             }
@@ -831,10 +853,8 @@
             animate();
         })();
 
-        // Updated Checkout Logic for Multiple Packages
         (function() {
             const forms = document.querySelectorAll('.checkout-form');
-            
             forms.forEach(form => {
                 const btn = form.querySelector('.checkout-btn');
                 const cb = form.querySelector('.consent-cb');
@@ -847,17 +867,18 @@
                             err.classList.remove('hidden');
                         } else {
                             err.classList.add('hidden');
-                            // Meta Pixel Track InitiateCheckout
                             if (typeof fbq === 'function') {
+                                let val = 79;
+                                if(form.dataset.package === 'deluxe') val = 99;
+                                if(form.dataset.package === 'duet') val = 179;
                                 fbq('track', 'InitiateCheckout', { 
                                     content_name: form.dataset.package,
-                                    value: form.dataset.package === 'deluxe' ? 99 : 79,
+                                    value: val,
                                     currency: 'PLN' 
                                 });
                             }
                         }
                     });
-
                     cb.addEventListener('change', function() {
                         if (this.checked) err.classList.add('hidden');
                     });
